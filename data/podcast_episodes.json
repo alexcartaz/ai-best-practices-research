@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "id": "lennys-simon-willison-ai-state-of-union",
+    "show": "Lenny's Podcast",
+    "episode_title": "An AI state of the union: We've passed the inflection point, dark factories are coming, and automation timelines",
+    "guest_id": "simon-willison",
+    "url": "https://www.lennysnewsletter.com/p/an-ai-state-of-the-union",
+    "date": "2026-04-02",
+    "topics": ["agentic-engineering", "claude-code", "tdd", "dark-factory-pattern", "inflection-point", "automation-timelines"],
+    "summary": "1 hour 40 min. Simon Willison on why November 2025 was the inflection point for coding agents; his three agentic engineering patterns (red/green TDD, templates, hoarding); the 'dark factory' pattern where AI does its own QA without human review; writes 95% of code from his phone. YouTube: https://www.youtube.com/watch?v=wc8FBhQtdsA",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "how-i-ai-brian-scanlan-intercom",
+    "show": "How I AI (Lenny's Podcast network)",
+    "episode_title": "How Intercom 2x'd their engineering velocity in 9 months with Claude Code",
+    "guest_id": "brian-scanlan",
+    "url": "https://www.lennysnewsletter.com/p/how-intercom-2xd-their-engineering",
+    "date": "2026-04-20",
+    "topics": ["claude-code", "enterprise-adoption", "skills", "hooks", "engineering-productivity", "ai-first"],
+    "summary": "1 hr 19 min. Hosted by Claire Vo. Intercom doubled merged PRs per R&D employee in 9 months. 100% of engineers plus non-engineers shipping code via Claude Code. 13 plugins, 100+ skills. Telemetry infrastructure for measuring AI adoption. Production-safe hooks (read-replica DB access, Okta auth, DynamoDB audit trail).",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "dive-club-stephen-haney-paper-vision",
+    "show": "Dive Club",
+    "episode_title": "Paper's vision for the future of design tooling",
+    "guest_id": "stephen-haney",
+    "url": "https://open.spotify.com/episode/6dPciYWBqcNJamoYRRD5Si",
+    "date": "2025-05-16",
+    "topics": ["paper-design", "design-tooling", "code-native-design", "figma-alternative", "react-tailwind"],
+    "summary": "Stephen Haney discusses how Paper fundamentally changes the speed of traditional design flows by putting code components onto a design canvas with real React and Tailwind, enabling designers to export production-ready components.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "dive-club-stephen-haney-2026-field-report",
+    "show": "Dive Club",
+    "episode_title": "The 2026 AI Design Field Report (tools, process, and what's working)",
+    "guest_id": "stephen-haney",
+    "url": "https://open.spotify.com/episode/0fFGPPPTHoliQX5toMy01b",
+    "date": "2026-01-19",
+    "topics": ["ai-design", "design-tooling", "industry-trends", "design-workflow"],
+    "summary": "Field report on how top design teams are using AI in 2026. Covers tools, process changes, and what's actually working vs hype.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-steve-yegge-vibe-coding",
+    "show": "Latent Space: The AI Engineer Podcast",
+    "episode_title": "Steve Yegge's Vibe Coding Manifesto — Why Claude Code Is the Future",
+    "guest_id": null,
+    "url": "https://podcasts.apple.com/fi/podcast/steve-yegges-vibe-coding-manifesto-why-claude-code/id1674008350?i=1000742822778",
+    "date": "2025-12",
+    "topics": ["vibe-coding", "claude-code", "agent-orchestration", "nascar-pit-crew-pattern", "trust-agents"],
+    "summary": "Steve Yegge discusses why the 2024 tech stack is becoming obsolete, the importance of trusting agents, and orchestrating agents like a 'NASCAR pit crew' as a shift away from traditional IDE-based development.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "on-rails-brian-scanlan-intercom",
+    "show": "On Rails",
+    "episode_title": "Brian Scanlan: Building AI-First at Intercom",
+    "guest_id": "brian-scanlan",
+    "url": "https://podcast.rubyonrails.org/2462975/episodes/19060786-brian-scanlan-building-ai-first-at-intercom",
+    "date": "2026",
+    "topics": ["claude-code", "ai-first", "intercom", "ruby-on-rails", "engineering-productivity"],
+    "summary": "Deeper technical discussion of Intercom's AI-first engineering transformation, focusing on the Ruby on Rails backend context and how Claude Code integrates with production systems.",
+    "is_new": true,
+    "added": "2026-05-05"
+  }
+]
