@@ -5,5 +5,11 @@
     "type": "video",
     "notes": "Open Design — relevant to design tooling topic",
     "added": "2026-05-05"
+  },
+  {
+    "url": "https://github.com/juliusbrussee/caveman",
+    "type": "tool",
+    "notes": "Caveman — strategy of prompting Claude to use simplified/compressed language to reduce token usage and increase conciseness. Relevant to session-management and token budget topics.",
+    "added": "2026-05-05"
   }
 ]
