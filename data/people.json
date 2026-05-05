@@ -321,5 +321,588 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
+  },
+  {
+    "id": "boris-cherny",
+    "name": "Boris Cherny",
+    "category": "dev",
+    "focus": ["claude-code", "ai-coding-agents", "typescript", "session-management", "skills"],
+    "profiles": {
+      "github": "https://github.com/bcherny",
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://howborisusesclaudecode.com/"
+    },
+    "talks": [
+      {
+        "title": "Claude Code & the evolution of agentic coding",
+        "event": "AI Engineer World's Fair 2025",
+        "url": "https://www.youtube.com/@aiDotEngineer",
+        "date": "2025-06",
+        "topics": ["claude-code", "session-management", "skills"]
+      }
+    ],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Claude Code: Anthropic's CLI Agent",
+        "url": "https://www.latent.space/p/claude-code",
+        "date": "2025-05-07",
+        "topics": ["claude-code", "session-management", "skills"]
+      },
+      {
+        "show": "Lenny's Podcast",
+        "episode_title": "Head of Claude Code: What happens after coding is solved",
+        "url": "https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens",
+        "date": "2026-02-19",
+        "topics": ["claude-code", "multi-agent-orchestration", "skills"]
+      }
+    ],
+    "notable_contributions": [
+      "Created Claude Code as an internal Anthropic hack — grew it to 4% of public GitHub commits",
+      "Head of Claude Code at Anthropic",
+      "Has not written code manually since November 2025",
+      "Wrote 'TypeScript Deep Dive'. Briefly joined Cursor, returned to Anthropic.",
+      "howborisusesclaudecode.com — personal workflow documentation site"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "maggie-appleton",
+    "name": "Maggie Appleton",
+    "category": "design",
+    "focus": ["multi-agent-orchestration", "design-tooling", "unified-project-layer", "human-computer-interaction"],
+    "profiles": {
+      "github": "https://github.com/maggieappleton",
+      "bsky": "https://bsky.app/profile/maggieappleton.com",
+      "x": "https://x.com/mappletons",
+      "linkedin": "https://uk.linkedin.com/in/maggieappleton",
+      "substack": null,
+      "medium": null,
+      "website": "https://maggieappleton.com/"
+    },
+    "talks": [
+      {
+        "title": "One Developer, Two Dozen Agents, Zero Alignment: Why we Need Collaborative AI Engineering",
+        "event": "AI Engineer Europe 2026",
+        "url": "https://www.youtube.com/watch?v=ClWD8OEYgp8",
+        "date": "2026-04-09",
+        "topics": ["multi-agent-orchestration", "unified-project-layer"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Design engineer at GitHub Next",
+      "Built 'ACE' (Agent Collaboration Environment) — research prototype for multiplayer coding agents",
+      "Talk 'One Developer, Two Dozen Agents, Zero Alignment' — why individual-agent tools break in team settings",
+      "Digital garden on design, programming, and anthropology at maggieappleton.com"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "amelia-wattenberger",
+    "name": "Amelia Wattenberger",
+    "category": "design",
+    "focus": ["design-tooling", "multi-agent-orchestration", "unified-project-layer", "data-viz"],
+    "profiles": {
+      "github": "https://github.com/wattenberger",
+      "bsky": "https://bsky.app/profile/wattenberger.com",
+      "x": "https://x.com/wattenberger",
+      "linkedin": "https://www.linkedin.com/in/wattenberger/",
+      "substack": null,
+      "medium": null,
+      "website": "https://wattenberger.com/"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Refactoring",
+        "episode_title": "What Comes After the IDE",
+        "url": "https://refactoring.fm/p/what-comes-after-the-ide-with-amelia",
+        "date": "2026-03",
+        "topics": ["design-tooling", "multi-agent-orchestration"]
+      }
+    ],
+    "notable_contributions": [
+      "Previously staff research engineer at GitHub Next",
+      "Partner at Sutter Hill Ventures + Product Lead at Augment Code",
+      "Created 'Intent' — developer workspace for orchestrating AI coding agents, addresses the 'last 30%' problem",
+      "Data visualization background; strong UX sensibility applied to AI tooling"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "ryan-lopopolo",
+    "name": "Ryan Lopopolo",
+    "category": "dev",
+    "focus": ["harness-engineering", "repo-template-governance", "multi-agent-orchestration", "testing-tdd"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/_lopopolo",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://openai.com/index/harness-engineering/"
+    },
+    "talks": [
+      {
+        "title": "Harness Engineering: How to Build Software When Humans Steer and Agents Execute",
+        "event": "AI Engineer Europe 2026",
+        "url": "https://www.youtube.com/watch?v=am_oeAoUhew",
+        "date": "2026-04-09",
+        "topics": ["harness-engineering", "repo-template-governance", "multi-agent-orchestration"]
+      }
+    ],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Extreme Harness Engineering: 1M LOC, 1B toks/day, 0% human code, 0% human review",
+        "url": "https://www.latent.space/p/harness-eng",
+        "date": "2026-04-07",
+        "topics": ["harness-engineering", "repo-template-governance"]
+      }
+    ],
+    "notable_contributions": [
+      "Member of Technical Staff at OpenAI (Frontier & Symphony)",
+      "Coined and defined 'Harness Engineering' — structured constraints for coding agents",
+      "Ran experiment building 1M LOC codebase with 0 human-written or reviewed code using Codex",
+      "Published influential essay on Harness Engineering (Feb 2026)"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "armin-ronacher",
+    "name": "Armin Ronacher",
+    "category": "dev",
+    "focus": ["repo-template-governance", "agent-legible-codebases", "multi-agent-orchestration"],
+    "profiles": {
+      "github": "https://github.com/mitsuhiko",
+      "bsky": "https://bsky.app/profile/mitsuhiko.at",
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://lucumr.pocoo.org/"
+    },
+    "talks": [
+      {
+        "title": "The Friction Is Your Judgment",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-04-10",
+        "topics": ["repo-template-governance", "agent-legible-codebases"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Creator of Flask, Jinja2, Click, and Rust tooling",
+      "Co-founder of Earendil (with Cristina Poncela Cubeiro)",
+      "Uses Claude Code almost entirely hands-off",
+      "Active blogger at lucumr.pocoo.org on agents and agent-legible codebase design",
+      "Keynote 'The Friction Is Your Judgment' on conscious friction and agent-legible codebases"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "david-soria-parra",
+    "name": "David Soria Parra",
+    "category": "dev",
+    "focus": ["mcp", "multi-agent-orchestration", "unified-project-layer"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "The Future of MCP",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-04-10",
+        "topics": ["mcp", "multi-agent-orchestration"]
+      }
+    ],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "The Creators of Model Context Protocol",
+        "url": "https://www.latent.space/p/mcp",
+        "date": "2025-04-03",
+        "topics": ["mcp", "multi-agent-orchestration"]
+      },
+      {
+        "show": "Latent Space",
+        "episode_title": "One Year of MCP",
+        "url": "https://www.latent.space/p/one-year-of-mcp-with-david-soria",
+        "date": "2025-11",
+        "topics": ["mcp"]
+      }
+    ],
+    "notable_contributions": [
+      "Co-creator of Model Context Protocol (MCP) at Anthropic",
+      "Key figure in MCP ecosystem governance and adoption"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "john-lindquist",
+    "name": "John Lindquist",
+    "category": "dev",
+    "focus": ["skills", "session-management", "claude-code", "education"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/johnlindquist",
+      "linkedin": "https://www.linkedin.com/in/john-lindquist-84230766/",
+      "substack": null,
+      "medium": null,
+      "website": "https://egghead.io/q/resources-by-john-lindquist"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "How I AI (Lenny's Network)",
+        "episode_title": "Advanced Claude Code techniques: context loading, mermaid diagrams, stop hooks, and more",
+        "url": "https://www.lennysnewsletter.com/p/advanced-claude-code-techniques-context",
+        "date": "2026",
+        "topics": ["skills", "session-management", "hooks"]
+      }
+    ],
+    "notable_contributions": [
+      "Co-founder of egghead.io",
+      "Official Claude Code Ambassador at Vercel (AI DX)",
+      "Runs AI Dev Essentials weekly newsletter",
+      "Claude Code Power User workshops — context loading with mermaid diagrams, stop hooks, automated code quality checks"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "steve-ruiz",
+    "name": "Steve Ruiz",
+    "category": "design",
+    "focus": ["design-tooling", "unified-project-layer", "multi-agent-orchestration", "canvas-ui"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/steve-ruiz-61a150239/",
+      "substack": null,
+      "medium": null,
+      "website": "https://tldraw.com"
+    },
+    "talks": [
+      {
+        "title": "tldraw computer",
+        "event": "AI Engineer World's Fair 2025",
+        "url": "https://www.youtube.com/watch?v=1C2TdPkj6aQ",
+        "date": "2025-06-05",
+        "topics": ["design-tooling", "multi-agent-orchestration"]
+      },
+      {
+        "title": "Agents on the Canvas in tldraw",
+        "event": "AI Engineer Europe 2026",
+        "url": "https://www.youtube.com/watch?v=sPUjIBH5Cwg",
+        "date": "2026-04-09",
+        "topics": ["design-tooling", "unified-project-layer"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Founder/CEO of tldraw",
+      "tldraw computer — AI workflows on an infinite canvas",
+      "Make Real (2023) — first vibe coding tool",
+      "Fairydraw (2025) — agents-on-canvas experiment"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "beyang-liu",
+    "name": "Beyang Liu",
+    "category": "dev",
+    "focus": ["multi-agent-orchestration", "skills", "testing-tdd", "coding-agents"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/beyang-liu",
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "The emerging skillset of wielding coding agents",
+        "event": "AI Engineer World's Fair 2025",
+        "url": "https://www.youtube.com/watch?v=F_RyElT_gJk",
+        "date": "2025-06-05",
+        "topics": ["multi-agent-orchestration", "skills"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder of Sourcegraph (enterprise code intelligence)",
+      "Co-founder of Amp Code — next-gen AI coding agents with multi-agent architecture",
+      "90% of his code now from agents",
+      "'Normsky' architecture for AI coding agents (Latent Space)"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "gergely-orosz",
+    "name": "Gergely Orosz",
+    "category": "dev-adjacent",
+    "focus": ["ai-industry-analysis", "engineering-culture", "multi-agent-orchestration"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/GergelyOrosz",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://newsletter.pragmaticengineer.com/"
+    },
+    "talks": [
+      {
+        "title": "Software Engineering + AI = ?",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-04-09",
+        "topics": ["multi-agent-orchestration"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "The Pragmatic Engineer newsletter (largest paid eng newsletter, ~100k subscribers)",
+      "Jan-Feb 2026 AI tooling survey: ~1000 respondents, widely cited industry stats",
+      "Bridge figure between traditional software engineering and AI coding"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "claire-vo",
+    "name": "Claire Vo",
+    "category": "dev-adjacent",
+    "focus": ["ai-workflows", "skills", "product-management"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/clairevo",
+      "linkedin": "https://www.linkedin.com/in/clairevo/",
+      "substack": null,
+      "medium": null,
+      "website": "https://www.chatprd.ai/"
+    },
+    "talks": [],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Host of 'How I AI' podcast (Lenny's network) — 70+ episodes as of May 2026, practical AI workflow demos",
+      "Founder of ChatPRD",
+      "Three-time CPO",
+      "Primary source for practitioner AI workflow case studies (Stripe, Intercom, etc.)"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "patrick-debois",
+    "name": "Patrick Debois",
+    "category": "dev",
+    "focus": ["repo-template-governance", "multi-agent-orchestration", "ai-native-development", "context-engineering"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "The 4 Patterns of AI Native Development",
+        "event": "AI Engineer World's Fair 2025",
+        "url": null,
+        "date": "2025-06",
+        "topics": ["repo-template-governance", "multi-agent-orchestration"]
+      },
+      {
+        "title": "Context Is the New Code",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-04-09",
+        "topics": ["context-engineering", "repo-template-governance"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Creator of the term 'DevOps'",
+      "Now an AI Product Engineer and AI Native Dev Advisor",
+      "'Context Is the New Code' — framing that resonates with CLAUDE.md governance work"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "owen-williams",
+    "name": "Owen Williams",
+    "category": "design",
+    "focus": ["design-tooling", "design-systems", "ai-prototyping"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "How I AI (Lenny's Network)",
+        "episode_title": "The internal AI tool that's transforming how Stripe designs products",
+        "url": "https://www.lennysnewsletter.com/p/the-internal-ai-tool-thats-transforming",
+        "date": "2025",
+        "topics": ["design-tooling", "design-systems"]
+      }
+    ],
+    "notable_contributions": [
+      "Design manager at Stripe",
+      "Built Protodash — internal AI-powered prototyping platform for designers/PMs at Stripe",
+      "Started as Cursor rules + React components, evolved into full web-based prototyping studio"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "zeke-sikelianos",
+    "name": "Zeke Sikelianos",
+    "category": "design",
+    "focus": ["design-tooling", "design-systems", "llm-api-design"],
+    "profiles": {
+      "github": "https://github.com/zeke",
+      "bsky": null,
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/sikelianos/",
+      "substack": null,
+      "medium": null,
+      "website": "https://zeke.sikelianos.com/"
+    },
+    "talks": [
+      {
+        "title": "Design like Karpathy is watching",
+        "event": "AI Engineer World's Fair 2025",
+        "url": "https://www.youtube.com/watch?v=huQPkrwVWwc",
+        "date": "2025-06-05",
+        "topics": ["design-tooling", "design-systems", "llm-api-design"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Founding designer at Replicate",
+      "Co-creator of Swagger/OpenAPI",
+      "Advocates for LLM-friendly API design — services accessible to LLM agents by design"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "solomon-hykes",
+    "name": "Solomon Hykes",
+    "category": "dev",
+    "focus": ["multi-agent-orchestration", "containerization", "testing-tdd"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "Containing Agent Chaos",
+        "event": "AI Engineer World's Fair 2025",
+        "url": null,
+        "date": "2025-06-04",
+        "topics": ["multi-agent-orchestration", "containerization"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Founder of Docker",
+      "Now CEO of Dagger",
+      "Open-sourced 'container-use' at AIEWF 2025 — containerized environments for coding agents",
+      "Live-demoed spawning 6 Claude Code + 1 Goose instance in isolated containers"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "john-yang",
+    "name": "John Yang",
+    "category": "dev",
+    "focus": ["testing-tdd", "multi-agent-orchestration", "benchmarks"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "[State of Code Evals] After SWE-bench, Code Clash & SOTA Coding Benchmarks recap",
+        "url": "https://www.latent.space/p/state-of-code-evals-after-swe-bench",
+        "date": "2025-12-31",
+        "topics": ["testing-tdd", "multi-agent-orchestration"]
+      }
+    ],
+    "notable_contributions": [
+      "Creator of SWE-bench — industry standard benchmark for evaluating AI coding agents",
+      "Built it in a Princeton basement",
+      "Shipped SWE-bench Multimodal, Multilingual (9 languages), and CodeClash"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
   }
 ]

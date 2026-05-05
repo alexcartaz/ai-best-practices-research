@@ -70,5 +70,89 @@
     "summary": "Deeper technical discussion of Intercom's AI-first engineering transformation, focusing on the Ruby on Rails backend context and how Claude Code integrates with production systems.",
     "is_new": true,
     "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-claude-code-boris-cherny",
+    "show": "Latent Space",
+    "episode_title": "Claude Code: Anthropic's CLI Agent",
+    "guest_id": "boris-cherny",
+    "url": "https://www.latent.space/p/claude-code",
+    "date": "2025-05-07",
+    "topics": ["claude-code", "session-management", "skills", "multi-agent-orchestration"],
+    "summary": "Boris Cherny (creator of Claude Code) and Cat Wu (PM) on Claude Code's origins as an internal hack, its architecture, and roadmap. First deep technical interview about Claude Code.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "lennys-boris-cherny-coding-solved",
+    "show": "Lenny's Podcast",
+    "episode_title": "Head of Claude Code: What happens after coding is solved",
+    "guest_id": "boris-cherny",
+    "url": "https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens",
+    "date": "2026-02-19",
+    "topics": ["claude-code", "multi-agent-orchestration", "skills"],
+    "summary": "Boris Cherny on the post-coding future, Claude Code's growth to 4% of public GitHub commits, and what comes next when AI handles routine coding.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-mcp-creators",
+    "show": "Latent Space",
+    "episode_title": "The Creators of Model Context Protocol",
+    "guest_id": "david-soria-parra",
+    "url": "https://www.latent.space/p/mcp",
+    "date": "2025-04-03",
+    "topics": ["mcp", "multi-agent-orchestration"],
+    "summary": "David Soria Parra and Justin Spahr-Summers on MCP's origins, design decisions, and protocol evolution. The canonical technical deep-dive on MCP.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-harness-engineering",
+    "show": "Latent Space",
+    "episode_title": "Extreme Harness Engineering: 1M LOC, 1B toks/day, 0% human code, 0% human review",
+    "guest_id": "ryan-lopopolo",
+    "url": "https://www.latent.space/p/harness-eng",
+    "date": "2026-04-07",
+    "topics": ["harness-engineering", "repo-template-governance", "multi-agent-orchestration", "testing-tdd"],
+    "summary": "Ryan Lopopolo on building a 1M LOC codebase with zero human-written or reviewed code. Defines 'Harness Engineering' as the structured constraints that make this possible. Highly relevant to repo-template-governance.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "how-i-ai-john-lindquist-claude-code",
+    "show": "How I AI (Lenny's Network)",
+    "episode_title": "Advanced Claude Code techniques: context loading, mermaid diagrams, stop hooks, and more",
+    "guest_id": "john-lindquist",
+    "url": "https://www.lennysnewsletter.com/p/advanced-claude-code-techniques-context",
+    "date": "2026",
+    "topics": ["skills", "session-management", "hooks", "claude-code"],
+    "summary": "John Lindquist (Claude Code Ambassador at Vercel) demos advanced techniques: context loading via mermaid diagrams, stop hooks, automated code quality checks. Practical skills-focused episode.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "how-i-ai-stripe-protodash",
+    "show": "How I AI (Lenny's Network)",
+    "episode_title": "The internal AI tool that's transforming how Stripe designs products",
+    "guest_id": "owen-williams",
+    "url": "https://www.lennysnewsletter.com/p/the-internal-ai-tool-thats-transforming",
+    "date": "2025",
+    "topics": ["design-tooling", "design-systems"],
+    "summary": "Owen Williams (design manager, Stripe) on Protodash — Stripe's internal AI prototyping platform. Shows how a design team built a full prototyping studio on top of Cursor rules + React components.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "refactoring-amelia-wattenberger-ide",
+    "show": "Refactoring",
+    "episode_title": "What Comes After the IDE",
+    "guest_id": "amelia-wattenberger",
+    "url": "https://refactoring.fm/p/what-comes-after-the-ide-with-amelia",
+    "date": "2026-03",
+    "topics": ["design-tooling", "multi-agent-orchestration", "unified-project-layer"],
+    "summary": "Amelia Wattenberger on Intent (her Augment Code product) and what developer workspaces look like when agents do most of the work. Directly addresses the unified-project-layer pain point.",
+    "is_new": true,
+    "added": "2026-05-05"
   }
 ]

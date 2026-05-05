@@ -1,0 +1,34 @@
+[
+  {
+    "id": "ai-dot-engineer",
+    "name": "AI Engineer (@aiDotEngineer)",
+    "url": "https://www.youtube.com/@aiDotEngineer",
+    "description": "Official channel for AI Engineer events (World's Fair, Europe, Summit). Publishes all conference talks. The most comprehensive archive of AI engineering practitioner talks — 150+ talks from AIEWF 2025 alone. Primary source for finding new practitioners.",
+    "topics": ["multi-agent-orchestration", "skills", "design-tooling", "repo-template-governance"],
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-youtube",
+    "name": "Latent Space",
+    "url": "https://www.youtube.com/channel/UCxBcwypKK-W3GHd_RZ9FZrQ",
+    "description": "Video podcast companion to Latent Space (swyx + Alessio Fanelli). Technical deep dives with AI engineers and researchers. 10M+ readers/listeners across platforms.",
+    "topics": ["multi-agent-orchestration", "skills", "session-management"],
+    "added": "2026-05-05"
+  },
+  {
+    "id": "how-i-ai-youtube",
+    "name": "How I AI with Claire Vo",
+    "url": "https://www.youtube.com/@howiaipodcast",
+    "description": "Video version of the 'How I AI' podcast (Lenny's network, hosted by Claire Vo). Practical AI workflow demonstrations, ~30 min episodes with live demos. 70+ episodes as of May 2026. Best source for practitioner workflow case studies.",
+    "topics": ["skills", "multi-agent-orchestration", "design-tooling"],
+    "added": "2026-05-05"
+  },
+  {
+    "id": "pragmatic-engineer-youtube",
+    "name": "The Pragmatic Engineer",
+    "url": "https://www.youtube.com/@pragmaticengineer",
+    "description": "Gergely Orosz's channel covering AI's impact on software engineering. Interviews engineering leaders about AI transformation. Source of the widely-cited Jan-Feb 2026 AI tooling survey (~1000 respondents).",
+    "topics": ["multi-agent-orchestration", "industry-analysis"],
+    "added": "2026-05-05"
+  }
+]
