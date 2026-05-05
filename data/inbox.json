@@ -11,11 +11,5 @@
     "type": "tool",
     "notes": "Caveman — strategy of prompting Claude to use simplified/compressed language to reduce token usage and increase conciseness. Relevant to session-management and token budget topics.",
     "added": "2026-05-05"
-  },
-  {
-    "url": "https://designmd.ai/",
-    "type": "tool",
-    "notes": "designmd.ai — design-focused .md governance tool. Relevant to design-systems and repo-template-governance topics. Research what it does, who built it, community reception.",
-    "added": "2026-05-05"
   }
 ]

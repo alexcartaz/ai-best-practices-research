@@ -6,11 +6,13 @@
     "status": "active-pain",
     "sub_sections": {
       "md_governance": {
-        "description": "CLAUDE.md / AGENTS.md structure: what rules, constraints, and context ship by default. How verbose vs. concise. What sections are mandatory.",
+        "description": "CLAUDE.md / AGENTS.md / DESIGN.md structure: what rules, constraints, and context ship by default. How verbose vs. concise. What sections are mandatory. Community converging on a three-layer pattern.",
         "approaches": [
+          "Three-layer pattern (emerging community standard): CLAUDE.md (behavioral rules/prohibitions) + DESIGN.md (visual design system, Google Labs format) + SKILL.md (reusable procedures). Reference DESIGN.md from CLAUDE.md: 'Always refer to DESIGN.md when generating UI components.'",
           "Official: concise CLAUDE.md checked into git, /init to bootstrap then refine. Remove any line that wouldn't cause mistakes if deleted.",
           "gstack: CLAUDE.md acts as a router — delegates to specialist skill roles rather than containing all rules inline",
-          "Karpathy LLM wiki: wiki/ directory maintained by the agent provides living cross-session memory alongside CLAUDE.md"
+          "Karpathy LLM wiki: wiki/ directory maintained by the agent provides living cross-session memory alongside CLAUDE.md",
+          "DESIGN.md (Google Labs, April 2026, 11.6k+ stars): design-token YAML + prose rationale in one file. CLI lints WCAG AA contrast, exports to Tailwind/DTCG."
         ]
       },
       "hooks": {
@@ -46,7 +48,7 @@
       "Official best practice: concise CLAUDE.md checked into git, /init to bootstrap then refine"
     ],
     "related_people": ["andrej-karpathy", "matt-pocock", "garry-tan", "brian-scanlan"],
-    "related_tools": ["sandcastle", "gstack", "llm-wiki-karpathy", "awesome-claude-code"]
+    "related_tools": ["sandcastle", "gstack", "llm-wiki-karpathy", "awesome-claude-code", "design-md-format", "designmd-ai", "awesome-claude-code-subagents"]
   },
   {
     "id": "skills",
@@ -110,8 +112,13 @@
     "name": "Design Systems",
     "description": "Default Claude doesn't guide toward a design system. Need: how is a design system standardized/defined? What is the default web app design system? How do we customize it?",
     "status": "active-pain",
-    "approaches": [],
-    "related_people": ["stephen-hanney"],
+    "approaches": [
+      "DESIGN.md (Google Labs, April 2026): single markdown file at repo root with YAML design tokens + prose rationale. AI agents read it as persistent context. Exports to Tailwind or W3C DTCG tokens.json. Community-standard three-layer pattern: CLAUDE.md (behavior) + DESIGN.md (visuals) + SKILL.md (procedures).",
+      "awesome-design-md (VoltAgent, 71k+ stars): 100+ pre-built DESIGN.md files for popular brands/systems — starting point for any project",
+      "paper.design (Stephen Haney): code-native canvas on real React + Tailwind. Designers get production-ready components. Complements DESIGN.md at the component layer."
+    ],
+    "related_people": ["stephen-haney", "necati-ozmen"],
+    "related_tools": ["design-md-format", "designmd-ai", "paper-design"],
     "related_tools": ["paper-design"]
   },
   {

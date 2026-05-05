@@ -293,5 +293,33 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
+  },
+  {
+    "id": "necati-ozmen",
+    "name": "Necati Özmen",
+    "category": "dev",
+    "focus": ["claude-code-tooling", "design-systems", "ai-agents", "open-source", "typescript", "subagent-profiles"],
+    "profiles": {
+      "github": "https://github.com/necatiozmen",
+      "bsky": null,
+      "x": "https://x.com/nozmen",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://dev.to/necatiozmen"
+    },
+    "talks": [],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "VoltAgent/awesome-design-md — 71k+ stars, community hub for DESIGN.md files",
+      "VoltAgent/awesome-claude-code-subagents — 19k+ stars, 100+ Claude subagent profiles",
+      "VoltAgent/awesome-agent-skills — 20k+ stars, 1000+ agent skills",
+      "VoltAgent/voltagent — 8.6k stars, open-source TypeScript AI agent framework",
+      "Previously: co-founded refinedev/refine (YC S23, 34k stars), React internal-tools framework",
+      "Signature strategy: massive community awesome-* repos that become de facto community standards"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
   }
 ]

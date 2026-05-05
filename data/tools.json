@@ -141,5 +141,58 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
+  },
+  {
+    "id": "design-md-format",
+    "name": "DESIGN.md (Google Labs format spec)",
+    "category": "design-tooling",
+    "author_id": null,
+    "url": "https://github.com/google-labs-code/design.md",
+    "description": "Open format spec by Google Labs (from Google Stitch) for expressing design systems in a single markdown file. YAML front matter holds design tokens (colors, typography, spacing, component states); markdown prose holds rationale. AI agents read it as persistent context. CLI (npx @google/design.md) lints for WCAG AA contrast and exports to Tailwind or W3C DTCG tokens.json. Released April 21, 2026. 11.6k+ stars. Sits alongside CLAUDE.md and SKILL.md as the third governance layer for UI. Recommended pattern: CLAUDE.md (behavioral rules) + DESIGN.md (visual rules) + SKILL.md (procedures).",
+    "topics": ["design-systems", "design-tooling", "repo-template-governance", "claude-code-governance", "design-tokens"],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "designmd-ai",
+    "name": "designmd.ai + awesome-design-md (VoltAgent)",
+    "category": "design-tooling",
+    "author_id": "necati-ozmen",
+    "url": "https://designmd.ai/",
+    "github_url": "https://github.com/VoltAgent/awesome-design-md",
+    "description": "Community hub and curated library of 100+ pre-built DESIGN.md files for popular brands/systems, built by VoltAgent (Necati Özmen + Omer Aplak). awesome-design-md has 71k+ stars. Also has an MCP server for direct agent integration without manual file downloads. VoltAgent also maintains awesome-claude-code-subagents (19k+ stars, 100+ Claude subagents) and awesome-agent-skills (20k+ stars, 1000+ agent skills).",
+    "topics": ["design-systems", "design-tooling", "repo-template-governance", "mcp", "subagent_profiles"],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "voltagent",
+    "name": "VoltAgent",
+    "category": "orchestration",
+    "author_id": "necati-ozmen",
+    "url": "https://github.com/VoltAgent/voltagent",
+    "description": "Open-source TypeScript AI agent framework by Necati Özmen and Omer Aplak (ex-Refine.js / YC S23). 8.6k+ stars. Complements their awesome-* community repos.",
+    "topics": ["orchestration", "multi-agent", "typescript"],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "awesome-claude-code-subagents",
+    "name": "awesome-claude-code-subagents (VoltAgent)",
+    "category": "claude-code-tooling",
+    "author_id": "necati-ozmen",
+    "url": "https://github.com/VoltAgent/awesome-claude-code-subagents",
+    "description": "Curated list of 100+ Claude Code subagent profiles by VoltAgent. 19k+ stars. Complements hesreallyhim/awesome-claude-code (skills/hooks focus) with a subagent-persona focus.",
+    "topics": ["subagent_profiles", "skills", "claude-code-governance"],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
   }
 ]
