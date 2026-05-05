@@ -4,18 +4,27 @@
     "name": "Default Repo Template + .md Governance",
     "description": "What should a default Claude Code repo look like? What CLAUDE.md / AGENTS.md structure, what rules, what defaults ship out of the box?",
     "status": "active-pain",
-    "approaches": [],
-    "related_people": ["andrej-karpathy", "matt-pocock"],
-    "related_tools": ["sandcastle"]
+    "approaches": [
+      "gstack pattern: 23-skill configuration with specialist roles (CEO, Designer, Eng Manager, etc.)",
+      "Karpathy LLM wiki pattern: raw/ + wiki/ + schema/ three-layer architecture",
+      "Official best practice: concise CLAUDE.md checked into git, /init to bootstrap then refine"
+    ],
+    "related_people": ["andrej-karpathy", "matt-pocock", "garry-tan"],
+    "related_tools": ["sandcastle", "gstack", "llm-wiki-karpathy"]
   },
   {
     "id": "skills",
     "name": "Claude Code Skills",
     "description": "Which skills to include in a default setup. How to author them. Community-shared skill registries.",
     "status": "active-pain",
-    "approaches": [],
-    "related_people": ["matt-pocock"],
-    "related_tools": ["sandcastle"]
+    "approaches": [
+      "gstack: 23 specialist skills (CEO, Designer, Eng Manager, Release Manager, QA, Security, Doc Engineer roles)",
+      "Matt Pocock: /grill-me, /write-a-prd, /write-issues for plan-mode enforcement",
+      "hesreallyhim/awesome-claude-code: curated community registry",
+      "aihero.dev skills repo: Matt Pocock's personal .claude/ directory published"
+    ],
+    "related_people": ["matt-pocock", "garry-tan"],
+    "related_tools": ["sandcastle", "gstack", "awesome-claude-code"]
   },
   {
     "id": "session-management",
@@ -23,27 +32,41 @@
     "description": "Claude's default context compaction loses state badly. Current best practice (Matt Pocock): backup context at ~100k tokens, /clear, reload backup. Need to verify if this fully solves context collapse or if additional structure is required.",
     "status": "active-pain",
     "approaches": [
-      "backup-clear-reload at ~100k tokens (Matt Pocock / Sandcastle)"
+      "backup-clear-reload at ~100k tokens (Matt Pocock / Sandcastle)",
+      "Intervene at ~60% context utilization; auto-compact triggers at ~80-90%",
+      "/compact with specific instructions ('Focus on the API changes') for better summaries",
+      "Session Memory writes summaries continuously — /compact is now near-instant",
+      "Karpathy LLM wiki pattern: wiki/ directory updated by agent provides cross-session memory",
+      "claude-code-transcripts (Simon Willison): export sessions to HTML/Gist for reference"
     ],
-    "related_people": ["matt-pocock"],
-    "related_tools": ["sandcastle"]
+    "related_people": ["matt-pocock", "simon-willison", "andrej-karpathy"],
+    "related_tools": ["sandcastle", "claude-code-transcripts", "llm-wiki-karpathy"]
   },
   {
     "id": "low-level-fe-verification",
     "name": "Low-Level Frontend Verification",
     "description": "Claude will claim a UI change is live when it isn't. Need reliable verification via Playwright, Chromium, or similar that a change is actually rendered correctly.",
     "status": "active-pain",
-    "approaches": [],
+    "approaches": [
+      "Playwright MCP server (executeautomation/mcp-playwright) — exposes browser automation to Claude Code via MCP",
+      "Claude in Chrome — for day-to-day dev/debug",
+      "Playwright MCP for pre-release test suite verification",
+      "Microsoft Playwright CLI — ~4x fewer tokens than full accessibility tree streaming"
+    ],
     "related_people": [],
-    "related_tools": []
+    "related_tools": ["playwright-mcp"]
   },
   {
     "id": "testing-tdd",
     "name": "Robust Testing / TDD Workflow",
     "description": "When are tests first created? How does a default template manage test-driven development across iterative FE work vs. large feature merges? How does Claude stay in sync with the test suite?",
     "status": "active-pain",
-    "approaches": [],
-    "related_people": [],
+    "approaches": [
+      "Red/green/refactor loop — be explicit with Claude that you are doing TDD to prevent premature mock implementations",
+      "Simon Willison's TDD pattern: tests as built-in success conditions that both developer and agent can verify",
+      "Matt Pocock's /grill-me before implementation to prevent premature coding"
+    ],
+    "related_people": ["simon-willison", "matt-pocock"],
     "related_tools": []
   },
   {
@@ -74,6 +97,23 @@
     "status": "active-pain",
     "approaches": [],
     "related_people": [],
-    "related_tools": ["conductor"]
+    "related_tools": ["conductor", "vibe-kanban"]
+  },
+  {
+    "id": "multi-agent-orchestration",
+    "name": "Multi-Agent Orchestration",
+    "description": "Patterns for running multiple Claude Code agents in parallel: shared task lists, worktree isolation, dependency tracking, merge strategies.",
+    "status": "active-research",
+    "approaches": [
+      "Claude Agent Teams (built-in): team lead coordinates, teammates work in own context windows and communicate directly",
+      "Subagents: isolated parallel workers that report back (no direct coordination)",
+      "Conductor (macOS app): isolated git worktree workspaces with real-time visibility and diff review",
+      "Vibe Kanban: cross-agent orchestration with kanban planning and built-in browser preview",
+      "Ruflo/Claude Flow: enterprise-grade swarms with federated cross-machine comms and self-learning memory",
+      "Sandcastle: git worktrees + Docker isolation for truly AFK agent runs",
+      "Decision rule: only use multi-agent when phases are genuinely asynchronous or need different specialists"
+    ],
+    "related_people": ["matt-pocock", "addy-osmani", "shawn-wang"],
+    "related_tools": ["sandcastle", "conductor", "vibe-kanban", "ruflo"]
   }
 ]

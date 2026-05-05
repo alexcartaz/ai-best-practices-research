@@ -2,46 +2,125 @@
   "last_updated": "2026-05-05",
   "tool_adoption": [
     {
-      "claim": "~65% of devs recommend/use Claude Code as primary AI coding tool",
-      "source": null,
-      "date": null,
-      "confidence": "anecdotal"
+      "claim": "GitHub Copilot leads raw market share at ~41.8% in 2026; Cursor at ~27.3%; Claude Code at ~12.5% (within 12 months of release); Windsurf at ~9.4%",
+      "source": "https://www.digitalapplied.com/blog/ai-coding-tool-adoption-2026-developer-survey",
+      "date": "2026",
+      "confidence": "survey"
+    },
+    {
+      "claim": "Claude Code has 91% CSAT and a 54 NPS — both leading the category. Most-loved tool at 46% vs Cursor at 19% and Copilot at 9%",
+      "source": "https://www.ideaplan.io/blog/ai-coding-assistant-market-share-2026",
+      "date": "2026",
+      "confidence": "survey"
+    },
+    {
+      "claim": "70% of engineers use 2-4 AI coding tools simultaneously; 15% use 5 or more. The dominant pattern is Cursor for editing + Claude Code for complex tasks",
+      "source": "https://newsletter.pragmaticengineer.com/p/ai-tooling-2026",
+      "date": "2026-02",
+      "confidence": "survey"
+    },
+    {
+      "claim": "Pragmatic Engineer survey (Jan-Feb 2026, ~1000 respondents): 95% use AI tools weekly or more; 75% use AI for 50%+ of SE work; 55% regularly use AI agents; staff+ engineers at 63.5% agent usage",
+      "source": "https://newsletter.pragmaticengineer.com/p/ai-tooling-2026",
+      "date": "2026-02",
+      "confidence": "survey"
+    },
+    {
+      "claim": "Claude Code dominates among backend and full-stack developers doing multi-file work; Cursor keeps narrow lead with frontend developers; Copilot retains largest footprint with DevOps and data engineers",
+      "source": "https://www.digitalapplied.com/blog/ai-coding-tool-adoption-2026-developer-survey",
+      "date": "2026",
+      "confidence": "survey"
+    },
+    {
+      "claim": "Anthropic's own engineers write ~90% of Claude Code's code using Claude Code itself",
+      "source": "https://addyosmani.com/blog/ai-coding-workflow/",
+      "date": "2025-12",
+      "confidence": "practitioner-report"
     }
   ],
   "model_recommendations": [
     {
       "model": "claude-sonnet-4-6",
-      "recommended_for": ["main coding tasks", "day-to-day implementation", "default subagent work"],
-      "rationale": "Best cost/quality balance for iterative coding",
-      "source": null,
-      "date": null,
+      "recommended_for": ["main coding tasks", "day-to-day implementation", "default subagent work", "real-time collaboration"],
+      "rationale": "Best cost/quality balance for iterative coding. $3/$15 per million tokens. Handles 90%+ of coding tasks. Released February 17 2026.",
+      "source": "https://tech-insider.org/claude-opus-vs-sonnet-vs-haiku-2026/",
+      "date": "2026",
+      "confidence": "community-consensus"
+    },
+    {
+      "model": "claude-opus-4-6",
+      "recommended_for": ["complex architecture decisions", "large codebase analysis", "agent teams", "high-stakes reasoning", "extended thinking"],
+      "rationale": "Highest capability ceiling. Use for tasks that genuinely need deep thinking. $25 per million output tokens. Released February 4 2026.",
+      "source": "https://tech-insider.org/claude-opus-vs-sonnet-vs-haiku-2026/",
+      "date": "2026",
       "confidence": "community-consensus"
     },
     {
       "model": "claude-opus-4-7",
       "recommended_for": ["difficult architecture decisions", "complex assessments", "cross-cutting design"],
-      "rationale": "Higher capability ceiling for tasks requiring deep reasoning",
-      "source": null,
-      "date": null,
-      "confidence": "community-consensus"
-    },
-    {
-      "model": "claude-opus-4-6",
-      "recommended_for": [],
-      "rationale": "Fast mode for Claude Code — faster output, same Opus class. Specific use cases TBD.",
+      "rationale": "Higher capability ceiling for tasks requiring deep reasoning — latest Opus tier as of research date.",
       "source": null,
       "date": null,
       "confidence": "unclear"
     },
     {
       "model": "claude-haiku-4-5",
-      "recommended_for": ["high-volume simple tasks", "fast classification", "cheap batch operations"],
-      "rationale": "Lowest latency/cost, good for tasks that don't need deep reasoning",
-      "source": null,
-      "date": null,
+      "recommended_for": ["high-volume simple tasks", "fast classification", "cheap batch operations", "file reads", "quick edits", "routine questions"],
+      "rationale": "~97 tokens/second throughput (~83% faster than Sonnet 4.6, ~116% faster than Opus 4.6). $5/M output tokens — 5x cheaper than Opus, 3x cheaper than Sonnet. Released October 2025.",
+      "source": "https://tech-insider.org/claude-opus-vs-sonnet-vs-haiku-2026/",
+      "date": "2026",
       "confidence": "community-consensus"
     }
   ],
-  "workflow_norms": [],
-  "notes": "This section tracks community consensus on tooling, model usage, and workflow norms. Each run should verify/update these against recent practitioner posts and conference talks."
+  "workflow_norms": [
+    {
+      "norm": "CLAUDE.md governance: concise, checked into git, describes Bash commands / code style / workflow rules. Run /init to generate a starter then refine. Remove any line that wouldn't cause mistakes if deleted.",
+      "source": "https://code.claude.com/docs/en/best-practices",
+      "date": "2026",
+      "confidence": "official-docs"
+    },
+    {
+      "norm": "Context compaction: intervene at ~60% context utilization (auto-compact triggers at ~80-90%). Use /compact with specific instructions ('Focus on the API changes'). Session Memory now writes summaries continuously so /compact is near-instant.",
+      "source": "https://platform.claude.com/docs/en/build-with-claude/compaction",
+      "date": "2026",
+      "confidence": "official-docs"
+    },
+    {
+      "norm": "TDD as AI governance: use red/green/refactor as a built-in success condition that both developer and agent can verify. Prevents blind adoption of AI output. Be explicit with Claude that you are doing TDD to prevent premature mock implementations.",
+      "source": "https://thenewstack.io/claude-code-and-the-art-of-test-driven-development/",
+      "date": "2026",
+      "confidence": "practitioner-consensus"
+    },
+    {
+      "norm": "Multi-agent pattern: decompose tasks then summon subagents to work autonomously. Agent Teams for shared task lists and direct coordination; subagents for isolated parallel workers that report back. Only use multi-agent when phases are genuinely asynchronous or involve different specialists.",
+      "source": "https://code.claude.com/docs/en/agent-teams",
+      "date": "2026",
+      "confidence": "official-docs"
+    },
+    {
+      "norm": "Playwright MCP is the community standard for AI-driven browser testing and visual verification. Pair with Claude in Chrome for day-to-day development; use Playwright MCP for pre-release test suite runs. Microsoft's Playwright CLI companion uses ~4x fewer tokens per session than streaming full accessibility trees.",
+      "source": "https://testomat.io/blog/playwright-mcp-claude-code/",
+      "date": "2026",
+      "confidence": "practitioner-consensus"
+    },
+    {
+      "norm": "LLM wiki / agent memory pattern (Karpathy): maintain a wiki/ of structured markdown that the agent reads and updates cross-session. raw/ holds immutable sources; wiki/ is LLM-maintained. Prevents context degradation across long projects.",
+      "source": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+      "date": "2026-04",
+      "confidence": "emerging"
+    },
+    {
+      "norm": "Skills > one-shot prompts: package repeated task shapes as slash-command skills files in .claude/. Community-validated skills repos (gstack, mattpocock/sandcastle, hesreallyhim/awesome-claude-code) provide reusable starting points.",
+      "source": "https://github.com/garrytan/gstack",
+      "date": "2026",
+      "confidence": "practitioner-consensus"
+    },
+    {
+      "norm": "Tool stacking is the norm: 70% of engineers use 2-4 AI coding tools simultaneously. Default pattern in 2026: Cursor for in-editor editing, Claude Code for complex multi-file tasks and agents.",
+      "source": "https://newsletter.pragmaticengineer.com/p/ai-tooling-2026",
+      "date": "2026-02",
+      "confidence": "survey"
+    }
+  ],
+  "notes": "This section tracks community consensus on tooling, model usage, and workflow norms. Each run should verify/update these against recent practitioner posts and conference talks. Last populated May 5 2026 from Pragmatic Engineer survey, official Claude docs, practitioner blogs, and Latent Space coverage."
 }
