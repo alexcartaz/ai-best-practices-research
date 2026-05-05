@@ -1,18 +1,54 @@
 [
   {
-    "id": "ai-engineer-europe-2025",
-    "name": "AI Engineer World's Fair — Europe",
-    "url": "https://www.youtube.com/@aiDotEngineer",
-    "date": "2025",
-    "description": "European edition of the AI Engineer conference. Practitioner-focused talks on building with LLMs.",
+    "id": "ai-engineer-europe-2026",
+    "name": "AI Engineer Europe 2026",
+    "url": "https://www.ai.engineer/europe",
+    "date": "2026-04-08",
+    "description": "April 8-10, 2026, London (Queen Elizabeth II Centre). 100+ speakers, 100+ sessions, 11 technical tracks. Day 1: 23 hands-on workshops + expo/reception. Days 2-3: keynotes and multi-track sessions covering Claws & Personal Agents, Context Engineering, Harness Engineering, Evals & Observability, Voice & Vision.",
     "notable_talks": [
       {
         "speaker_id": "matt-pocock",
-        "title": "AI Engineer Europe talk",
-        "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
-        "topics": ["claude-code", "session-management", "ai-tooling"]
+        "title": "It Ain't Broke: Why Software Fundamentals Matter More Than Ever",
+        "url": "https://www.ai.engineer/europe/schedule",
+        "topics": ["software-fundamentals", "claude-code", "specs-to-code", "software-entropy", "plan-mode"]
       }
     ],
+    "is_new": false,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "ai-engineer-worlds-fair-2025",
+    "name": "AI Engineer World's Fair 2025",
+    "url": "https://wf2025.ai.engineer/",
+    "date": "2025-06-03",
+    "description": "June 3-5, 2025, Marriott Marquis, San Francisco. 18 tracks, 150+ sessions, 3,000+ attendees. Largest technical AI conference for engineers in the world. Keynotes from OpenAI, Anthropic, Google DeepMind, Meta. Jensen Huang made two surprise appearances. YouTube: AI Engineer World's Fair 2025 channel.",
+    "notable_talks": [
+      {
+        "speaker_id": "simon-willison",
+        "title": "The last six months in LLMs, illustrated by pelicans on bicycles",
+        "url": "https://simonwillison.net/2025/Jun/6/six-months-in-llms/",
+        "topics": ["llm-tooling", "claude-code", "agents", "year-in-review"]
+      },
+      {
+        "speaker_id": "shawn-wang",
+        "title": "AI Engineering Goes Mainstream — SPADE model keynote",
+        "url": "https://www.latent.space/p/aiewf-2025-keynotes",
+        "topics": ["ai-engineering", "software-3-0", "spade-model", "state-of-the-field"]
+      }
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "ai-engineer-worlds-fair-2026",
+    "name": "AI Engineer World's Fair 2026",
+    "url": "https://www.ai.engineer/worldsfair",
+    "date": "2026-06-29",
+    "description": "June 29 - July 2, 2026, San Francisco. Upcoming edition of the annual AI Engineer conference.",
+    "notable_talks": [],
+    "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
   }

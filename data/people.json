@@ -3,24 +3,50 @@
     "id": "simon-willison",
     "name": "Simon Willison",
     "category": "dev",
-    "focus": ["llm-tooling", "ai-agents", "sqlite", "datasette", "open-source"],
+    "focus": ["llm-tooling", "ai-agents", "sqlite", "datasette", "open-source", "claude-code", "agentic-engineering"],
     "profiles": {
       "github": "https://github.com/simonw",
       "bsky": "https://bsky.app/profile/simonwillison.net",
       "x": "https://x.com/simonw",
       "linkedin": null,
-      "substack": null,
+      "substack": "https://simonw.substack.com",
       "medium": null,
       "website": "https://simonwillison.net/"
     },
-    "talks": [],
-    "podcast_episodes": [],
-    "notable_contributions": [
-      "llm CLI tool",
-      "datasette",
-      "extensive LLM field notes blog"
+    "talks": [
+      {
+        "title": "The last six months in LLMs, illustrated by pelicans on bicycles",
+        "event": "AI Engineer World's Fair 2025",
+        "url": "https://simonwillison.net/2025/Jun/6/six-months-in-llms/",
+        "date": "2025-06-04",
+        "topics": ["llm-tooling", "claude-code", "agents", "year-in-review"]
+      }
     ],
-    "relevance_score": null,
+    "podcast_episodes": [
+      {
+        "show": "Lenny's Podcast",
+        "episode_title": "An AI state of the union: We've passed the inflection point, dark factories are coming, and automation timelines",
+        "url": "https://www.lennysnewsletter.com/p/an-ai-state-of-the-union",
+        "date": "2026-04-02",
+        "topics": ["agentic-engineering", "claude-code", "tdd", "dark-factory-pattern", "inflection-point"]
+      },
+      {
+        "show": "Oxide and Friends",
+        "episode_title": "LLM predictions for 2026",
+        "url": "https://simonw.substack.com/p/llm-predictions-for-2026-shared-with",
+        "date": "2026-01",
+        "topics": ["llm-predictions", "coding-agents", "industry-trends"]
+      }
+    ],
+    "notable_contributions": [
+      "llm CLI tool (datasette.io/llm)",
+      "datasette — open-source data analysis tool",
+      "claude-code-transcripts — Python CLI for exporting Claude Code sessions to HTML/Gist",
+      "Coined 'prompt injection' and popularized 'AI slop' and 'agentic engineering'",
+      "Annual 'Year in LLMs' review series",
+      "Three agentic engineering patterns: red/green TDD, templates, hoarding"
+    ],
+    "is_new": false,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
   },
@@ -28,44 +54,61 @@
     "id": "matt-pocock",
     "name": "Matt Pocock",
     "category": "dev",
-    "focus": ["typescript", "ai-tooling", "claude-code", "session-management"],
+    "focus": ["typescript", "ai-tooling", "claude-code", "session-management", "multi-agent", "skills"],
     "profiles": {
       "github": "https://github.com/mattpocock",
       "bsky": "https://bsky.app/profile/mattpocock.com",
       "x": "https://x.com/mattpocockuk",
-      "linkedin": null,
+      "linkedin": "https://www.linkedin.com/in/mapocock",
       "substack": null,
       "medium": null,
       "website": "https://www.mattpocock.com/"
     },
     "talks": [
       {
-        "title": "AI Engineer Europe talk",
-        "event": "AI Engineer Europe",
+        "title": "It Ain't Broke: Why Software Fundamentals Matter More Than Ever",
+        "event": "AI Engineer Europe 2026",
+        "url": "https://www.ai.engineer/europe",
+        "date": "2026-04-09",
+        "topics": ["claude-code", "session-management", "ai-tooling", "software-fundamentals", "specs-to-code"]
+      },
+      {
+        "title": "Full Walkthrough: Workflow for AI Coding",
+        "event": "YouTube",
         "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
         "date": null,
         "topics": ["claude-code", "session-management", "ai-tooling"]
+      },
+      {
+        "title": "AI SDK v5: A Crash Course",
+        "event": "React Universe Conf 2025",
+        "url": "https://www.youtube.com/watch?v=ihHLs6v7Lko",
+        "date": "2025",
+        "topics": ["ai-sdk", "typescript", "react"]
       }
     ],
     "podcast_episodes": [],
     "notable_contributions": [
-      "sandcastle (open-source AI dev tools, /grill-me skill)",
-      "context compaction / session reset pattern (backup, /clear, load backup at ~100k tokens)"
+      "sandcastle — open-source AFK coding agent orchestration framework (git worktrees + Docker isolation)",
+      "/grill-me skill for structured intake before implementation",
+      "/write-a-prd and /write-issues skills for plan-mode enforcement",
+      "aihero.dev — AI coding education platform and cohort courses",
+      "Claude Code for Real Engineers 2-week cohort course ($795)"
     ],
-    "relevance_score": null,
+    "is_new": false,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
   },
   {
-    "id": "gary-tan",
-    "name": "Gary Tan",
+    "id": "garry-tan",
+    "name": "Garry Tan",
     "category": "dev-adjacent",
-    "focus": ["startup-tooling", "ai-workflows", "gstack"],
+    "focus": ["startup-tooling", "ai-workflows", "gstack", "multi-agent", "skills", "claude-code"],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/garrytan",
       "bsky": null,
       "x": "https://x.com/garrytan",
-      "linkedin": null,
+      "linkedin": "https://www.linkedin.com/in/garrytan/",
       "substack": null,
       "medium": null,
       "website": null
@@ -73,9 +116,12 @@
     "talks": [],
     "podcast_episodes": [],
     "notable_contributions": [
-      "gstack — AI-first startup tooling stack"
+      "gstack — 23-skill open-source Claude Code configuration that went viral (16k+ stars, released March 2026)",
+      "gbrain — persistent agent knowledge base for OpenClaw/Hermes deployments",
+      "10,000 LOC/100 PRs per week productivity claim with gstack",
+      "Demonstrated 810x logical-code-change productivity vs 2013 baseline"
     ],
-    "relevance_score": null,
+    "is_new": false,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
   },
@@ -83,7 +129,7 @@
     "id": "andrej-karpathy",
     "name": "Andrej Karpathy",
     "category": "dev",
-    "focus": ["llm-fundamentals", "ai-education", "claude-md", "vibe-coding"],
+    "focus": ["llm-fundamentals", "ai-education", "llm-wiki", "vibe-coding", "autoresearch", "agents"],
     "profiles": {
       "github": "https://github.com/karpathy",
       "bsky": null,
@@ -96,34 +142,155 @@
     "talks": [],
     "podcast_episodes": [],
     "notable_contributions": [
-      "default CLAUDE.md / LLM wiki reference",
-      "llm.c — educational LLM from scratch",
-      "widely-referenced AI education content"
+      "LLM wiki pattern — GitHub Gist describing a markdown-based personal knowledge base maintained by an LLM agent (27k+ stars as of April 2026)",
+      "Eureka Labs — AI-native education company founded July 2024",
+      "llm.c / nanoGPT — minimal open-source LLM implementations",
+      "autoresearch project — self-improving research loop agents",
+      "Widely cited shift: stated he had written zero manual code since December 2025"
     ],
-    "relevance_score": null,
+    "is_new": false,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
   },
   {
-    "id": "stephen-hanney",
-    "name": "Stephen Hanney",
+    "id": "stephen-haney",
+    "name": "Stephen Haney",
     "category": "design",
-    "focus": ["design-systems", "ai-design", "paper-design"],
+    "focus": ["design-systems", "ai-design", "paper-design", "code-native-design", "react", "tailwind"],
     "profiles": {
-      "github": null,
-      "bsky": null,
-      "x": null,
-      "linkedin": null,
+      "github": "https://github.com/stephenhaney",
+      "bsky": "https://bsky.app/profile/stephenhaney.com",
+      "x": "https://x.com/stephenhaney",
+      "linkedin": "https://www.linkedin.com/in/s-haney/",
       "substack": null,
       "medium": null,
-      "website": "https://paper.design/"
+      "website": "https://stephenhaney.com/"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Dive Club",
+        "episode_title": "Paper's vision for the future of design tooling",
+        "url": "https://open.spotify.com/episode/6dPciYWBqcNJamoYRRD5Si",
+        "date": "2025-05-16",
+        "topics": ["paper-design", "design-tooling", "code-native-design", "figma-alternative"]
+      },
+      {
+        "show": "Dive Club",
+        "episode_title": "The 2026 AI Design Field Report (tools, process, and what's working)",
+        "url": "https://open.spotify.com/episode/0fFGPPPTHoliQX5toMy01b",
+        "date": "2026-01-19",
+        "topics": ["ai-design", "design-tooling", "industry-trends"]
+      }
+    ],
+    "notable_contributions": [
+      "paper.design — code-native design tool built on real React and Tailwind; designers get production-ready components",
+      "Previously co-founded Modulz, Stitches, and Radix UI"
+    ],
+    "is_new": false,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "addy-osmani",
+    "name": "Addy Osmani",
+    "category": "dev",
+    "focus": ["ai-coding-workflows", "multi-agent", "frontend", "chrome", "agentic-coding", "context-engineering"],
+    "profiles": {
+      "github": "https://github.com/addyosmani",
+      "bsky": "https://bsky.app/profile/addyosmani.bsky.social",
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/addyosmani/",
+      "substack": "https://addyo.substack.com",
+      "medium": "https://medium.com/@addyosmani",
+      "website": "https://addyosmani.com/"
     },
     "talks": [],
     "podcast_episodes": [],
     "notable_contributions": [
-      "Founder of paper.design — AI-assisted design system tooling"
+      "My LLM coding workflow going into 2026 — widely-cited blog post on iterative, context-aware AI coding",
+      "The Code Agent Orchestra — multi-agent coding orchestration patterns",
+      "The future of agentic coding: conductors to orchestrators — evolution from single to multi-agent",
+      "Top AI Coding Trends for 2026 (beyond.addy.ie)",
+      "Popularized the Ralph Wiggum pattern (autonomous agent re-feed loop until tests pass)"
     ],
-    "relevance_score": null,
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "shawn-wang",
+    "name": "Shawn 'swyx' Wang",
+    "category": "dev-adjacent",
+    "focus": ["ai-engineering", "latent-space", "developer-community", "ai-engineer-conference", "software-3-0"],
+    "profiles": {
+      "github": "https://github.com/swyxio",
+      "bsky": "https://bsky.app/profile/swyx.io",
+      "x": "https://x.com/swyx",
+      "linkedin": null,
+      "substack": "https://www.latent.space",
+      "medium": null,
+      "website": "https://www.swyx.io/"
+    },
+    "talks": [
+      {
+        "title": "AI Engineering Goes Mainstream — SPADE model keynote",
+        "event": "AI Engineer World's Fair 2025",
+        "url": "https://www.latent.space/p/aiewf-2025-keynotes",
+        "date": "2025-06-03",
+        "topics": ["ai-engineering", "software-3-0", "spade-model", "state-of-the-field"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Latent Space: The AI Engineer Podcast — 10M+ readers/listeners in 2025",
+      "Founded AI Engineer World's Fair (largest technical AI conference for engineers)",
+      "Coined 'The Rise of the AI Engineer' framing (2023)",
+      "Tiny Teams Playbook — patterns for small AI-native teams"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "brian-scanlan",
+    "name": "Brian Scanlan",
+    "category": "dev",
+    "focus": ["claude-code", "enterprise-adoption", "ai-first-engineering", "intercom", "skills", "hooks"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/brian_scanlan",
+      "linkedin": "https://www.linkedin.com/in/scanlanb/",
+      "substack": "https://ideas.fin.ai",
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "How I AI (Lenny's Podcast)",
+        "episode_title": "How Intercom 2x'd their engineering velocity in 9 months with Claude Code",
+        "url": "https://www.lennysnewsletter.com/p/how-intercom-2xd-their-engineering",
+        "date": "2026-04-20",
+        "topics": ["claude-code", "enterprise-adoption", "skills", "hooks", "engineering-productivity"]
+      },
+      {
+        "show": "On Rails",
+        "episode_title": "Building AI-First at Intercom",
+        "url": "https://podcast.rubyonrails.org/2462975/episodes/19060786-brian-scanlan-building-ai-first-at-intercom",
+        "date": null,
+        "topics": ["ai-first", "intercom", "claude-code", "ruby-on-rails"]
+      }
+    ],
+    "notable_contributions": [
+      "Led Intercom's 2x engineering velocity improvement in 9 months using Claude Code",
+      "Built internal Claude Code plugin system: 13 plugins, 100+ skills, production-safe hooks",
+      "100% of Intercom engineers (plus non-engineers) now shipping code via Claude Code",
+      "Claude generates 95%+ of Intercom's daily code",
+      "Blog: ideas.fin.ai — how Intercom uses Claude Code in practice"
+    ],
+    "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
   }
