@@ -19,14 +19,19 @@ You are a research agent maintaining a living knowledge base about the AI coding
    - First run (if `reports/updates/` is empty): research the last **12 months**, plus any keystone items older than that which are still widely referenced
 
 2. **Research each active topic** in `data/topics.json`:
-   - repo-template-governance
-   - skills (Claude Code skills / registries)
+   - **repo-template-governance** — research each sub-section explicitly:
+     - `.md governance`: what do the best CLAUDE.md / AGENTS.md files look like? Any new community templates?
+     - `hooks`: what hooks are practitioners shipping by default? Safety hooks, observability hooks, productivity hooks?
+     - `skills`: new skills in the wild, new community registries, changes to established skill sets (gstack, sandcastle, etc.)
+     - `subagent_profiles`: how are people defining subagent personas and constraints? Any new patterns?
+     - `other`: new directory conventions, memory patterns, CI integration approaches, token budget guidance
    - session-management
    - low-level-fe-verification
    - testing-tdd
    - design-systems
    - design-tooling
    - unified-project-layer
+   - multi-agent-orchestration
 
 3. **Find new people** posting substantively about these topics. Prioritize:
    - Practitioners who use Claude / AI coding tools daily (not executives or hype accounts)

@@ -2,15 +2,51 @@
   {
     "id": "repo-template-governance",
     "name": "Default Repo Template + .md Governance",
-    "description": "What should a default Claude Code repo look like? What CLAUDE.md / AGENTS.md structure, what rules, what defaults ship out of the box?",
+    "description": "What should a default Claude Code repo look like? The template has five distinct layers that each need a community-validated default: (1) .md governance, (2) hooks, (3) skills, (4) subagent profiles, (5) other conventions.",
     "status": "active-pain",
+    "sub_sections": {
+      "md_governance": {
+        "description": "CLAUDE.md / AGENTS.md structure: what rules, constraints, and context ship by default. How verbose vs. concise. What sections are mandatory.",
+        "approaches": [
+          "Official: concise CLAUDE.md checked into git, /init to bootstrap then refine. Remove any line that wouldn't cause mistakes if deleted.",
+          "gstack: CLAUDE.md acts as a router — delegates to specialist skill roles rather than containing all rules inline",
+          "Karpathy LLM wiki: wiki/ directory maintained by the agent provides living cross-session memory alongside CLAUDE.md"
+        ]
+      },
+      "hooks": {
+        "description": "Shell commands that fire on Claude Code events (pre/post tool use, session start/stop). What hooks should ship by default for safety and observability?",
+        "approaches": [
+          "Intercom (Brian Scanlan): production-safe DB hooks (read-replica only, block critical tables, Okta auth, DynamoDB audit trail)",
+          "hesreallyhim/awesome-claude-code: curated hook examples registry"
+        ]
+      },
+      "skills": {
+        "description": "Which slash-command skills to include out of the box. How to author them. How to version and share them.",
+        "approaches": [
+          "gstack: 23 specialist skills covering CEO, Designer, Eng Manager, Release Manager, QA, Security, Doc Engineer roles",
+          "Matt Pocock: /grill-me (structured intake), /write-a-prd, /write-issues (plan-mode enforcement)",
+          "hesreallyhim/awesome-claude-code: community-curated registry of validated skills"
+        ]
+      },
+      "subagent_profiles": {
+        "description": "How to define and configure subagents: their personas, constraints, allowed tools, context they receive. What subagent profiles should exist in a default template?",
+        "approaches": [
+          "gstack model: named specialist roles (CEO = strategy, Designer = UI/UX, QA = test coverage) each with their own skill file and implicit persona",
+          "Sandcastle model: sandbox-isolated agents with Docker + git worktrees, pluggable local or remote"
+        ]
+      },
+      "other": {
+        "description": "Other conventions: directory structure, gitignore defaults, memory patterns, CI integration, token budget guidance.",
+        "approaches": []
+      }
+    },
     "approaches": [
       "gstack pattern: 23-skill configuration with specialist roles (CEO, Designer, Eng Manager, etc.)",
       "Karpathy LLM wiki pattern: raw/ + wiki/ + schema/ three-layer architecture",
       "Official best practice: concise CLAUDE.md checked into git, /init to bootstrap then refine"
     ],
-    "related_people": ["andrej-karpathy", "matt-pocock", "garry-tan"],
-    "related_tools": ["sandcastle", "gstack", "llm-wiki-karpathy"]
+    "related_people": ["andrej-karpathy", "matt-pocock", "garry-tan", "brian-scanlan"],
+    "related_tools": ["sandcastle", "gstack", "llm-wiki-karpathy", "awesome-claude-code"]
   },
   {
     "id": "skills",
