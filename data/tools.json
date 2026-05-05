@@ -6,7 +6,15 @@
     "author_id": "matt-pocock",
     "url": "https://github.com/mattpocock/sandcastle",
     "description": "Open-source AFK coding agent orchestration framework by Matt Pocock. Creates git worktrees, runs sandboxed coding agents in Docker, parallelizes tasks, merges code. 889 commits, described as 'none hand-coded'. Supports making the sandbox pluggable (local or remote).",
-    "topics": ["session-management", "skills", "claude-code-governance", "multi-agent", "docker", "git-worktrees"],
+    "topics": [
+      "session-management",
+      "skills",
+      "claude-code-governance",
+      "multi-agent",
+      "docker",
+      "git-worktrees"
+    ],
+    "github_stars": 3586,
     "status": "active",
     "is_new": false,
     "added": "2026-05-05",
@@ -19,7 +27,13 @@
     "author_id": null,
     "url": "https://conductor.build",
     "description": "macOS app for running multiple AI coding agents (primarily Claude Code instances) in parallel within isolated git worktree workspaces. Built by Jackson de Campos and Charlie Holtz (San Francisco). Provides real-time visibility into agent progress, diff review, GitHub sync for inline comments. v0.29 shipped Jan 7 2026.",
-    "topics": ["orchestration", "multi-agent", "git-worktrees", "macos", "claude-code"],
+    "topics": [
+      "orchestration",
+      "multi-agent",
+      "git-worktrees",
+      "macos",
+      "claude-code"
+    ],
     "status": "active",
     "is_new": false,
     "added": "2026-05-05",
@@ -32,7 +46,14 @@
     "author_id": "stephen-haney",
     "url": "https://paper.design/",
     "description": "Code-native design tool built on a fluid canvas where everything runs on real React and Tailwind. Designers can import production design systems, use animated shaders, and export flex layouts as production-ready components. Founded by Stephen Haney (ex-Modulz, Radix UI).",
-    "topics": ["design-systems", "design-tooling", "react", "tailwind", "figma-alternative", "code-native"],
+    "topics": [
+      "design-systems",
+      "design-tooling",
+      "react",
+      "tailwind",
+      "figma-alternative",
+      "code-native"
+    ],
     "status": "active",
     "is_new": false,
     "added": "2026-05-05",
@@ -45,11 +66,18 @@
     "author_id": "garry-tan",
     "url": "https://github.com/garrytan/gstack",
     "description": "Garry Tan's open-source Claude Code configuration: 23 specialist skills and 8 power tools packaged as slash commands. Turns Claude Code into a virtual engineering team (CEO, Designer, Eng Manager, Release Manager, Doc Engineer, QA roles). Viral on release (March 2026): 16k+ stars, 9100+ forks. MIT licensed, v0.15.14 as of April 2026.",
-    "topics": ["claude-code-governance", "skills", "multi-agent", "startup-tooling", "CLAUDE.md"],
+    "topics": [
+      "claude-code-governance",
+      "skills",
+      "multi-agent",
+      "startup-tooling",
+      "CLAUDE.md"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 16000
   },
   {
     "id": "gbrain",
@@ -57,8 +85,15 @@
     "category": "claude-code-tooling",
     "author_id": "garry-tan",
     "url": "https://github.com/garrytan/gbrain",
-    "description": "Garry Tan's persistent agent knowledge base for AI agents — powers his OpenClaw/Hermes deployments. Provides cross-session memory that agents actually keep between sessions. 17,888 pages, 4,383 people, 723 companies created in 12 days of use.",
-    "topics": ["agent-memory", "cross-session-context", "orchestration", "knowledge-base"],
+    "github_url": "https://github.com/garrytan/gbrain",
+    "description": "Garry Tan's persistent agent knowledge base for AI agents \u2014 powers his OpenClaw/Hermes deployments. Provides cross-session memory that agents actually keep between sessions. 17,888 pages, 4,383 people, 723 companies created in 12 days of use.",
+    "topics": [
+      "agent-memory",
+      "cross-session-context",
+      "orchestration",
+      "knowledge-base"
+    ],
+    "github_stars": null,
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -70,8 +105,16 @@
     "category": "claude-code-tooling",
     "author_id": "simon-willison",
     "url": "https://github.com/simonw/claude-code-transcripts",
+    "github_url": "https://github.com/simonw/claude-code-transcripts",
+    "github_stars": null,
     "description": "Python CLI tool by Simon Willison for converting Claude Code session files (JSONL from ~/.claude/projects/ or JSON from Claude Code for web) into browseable multi-page HTML transcripts. Supports --gist flag to auto-publish to GitHub Gist with shareable gistpreview.github.io URL. Published December 25 2025.",
-    "topics": ["session-management", "observability", "claude-code", "export", "sharing"],
+    "topics": [
+      "session-management",
+      "observability",
+      "claude-code",
+      "export",
+      "sharing"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -84,11 +127,18 @@
     "author_id": null,
     "url": "https://vibekanban.com/",
     "description": "Open-source kanban-based orchestration dashboard for AI coding agents. Built with Rust + TypeScript by BloopAI. Supports 10+ coding agents (Claude Code, Codex, Gemini CLI, GitHub Copilot, Amp, Cursor, OpenCode, etc.). Provides planning, parallel agent execution, diff review, and built-in browser preview. 14.7k+ stars.",
-    "topics": ["orchestration", "multi-agent", "kanban", "claude-code", "cross-agent"],
+    "topics": [
+      "orchestration",
+      "multi-agent",
+      "kanban",
+      "claude-code",
+      "cross-agent"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 14700
   },
   {
     "id": "ruflo",
@@ -96,8 +146,17 @@
     "category": "orchestration",
     "author_id": null,
     "url": "https://github.com/ruvnet/ruflo",
+    "github_url": "https://github.com/ruvnet/ruflo",
+    "github_stars": 43526,
     "description": "Multi-agent orchestration platform for Claude. Deploys intelligent agent swarms with self-learning memory, RAG integration, federated cross-machine comms, and WASM/Rust policy engine. Renamed from claude-flow in Jan 2026 to avoid trademark issues. v3.6 shipped April 29 2026 with 314 native MCP tools.",
-    "topics": ["orchestration", "multi-agent", "swarms", "agent-memory", "federation", "mcp"],
+    "topics": [
+      "orchestration",
+      "multi-agent",
+      "swarms",
+      "agent-memory",
+      "federation",
+      "mcp"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -109,8 +168,17 @@
     "category": "testing",
     "author_id": null,
     "url": "https://github.com/executeautomation/mcp-playwright",
+    "github_url": "https://github.com/executeautomation/mcp-playwright",
+    "github_stars": 5490,
     "description": "Model Context Protocol server that exposes Playwright browser automation to AI agents (Claude Code, Cline, Cursor, etc.). Enables navigate, click, type, screenshot, evaluate, and wait_for_selector from within Claude Code sessions. Community standard for AI-driven browser testing and visual verification. Microsoft Playwright CLI companion released early 2026 as lower-token alternative.",
-    "topics": ["testing", "browser-automation", "playwright", "mcp", "visual-verification", "claude-code"],
+    "topics": [
+      "testing",
+      "browser-automation",
+      "playwright",
+      "mcp",
+      "visual-verification",
+      "claude-code"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -122,8 +190,15 @@
     "category": "claude-code-tooling",
     "author_id": null,
     "url": "https://github.com/hesreallyhim/awesome-claude-code",
-    "description": "Community-curated list of skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude Code. One of several 'awesome' lists — this one focused on curated quality over quantity.",
-    "topics": ["claude-code-governance", "skills", "hooks", "community"],
+    "github_url": "https://github.com/hesreallyhim/awesome-claude-code",
+    "github_stars": 42627,
+    "description": "Community-curated list of skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude Code. One of several 'awesome' lists \u2014 this one focused on curated quality over quantity.",
+    "topics": [
+      "claude-code-governance",
+      "skills",
+      "hooks",
+      "community"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -136,11 +211,18 @@
     "author_id": "andrej-karpathy",
     "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
     "description": "Andrej Karpathy's GitHub Gist describing a pattern for building LLM-maintained personal knowledge bases using structured markdown files. Three-layer architecture: raw/ (immutable source), wiki/ (LLM-maintained markdown with cross-references), schema/ (config directing agent behavior). Published April 4 2026. Hit 27,900 stars. Spawned numerous open-source implementations (lucasastorian/llmwiki, kfchou/wiki-skills, etc.).",
-    "topics": ["agent-memory", "knowledge-base", "CLAUDE.md", "cross-session-context", "session-management"],
+    "topics": [
+      "agent-memory",
+      "knowledge-base",
+      "CLAUDE.md",
+      "cross-session-context",
+      "session-management"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 27900
   },
   {
     "id": "design-md-format",
@@ -149,11 +231,18 @@
     "author_id": null,
     "url": "https://github.com/google-labs-code/design.md",
     "description": "Open format spec by Google Labs (from Google Stitch) for expressing design systems in a single markdown file. YAML front matter holds design tokens (colors, typography, spacing, component states); markdown prose holds rationale. AI agents read it as persistent context. CLI (npx @google/design.md) lints for WCAG AA contrast and exports to Tailwind or W3C DTCG tokens.json. Released April 21, 2026. 11.6k+ stars. Sits alongside CLAUDE.md and SKILL.md as the third governance layer for UI. Recommended pattern: CLAUDE.md (behavioral rules) + DESIGN.md (visual rules) + SKILL.md (procedures).",
-    "topics": ["design-systems", "design-tooling", "repo-template-governance", "claude-code-governance", "design-tokens"],
+    "topics": [
+      "design-systems",
+      "design-tooling",
+      "repo-template-governance",
+      "claude-code-governance",
+      "design-tokens"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 11600
   },
   {
     "id": "designmd-ai",
@@ -162,12 +251,19 @@
     "author_id": "necati-ozmen",
     "url": "https://designmd.ai/",
     "github_url": "https://github.com/VoltAgent/awesome-design-md",
-    "description": "Community hub and curated library of 100+ pre-built DESIGN.md files for popular brands/systems, built by VoltAgent (Necati Özmen + Omer Aplak). awesome-design-md has 71k+ stars. Also has an MCP server for direct agent integration without manual file downloads. VoltAgent also maintains awesome-claude-code-subagents (19k+ stars, 100+ Claude subagents) and awesome-agent-skills (20k+ stars, 1000+ agent skills).",
-    "topics": ["design-systems", "design-tooling", "repo-template-governance", "mcp", "subagent_profiles"],
+    "description": "Community hub and curated library of 100+ pre-built DESIGN.md files for popular brands/systems, built by VoltAgent (Necati \u00d6zmen + Omer Aplak). awesome-design-md has 71k+ stars. Also has an MCP server for direct agent integration without manual file downloads. VoltAgent also maintains awesome-claude-code-subagents (19k+ stars, 100+ Claude subagents) and awesome-agent-skills (20k+ stars, 1000+ agent skills).",
+    "topics": [
+      "design-systems",
+      "design-tooling",
+      "repo-template-governance",
+      "mcp",
+      "subagent_profiles"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 71000
   },
   {
     "id": "voltagent",
@@ -175,12 +271,17 @@
     "category": "orchestration",
     "author_id": "necati-ozmen",
     "url": "https://github.com/VoltAgent/voltagent",
-    "description": "Open-source TypeScript AI agent framework by Necati Özmen and Omer Aplak (ex-Refine.js / YC S23). 8.6k+ stars. Complements their awesome-* community repos.",
-    "topics": ["orchestration", "multi-agent", "typescript"],
+    "description": "Open-source TypeScript AI agent framework by Necati \u00d6zmen and Omer Aplak (ex-Refine.js / YC S23). 8.6k+ stars. Complements their awesome-* community repos.",
+    "topics": [
+      "orchestration",
+      "multi-agent",
+      "typescript"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 8600
   },
   {
     "id": "awesome-claude-code-subagents",
@@ -189,11 +290,16 @@
     "author_id": "necati-ozmen",
     "url": "https://github.com/VoltAgent/awesome-claude-code-subagents",
     "description": "Curated list of 100+ Claude Code subagent profiles by VoltAgent. 19k+ stars. Complements hesreallyhim/awesome-claude-code (skills/hooks focus) with a subagent-persona focus.",
-    "topics": ["subagent_profiles", "skills", "claude-code-governance"],
+    "topics": [
+      "subagent_profiles",
+      "skills",
+      "claude-code-governance"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 19000
   },
   {
     "id": "awesome-claude-skills-composio",
@@ -201,25 +307,33 @@
     "category": "claude-code-tooling",
     "author_id": null,
     "url": "https://github.com/ComposioHQ/awesome-claude-skills",
-    "description": "Curated list of Claude Skills, resources, and tools by Composio. 58k+ stars — the largest Claude skills repo by stars. Covers content creation, dev automation, orchestration skills. Community contributions across 1000+ skills.",
-    "topics": ["skills", "multi-agent-orchestration"],
+    "description": "Curated list of Claude Skills, resources, and tools by Composio. 58k+ stars \u2014 the largest Claude skills repo by stars. Covers content creation, dev automation, orchestration skills. Community contributions across 1000+ skills.",
+    "topics": [
+      "skills",
+      "multi-agent-orchestration"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 58000
   },
   {
     "id": "openclaw",
     "name": "OpenClaw",
-    "category": "orchestration",
+    "category": "consumer-ai",
     "author_id": "peter-steinberger",
     "url": "https://github.com/openclaw/openclaw",
-    "description": "Open-source AI agent framework created by Peter Steinberger (founder/ex-CEO of PSPDFKit). Originally ClawdBot/MoltBook — hit 100K GitHub stars by Feb 2026, one of fastest-growing OS repos ever. Now managed by a foundation after Steinberger joined OpenAI. Personal AI assistant for any OS/platform.",
-    "topics": ["multi-agent-orchestration", "session-management"],
+    "description": "Open-source AI agent framework created by Peter Steinberger (founder/ex-CEO of PSPDFKit). Originally ClawdBot/MoltBook \u2014 hit 100K GitHub stars by Feb 2026, one of fastest-growing OS repos ever. Now managed by a foundation after Steinberger joined OpenAI. Personal AI assistant for any OS/platform.",
+    "topics": [
+      "personal-assistant",
+      "consumer-ai"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 100000
   },
   {
     "id": "dagger-container-use",
@@ -227,8 +341,13 @@
     "category": "orchestration",
     "author_id": "solomon-hykes",
     "url": "https://github.com/dagger/container-use",
-    "description": "Open-sourced by Solomon Hykes at AIEWF 2025. Containerized environments for coding agents — isolates Claude Code, Goose, and other agents in containers for safe parallel execution. Dagger is Solomon's company post-Docker.",
-    "topics": ["multi-agent-orchestration", "testing-tdd"],
+    "github_url": "https://github.com/dagger/container-use",
+    "github_stars": 3766,
+    "description": "Open-sourced by Solomon Hykes at AIEWF 2025. Containerized environments for coding agents \u2014 isolates Claude Code, Goose, and other agents in containers for safe parallel execution. Dagger is Solomon's company post-Docker.",
+    "topics": [
+      "multi-agent-orchestration",
+      "testing-tdd"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -241,7 +360,11 @@
     "author_id": "steve-ruiz",
     "url": "https://computer.tldraw.com/",
     "description": "AI workflows app on an infinite canvas by Steve Ruiz / tldraw. Agents work spatially on a canvas. Series: Make Real (2023, first vibe coding tool), tldraw computer (2024), Fairydraw (2025). Relevant to both design tooling and unified project layer concepts.",
-    "topics": ["design-tooling", "unified-project-layer", "multi-agent-orchestration"],
+    "topics": [
+      "design-tooling",
+      "unified-project-layer",
+      "multi-agent-orchestration"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -253,8 +376,11 @@
     "category": "orchestration",
     "author_id": "amelia-wattenberger",
     "url": "https://www.augmentcode.com/blog/intent-a-workspace-for-agent-orchestration",
-    "description": "Developer workspace for orchestrating AI coding agents. Built by Amelia Wattenberger at Augment Code. Addresses the 'last 30%' problem — the hardest parts of any software project. Most relevant to the unified-project-layer pain point.",
-    "topics": ["multi-agent-orchestration", "unified-project-layer"],
+    "description": "Developer workspace for orchestrating AI coding agents. Built by Amelia Wattenberger at Augment Code. Addresses the 'last 30%' problem \u2014 the hardest parts of any software project. Most relevant to the unified-project-layer pain point.",
+    "topics": [
+      "multi-agent-orchestration",
+      "unified-project-layer"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -266,8 +392,12 @@
     "category": "orchestration",
     "author_id": null,
     "url": "https://github.com/mastra-ai/mastra",
+    "github_url": "https://github.com/mastra-ai/mastra",
+    "github_stars": 23592,
     "description": "TypeScript-native agent framework supporting both agents and workflows ('Agents vs Workflows: Why Not Both?'). Used by WorkOS for AI Pipelines in Pure TypeScript. Discussed at AIEWF 2025.",
-    "topics": ["multi-agent-orchestration"],
+    "topics": [
+      "multi-agent-orchestration"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -280,10 +410,16 @@
     "author_id": null,
     "url": "https://github.com/rohitg00/awesome-claude-code-toolkit",
     "description": "Comprehensive toolkit: 135 agents, 35 curated skills (+400k via SkillKit), 42 commands, 176+ plugins, 20 hooks, 15 rules, 7 templates, 14 MCP configs, 26 companion apps. Anthropic x Forum Ventures hackathon winner. 1.5k stars.",
-    "topics": ["skills", "multi-agent-orchestration", "repo-template-governance", "hooks"],
+    "topics": [
+      "skills",
+      "multi-agent-orchestration",
+      "repo-template-governance",
+      "hooks"
+    ],
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "github_stars": 1500
   }
 ]

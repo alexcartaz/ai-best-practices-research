@@ -904,5 +904,281 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
+  },
+  {
+    "id": "steve-yegge",
+    "name": "Steve Yegge",
+    "category": "dev",
+    "focus": ["claude-code", "vibe-coding", "agent-trust", "developer-productivity"],
+    "profiles": {
+      "github": "https://github.com/steveyegge",
+      "bsky": null,
+      "x": "https://x.com/Steve_Yegge",
+      "linkedin": null,
+      "substack": "https://steveyegge.substack.com",
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space: The AI Engineer Podcast",
+        "episode_title": "Steve Yegge's Vibe Coding Manifesto — Why Claude Code Is the Future",
+        "url": "https://podcasts.apple.com/fi/podcast/steve-yegges-vibe-coding-manifesto-why-claude-code/id1674008350?i=1000742822778",
+        "date": "2025-12",
+        "topics": ["claude-code", "vibe-coding", "agent-trust", "nascar-pit-crew-pattern"]
+      }
+    ],
+    "notable_contributions": [
+      "Coined the 'NASCAR pit crew' mental model for trusting agents to execute: each agent is a specialist, you are the crew chief, not the driver. Directly applicable to Claude Code subscription workflows.",
+      "Argued that 2024-era developer habits (verify every keystroke, distrust agent output) actively reduce productivity with modern agents. Central framing for why CLAUDE.md and harness patterns matter."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "nick-nisi",
+    "name": "Nick Nisi",
+    "category": "dev",
+    "focus": ["claude-code-governance", "skills", "typescript", "ai-workflows"],
+    "profiles": {
+      "github": "https://github.com/nicknisi",
+      "bsky": "https://bsky.app/profile/nicknisi.com",
+      "x": "https://x.com/nicknisi",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://nicknisi.com"
+    },
+    "talks": [
+      {
+        "title": "Skills at Scale",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-05",
+        "topics": ["skills", "claude-code-governance", "scaling"]
+      },
+      {
+        "title": "AI Pipelines and Agents in Pure TypeScript with Mastra.ai",
+        "event": "AI Engineer World's Fair 2025",
+        "url": null,
+        "date": "2025-06",
+        "topics": ["typescript", "mastra", "multi-agent-orchestration"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Workshop: 'Skills at Scale' at AI Engineer Europe 2026 — practical guidance on building and scaling CLAUDE.md skill definitions across a team or repo collection.",
+      "TypeScript-first AI workflow practitioner; connects JS/TS web app dev patterns to agent tooling."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "sunil-pai",
+    "name": "Sunil Pai",
+    "category": "dev",
+    "focus": ["claude-code", "web-dev", "cloudflare-workers", "ai-workflows"],
+    "profiles": {
+      "github": "https://github.com/threepointone",
+      "bsky": "https://bsky.app/profile/sunil.pai",
+      "x": "https://x.com/threepointone",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "Code Mode: Let the code do the talking",
+        "event": "AI Engineer Europe 2026",
+        "url": "https://www.youtube.com/watch?v=8txf05vVVl4",
+        "date": "2026-05",
+        "topics": ["claude-code", "web-dev", "agentic-engineering"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Keynote 'Code Mode' at AI Engineer Europe 2026 (YouTube available): practical workflow for letting the agent drive while the developer focuses on intent and review. Directly relevant to Claude Code subscription use.",
+      "Cloudflare Workers / web platform practitioner; his AI workflows are built around web app deployment reality, not API infrastructure."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "tejas-kumar",
+    "name": "Tejas Kumar",
+    "category": "dev",
+    "focus": ["harness-engineering", "ai-workflows", "web-dev", "testing"],
+    "profiles": {
+      "github": "https://github.com/tejasq",
+      "bsky": "https://bsky.app/profile/tej.as",
+      "x": "https://x.com/TejasKumar_",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://tej.as"
+    },
+    "talks": [
+      {
+        "title": "Harnesses in AI: A Deep Dive",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-05",
+        "topics": ["harness-engineering", "ai-workflows"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Talk 'Harnesses in AI: A Deep Dive' at AI Engineer Europe 2026 — covers structured constraints that let agents operate safely. Patterns apply to Claude Code subscription use even when the talk targets API usage.",
+      "Active web dev practitioner; connects harness engineering concepts to everyday development workflows."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "tuomas-artman",
+    "name": "Tuomas Artman",
+    "category": "dev-adjacent",
+    "focus": ["product-craft", "developer-experience", "ai-workflows"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/artman",
+      "linkedin": "https://www.linkedin.com/in/tuomasartman/",
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "Fireside Chat: Taste & Craft",
+        "event": "AI Engineer Europe 2026",
+        "url": "https://www.youtube.com/watch?v=wjk0ulMAkbc",
+        "date": "2026-05",
+        "topics": ["product-craft", "developer-experience", "ai-workflows"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Linear co-founder; fireside chat 'Taste & Craft' at AI Engineer Europe 2026 (YouTube). Covers maintaining design and product judgment as AI accelerates output — directly relevant for solo devs using Claude Code to build web apps.",
+      "Linear is widely cited as a reference for how good software should feel; his framing of taste-as-constraint is applicable to keeping AI-generated UIs coherent."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "laurie-voss",
+    "name": "Laurie Voss",
+    "category": "dev",
+    "focus": ["agent-design-patterns", "evals", "web-dev", "ai-workflows"],
+    "profiles": {
+      "github": "https://github.com/seldo",
+      "bsky": "https://bsky.app/profile/seldo.com",
+      "x": "https://x.com/seldo",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://seldo.com"
+    },
+    "talks": [
+      {
+        "title": "Effective agent design patterns in production",
+        "event": "AI Engineer World's Fair 2025",
+        "url": null,
+        "date": "2025-06",
+        "topics": ["agent-design-patterns", "multi-agent-orchestration"]
+      },
+      {
+        "title": "Ship Real Agents: Hands-On Evals",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-05",
+        "topics": ["evals", "testing-tdd"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "NPM co-creator; now focused on AI agent design patterns and evals. His workshop 'Ship Real Agents: Hands-On Evals' at AI Engineer Europe covers practical evaluation approaches — patterns directly transferable to Claude Code subscription use.",
+      "Consistent signal: how to know if your agent is actually doing the right thing. Evals lens is especially useful for web app development where visual correctness is hard to automate."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "samuel-colvin",
+    "name": "Samuel Colvin",
+    "category": "dev",
+    "focus": ["mcp", "pydantic", "agent-frameworks", "python"],
+    "profiles": {
+      "github": "https://github.com/samuelcolvin",
+      "bsky": "https://bsky.app/profile/samuelcolvin.com",
+      "x": "https://x.com/samuel_colvin",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "MCP is all you need",
+        "event": "AI Engineer World's Fair 2025",
+        "url": null,
+        "date": "2025-06",
+        "topics": ["mcp", "agent-frameworks"]
+      },
+      {
+        "title": "Playground in Prod",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-05",
+        "topics": ["mcp", "production-agents"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Creator of Pydantic (Python's dominant data validation library, core dependency in most agent frameworks). His MCP work is relevant even for Claude Code subscription users since MCP servers work in both API and subscription contexts.",
+      "Talk 'MCP is all you need' argues MCP as the primary abstraction for connecting agents to the world — directly applicable to Claude Code's MCP server support."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "peter-steinberger",
+    "name": "Peter Steinberger",
+    "category": "dev-adjacent",
+    "focus": ["consumer-ai", "personal-assistant", "open-source"],
+    "profiles": {
+      "github": "https://github.com/steipete",
+      "bsky": "https://bsky.app/profile/steipete.com",
+      "x": "https://x.com/steipete",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://steipete.com"
+    },
+    "talks": [
+      {
+        "title": "OpenClaw update",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-05",
+        "topics": ["consumer-ai", "personal-assistant"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Founder of PSPDFKit (now Nutrient); created OpenClaw (formerly ClawdBot/MoltBook), a personal AI assistant that reached 100k GitHub stars. Now at OpenAI. Tracked primarily because OpenClaw is the canonical example in the Non-Dev AI section."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
   }
 ]

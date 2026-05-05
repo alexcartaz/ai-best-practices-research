@@ -1,0 +1,44 @@
+name: Research Agent
+
+on:
+  schedule:
+    - cron: '0 17 * * 2'  # Tuesdays at noon ET (17:00 UTC)
+  workflow_dispatch:       # Run Now button in the web app
+
+permissions:
+  contents: write
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Configure git
+        run: |
+          git config --global user.email "research-agent@users.noreply.github.com"
+          git config --global user.name "Research Agent"
+
+      - name: Run research agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          claude --dangerously-skip-permissions -p "$(cat .claude/update-prompt.md)"
+
+      - name: Push any uncommitted changes
+        run: |
+          git add -A
+          git diff --staged --quiet || git commit -m "research: weekly update $(date +%Y-%m-%d) [skip ci]"
+          git push

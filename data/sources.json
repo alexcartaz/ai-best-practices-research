@@ -1,0 +1,121 @@
+[
+  {
+    "id": "lennys-podcast",
+    "name": "Lenny's Podcast",
+    "type": "podcast",
+    "urls": {
+      "youtube": "https://www.youtube.com/@LennysPodcast",
+      "rss": "https://feeds.transistor.fm/lenny-s-podcast"
+    },
+    "relevance_keywords": ["AI", "agent", "coding", "Claude", "LLM", "developer", "engineering", "workflow", "automation", "vibe coding", "co-pilot"],
+    "skip_keywords": ["fundraising", "marketing", "sales", "hiring", "OKR", "culture", "org design"],
+    "min_engagement_views": 5000,
+    "notes": "Broad product/growth podcast. Filter tightly — only AI-dev-workflow episodes are in scope. High view count on an AI episode = strong signal the guest's ideas have mainstream traction.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space",
+    "name": "Latent Space",
+    "type": "podcast",
+    "urls": {
+      "youtube": "https://www.youtube.com/channel/UCxBcwypKK-W3GHd_RZ9FZrQ",
+      "rss": "https://feeds.transistor.fm/latent-space-the-ai-engineer-podcast"
+    },
+    "relevance_keywords": ["Claude Code", "agent", "MCP", "skills", "workflow", "coding", "LLM", "web", "tool"],
+    "skip_keywords": [],
+    "min_engagement_views": 1000,
+    "notes": "Highly relevant by default — most episodes are Tier 1 or 2. Still filter: research-only episodes (no practical workflow) are Tier 3.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "how-i-ai",
+    "name": "How I AI (Claire Vo, Lenny's network)",
+    "type": "podcast",
+    "urls": {
+      "youtube": "https://www.youtube.com/@howiaipodcast"
+    },
+    "relevance_keywords": ["AI", "coding", "agent", "Claude", "workflow", "developer", "tool"],
+    "skip_keywords": [],
+    "min_engagement_views": 1000,
+    "notes": "Practitioner workflow focus. Secondary signal after Lenny's main feed.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "ai-engineer-events",
+    "name": "AI Engineer (aiengineer.com)",
+    "type": "event-series",
+    "urls": {
+      "website": "https://aiengineer.com",
+      "youtube": "https://www.youtube.com/@aiDotEngineer"
+    },
+    "relevance_keywords": ["Claude Code", "Claude", "MCP", "skills", "agent", "web", "design", "testing", "hooks", "workflow", "memory", "context"],
+    "skip_keywords": ["enterprise sales", "compliance", "marketing"],
+    "min_engagement_views": 500,
+    "notes": "Primary event source. Every event publishes all talks to YouTube. Check for new events each run and sweep full speaker list. Cross-reference speakers against people.json.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "hacker-news",
+    "name": "Hacker News",
+    "type": "social",
+    "urls": {
+      "search": "https://hn.algolia.com/?q=claude+code&type=story"
+    },
+    "search_queries": ["Claude Code", "CLAUDE.md", "AI agent workflow", "vibe coding", "LLM coding", "MCP server"],
+    "min_engagement_points": 50,
+    "notes": "Show HN posts with 50+ points are strong signal. Also check comment threads on high-point posts — practitioners often share concrete patterns in comments. Username → GitHub profile is the main discovery path.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "bluesky",
+    "name": "Bluesky",
+    "type": "social",
+    "urls": {
+      "hashtag_claudecode": "https://bsky.app/hashtag/claudecode",
+      "hashtag_aiengineering": "https://bsky.app/hashtag/aiengineering"
+    },
+    "search_queries": ["#claudecode", "#aiengineering", "Claude Code"],
+    "min_engagement_likes": 20,
+    "notes": "AI Engineer community is active here. Starter packs are a useful directory — check for new ones. Accounts posting 3+ substantive Claude Code workflow posts in the window are worth tracking.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "reddit",
+    "name": "Reddit",
+    "type": "social",
+    "urls": {
+      "r_claudeai": "https://www.reddit.com/r/ClaudeAI/",
+      "r_localllama": "https://www.reddit.com/r/LocalLLaMA/",
+      "r_webdev": "https://www.reddit.com/r/webdev/"
+    },
+    "search_queries": ["Claude Code", "CLAUDE.md", "AI coding workflow", "vibe coding"],
+    "min_engagement_upvotes": 100,
+    "notes": "r/ClaudeAI is the primary signal. Posts with 100+ upvotes about Claude Code workflows often surface practitioners not yet in mainstream AI content. Username → GitHub → real name is the discovery path.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "github-trending",
+    "name": "GitHub Trending",
+    "type": "code-discovery",
+    "urls": {
+      "typescript": "https://github.com/trending/typescript?since=weekly",
+      "python": "https://github.com/trending/python?since=weekly"
+    },
+    "relevance_keywords": ["claude", "claude-code", "agent", "MCP", "LLM", "AI", "CLAUDE.md"],
+    "min_stars_velocity": 100,
+    "notes": "Check weekly trending for both TypeScript and Python. Star velocity (stars gained this week, not total) is the signal — a repo gaining 500 stars in a week is more relevant than one with 10k total but no recent momentum.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "twitter-x",
+    "name": "Twitter / X",
+    "type": "social",
+    "urls": {
+      "search": "https://x.com/search?q=claude+code&f=live"
+    },
+    "search_queries": ["Claude Code", "#claudecode", "CLAUDE.md", "MCP server"],
+    "min_engagement_likes": 50,
+    "notes": "Less reliable than Bluesky for this community but still worth checking for viral workflow threads. Accounts with 50+ likes on a Claude Code workflow post and an active GitHub are worth ingesting.",
+    "added": "2026-05-05"
+  }
+]

@@ -10,6 +10,7 @@ export interface Person {
     linkedin?: string | null
     substack?: string | null
     medium?: string | null
+    youtube?: string | null
     website?: string | null
   }
   talks: Talk[]
@@ -43,6 +44,7 @@ export interface Tool {
   author_id?: string | null
   url: string
   github_url?: string | null
+  github_stars?: number | null
   description: string
   topics: string[]
   status: 'active' | 'archived' | 'unknown'
@@ -159,22 +161,41 @@ export interface Topic {
   related_tools: string[]
 }
 
-export type NavSection =
-  | 'new-updates'
-  | 'people'
-  | 'tools'
-  | 'governance'
-  | 'orchestration'
-  | 'harness-engineering'
-  | 'design-systems'
-  | 'industry-norms'
+export interface Gap {
+  id: string
+  area: string
+  title: string
+  description: string
+  status: 'open' | 'monitoring' | 'resolved'
+  identified: string
+  linked_topic?: string | null
+  potential_solutions: string[]
+  notes: string
+}
 
-export type ContentTab =
-  | 'all'
-  | 'podcasts'
-  | 'videos'
-  | 'articles'
-  | 'tools'
-  | 'people'
+export interface InboxItem {
+  url: string
+  type: string
+  notes: string
+  added: string
+  _comment?: string
+}
 
-export type SortOrder = 'recent' | 'all-time' | 'alpha'
+export interface ResearchSource {
+  id: string
+  name: string
+  type: 'podcast' | 'event-series' | 'social' | 'code-discovery'
+  urls: Record<string, string>
+  relevance_keywords?: string[]
+  skip_keywords?: string[]
+  search_queries?: string[]
+  min_engagement_views?: number
+  min_engagement_points?: number
+  min_engagement_likes?: number
+  min_engagement_upvotes?: number
+  min_stars_velocity?: number
+  notes: string
+  added: string
+}
+
+export type SortOrder = 'relevance' | 'recent' | 'alpha'

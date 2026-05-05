@@ -16,11 +16,51 @@
     "added": "2026-05-05"
   },
   {
+    "id": "lennys-podcast-youtube",
+    "name": "Lenny's Podcast",
+    "url": "https://www.youtube.com/@LennysPodcast",
+    "description": "Lenny Rachitsky's podcast covering product, growth, and increasingly AI tooling for builders. Filter for episodes about AI coding workflows, developer productivity, and product development with AI. Good signal for when AI tools cross into mainstream product-builder consciousness.",
+    "topics": ["multi-agent-orchestration", "skills", "session-management"],
+    "added": "2026-05-05"
+  },
+  {
     "id": "how-i-ai-youtube",
     "name": "How I AI with Claire Vo",
     "url": "https://www.youtube.com/@howiaipodcast",
-    "description": "Video version of the 'How I AI' podcast (Lenny's network, hosted by Claire Vo). Practical AI workflow demonstrations, ~30 min episodes with live demos. 70+ episodes as of May 2026. Best source for practitioner workflow case studies.",
-    "topics": ["skills", "multi-agent-orchestration", "design-tooling"],
+    "description": "Practitioner AI workflow show on Lenny's Podcast network, hosted by Claire Vo. Live demos and workflow walkthroughs. Secondary signal after Lenny's main podcast — filter for episodes on AI coding or dev productivity.",
+    "topics": ["skills", "multi-agent-orchestration"],
+    "added": "2026-05-05"
+  },
+  {
+    "id": "matt-pocock-youtube",
+    "name": "Matt Pocock",
+    "url": "https://www.youtube.com/@mattpocockuk",
+    "description": "Claude Code tutorials, TypeScript AI workflows, and skill authoring patterns. Creator of gstack-compatible skill sets, /grill-me, and Sandcastle. Highest-signal YouTube channel for Claude Code subscription + web app workflows.",
+    "topics": ["repo-template-governance", "skills", "session-management", "testing-tdd"],
+    "added": "2026-05-05"
+  },
+  {
+    "id": "theo-t3gg-youtube",
+    "name": "Theo (t3.gg)",
+    "url": "https://www.youtube.com/@t3dotgg",
+    "description": "TypeScript/React + AI tooling commentary. Covers new AI dev tools from a pragmatic web app builder perspective. Good signal for what's gaining traction in the TS/React ecosystem.",
+    "topics": ["design-systems", "testing-tdd", "multi-agent-orchestration"],
+    "added": "2026-05-05"
+  },
+  {
+    "id": "fireship-youtube",
+    "name": "Fireship",
+    "url": "https://www.youtube.com/@Fireship",
+    "description": "Rapid-fire 100-second and explainer-style coverage of new AI dev tools. Early signal for new tools gaining momentum. Good for tool discovery, less deep on implementation patterns.",
+    "topics": ["multi-agent-orchestration", "design-tooling"],
+    "added": "2026-05-05"
+  },
+  {
+    "id": "jack-herrington-youtube",
+    "name": "Jack Herrington",
+    "url": "https://www.youtube.com/@jherr",
+    "description": "TypeScript/React + AI integration tutorials. Hands-on demos of Claude Code and AI tooling with real web app projects. Good practical complement to Matt Pocock.",
+    "topics": ["design-systems", "testing-tdd", "low-level-fe-verification"],
     "added": "2026-05-05"
   },
   {

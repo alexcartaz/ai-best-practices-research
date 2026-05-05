@@ -91,7 +91,7 @@
       "Playwright MCP for pre-release test suite verification",
       "Microsoft Playwright CLI — ~4x fewer tokens than full accessibility tree streaming"
     ],
-    "related_people": [],
+    "related_people": ["addy-osmani"],
     "related_tools": ["playwright-mcp"]
   },
   {
@@ -104,8 +104,8 @@
       "Simon Willison's TDD pattern: tests as built-in success conditions that both developer and agent can verify",
       "Matt Pocock's /grill-me before implementation to prevent premature coding"
     ],
-    "related_people": ["simon-willison", "matt-pocock"],
-    "related_tools": []
+    "related_people": ["simon-willison", "matt-pocock", "ryan-lopopolo"],
+    "related_tools": ["playwright-mcp", "dagger-container-use"]
   },
   {
     "id": "design-systems",
@@ -118,8 +118,7 @@
       "paper.design (Stephen Haney): code-native canvas on real React + Tailwind. Designers get production-ready components. Complements DESIGN.md at the component layer."
     ],
     "related_people": ["stephen-haney", "necati-ozmen"],
-    "related_tools": ["design-md-format", "designmd-ai", "paper-design"],
-    "related_tools": ["paper-design"]
+    "related_tools": ["design-md-format", "designmd-ai", "paper-design"]
   },
   {
     "id": "design-tooling",
@@ -130,7 +129,7 @@
       "open design (YouTube reference)",
       "claude.ai/design comment-on-element as reference UX"
     ],
-    "related_people": ["stephen-hanney"],
+    "related_people": ["stephen-haney"],
     "related_tools": ["paper-design"]
   },
   {
@@ -139,8 +138,22 @@
     "description": "A unified interface: see async tasks running across all projects, switch between projects, unified chat (Figma Make / claude.ai/design style), drill into specific agent sessions, cross-device (Mac, PC, mobile), cloud-persisted auth and integrations (GitHub, Neon, Render, etc.).",
     "status": "active-pain",
     "approaches": [],
-    "related_people": [],
+    "related_people": ["maggie-appleton", "amelia-wattenberger", "steve-ruiz"],
     "related_tools": ["conductor", "vibe-kanban"]
+  },
+  {
+    "id": "mcp-servers",
+    "name": "MCP Servers for Claude Code",
+    "description": "Which Model Context Protocol servers are most useful for Claude Code subscription users building web apps? How do you configure them? Which are stable enough to ship by default in a project template?",
+    "status": "active-research",
+    "approaches": [
+      "Playwright MCP (executeautomation/mcp-playwright): browser automation + visual verification — the highest-value MCP for web app development",
+      "designmd.ai MCP: direct DESIGN.md file integration without manual file downloads",
+      "Ruflo ships 314 native MCP tools — source for discovering new MCPs in the agent orchestration space",
+      "CLAUDE.md pattern: list active MCPs and their purpose in the project root so Claude always knows what tools are available"
+    ],
+    "related_people": ["david-soria-parra", "samuel-colvin"],
+    "related_tools": ["playwright-mcp", "designmd-ai", "ruflo"]
   },
   {
     "id": "multi-agent-orchestration",

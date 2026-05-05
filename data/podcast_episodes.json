@@ -51,7 +51,7 @@
     "id": "latent-space-steve-yegge-vibe-coding",
     "show": "Latent Space: The AI Engineer Podcast",
     "episode_title": "Steve Yegge's Vibe Coding Manifesto — Why Claude Code Is the Future",
-    "guest_id": null,
+    "guest_id": "steve-yegge",
     "url": "https://podcasts.apple.com/fi/podcast/steve-yegges-vibe-coding-manifesto-why-claude-code/id1674008350?i=1000742822778",
     "date": "2025-12",
     "topics": ["vibe-coding", "claude-code", "agent-orchestration", "nascar-pit-crew-pattern", "trust-agents"],
