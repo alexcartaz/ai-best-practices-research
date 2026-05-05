@@ -1,0 +1,19 @@
+[
+  {
+    "id": "ai-engineer-europe-2025",
+    "name": "AI Engineer World's Fair — Europe",
+    "url": "https://www.youtube.com/@aiDotEngineer",
+    "date": "2025",
+    "description": "European edition of the AI Engineer conference. Practitioner-focused talks on building with LLMs.",
+    "notable_talks": [
+      {
+        "speaker_id": "matt-pocock",
+        "title": "AI Engineer Europe talk",
+        "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
+        "topics": ["claude-code", "session-management", "ai-tooling"]
+      }
+    ],
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  }
+]

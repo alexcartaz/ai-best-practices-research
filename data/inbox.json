@@ -1,0 +1,9 @@
+[
+  {
+    "_comment": "Drop items here any time — the weekly agent will process and categorize them. Format: { url, type (article|podcast|video|event|tool|person), notes }",
+    "url": "https://www.youtube.com/watch?v=8XcbyliBwc4",
+    "type": "video",
+    "notes": "Open Design — relevant to design tooling topic",
+    "added": "2026-05-05"
+  }
+]

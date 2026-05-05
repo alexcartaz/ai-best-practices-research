@@ -1,0 +1,47 @@
+{
+  "last_updated": "2026-05-05",
+  "tool_adoption": [
+    {
+      "claim": "~65% of devs recommend/use Claude Code as primary AI coding tool",
+      "source": null,
+      "date": null,
+      "confidence": "anecdotal"
+    }
+  ],
+  "model_recommendations": [
+    {
+      "model": "claude-sonnet-4-6",
+      "recommended_for": ["main coding tasks", "day-to-day implementation", "default subagent work"],
+      "rationale": "Best cost/quality balance for iterative coding",
+      "source": null,
+      "date": null,
+      "confidence": "community-consensus"
+    },
+    {
+      "model": "claude-opus-4-7",
+      "recommended_for": ["difficult architecture decisions", "complex assessments", "cross-cutting design"],
+      "rationale": "Higher capability ceiling for tasks requiring deep reasoning",
+      "source": null,
+      "date": null,
+      "confidence": "community-consensus"
+    },
+    {
+      "model": "claude-opus-4-6",
+      "recommended_for": [],
+      "rationale": "Fast mode for Claude Code — faster output, same Opus class. Specific use cases TBD.",
+      "source": null,
+      "date": null,
+      "confidence": "unclear"
+    },
+    {
+      "model": "claude-haiku-4-5",
+      "recommended_for": ["high-volume simple tasks", "fast classification", "cheap batch operations"],
+      "rationale": "Lowest latency/cost, good for tasks that don't need deep reasoning",
+      "source": null,
+      "date": null,
+      "confidence": "community-consensus"
+    }
+  ],
+  "workflow_norms": [],
+  "notes": "This section tracks community consensus on tooling, model usage, and workflow norms. Each run should verify/update these against recent practitioner posts and conference talks."
+}

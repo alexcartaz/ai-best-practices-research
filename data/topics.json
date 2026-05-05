@@ -1,0 +1,79 @@
+[
+  {
+    "id": "repo-template-governance",
+    "name": "Default Repo Template + .md Governance",
+    "description": "What should a default Claude Code repo look like? What CLAUDE.md / AGENTS.md structure, what rules, what defaults ship out of the box?",
+    "status": "active-pain",
+    "approaches": [],
+    "related_people": ["andrej-karpathy", "matt-pocock"],
+    "related_tools": ["sandcastle"]
+  },
+  {
+    "id": "skills",
+    "name": "Claude Code Skills",
+    "description": "Which skills to include in a default setup. How to author them. Community-shared skill registries.",
+    "status": "active-pain",
+    "approaches": [],
+    "related_people": ["matt-pocock"],
+    "related_tools": ["sandcastle"]
+  },
+  {
+    "id": "session-management",
+    "name": "Session Management / Context Compaction",
+    "description": "Claude's default context compaction loses state badly. Current best practice (Matt Pocock): backup context at ~100k tokens, /clear, reload backup. Need to verify if this fully solves context collapse or if additional structure is required.",
+    "status": "active-pain",
+    "approaches": [
+      "backup-clear-reload at ~100k tokens (Matt Pocock / Sandcastle)"
+    ],
+    "related_people": ["matt-pocock"],
+    "related_tools": ["sandcastle"]
+  },
+  {
+    "id": "low-level-fe-verification",
+    "name": "Low-Level Frontend Verification",
+    "description": "Claude will claim a UI change is live when it isn't. Need reliable verification via Playwright, Chromium, or similar that a change is actually rendered correctly.",
+    "status": "active-pain",
+    "approaches": [],
+    "related_people": [],
+    "related_tools": []
+  },
+  {
+    "id": "testing-tdd",
+    "name": "Robust Testing / TDD Workflow",
+    "description": "When are tests first created? How does a default template manage test-driven development across iterative FE work vs. large feature merges? How does Claude stay in sync with the test suite?",
+    "status": "active-pain",
+    "approaches": [],
+    "related_people": [],
+    "related_tools": []
+  },
+  {
+    "id": "design-systems",
+    "name": "Design Systems",
+    "description": "Default Claude doesn't guide toward a design system. Need: how is a design system standardized/defined? What is the default web app design system? How do we customize it?",
+    "status": "active-pain",
+    "approaches": [],
+    "related_people": ["stephen-hanney"],
+    "related_tools": ["paper-design"]
+  },
+  {
+    "id": "design-tooling",
+    "name": "Design Toolbar / Fast UI Iteration",
+    "description": "Need to: (1) view design system tokens/primitives/components, (2) add to it, (3) navigate pages, (4) see viewports, (5) fast-iterate on UI similar to element inspector + claude.ai/design comment-on-element. Could be split: design system viewer + design toolbar.",
+    "status": "active-pain",
+    "approaches": [
+      "open design (YouTube reference)",
+      "claude.ai/design comment-on-element as reference UX"
+    ],
+    "related_people": ["stephen-hanney"],
+    "related_tools": ["paper-design"]
+  },
+  {
+    "id": "unified-project-layer",
+    "name": "Unified UX Layer Across Projects",
+    "description": "A unified interface: see async tasks running across all projects, switch between projects, unified chat (Figma Make / claude.ai/design style), drill into specific agent sessions, cross-device (Mac, PC, mobile), cloud-persisted auth and integrations (GitHub, Neon, Render, etc.).",
+    "status": "active-pain",
+    "approaches": [],
+    "related_people": [],
+    "related_tools": ["conductor"]
+  }
+]

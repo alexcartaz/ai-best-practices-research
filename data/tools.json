@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sandcastle",
+    "name": "Sandcastle",
+    "category": "claude-code-tooling",
+    "author_id": "matt-pocock",
+    "url": "https://github.com/mattpocock/sandcastle",
+    "description": "Open-source AI dev tools by Matt Pocock. Includes /grill-me skill for structured intake, session management patterns.",
+    "topics": ["session-management", "skills", "claude-code-governance"],
+    "status": "active",
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "conductor",
+    "name": "Conductor",
+    "category": "orchestration",
+    "author_id": null,
+    "url": "https://conductor.build",
+    "description": "AI agent orchestration platform.",
+    "topics": ["orchestration", "multi-agent"],
+    "status": "active",
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "paper-design",
+    "name": "paper.design",
+    "category": "design-tooling",
+    "author_id": "stephen-hanney",
+    "url": "https://paper.design/",
+    "description": "AI-assisted design system tooling.",
+    "topics": ["design-systems", "design-tooling"],
+    "status": "active",
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  }
+]

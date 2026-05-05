@@ -1,0 +1,130 @@
+[
+  {
+    "id": "simon-willison",
+    "name": "Simon Willison",
+    "category": "dev",
+    "focus": ["llm-tooling", "ai-agents", "sqlite", "datasette", "open-source"],
+    "profiles": {
+      "github": "https://github.com/simonw",
+      "bsky": "https://bsky.app/profile/simonwillison.net",
+      "x": "https://x.com/simonw",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://simonwillison.net/"
+    },
+    "talks": [],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "llm CLI tool",
+      "datasette",
+      "extensive LLM field notes blog"
+    ],
+    "relevance_score": null,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "matt-pocock",
+    "name": "Matt Pocock",
+    "category": "dev",
+    "focus": ["typescript", "ai-tooling", "claude-code", "session-management"],
+    "profiles": {
+      "github": "https://github.com/mattpocock",
+      "bsky": "https://bsky.app/profile/mattpocock.com",
+      "x": "https://x.com/mattpocockuk",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://www.mattpocock.com/"
+    },
+    "talks": [
+      {
+        "title": "AI Engineer Europe talk",
+        "event": "AI Engineer Europe",
+        "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
+        "date": null,
+        "topics": ["claude-code", "session-management", "ai-tooling"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "sandcastle (open-source AI dev tools, /grill-me skill)",
+      "context compaction / session reset pattern (backup, /clear, load backup at ~100k tokens)"
+    ],
+    "relevance_score": null,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "gary-tan",
+    "name": "Gary Tan",
+    "category": "dev-adjacent",
+    "focus": ["startup-tooling", "ai-workflows", "gstack"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/garrytan",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "gstack — AI-first startup tooling stack"
+    ],
+    "relevance_score": null,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "andrej-karpathy",
+    "name": "Andrej Karpathy",
+    "category": "dev",
+    "focus": ["llm-fundamentals", "ai-education", "claude-md", "vibe-coding"],
+    "profiles": {
+      "github": "https://github.com/karpathy",
+      "bsky": null,
+      "x": "https://x.com/karpathy",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://karpathy.ai/"
+    },
+    "talks": [],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "default CLAUDE.md / LLM wiki reference",
+      "llm.c — educational LLM from scratch",
+      "widely-referenced AI education content"
+    ],
+    "relevance_score": null,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "stephen-hanney",
+    "name": "Stephen Hanney",
+    "category": "design",
+    "focus": ["design-systems", "ai-design", "paper-design"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://paper.design/"
+    },
+    "talks": [],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Founder of paper.design — AI-assisted design system tooling"
+    ],
+    "relevance_score": null,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  }
+]
