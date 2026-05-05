@@ -1,0 +1,180 @@
+export interface Person {
+  id: string
+  name: string
+  category: 'dev' | 'design' | 'dev-adjacent' | 'orchestration' | 'education'
+  focus: string[]
+  profiles: {
+    github?: string | null
+    bsky?: string | null
+    x?: string | null
+    linkedin?: string | null
+    substack?: string | null
+    medium?: string | null
+    website?: string | null
+  }
+  talks: Talk[]
+  podcast_episodes: PersonEpisode[]
+  notable_contributions: string[]
+  is_new?: boolean
+  added: string
+  last_updated: string
+}
+
+export interface Talk {
+  title: string
+  event: string
+  url?: string | null
+  date?: string | null
+  topics: string[]
+}
+
+export interface PersonEpisode {
+  show: string
+  episode_title: string
+  url?: string | null
+  date?: string | null
+  topics: string[]
+}
+
+export interface Tool {
+  id: string
+  name: string
+  category: string
+  author_id?: string | null
+  url: string
+  github_url?: string | null
+  description: string
+  topics: string[]
+  status: 'active' | 'archived' | 'unknown'
+  is_new?: boolean
+  added: string
+  last_updated: string
+}
+
+export interface Event {
+  id: string
+  name: string
+  url: string
+  date: string
+  description: string
+  notable_talks: EventTalk[]
+  all_speakers?: Speaker[]
+  is_new?: boolean
+  added: string
+  last_updated: string
+}
+
+export interface EventTalk {
+  speaker_id: string
+  title: string
+  url?: string | null
+  topics: string[]
+}
+
+export interface Speaker {
+  name: string
+  talk: string
+  url?: string | null
+  track?: string
+  day?: string
+}
+
+export interface Article {
+  id: string
+  title: string
+  author_id?: string | null
+  url: string
+  date: string
+  topics: string[]
+  summary: string
+  recency_flag: 'current' | 'aging' | 'potentially-outdated'
+  is_new?: boolean
+  added: string
+}
+
+export interface PodcastEpisode {
+  id: string
+  show: string
+  episode_title: string
+  guest_id?: string | null
+  url?: string | null
+  date?: string | null
+  topics: string[]
+  summary: string
+  is_new?: boolean
+  added: string
+}
+
+export interface YouTubeChannel {
+  id: string
+  name: string
+  url: string
+  description: string
+  topics: string[]
+  added: string
+}
+
+export interface IndustryNorms {
+  last_updated: string
+  tool_adoption: NormItem[]
+  model_recommendations: ModelRec[]
+  workflow_norms: WorkflowNorm[]
+  notes: string
+}
+
+export interface NormItem {
+  claim: string
+  source?: string | null
+  date?: string | null
+  confidence: string
+  recently_changed?: boolean
+}
+
+export interface ModelRec {
+  model: string
+  recommended_for: string[]
+  rationale: string
+  source?: string | null
+  date?: string | null
+  confidence: string
+  recently_changed?: boolean
+}
+
+export interface WorkflowNorm {
+  norm: string
+  source?: string | null
+  date?: string | null
+  confidence: string
+  recently_changed?: boolean
+}
+
+export interface Topic {
+  id: string
+  name: string
+  description: string
+  status: string
+  approaches: string[]
+  sub_sections?: Record<string, { description: string; approaches: string[] }>
+  related_people: string[]
+  related_tools: string[]
+}
+
+export type NavSection =
+  | 'new-updates'
+  | 'people'
+  | 'tools'
+  | 'governance'
+  | 'orchestration'
+  | 'harness-engineering'
+  | 'design-systems'
+  | 'industry-norms'
+
+export type ContentTab =
+  | 'all'
+  | 'podcasts'
+  | 'videos'
+  | 'articles'
+  | 'tools'
+  | 'people'
+
+export type SortOrder = 'recent' | 'all-time' | 'alpha'
