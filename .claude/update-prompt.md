@@ -69,11 +69,28 @@ Update `data/industry_norms.json`:
 
 ## After updating JSON
 
-Generate/overwrite `reports/LANDSCAPE.md` — a human-readable synthesis:
-- One section per topic in `data/topics.json`
-- Under each topic: current best approaches (most recent first), key people, key tools, notable recent articles/talks
-- A "People Registry" section listing all tracked people with their profiles and focus areas
-- A "What's New This Week" section at the top summarizing additions from this run
+Generate/overwrite `reports/LANDSCAPE.md` — a human-readable synthesis with these sections in order:
+
+### 1. What's New This Run
+Summary of additions from this run: new people, tools, articles, episodes, and any shifted norms.
+
+### 2. Top 10 Lists (update each run based on current data)
+- **Top 10 Design Tools** — ranked by recency + community adoption + practitioner signal
+- **Top 10 Repo / Governance Structures** — CLAUDE.md templates, skill sets, hook configurations worth adopting
+- **Top 10 Tools for Claude Code Workflows** — orchestration, session management, verification, testing
+- **Top 10 People to Follow** — practitioners with highest signal-to-noise, ranked by: concrete output (repos/demos), recency of activity, community adoption of their ideas
+- **Top 5 Podcast Episodes (last 2 months)** — most actionable recent listening
+
+Ranking criteria: recency > concrete output > community adoption. Add a one-line rationale for each ranked item.
+
+### 3. Topic Deep-Dives
+One section per topic in `data/topics.json`. For `repo-template-governance`, cover each sub-section (.md governance, hooks, skills, subagent profiles, other) separately. Under each topic: current best approaches (most recent first), key people, key tools, notable recent articles/talks.
+
+### 4. Industry Norms Snapshot
+Current consensus on: tool adoption stats, model tier recommendations, workflow norms. Flag any that have `recently_changed: true`.
+
+### 5. People Registry
+All tracked people with: profiles, focus areas, why they're worth following (one line).
 
 ## Finally
 
