@@ -24,6 +24,7 @@ You are a research agent maintaining a living knowledge base about the AI coding
    - If it's a person not yet in `data/people.json`, research their profiles and add them
    - After processing all inbox items, clear `data/inbox.json` back to an empty array `[]`
    - **If an inbox item has `"is_source": true`**: after processing the item itself, also create an entry in `data/sources.json` for it. Determine the correct `type` (podcast, youtube-channel, article-feed, etc.) from the URL and content, fill in reasonable `relevance_keywords` and `notes`, and set `added` to today's date.
+   - **If an inbox item has `"type": "url-find"`**: the `notes` field describes a specific piece of content (talk, episode, article) whose URL is unknown. Use the provided `url` as a starting point (e.g. a YouTube channel or speaker page), search for the specific content named in `notes`, and if found: update the relevant record in the appropriate data file with the resolved URL. If not found after reasonable search, write an agent-question and leave the inbox item cleared (do not re-add it).
    - **Inbox items are always processed regardless of the research window** — they represent user-curated signals that take priority over automated research
 
 1. **Determine the research window**

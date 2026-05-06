@@ -5,7 +5,13 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2025/Dec/31/the-year-in-llms/",
     "date": "2025-12-31",
-    "topics": ["llm-tooling", "coding-agents", "year-in-review", "claude-code", "reasoning-models"],
+    "topics": [
+      "llm-tooling",
+      "coding-agents",
+      "year-in-review",
+      "claude-code",
+      "reasoning-models"
+    ],
     "summary": "Willison's third annual review of the LLM year, 26 sections. Key themes: coding agents crossing from 'mostly works' to 'actually works' in November 2025, all major labs releasing CLI coding agents, introduction of reasoning models trained on code with RL. His own hand-written code dropped to single-digit percentage of output.",
     "recency_flag": "current",
     "is_new": true,
@@ -17,7 +23,12 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2025/Jun/6/six-months-in-llms/",
     "date": "2025-06-06",
-    "topics": ["llm-tooling", "claude-code", "coding-agents", "state-of-the-field"],
+    "topics": [
+      "llm-tooling",
+      "claude-code",
+      "coding-agents",
+      "state-of-the-field"
+    ],
     "summary": "Annotated keynote transcript from AI Engineer World's Fair 2025. Won best-of-conference. Willison had to cut scope from 'the past year' to 'the past six months' due to accelerating pace. Covers Claude Code launch, coding agents, multimodal advances.",
     "recency_flag": "current",
     "is_new": true,
@@ -29,7 +40,12 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2025/Dec/25/claude-code-transcripts/",
     "date": "2025-12-25",
-    "topics": ["claude-code", "session-management", "observability", "open-source"],
+    "topics": [
+      "claude-code",
+      "session-management",
+      "observability",
+      "open-source"
+    ],
     "summary": "Announces claude-code-transcripts Python CLI tool. Converts JSONL session files and Claude Code for web exports into multi-page HTML. Supports --gist option to auto-publish to GitHub Gist with shareable preview URL. Practical tool for sharing Claude Code sessions publicly.",
     "recency_flag": "current",
     "is_new": true,
@@ -41,8 +57,13 @@
     "author_id": "simon-willison",
     "url": "https://simonw.substack.com/p/agentic-engineering-patterns",
     "date": "2026",
-    "topics": ["agentic-engineering", "tdd", "claude-code", "workflow-patterns"],
-    "summary": "Willison's three core agentic engineering patterns: (1) red/green TDD loop, (2) templates for repeated task shapes, (3) hoarding — accumulating context artifacts across sessions. Coined 'agentic engineering' as the discipline of working effectively with LLM agents.",
+    "topics": [
+      "agentic-engineering",
+      "tdd",
+      "claude-code",
+      "workflow-patterns"
+    ],
+    "summary": "Willison's three core agentic engineering patterns: (1) red/green TDD loop, (2) templates for repeated task shapes, (3) hoarding \u2014 accumulating context artifacts across sessions. Coined 'agentic engineering' as the discipline of working effectively with LLM agents.",
     "recency_flag": "current",
     "is_new": true,
     "added": "2026-05-05"
@@ -53,7 +74,13 @@
     "author_id": "addy-osmani",
     "url": "https://addyosmani.com/blog/ai-coding-workflow/",
     "date": "2025-12",
-    "topics": ["ai-coding-workflow", "context-engineering", "claude-code", "multi-agent", "iterative-development"],
+    "topics": [
+      "ai-coding-workflow",
+      "context-engineering",
+      "claude-code",
+      "multi-agent",
+      "iterative-development"
+    ],
     "summary": "Widely-cited workflow guide. Core principles: treat LLM as powerful pair programmer requiring clear direction; break work into iterative tickets not monolithic outputs; import full GitHub repo into Claude Projects for context; review everything the AI suggests. Anthropic engineers write ~90% of Claude Code's own code using Claude Code.",
     "recency_flag": "current",
     "is_new": true,
@@ -61,11 +88,17 @@
   },
   {
     "id": "addy-osmani-code-agent-orchestra",
-    "title": "The Code Agent Orchestra — what makes multi-agent coding work",
+    "title": "The Code Agent Orchestra \u2014 what makes multi-agent coding work",
     "author_id": "addy-osmani",
     "url": "https://addyosmani.com/blog/code-agent-orchestra/",
     "date": "2026-03-26",
-    "topics": ["multi-agent", "orchestration", "claude-code", "agent-teams", "parallel-execution"],
+    "topics": [
+      "multi-agent",
+      "orchestration",
+      "claude-code",
+      "agent-teams",
+      "parallel-execution"
+    ],
     "summary": "Covers orchestrating multiple AI agents across codebases. Discusses Claude Code's Agent Teams for true parallel execution with shared task lists and dependency tracking. Three orchestration tiers: interactive (single session), sprint (parallel worktrees), overnight backlog drain.",
     "recency_flag": "current",
     "is_new": true,
@@ -77,7 +110,12 @@
     "author_id": "addy-osmani",
     "url": "https://addyosmani.com/blog/future-agentic-coding/",
     "date": "2026",
-    "topics": ["multi-agent", "orchestration", "agentic-coding", "industry-trends"],
+    "topics": [
+      "multi-agent",
+      "orchestration",
+      "agentic-coding",
+      "industry-trends"
+    ],
     "summary": "Evolution from developer-as-conductor (directing single agents) to developer-as-orchestrator (managing agent swarms). Also published on O'Reilly Radar. Covers when multi-agent is justified vs single-agent, and the shift in developer role.",
     "recency_flag": "current",
     "is_new": true,
@@ -89,7 +127,14 @@
     "author_id": "brian-scanlan",
     "url": "https://ideas.fin.ai/p/how-we-use-claude-code-today-at-intercom",
     "date": "2026",
-    "topics": ["claude-code", "enterprise-adoption", "skills", "hooks", "engineering-productivity", "intercom"],
+    "topics": [
+      "claude-code",
+      "enterprise-adoption",
+      "skills",
+      "hooks",
+      "engineering-productivity",
+      "intercom"
+    ],
     "summary": "Practical field notes from Intercom's all-in Claude Code adoption. 13 plugins, 100+ skills, production-safe hooks (read-replica only, blocked critical tables, Okta auth, DynamoDB audit trail). Telemetry infrastructure for measuring AI adoption. 95%+ of daily code now AI-generated.",
     "recency_flag": "current",
     "is_new": true,
@@ -101,7 +146,13 @@
     "author_id": "garry-tan",
     "url": "https://techcrunch.com/2026/03/17/why-garry-tans-claude-code-setup-has-gotten-so-much-love-and-hate/",
     "date": "2026-03-17",
-    "topics": ["gstack", "claude-code", "skills", "productivity-claims", "community-reaction"],
+    "topics": [
+      "gstack",
+      "claude-code",
+      "skills",
+      "productivity-claims",
+      "community-reaction"
+    ],
     "summary": "TechCrunch coverage of gstack going viral after Tan's March 12 2026 tweet. 20k+ stars, 2200+ forks. Critics argue similar prompt sets existed privately, that YC CEO prominence gave undue attention, and some productivity claims (37k LOC/day) were exaggerated. Pro side: concrete productivity evidence with 60-day metrics.",
     "recency_flag": "current",
     "is_new": true,
@@ -113,7 +164,13 @@
     "author_id": "andrej-karpathy",
     "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
     "date": "2026-04-04",
-    "topics": ["agent-memory", "knowledge-base", "CLAUDE.md", "cross-session-context", "llm-wiki"],
+    "topics": [
+      "agent-memory",
+      "knowledge-base",
+      "CLAUDE.md",
+      "cross-session-context",
+      "llm-wiki"
+    ],
     "summary": "Karpathy's gist describing a three-layer LLM-maintained knowledge base: raw/ (immutable sources), wiki/ (LLM-maintained markdown with cross-references), schema/ (config directing agent behavior). Compiler analogy: raw = source code, LLM = compiler, wiki = executable. Hit 27,900 stars; spawned dozens of open-source implementations.",
     "recency_flag": "current",
     "is_new": true,
@@ -125,7 +182,14 @@
     "author_id": "gergely-orosz",
     "url": "https://newsletter.pragmaticengineer.com/p/ai-tooling-2026",
     "date": "2026-02",
-    "topics": ["industry-survey", "tool-adoption", "claude-code", "cursor", "copilot", "windsurf"],
+    "topics": [
+      "industry-survey",
+      "tool-adoption",
+      "claude-code",
+      "cursor",
+      "copilot",
+      "windsurf"
+    ],
     "summary": "Pragmatic Engineer survey (Jan 27 - Feb 17 2026, ~1000 respondents). Key findings: 95% use AI tools weekly or more; 75% use AI for 50%+ of SE work; Claude Code nearly as widespread as GitHub Copilot was in 2023; Cursor growing 35% since previous survey; 55% regularly use AI agents; staff+ engineers heaviest agent users at 63.5%; OpenAI Codex already at 60% of Cursor usage despite not existing in last survey; 70% use 2-4 tools simultaneously.",
     "recency_flag": "current",
     "is_new": true,
@@ -137,7 +201,12 @@
     "author_id": null,
     "url": "https://thenewstack.io/claude-code-and-the-art-of-test-driven-development/",
     "date": "2026",
-    "topics": ["tdd", "claude-code", "testing", "ai-coding-workflow"],
+    "topics": [
+      "tdd",
+      "claude-code",
+      "testing",
+      "ai-coding-workflow"
+    ],
     "summary": "TDD serves a critical function in AI-assisted development: keeps the developer in the loop when directing thousands of lines of code generation. Tests are the forcing function that prevents blindly adopting AI output. When using Claude with TDD, being explicit about TDD prevents Claude from creating mock implementations prematurely.",
     "recency_flag": "current",
     "is_new": true,
@@ -149,7 +218,12 @@
     "author_id": "jason-gorman",
     "url": "https://codemanship.wordpress.com/2026/01/09/why-does-test-driven-development-work-so-well-in-ai-assisted-programming/",
     "date": "2026-01-09",
-    "topics": ["tdd", "ai-coding-workflow", "testing", "software-fundamentals"],
+    "topics": [
+      "tdd",
+      "ai-coding-workflow",
+      "testing",
+      "software-fundamentals"
+    ],
     "summary": "Practitioner analysis of why TDD pairs naturally with AI coding. Work one feature at a time, solve one problem at a time, run tests at every step. Red/green/refactor provides built-in success conditions that both the developer and AI can verify.",
     "recency_flag": "current",
     "is_new": true,
@@ -161,7 +235,12 @@
     "author_id": "simon-willison",
     "url": "https://simonw.substack.com/p/llm-predictions-for-2026-shared-with",
     "date": "2026-01",
-    "topics": ["llm-predictions", "coding-agents", "industry-trends", "dark-factory"],
+    "topics": [
+      "llm-predictions",
+      "coding-agents",
+      "industry-trends",
+      "dark-factory"
+    ],
     "summary": "Willison's 1, 3, and 6 year predictions for AI/LLM industry. LLM code quality becomes undeniable in 2026. Predicts 'dark factory' pattern where AI does its own QA without human review. Also available as Oxide and Friends podcast episode.",
     "recency_flag": "current",
     "is_new": true,
@@ -173,7 +252,13 @@
     "author_id": "shawn-wang",
     "url": "https://www.latent.space/p/tiny",
     "date": "2026",
-    "topics": ["tiny-teams", "ai-engineering", "multi-agent", "software-3-0", "startup-workflows"],
+    "topics": [
+      "tiny-teams",
+      "ai-engineering",
+      "multi-agent",
+      "software-3-0",
+      "startup-workflows"
+    ],
     "summary": "swyx's patterns for small AI-native teams doing the work of much larger traditional teams. Covers how coding agents change team structure, when to use multi-agent, and the new economics of software development.",
     "recency_flag": "current",
     "is_new": true,
@@ -185,7 +270,13 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2026/Mar/6/clinejection/",
     "date": "2026-03-06",
-    "topics": ["claude-code", "repo-template-governance", "hooks", "security", "prompt-injection"],
+    "topics": [
+      "claude-code",
+      "repo-template-governance",
+      "hooks",
+      "security",
+      "prompt-injection"
+    ],
     "summary": "Walkthrough of Adnan Khan's attack chain weaponizing a malicious GitHub issue title to prompt-inject the anthropics/claude-code-action@v1 workflow, then using cacheract to poison GitHub Actions caches and steal NPM secrets. Major case study on the prompt-injection threat surface for any team running Claude Code in CI.",
     "recency_flag": "current",
     "is_new": true,
@@ -197,7 +288,11 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/",
     "date": "2026-03-04",
-    "topics": ["repo-template-governance", "testing-tdd", "claude-code"],
+    "topics": [
+      "repo-template-governance",
+      "testing-tdd",
+      "claude-code"
+    ],
     "summary": "Top rule: never file PRs with agent-written code you haven't personally reviewed and tested. Frames reviewer responsibility as the load-bearing constraint in agentic workflows. Part of Simon's growing Agentic Engineering Patterns guide.",
     "recency_flag": "current",
     "is_new": true,
@@ -209,7 +304,11 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2026/Mar/22/starlette/",
     "date": "2026-03-22",
-    "topics": ["claude-code", "skills", "repo-template-governance"],
+    "topics": [
+      "claude-code",
+      "skills",
+      "repo-template-governance"
+    ],
     "summary": "Had Claude generate a Starlette 1.0 skill document, dropped it into his skills library, and got working code despite outdated training data. Concrete pattern for using SKILL.md files to inject post-cutoff library knowledge.",
     "recency_flag": "current",
     "is_new": true,
@@ -221,8 +320,10 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2026/Mar/27/vibe-coding-swiftui/",
     "date": "2026-03-27",
-    "topics": ["claude-code"],
-    "summary": "Simon's experience building SwiftUI apps with Claude Code as a non-Swift developer. Concrete walkthrough of the vibe-coding workflow when you don't know the target language well — relevant by analogy for any solo dev outside their primary stack.",
+    "topics": [
+      "claude-code"
+    ],
+    "summary": "Simon's experience building SwiftUI apps with Claude Code as a non-Swift developer. Concrete walkthrough of the vibe-coding workflow when you don't know the target language well \u2014 relevant by analogy for any solo dev outside their primary stack.",
     "recency_flag": "current",
     "is_new": true,
     "added": "2026-05-05"
@@ -233,7 +334,11 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2026/Apr/5/building-with-ai/",
     "date": "2026-04-05",
-    "topics": ["claude-code", "repo-template-governance", "unified-project-layer"],
+    "topics": [
+      "claude-code",
+      "repo-template-governance",
+      "unified-project-layer"
+    ],
     "summary": "Annotates Lalit Maganti's deep-dive on building syntaqlite via README-driven development with Claude Code. Pattern: write the README first as the spec, let the agent fill in the code; reread the README as your top-of-context governance file each session.",
     "recency_flag": "current",
     "is_new": true,
@@ -245,19 +350,24 @@
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2026/Apr/22/claude-code-confusion/",
     "date": "2026-04-22",
-    "topics": ["claude-code"],
-    "summary": "Anthropic briefly moved Claude Code to Max-only ($100-$200) for ~2% of new signups, then reverted after backlash. Notes an apparent rebrand to 'Claude Cowork' in some surfaces. Important norm-watch for subscription users — pricing and product naming are in flux.",
+    "topics": [
+      "claude-code"
+    ],
+    "summary": "Anthropic briefly moved Claude Code to Max-only ($100-$200) for ~2% of new signups, then reverted after backlash. Notes an apparent rebrand to 'Claude Cowork' in some surfaces. Important norm-watch for subscription users \u2014 pricing and product naming are in flux.",
     "recency_flag": "current",
     "is_new": true,
     "added": "2026-05-05"
   },
   {
     "id": "willison-codex-goal-2026-04",
-    "title": "Codex CLI 0.128.0 adds /goal — agent loop competitor pattern",
+    "title": "Codex CLI 0.128.0 adds /goal \u2014 agent loop competitor pattern",
     "author_id": "simon-willison",
     "url": "https://simonwillison.net/2026/Apr/30/codex-goals/",
     "date": "2026-04-30",
-    "topics": ["multi-agent-orchestration", "claude-code"],
+    "topics": [
+      "multi-agent-orchestration",
+      "claude-code"
+    ],
     "summary": "OpenAI's Codex CLI gains a /goal command that runs an outer agent loop until a stated goal is achieved. Direct competitor pattern to Claude Code subagents and the Ralph loop. Worth tracking as cross-pollination signal.",
     "recency_flag": "current",
     "is_new": true,
@@ -269,9 +379,31 @@
     "author_id": "shawn-wang",
     "url": "https://www.latent.space/p/claude-code",
     "date": "2025",
-    "topics": ["claude-code", "coding-agents", "anthropic", "terminal"],
+    "topics": [
+      "claude-code",
+      "coding-agents",
+      "anthropic",
+      "terminal"
+    ],
     "summary": "Latent Space deep-dive on Claude Code at/near launch. Features Cat Wu and Boris Cherny from Anthropic discussing the tool's design, use cases, and workflow integration.",
     "recency_flag": "current",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "arize-prompt-learning-english-feedback",
+    "title": "Prompt Learning: Using English Feedback to Optimize LLM Systems",
+    "author_id": "sally-ann-delucia",
+    "url": "https://arize.com/blog/prompt-learning-using-english-feedback-to-optimize-llm-systems/",
+    "date": "2026-01-06",
+    "topics": [
+      "testing-tdd",
+      "session-management",
+      "repo-template-governance"
+    ],
+    "summary": "Introduces Prompt Learning: using natural-language critiques (not numeric scores) as the error signal to continuously rewrite a fenced instruction block in your system prompt. 10-100x fewer labeled examples than gradient-based approaches; achieves 0\u2192100% on JSON task in 5 loops.",
+    "recency_flag": "current",
+    "thumbnail_url": null,
     "is_new": true,
     "added": "2026-05-05"
   }

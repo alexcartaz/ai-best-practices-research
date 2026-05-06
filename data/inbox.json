@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "url": "https://www.youtube.com/@aiDotEngineer",
+    "type": "url-find",
+    "notes": "FIND URL: 'Beyond Code Coverage: Functionality Testing with Playwright' by Marlene Mhangami at AI Engineer Europe 2026. Update talks[0].url on person id=marlene-mhangami once found.",
+    "added": "2026-05-05"
+  }
+]
