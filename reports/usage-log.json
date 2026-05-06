@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "date": "2026-05-05",
+    "ts": "2026-05-06T03:33:39Z",
+    "sweep": "ai-engineer-sweep",
+    "input_tokens": 3718395,
+    "output_tokens": 37735,
+    "exit_code": 0
+  }
+]
