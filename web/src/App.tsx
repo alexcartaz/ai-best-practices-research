@@ -757,7 +757,7 @@ const REPORT_SUBSECTIONS: Record<ReportSection, { label: string; id: string }[]>
   sources: [],
 }
 
-const MAIN_REPORT_SECTIONS = REPORT_SECTIONS.filter(s => s.id !== 'queued' && s.id !== 'sources')
+const MAIN_REPORT_SECTIONS = REPORT_SECTIONS.filter(s => s.id !== 'queued' && s.id !== 'sources' && s.id !== 'gaps')
 
 function ReportIndex({ section, setSection }: { section: ReportSection; setSection: (s: ReportSection) => void }) {
   const scrollTo = (id: string) => {
@@ -783,6 +783,10 @@ function ReportIndex({ section, setSection }: { section: ReportSection; setSecti
           <SubIndexItem key={sub.id} label={sub.label} onClick={() => scrollTo(sub.id)} />
         ))}
         <IndexItem label="Queue" active={section === 'queued'} onClick={() => setSection('queued')} />
+      </div>
+      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mt-5 mb-2 px-2">Controls</p>
+      <div className="pl-2">
+        <IndexItem label="Gaps" active={section === 'gaps'} onClick={() => setSection('gaps')} />
         <IndexItem label="Sources" count={allSources.length} active={section === 'sources'} onClick={() => setSection('sources')} />
       </div>
     </IndexSidebar>
