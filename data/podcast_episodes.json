@@ -6,7 +6,14 @@
     "guest_id": "simon-willison",
     "url": "https://www.lennysnewsletter.com/p/an-ai-state-of-the-union",
     "date": "2026-04-02",
-    "topics": ["agentic-engineering", "claude-code", "tdd", "dark-factory-pattern", "inflection-point", "automation-timelines"],
+    "topics": [
+      "agentic-engineering",
+      "claude-code",
+      "tdd",
+      "dark-factory-pattern",
+      "inflection-point",
+      "automation-timelines"
+    ],
     "summary": "1 hour 40 min. Simon Willison on why November 2025 was the inflection point for coding agents; his three agentic engineering patterns (red/green TDD, templates, hoarding); the 'dark factory' pattern where AI does its own QA without human review; writes 95% of code from his phone. YouTube: https://www.youtube.com/watch?v=wc8FBhQtdsA",
     "is_new": true,
     "added": "2026-05-05"
@@ -18,7 +25,14 @@
     "guest_id": "brian-scanlan",
     "url": "https://www.lennysnewsletter.com/p/how-intercom-2xd-their-engineering",
     "date": "2026-04-20",
-    "topics": ["claude-code", "enterprise-adoption", "skills", "hooks", "engineering-productivity", "ai-first"],
+    "topics": [
+      "claude-code",
+      "enterprise-adoption",
+      "skills",
+      "hooks",
+      "engineering-productivity",
+      "ai-first"
+    ],
     "summary": "1 hr 19 min. Hosted by Claire Vo. Intercom doubled merged PRs per R&D employee in 9 months. 100% of engineers plus non-engineers shipping code via Claude Code. 13 plugins, 100+ skills. Telemetry infrastructure for measuring AI adoption. Production-safe hooks (read-replica DB access, Okta auth, DynamoDB audit trail).",
     "is_new": true,
     "added": "2026-05-05"
@@ -30,7 +44,13 @@
     "guest_id": "stephen-haney",
     "url": "https://open.spotify.com/episode/6dPciYWBqcNJamoYRRD5Si",
     "date": "2025-05-16",
-    "topics": ["paper-design", "design-tooling", "code-native-design", "figma-alternative", "react-tailwind"],
+    "topics": [
+      "paper-design",
+      "design-tooling",
+      "code-native-design",
+      "figma-alternative",
+      "react-tailwind"
+    ],
     "summary": "Stephen Haney discusses how Paper fundamentally changes the speed of traditional design flows by putting code components onto a design canvas with real React and Tailwind, enabling designers to export production-ready components.",
     "is_new": true,
     "added": "2026-05-05"
@@ -42,7 +62,12 @@
     "guest_id": "stephen-haney",
     "url": "https://open.spotify.com/episode/0fFGPPPTHoliQX5toMy01b",
     "date": "2026-01-19",
-    "topics": ["ai-design", "design-tooling", "industry-trends", "design-workflow"],
+    "topics": [
+      "ai-design",
+      "design-tooling",
+      "industry-trends",
+      "design-workflow"
+    ],
     "summary": "Field report on how top design teams are using AI in 2026. Covers tools, process changes, and what's actually working vs hype.",
     "is_new": true,
     "added": "2026-05-05"
@@ -54,7 +79,13 @@
     "guest_id": "steve-yegge",
     "url": "https://podcasts.apple.com/fi/podcast/steve-yegges-vibe-coding-manifesto-why-claude-code/id1674008350?i=1000742822778",
     "date": "2025-12",
-    "topics": ["vibe-coding", "claude-code", "agent-orchestration", "nascar-pit-crew-pattern", "trust-agents"],
+    "topics": [
+      "vibe-coding",
+      "claude-code",
+      "agent-orchestration",
+      "nascar-pit-crew-pattern",
+      "trust-agents"
+    ],
     "summary": "Steve Yegge discusses why the 2024 tech stack is becoming obsolete, the importance of trusting agents, and orchestrating agents like a 'NASCAR pit crew' as a shift away from traditional IDE-based development.",
     "is_new": true,
     "added": "2026-05-05"
@@ -66,7 +97,13 @@
     "guest_id": "brian-scanlan",
     "url": "https://podcast.rubyonrails.org/2462975/episodes/19060786-brian-scanlan-building-ai-first-at-intercom",
     "date": "2026",
-    "topics": ["claude-code", "ai-first", "intercom", "ruby-on-rails", "engineering-productivity"],
+    "topics": [
+      "claude-code",
+      "ai-first",
+      "intercom",
+      "ruby-on-rails",
+      "engineering-productivity"
+    ],
     "summary": "Deeper technical discussion of Intercom's AI-first engineering transformation, focusing on the Ruby on Rails backend context and how Claude Code integrates with production systems.",
     "is_new": true,
     "added": "2026-05-05"
@@ -78,7 +115,12 @@
     "guest_id": "boris-cherny",
     "url": "https://www.latent.space/p/claude-code",
     "date": "2025-05-07",
-    "topics": ["claude-code", "session-management", "skills", "multi-agent-orchestration"],
+    "topics": [
+      "claude-code",
+      "session-management",
+      "skills",
+      "multi-agent-orchestration"
+    ],
     "summary": "Boris Cherny (creator of Claude Code) and Cat Wu (PM) on Claude Code's origins as an internal hack, its architecture, and roadmap. First deep technical interview about Claude Code.",
     "is_new": true,
     "added": "2026-05-05"
@@ -90,7 +132,11 @@
     "guest_id": "boris-cherny",
     "url": "https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens",
     "date": "2026-02-19",
-    "topics": ["claude-code", "multi-agent-orchestration", "skills"],
+    "topics": [
+      "claude-code",
+      "multi-agent-orchestration",
+      "skills"
+    ],
     "summary": "Boris Cherny on the post-coding future, Claude Code's growth to 4% of public GitHub commits, and what comes next when AI handles routine coding.",
     "is_new": true,
     "added": "2026-05-05"
@@ -102,7 +148,10 @@
     "guest_id": "david-soria-parra",
     "url": "https://www.latent.space/p/mcp",
     "date": "2025-04-03",
-    "topics": ["mcp", "multi-agent-orchestration"],
+    "topics": [
+      "mcp",
+      "multi-agent-orchestration"
+    ],
     "summary": "David Soria Parra and Justin Spahr-Summers on MCP's origins, design decisions, and protocol evolution. The canonical technical deep-dive on MCP.",
     "is_new": true,
     "added": "2026-05-05"
@@ -114,7 +163,12 @@
     "guest_id": "ryan-lopopolo",
     "url": "https://www.latent.space/p/harness-eng",
     "date": "2026-04-07",
-    "topics": ["harness-engineering", "repo-template-governance", "multi-agent-orchestration", "testing-tdd"],
+    "topics": [
+      "harness-engineering",
+      "repo-template-governance",
+      "multi-agent-orchestration",
+      "testing-tdd"
+    ],
     "summary": "Ryan Lopopolo on building a 1M LOC codebase with zero human-written or reviewed code. Defines 'Harness Engineering' as the structured constraints that make this possible. Highly relevant to repo-template-governance.",
     "is_new": true,
     "added": "2026-05-05"
@@ -126,7 +180,12 @@
     "guest_id": "john-lindquist",
     "url": "https://www.lennysnewsletter.com/p/advanced-claude-code-techniques-context",
     "date": "2026",
-    "topics": ["skills", "session-management", "hooks", "claude-code"],
+    "topics": [
+      "skills",
+      "session-management",
+      "hooks",
+      "claude-code"
+    ],
     "summary": "John Lindquist (Claude Code Ambassador at Vercel) demos advanced techniques: context loading via mermaid diagrams, stop hooks, automated code quality checks. Practical skills-focused episode.",
     "is_new": true,
     "added": "2026-05-05"
@@ -138,7 +197,10 @@
     "guest_id": "owen-williams",
     "url": "https://www.lennysnewsletter.com/p/the-internal-ai-tool-thats-transforming",
     "date": "2025",
-    "topics": ["design-tooling", "design-systems"],
+    "topics": [
+      "design-tooling",
+      "design-systems"
+    ],
     "summary": "Owen Williams (design manager, Stripe) on Protodash — Stripe's internal AI prototyping platform. Shows how a design team built a full prototyping studio on top of Cursor rules + React components.",
     "is_new": true,
     "added": "2026-05-05"
@@ -150,8 +212,449 @@
     "guest_id": "amelia-wattenberger",
     "url": "https://refactoring.fm/p/what-comes-after-the-ide-with-amelia",
     "date": "2026-03",
-    "topics": ["design-tooling", "multi-agent-orchestration", "unified-project-layer"],
+    "topics": [
+      "design-tooling",
+      "multi-agent-orchestration",
+      "unified-project-layer"
+    ],
     "summary": "Amelia Wattenberger on Intent (her Augment Code product) and what developer workspaces look like when agents do most of the work. Directly addresses the unified-project-layer pain point.",
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-shopify-parakhin",
+    "show": "Latent Space",
+    "episode_title": "Shopify's AI Phase Transition",
+    "guest_id": "mikhail-parakhin",
+    "url": "https://www.latent.space/p/shopify",
+    "date": "2026-04-22",
+    "topics": [
+      "multi-agent-orchestration",
+      "session-management"
+    ],
+    "summary": "Shopify CTO on critique loops > parallel agents — one agent critiques another rather than running many in parallel. Practical pattern for solo Claude Code users: trade latency for higher review-to-generation ratio.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-notion-token-town",
+    "show": "Latent Space",
+    "episode_title": "Notion's Token Town",
+    "guest_id": "simon-last",
+    "url": "https://www.latent.space/p/notion",
+    "date": "2026-04-15",
+    "topics": [
+      "multi-agent-orchestration",
+      "skills",
+      "mcp-servers"
+    ],
+    "summary": "Notion rebuilt its agents 4-5 times. Key lesson: simplify the abstraction the model sees (XML → Markdown → SQL-like). Agents coordinate via native primitives (databases, pages, webhooks). Co-guest: Sarah Sachs.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-pmarca-browser-death",
+    "show": "Latent Space",
+    "episode_title": "Marc Andreessen Introspects on The Death of the Browser",
+    "guest_id": "marc-andreessen",
+    "url": "https://www.latent.space/p/pmarca",
+    "date": "2026-04-03",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 2: industry commentary on browser → agent OS transition (Pi, OpenClaw). Useful framing context, not a workflow episode.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-dreamer-singleton",
+    "show": "Latent Space",
+    "episode_title": "Dreamer: the Personal Agent OS",
+    "guest_id": "david-singleton",
+    "url": "https://www.latent.space/p/dreamer",
+    "date": "2026-03-20",
+    "topics": [
+      "multi-agent-orchestration",
+      "unified-project-layer"
+    ],
+    "summary": "David Singleton (ex-Stripe CTO) launches Dreamer — natural-language agent authoring with full-stack infra. Adaptation gap: consumer product, but the 'Sidekick + agents' pattern informs solo-dev internal-tooling design.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-felix-anthropic-cowork",
+    "show": "Latent Space",
+    "episode_title": "Why Anthropic Thinks AI Should Have Its Own Computer",
+    "guest_id": "felix-rieseberg",
+    "url": "https://www.latent.space/p/felix-anthropic",
+    "date": "2026-03-17",
+    "topics": [
+      "claude-code",
+      "skills",
+      "low-level-fe-verification",
+      "multi-agent-orchestration"
+    ],
+    "summary": "Anthropic's Claude Cowork desktop app: skills as portable automation, sandboxed delegation, native Chrome/DOM access over MCP-only flows, execute-test-iterate over heavy specs. Direct guidance for Claude Code subscribers.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-turbopuffer-eskildsen",
+    "show": "Latent Space",
+    "episode_title": "Retrieval After RAG: Hybrid Search, Agents, and Database Design",
+    "guest_id": "simon-eskildsen",
+    "url": "https://www.latent.space/p/turbopuffer",
+    "date": "2026-03-12",
+    "topics": [
+      "mcp-servers",
+      "session-management"
+    ],
+    "summary": "Turbopuffer founder on agentic retrieval: parallel concurrent queries replacing single retrieval calls. Practical: when adding RAG/MCP to a Claude Code project, expect bursts of parallel reads — pick a backend that scales accordingly.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-nvidia-brev-dynamo",
+    "show": "Latent Space",
+    "episode_title": "NVIDIA's AI Engineers (Brev + Dynamo)",
+    "guest_id": "kyle-kranen",
+    "url": "https://www.latent.space/p/nvidia-brev-dynamo",
+    "date": "2026-03-10",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Kyle Kranen (Dynamo) and Nader Khalil (Brev) on planetary-scale agent inference and CLI-first GPU access. Tier 2 infra context — explains downward pressure on Claude API/Code pricing.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-cursor-third-era",
+    "show": "Latent Space",
+    "episode_title": "Cursor's Third Era: Cloud Agents",
+    "guest_id": "jonas-gebhardt",
+    "url": "https://www.latent.space/p/cursor-third-era",
+    "date": "2026-03-06",
+    "topics": [
+      "multi-agent-orchestration",
+      "low-level-fe-verification",
+      "session-management"
+    ],
+    "summary": "Cursor's cloud agents auto-test before returning PRs; review by watching demo videos, not diffs. Slash commands /repro and /no_test, parallel best-of-N runs, 'grind mode' for multi-day agents. Adaptation gap: Cursor-specific UX, but the patterns translate to Claude Code multi-agent workflows.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-box-aaron-levie",
+    "show": "Latent Space",
+    "episode_title": "Every Agent Needs a Box",
+    "guest_id": "aaron-levie",
+    "url": "https://www.latent.space/p/box",
+    "date": "2026-03-05",
+    "topics": [
+      "multi-agent-orchestration",
+      "repo-template-governance"
+    ],
+    "summary": "Aaron Levie on the agent sandbox pattern: bounded filesystem access, distinct identity per agent, persistent workspace, continuous oversight (vs. human-employee privacy). Direct frame for solo-dev Claude Code subagent isolation.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-reviews-dead-jain",
+    "show": "Latent Space",
+    "episode_title": "How to Kill the Code Review",
+    "guest_id": "ankit-jain",
+    "url": "https://www.latent.space/p/reviews-dead",
+    "date": "2026-03-02",
+    "topics": [
+      "repo-template-governance",
+      "testing-tdd"
+    ],
+    "summary": "Aviator's Ankit Jain argues spec-driven verification replaces line-by-line review. Layered stack: multi-attempt agents + deterministic guardrails + BDD specs + permissions + adversarial verification. Direct guidance for Claude Code review hooks.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-dylanpatel-capex",
+    "show": "Latent Space",
+    "episode_title": "Dylan Patel of SemiAnalysis on $200B AI CapEx",
+    "guest_id": "dylan-patel",
+    "url": "https://www.latent.space/p/dylanpatel-cooking",
+    "date": "2026-02-28",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 2 industry context: hyperscaler $180-200B/year capex thesis. Affects Claude API/Code pricing and capacity over the next 18 months.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-metr-time-horizon",
+    "show": "Latent Space",
+    "episode_title": "METR's Joel Becker on exponential Time Horizon Evals",
+    "guest_id": "joel-becker",
+    "url": "https://www.latent.space/p/metr",
+    "date": "2026-02-27",
+    "topics": [
+      "multi-agent-orchestration",
+      "testing-tdd"
+    ],
+    "summary": "METR researcher on Time Horizon Evals — measuring how long an agent stays on-task. The framing the field has converged on for evaluating long-running coding agents.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-anthropic-distillation",
+    "show": "Latent Space",
+    "episode_title": "Anthropic Distillation & How Models Cheat",
+    "guest_id": "nathan-lambert",
+    "url": "https://www.latent.space/p/paid-anthropic-distillation-and-how",
+    "date": "2026-02-26",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Nathan Lambert (Ai2) and Sebastian Raschka on distillation, reward hacking, and how models 'cheat' on benchmarks. SAIL Live #6. Tier 2 research context for Claude model selection.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-valuemule-finance",
+    "show": "Latent Space",
+    "episode_title": "Claude Code for Finance + The Global Memory Shortage",
+    "guest_id": "doug-olaughlin",
+    "url": "https://www.latent.space/p/valuemule",
+    "date": "2026-02-24",
+    "topics": [
+      "claude-code",
+      "session-management"
+    ],
+    "summary": "Claude Code's 1-year anniversary special. Doug O'Laughlin (SemiAnalysis) on using Claude Code as 'junior analyst' for financial research — a knowledge-work adaptation pattern. Plus the looming HBM/memory supply crunch.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-swe-bench-dead",
+    "show": "Latent Space",
+    "episode_title": "The End of SWE-Bench Verified",
+    "guest_id": "mia-glaese",
+    "url": "https://www.latent.space/p/swe-bench-dead",
+    "date": "2026-02-23",
+    "topics": [
+      "testing-tdd",
+      "multi-agent-orchestration"
+    ],
+    "summary": "OpenAI frontier evals team retires SWE-Bench Verified — 60%+ of remaining problems unsolvable due to narrow specs and training contamination. Endorses SWE-Bench Pro. Co-guest: Olivia Watkins.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-a16z-bitter-lessons",
+    "show": "Latent Space",
+    "episode_title": "Bitter Lessons in Venture vs Growth",
+    "guest_id": "martin-casado",
+    "url": "https://www.latent.space/p/a16z",
+    "date": "2026-02-19",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Martin Casado and Sarah Wang (a16z) on capital, compute, and talent dynamics in AI. Tier 2 commentary for context, not a workflow episode.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-jeffdean-pareto",
+    "show": "Latent Space",
+    "episode_title": "Owning the AI Pareto Frontier",
+    "guest_id": "jeff-dean",
+    "url": "https://www.latent.space/p/jeffdean",
+    "date": "2026-02-12",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Jeff Dean on Google's TPU/model co-design and where the Pareto frontier between cost and capability sits. Tier 2 framing for Claude model selection (Haiku vs Sonnet vs Opus trade-offs).",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-yi-tay-imo-gold",
+    "show": "Latent Space",
+    "episode_title": "Captaining IMO Gold, Deep Think, On-Policy RL",
+    "guest_id": "yi-tay",
+    "url": "https://www.latent.space/p/captaining-imo-gold-deep-think-on",
+    "date": "2026-01-23",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Yi Tay (Google DeepMind) on shipping Gemini Deep Think and IMO Gold. End-to-end RL approach over symbolic systems. Tier 3 research depth, useful context on reasoning-mode trade-offs.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-brex-reggio",
+    "show": "Latent Space",
+    "episode_title": "Brex's AI Hail Mary",
+    "guest_id": "james-reggio",
+    "url": "https://www.latent.space/p/brex",
+    "date": "2026-01-17",
+    "topics": [
+      "claude-code",
+      "multi-agent-orchestration",
+      "repo-template-governance"
+    ],
+    "summary": "Brex CTO James Reggio on the AI-first transformation: open tool selection (Cursor + Windsurf + Claude Code via ConductorOne), custom multi-agent framework on TypeScript/Mastra, Greptile for AI code review, internal LLM gateway since Jan 2023, re-interviewed all engineers on agentic coding.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-artificialanalysis-evals",
+    "show": "Latent Space",
+    "episode_title": "Artificial Analysis: Independent LLM Evals as a Service",
+    "guest_id": "george-cameron",
+    "url": "https://www.latent.space/p/artificialanalysis",
+    "date": "2026-01-08",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "George Cameron and Micah Hill-Smith on running independent LLM evals (hallucination, agentic tasks, openness). Useful when picking models — AA's numbers are the trusted third-party reference.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-lmarena-vision",
+    "show": "Latent Space",
+    "episode_title": "LMArena's $1.7B Vision",
+    "guest_id": "anastasios-angelopoulos",
+    "url": "https://www.latent.space/p/state-of-evals-lmarenas-17b-vision",
+    "date": "2026-01-06",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "LMArena cofounder on the human-preference leaderboard's $150M Series A at $1.7B. Berkeley basement → de-facto industry standard. Tier 2 evals context.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-lupsasca-vibe-physics",
+    "show": "Latent Space",
+    "episode_title": "Doing Vibe Physics — Alex Lupsasca",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/lupsasca",
+    "date": "2026-05-04",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — pure research. Alex Lupsasca on GPT-5.x deriving new theoretical-physics/quantum-gravity results. Outside editorial lens but a high-signal example of frontier-model use.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-applied-intuition-physical-ai",
+    "show": "Latent Space",
+    "episode_title": "Physical AI that Moves the World",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/appliedintuition",
+    "date": "2026-04-27",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Qasar Younis & Peter Ludwig (Applied Intuition) on AI in mining rigs, drones, trucks, warships. Outside the web-app/Claude Code editorial lens.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-aie-europe-debrief",
+    "show": "Latent Space",
+    "episode_title": "AIE Europe Debrief + Agent Labs Thesis",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/unsupervised-learning-2026",
+    "date": "2026-04-23",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Crossover with Unsupervised Learning podcast. Conference recap and the 'agent labs' thesis. Useful if building a mental map of who-is-who in agent infra.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-noetik-cancer",
+    "show": "Latent Space",
+    "episode_title": "Training Transformers to Solve 95% Failure Rate of Cancer Trials",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/noetik",
+    "date": "2026-04-20",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Ron Alfa & Daniel Bear (Noetik) on autoregressive transformers for cancer-trial patient matching. Outside editorial lens.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-moonlake-world-models",
+    "show": "Latent Space",
+    "episode_title": "Moonlake: Causal World Models",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/moonlake",
+    "date": "2026-04-02",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Chris Manning (Stanford) & Fan-yun Sun on multimodal causal world models. Pure research; outside editorial lens.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-mistral-voxtral",
+    "show": "Latent Space",
+    "episode_title": "Mistral: Voxtral TTS, Forge, Leanstral",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/voxtral",
+    "date": "2026-03-30",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Pavan Kumar Reddy & Guillaume Lample (Mistral) on TTS, Forge tooling, and open frontier-model strategy. Outside Claude Code editorial lens.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-materials-kulik",
+    "show": "Latent Space",
+    "episode_title": "Why There Is No 'AlphaFold for Materials'",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/materials",
+    "date": "2026-03-24",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Heather Kulik on AI for materials discovery. Outside editorial lens.",
+    "thumbnail_url": null,
     "is_new": true,
     "added": "2026-05-05"
   }

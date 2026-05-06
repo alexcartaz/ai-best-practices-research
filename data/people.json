@@ -3,7 +3,15 @@
     "id": "simon-willison",
     "name": "Simon Willison",
     "category": "dev",
-    "focus": ["llm-tooling", "ai-agents", "sqlite", "datasette", "open-source", "claude-code", "agentic-engineering"],
+    "focus": [
+      "llm-tooling",
+      "ai-agents",
+      "sqlite",
+      "datasette",
+      "open-source",
+      "claude-code",
+      "agentic-engineering"
+    ],
     "profiles": {
       "github": "https://github.com/simonw",
       "bsky": "https://bsky.app/profile/simonwillison.net",
@@ -19,7 +27,12 @@
         "event": "AI Engineer World's Fair 2025",
         "url": "https://simonwillison.net/2025/Jun/6/six-months-in-llms/",
         "date": "2025-06-04",
-        "topics": ["llm-tooling", "claude-code", "agents", "year-in-review"]
+        "topics": [
+          "llm-tooling",
+          "claude-code",
+          "agents",
+          "year-in-review"
+        ]
       }
     ],
     "podcast_episodes": [
@@ -28,14 +41,24 @@
         "episode_title": "An AI state of the union: We've passed the inflection point, dark factories are coming, and automation timelines",
         "url": "https://www.lennysnewsletter.com/p/an-ai-state-of-the-union",
         "date": "2026-04-02",
-        "topics": ["agentic-engineering", "claude-code", "tdd", "dark-factory-pattern", "inflection-point"]
+        "topics": [
+          "agentic-engineering",
+          "claude-code",
+          "tdd",
+          "dark-factory-pattern",
+          "inflection-point"
+        ]
       },
       {
         "show": "Oxide and Friends",
         "episode_title": "LLM predictions for 2026",
         "url": "https://simonw.substack.com/p/llm-predictions-for-2026-shared-with",
         "date": "2026-01",
-        "topics": ["llm-predictions", "coding-agents", "industry-trends"]
+        "topics": [
+          "llm-predictions",
+          "coding-agents",
+          "industry-trends"
+        ]
       }
     ],
     "notable_contributions": [
@@ -54,7 +77,14 @@
     "id": "matt-pocock",
     "name": "Matt Pocock",
     "category": "dev",
-    "focus": ["typescript", "ai-tooling", "claude-code", "session-management", "multi-agent", "skills"],
+    "focus": [
+      "typescript",
+      "ai-tooling",
+      "claude-code",
+      "session-management",
+      "multi-agent",
+      "skills"
+    ],
     "profiles": {
       "github": "https://github.com/mattpocock",
       "bsky": "https://bsky.app/profile/mattpocock.com",
@@ -70,35 +100,60 @@
         "event": "AI Engineer Europe 2026",
         "url": "https://www.ai.engineer/europe",
         "date": "2026-04-09",
-        "topics": ["claude-code", "session-management", "ai-tooling", "software-fundamentals", "specs-to-code"]
+        "topics": [
+          "claude-code",
+          "session-management",
+          "ai-tooling",
+          "software-fundamentals",
+          "specs-to-code"
+        ]
       },
       {
         "title": "Full Walkthrough: Workflow for AI Coding",
         "event": "YouTube",
         "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
         "date": "2026-04",
-        "topics": ["claude-code", "session-management", "ai-tooling", "skills"]
+        "topics": [
+          "claude-code",
+          "session-management",
+          "ai-tooling",
+          "skills"
+        ]
       },
       {
         "title": "Building a REAL feature with Claude Code: every step explained",
         "event": "YouTube",
         "url": "https://www.youtube.com/watch?v=hX7yG1KVYhI",
         "date": "2026-03-18",
-        "topics": ["claude-code", "ai-tooling", "skills", "repo-template-governance"]
+        "topics": [
+          "claude-code",
+          "ai-tooling",
+          "skills",
+          "repo-template-governance"
+        ]
       },
       {
         "title": "I Open-Sourced My Own AFK Software Factory (Sandcastle launch)",
         "event": "YouTube",
         "url": "https://www.youtube.com/watch?v=E5-QK3CDVQM",
         "date": "2026-04-29",
-        "topics": ["claude-code", "multi-agent-orchestration", "session-management", "sandcastle"]
+        "topics": [
+          "claude-code",
+          "multi-agent-orchestration",
+          "session-management",
+          "sandcastle"
+        ]
       },
       {
         "title": "AI SDK v5: A Crash Course",
         "event": "React Universe Conf 2025",
         "url": "https://www.youtube.com/watch?v=ihHLs6v7Lko",
         "date": "2025",
-        "topics": ["ai-sdk", "typescript", "react"]
+        "topics": [
+          "ai-sdk",
+          "typescript",
+          "react"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -117,7 +172,14 @@
     "id": "garry-tan",
     "name": "Garry Tan",
     "category": "dev-adjacent",
-    "focus": ["startup-tooling", "ai-workflows", "gstack", "multi-agent", "skills", "claude-code"],
+    "focus": [
+      "startup-tooling",
+      "ai-workflows",
+      "gstack",
+      "multi-agent",
+      "skills",
+      "claude-code"
+    ],
     "profiles": {
       "github": "https://github.com/garrytan",
       "bsky": null,
@@ -143,7 +205,14 @@
     "id": "andrej-karpathy",
     "name": "Andrej Karpathy",
     "category": "dev",
-    "focus": ["llm-fundamentals", "ai-education", "llm-wiki", "vibe-coding", "autoresearch", "agents"],
+    "focus": [
+      "llm-fundamentals",
+      "ai-education",
+      "llm-wiki",
+      "vibe-coding",
+      "autoresearch",
+      "agents"
+    ],
     "profiles": {
       "github": "https://github.com/karpathy",
       "bsky": null,
@@ -170,7 +239,14 @@
     "id": "stephen-haney",
     "name": "Stephen Haney",
     "category": "design",
-    "focus": ["design-systems", "ai-design", "paper-design", "code-native-design", "react", "tailwind"],
+    "focus": [
+      "design-systems",
+      "ai-design",
+      "paper-design",
+      "code-native-design",
+      "react",
+      "tailwind"
+    ],
     "profiles": {
       "github": "https://github.com/stephenhaney",
       "bsky": "https://bsky.app/profile/stephenhaney.com",
@@ -187,14 +263,23 @@
         "episode_title": "Paper's vision for the future of design tooling",
         "url": "https://open.spotify.com/episode/6dPciYWBqcNJamoYRRD5Si",
         "date": "2025-05-16",
-        "topics": ["paper-design", "design-tooling", "code-native-design", "figma-alternative"]
+        "topics": [
+          "paper-design",
+          "design-tooling",
+          "code-native-design",
+          "figma-alternative"
+        ]
       },
       {
         "show": "Dive Club",
         "episode_title": "The 2026 AI Design Field Report (tools, process, and what's working)",
         "url": "https://open.spotify.com/episode/0fFGPPPTHoliQX5toMy01b",
         "date": "2026-01-19",
-        "topics": ["ai-design", "design-tooling", "industry-trends"]
+        "topics": [
+          "ai-design",
+          "design-tooling",
+          "industry-trends"
+        ]
       }
     ],
     "notable_contributions": [
@@ -209,7 +294,14 @@
     "id": "addy-osmani",
     "name": "Addy Osmani",
     "category": "dev",
-    "focus": ["ai-coding-workflows", "multi-agent", "frontend", "chrome", "agentic-coding", "context-engineering"],
+    "focus": [
+      "ai-coding-workflows",
+      "multi-agent",
+      "frontend",
+      "chrome",
+      "agentic-coding",
+      "context-engineering"
+    ],
     "profiles": {
       "github": "https://github.com/addyosmani",
       "bsky": "https://bsky.app/profile/addyosmani.bsky.social",
@@ -236,7 +328,13 @@
     "id": "shawn-wang",
     "name": "Shawn 'swyx' Wang",
     "category": "dev-adjacent",
-    "focus": ["ai-engineering", "latent-space", "developer-community", "ai-engineer-conference", "software-3-0"],
+    "focus": [
+      "ai-engineering",
+      "latent-space",
+      "developer-community",
+      "ai-engineer-conference",
+      "software-3-0"
+    ],
     "profiles": {
       "github": "https://github.com/swyxio",
       "bsky": "https://bsky.app/profile/swyx.io",
@@ -252,7 +350,12 @@
         "event": "AI Engineer World's Fair 2025",
         "url": "https://www.latent.space/p/aiewf-2025-keynotes",
         "date": "2025-06-03",
-        "topics": ["ai-engineering", "software-3-0", "spade-model", "state-of-the-field"]
+        "topics": [
+          "ai-engineering",
+          "software-3-0",
+          "spade-model",
+          "state-of-the-field"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -270,7 +373,14 @@
     "id": "brian-scanlan",
     "name": "Brian Scanlan",
     "category": "dev",
-    "focus": ["claude-code", "enterprise-adoption", "ai-first-engineering", "intercom", "skills", "hooks"],
+    "focus": [
+      "claude-code",
+      "enterprise-adoption",
+      "ai-first-engineering",
+      "intercom",
+      "skills",
+      "hooks"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -287,14 +397,25 @@
         "episode_title": "How Intercom 2x'd their engineering velocity in 9 months with Claude Code",
         "url": "https://www.lennysnewsletter.com/p/how-intercom-2xd-their-engineering",
         "date": "2026-04-20",
-        "topics": ["claude-code", "enterprise-adoption", "skills", "hooks", "engineering-productivity"]
+        "topics": [
+          "claude-code",
+          "enterprise-adoption",
+          "skills",
+          "hooks",
+          "engineering-productivity"
+        ]
       },
       {
         "show": "On Rails",
         "episode_title": "Building AI-First at Intercom",
         "url": "https://podcast.rubyonrails.org/2462975/episodes/19060786-brian-scanlan-building-ai-first-at-intercom",
         "date": null,
-        "topics": ["ai-first", "intercom", "claude-code", "ruby-on-rails"]
+        "topics": [
+          "ai-first",
+          "intercom",
+          "claude-code",
+          "ruby-on-rails"
+        ]
       }
     ],
     "notable_contributions": [
@@ -312,7 +433,14 @@
     "id": "necati-ozmen",
     "name": "Necati Özmen",
     "category": "dev",
-    "focus": ["claude-code-tooling", "design-systems", "ai-agents", "open-source", "typescript", "subagent-profiles"],
+    "focus": [
+      "claude-code-tooling",
+      "design-systems",
+      "ai-agents",
+      "open-source",
+      "typescript",
+      "subagent-profiles"
+    ],
     "profiles": {
       "github": "https://github.com/necatiozmen",
       "bsky": null,
@@ -340,7 +468,13 @@
     "id": "boris-cherny",
     "name": "Boris Cherny",
     "category": "dev",
-    "focus": ["claude-code", "ai-coding-agents", "typescript", "session-management", "skills"],
+    "focus": [
+      "claude-code",
+      "ai-coding-agents",
+      "typescript",
+      "session-management",
+      "skills"
+    ],
     "profiles": {
       "github": "https://github.com/bcherny",
       "bsky": null,
@@ -356,7 +490,11 @@
         "event": "AI Engineer World's Fair 2025",
         "url": "https://www.youtube.com/@aiDotEngineer",
         "date": "2025-06",
-        "topics": ["claude-code", "session-management", "skills"]
+        "topics": [
+          "claude-code",
+          "session-management",
+          "skills"
+        ]
       }
     ],
     "podcast_episodes": [
@@ -365,14 +503,22 @@
         "episode_title": "Claude Code: Anthropic's CLI Agent",
         "url": "https://www.latent.space/p/claude-code",
         "date": "2025-05-07",
-        "topics": ["claude-code", "session-management", "skills"]
+        "topics": [
+          "claude-code",
+          "session-management",
+          "skills"
+        ]
       },
       {
         "show": "Lenny's Podcast",
         "episode_title": "Head of Claude Code: What happens after coding is solved",
         "url": "https://www.lennysnewsletter.com/p/head-of-claude-code-what-happens",
         "date": "2026-02-19",
-        "topics": ["claude-code", "multi-agent-orchestration", "skills"]
+        "topics": [
+          "claude-code",
+          "multi-agent-orchestration",
+          "skills"
+        ]
       }
     ],
     "notable_contributions": [
@@ -390,7 +536,12 @@
     "id": "maggie-appleton",
     "name": "Maggie Appleton",
     "category": "design",
-    "focus": ["multi-agent-orchestration", "design-tooling", "unified-project-layer", "human-computer-interaction"],
+    "focus": [
+      "multi-agent-orchestration",
+      "design-tooling",
+      "unified-project-layer",
+      "human-computer-interaction"
+    ],
     "profiles": {
       "github": "https://github.com/maggieappleton",
       "bsky": "https://bsky.app/profile/maggieappleton.com",
@@ -406,7 +557,10 @@
         "event": "AI Engineer Europe 2026",
         "url": "https://www.youtube.com/watch?v=ClWD8OEYgp8",
         "date": "2026-04-09",
-        "topics": ["multi-agent-orchestration", "unified-project-layer"]
+        "topics": [
+          "multi-agent-orchestration",
+          "unified-project-layer"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -424,7 +578,12 @@
     "id": "amelia-wattenberger",
     "name": "Amelia Wattenberger",
     "category": "design",
-    "focus": ["design-tooling", "multi-agent-orchestration", "unified-project-layer", "data-viz"],
+    "focus": [
+      "design-tooling",
+      "multi-agent-orchestration",
+      "unified-project-layer",
+      "data-viz"
+    ],
     "profiles": {
       "github": "https://github.com/wattenberger",
       "bsky": "https://bsky.app/profile/wattenberger.com",
@@ -441,7 +600,10 @@
         "episode_title": "What Comes After the IDE",
         "url": "https://refactoring.fm/p/what-comes-after-the-ide-with-amelia",
         "date": "2026-03",
-        "topics": ["design-tooling", "multi-agent-orchestration"]
+        "topics": [
+          "design-tooling",
+          "multi-agent-orchestration"
+        ]
       }
     ],
     "notable_contributions": [
@@ -458,7 +620,12 @@
     "id": "ryan-lopopolo",
     "name": "Ryan Lopopolo",
     "category": "dev",
-    "focus": ["harness-engineering", "repo-template-governance", "multi-agent-orchestration", "testing-tdd"],
+    "focus": [
+      "harness-engineering",
+      "repo-template-governance",
+      "multi-agent-orchestration",
+      "testing-tdd"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -474,7 +641,11 @@
         "event": "AI Engineer Europe 2026",
         "url": "https://www.youtube.com/watch?v=am_oeAoUhew",
         "date": "2026-04-09",
-        "topics": ["harness-engineering", "repo-template-governance", "multi-agent-orchestration"]
+        "topics": [
+          "harness-engineering",
+          "repo-template-governance",
+          "multi-agent-orchestration"
+        ]
       }
     ],
     "podcast_episodes": [
@@ -483,7 +654,10 @@
         "episode_title": "Extreme Harness Engineering: 1M LOC, 1B toks/day, 0% human code, 0% human review",
         "url": "https://www.latent.space/p/harness-eng",
         "date": "2026-04-07",
-        "topics": ["harness-engineering", "repo-template-governance"]
+        "topics": [
+          "harness-engineering",
+          "repo-template-governance"
+        ]
       }
     ],
     "notable_contributions": [
@@ -500,7 +674,11 @@
     "id": "armin-ronacher",
     "name": "Armin Ronacher",
     "category": "dev",
-    "focus": ["repo-template-governance", "agent-legible-codebases", "multi-agent-orchestration"],
+    "focus": [
+      "repo-template-governance",
+      "agent-legible-codebases",
+      "multi-agent-orchestration"
+    ],
     "profiles": {
       "github": "https://github.com/mitsuhiko",
       "bsky": "https://bsky.app/profile/mitsuhiko.at",
@@ -516,7 +694,10 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-04-10",
-        "topics": ["repo-template-governance", "agent-legible-codebases"]
+        "topics": [
+          "repo-template-governance",
+          "agent-legible-codebases"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -535,7 +716,11 @@
     "id": "david-soria-parra",
     "name": "David Soria Parra",
     "category": "dev",
-    "focus": ["mcp", "multi-agent-orchestration", "unified-project-layer"],
+    "focus": [
+      "mcp",
+      "multi-agent-orchestration",
+      "unified-project-layer"
+    ],
     "profiles": {
       "github": "https://github.com/dsp",
       "bsky": null,
@@ -551,7 +736,10 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-04-10",
-        "topics": ["mcp", "multi-agent-orchestration"]
+        "topics": [
+          "mcp",
+          "multi-agent-orchestration"
+        ]
       }
     ],
     "podcast_episodes": [
@@ -560,14 +748,19 @@
         "episode_title": "The Creators of Model Context Protocol",
         "url": "https://www.latent.space/p/mcp",
         "date": "2025-04-03",
-        "topics": ["mcp", "multi-agent-orchestration"]
+        "topics": [
+          "mcp",
+          "multi-agent-orchestration"
+        ]
       },
       {
         "show": "Latent Space",
         "episode_title": "One Year of MCP",
         "url": "https://www.latent.space/p/one-year-of-mcp-with-david-soria",
         "date": "2025-11",
-        "topics": ["mcp"]
+        "topics": [
+          "mcp"
+        ]
       }
     ],
     "notable_contributions": [
@@ -582,7 +775,12 @@
     "id": "john-lindquist",
     "name": "John Lindquist",
     "category": "dev",
-    "focus": ["skills", "session-management", "claude-code", "education"],
+    "focus": [
+      "skills",
+      "session-management",
+      "claude-code",
+      "education"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -599,7 +797,11 @@
         "episode_title": "Advanced Claude Code techniques: context loading, mermaid diagrams, stop hooks, and more",
         "url": "https://www.lennysnewsletter.com/p/advanced-claude-code-techniques-context",
         "date": "2026",
-        "topics": ["skills", "session-management", "hooks"]
+        "topics": [
+          "skills",
+          "session-management",
+          "hooks"
+        ]
       }
     ],
     "notable_contributions": [
@@ -616,7 +818,12 @@
     "id": "steve-ruiz",
     "name": "Steve Ruiz",
     "category": "design",
-    "focus": ["design-tooling", "unified-project-layer", "multi-agent-orchestration", "canvas-ui"],
+    "focus": [
+      "design-tooling",
+      "unified-project-layer",
+      "multi-agent-orchestration",
+      "canvas-ui"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -632,14 +839,20 @@
         "event": "AI Engineer World's Fair 2025",
         "url": "https://www.youtube.com/watch?v=1C2TdPkj6aQ",
         "date": "2025-06-05",
-        "topics": ["design-tooling", "multi-agent-orchestration"]
+        "topics": [
+          "design-tooling",
+          "multi-agent-orchestration"
+        ]
       },
       {
         "title": "Agents on the Canvas in tldraw",
         "event": "AI Engineer Europe 2026",
         "url": "https://www.youtube.com/watch?v=sPUjIBH5Cwg",
         "date": "2026-04-09",
-        "topics": ["design-tooling", "unified-project-layer"]
+        "topics": [
+          "design-tooling",
+          "unified-project-layer"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -657,7 +870,12 @@
     "id": "beyang-liu",
     "name": "Beyang Liu",
     "category": "dev",
-    "focus": ["multi-agent-orchestration", "skills", "testing-tdd", "coding-agents"],
+    "focus": [
+      "multi-agent-orchestration",
+      "skills",
+      "testing-tdd",
+      "coding-agents"
+    ],
     "profiles": {
       "github": "https://github.com/beyang",
       "bsky": null,
@@ -673,7 +891,10 @@
         "event": "AI Engineer World's Fair 2025",
         "url": "https://www.youtube.com/watch?v=F_RyElT_gJk",
         "date": "2025-06-05",
-        "topics": ["multi-agent-orchestration", "skills"]
+        "topics": [
+          "multi-agent-orchestration",
+          "skills"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -691,7 +912,11 @@
     "id": "gergely-orosz",
     "name": "Gergely Orosz",
     "category": "dev-adjacent",
-    "focus": ["ai-industry-analysis", "engineering-culture", "multi-agent-orchestration"],
+    "focus": [
+      "ai-industry-analysis",
+      "engineering-culture",
+      "multi-agent-orchestration"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -707,7 +932,9 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-04-09",
-        "topics": ["multi-agent-orchestration"]
+        "topics": [
+          "multi-agent-orchestration"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -724,7 +951,11 @@
     "id": "claire-vo",
     "name": "Claire Vo",
     "category": "dev-adjacent",
-    "focus": ["ai-workflows", "skills", "product-management"],
+    "focus": [
+      "ai-workflows",
+      "skills",
+      "product-management"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -750,7 +981,12 @@
     "id": "patrick-debois",
     "name": "Patrick Debois",
     "category": "dev",
-    "focus": ["repo-template-governance", "multi-agent-orchestration", "ai-native-development", "context-engineering"],
+    "focus": [
+      "repo-template-governance",
+      "multi-agent-orchestration",
+      "ai-native-development",
+      "context-engineering"
+    ],
     "profiles": {
       "github": "https://github.com/jedi4ever",
       "bsky": null,
@@ -766,14 +1002,20 @@
         "event": "AI Engineer World's Fair 2025",
         "url": null,
         "date": "2025-06",
-        "topics": ["repo-template-governance", "multi-agent-orchestration"]
+        "topics": [
+          "repo-template-governance",
+          "multi-agent-orchestration"
+        ]
       },
       {
         "title": "Context Is the New Code",
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-04-09",
-        "topics": ["context-engineering", "repo-template-governance"]
+        "topics": [
+          "context-engineering",
+          "repo-template-governance"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -790,7 +1032,11 @@
     "id": "owen-williams",
     "name": "Owen Williams",
     "category": "design",
-    "focus": ["design-tooling", "design-systems", "ai-prototyping"],
+    "focus": [
+      "design-tooling",
+      "design-systems",
+      "ai-prototyping"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -807,7 +1053,10 @@
         "episode_title": "The internal AI tool that's transforming how Stripe designs products",
         "url": "https://www.lennysnewsletter.com/p/the-internal-ai-tool-thats-transforming",
         "date": "2025",
-        "topics": ["design-tooling", "design-systems"]
+        "topics": [
+          "design-tooling",
+          "design-systems"
+        ]
       }
     ],
     "notable_contributions": [
@@ -823,7 +1072,11 @@
     "id": "zeke-sikelianos",
     "name": "Zeke Sikelianos",
     "category": "design",
-    "focus": ["design-tooling", "design-systems", "llm-api-design"],
+    "focus": [
+      "design-tooling",
+      "design-systems",
+      "llm-api-design"
+    ],
     "profiles": {
       "github": "https://github.com/zeke",
       "bsky": null,
@@ -839,7 +1092,11 @@
         "event": "AI Engineer World's Fair 2025",
         "url": "https://www.youtube.com/watch?v=huQPkrwVWwc",
         "date": "2025-06-05",
-        "topics": ["design-tooling", "design-systems", "llm-api-design"]
+        "topics": [
+          "design-tooling",
+          "design-systems",
+          "llm-api-design"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -856,7 +1113,11 @@
     "id": "solomon-hykes",
     "name": "Solomon Hykes",
     "category": "dev",
-    "focus": ["multi-agent-orchestration", "containerization", "testing-tdd"],
+    "focus": [
+      "multi-agent-orchestration",
+      "containerization",
+      "testing-tdd"
+    ],
     "profiles": {
       "github": "https://github.com/shykes",
       "bsky": null,
@@ -872,7 +1133,10 @@
         "event": "AI Engineer World's Fair 2025",
         "url": null,
         "date": "2025-06-04",
-        "topics": ["multi-agent-orchestration", "containerization"]
+        "topics": [
+          "multi-agent-orchestration",
+          "containerization"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -890,7 +1154,11 @@
     "id": "john-yang",
     "name": "John Yang",
     "category": "dev",
-    "focus": ["testing-tdd", "multi-agent-orchestration", "benchmarks"],
+    "focus": [
+      "testing-tdd",
+      "multi-agent-orchestration",
+      "benchmarks"
+    ],
     "profiles": {
       "github": "https://github.com/john-b-yang",
       "bsky": null,
@@ -907,7 +1175,10 @@
         "episode_title": "[State of Code Evals] After SWE-bench, Code Clash & SOTA Coding Benchmarks recap",
         "url": "https://www.latent.space/p/state-of-code-evals-after-swe-bench",
         "date": "2025-12-31",
-        "topics": ["testing-tdd", "multi-agent-orchestration"]
+        "topics": [
+          "testing-tdd",
+          "multi-agent-orchestration"
+        ]
       }
     ],
     "notable_contributions": [
@@ -923,7 +1194,12 @@
     "id": "steve-yegge",
     "name": "Steve Yegge",
     "category": "dev",
-    "focus": ["claude-code", "vibe-coding", "agent-trust", "developer-productivity"],
+    "focus": [
+      "claude-code",
+      "vibe-coding",
+      "agent-trust",
+      "developer-productivity"
+    ],
     "profiles": {
       "github": "https://github.com/steveyegge",
       "bsky": null,
@@ -940,7 +1216,12 @@
         "episode_title": "Steve Yegge's Vibe Coding Manifesto — Why Claude Code Is the Future",
         "url": "https://podcasts.apple.com/fi/podcast/steve-yegges-vibe-coding-manifesto-why-claude-code/id1674008350?i=1000742822778",
         "date": "2025-12",
-        "topics": ["claude-code", "vibe-coding", "agent-trust", "nascar-pit-crew-pattern"]
+        "topics": [
+          "claude-code",
+          "vibe-coding",
+          "agent-trust",
+          "nascar-pit-crew-pattern"
+        ]
       }
     ],
     "notable_contributions": [
@@ -955,7 +1236,12 @@
     "id": "nick-nisi",
     "name": "Nick Nisi",
     "category": "dev",
-    "focus": ["claude-code-governance", "skills", "typescript", "ai-workflows"],
+    "focus": [
+      "claude-code-governance",
+      "skills",
+      "typescript",
+      "ai-workflows"
+    ],
     "profiles": {
       "github": "https://github.com/nicknisi",
       "bsky": "https://bsky.app/profile/nicknisi.com",
@@ -971,14 +1257,22 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-05",
-        "topics": ["skills", "claude-code-governance", "scaling"]
+        "topics": [
+          "skills",
+          "claude-code-governance",
+          "scaling"
+        ]
       },
       {
         "title": "AI Pipelines and Agents in Pure TypeScript with Mastra.ai",
         "event": "AI Engineer World's Fair 2025",
         "url": null,
         "date": "2025-06",
-        "topics": ["typescript", "mastra", "multi-agent-orchestration"]
+        "topics": [
+          "typescript",
+          "mastra",
+          "multi-agent-orchestration"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -994,7 +1288,12 @@
     "id": "sunil-pai",
     "name": "Sunil Pai",
     "category": "dev",
-    "focus": ["claude-code", "web-dev", "cloudflare-workers", "ai-workflows"],
+    "focus": [
+      "claude-code",
+      "web-dev",
+      "cloudflare-workers",
+      "ai-workflows"
+    ],
     "profiles": {
       "github": "https://github.com/threepointone",
       "bsky": "https://bsky.app/profile/sunil.pai",
@@ -1010,7 +1309,11 @@
         "event": "AI Engineer Europe 2026",
         "url": "https://www.youtube.com/watch?v=8txf05vVVl4",
         "date": "2026-05",
-        "topics": ["claude-code", "web-dev", "agentic-engineering"]
+        "topics": [
+          "claude-code",
+          "web-dev",
+          "agentic-engineering"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1026,7 +1329,12 @@
     "id": "tejas-kumar",
     "name": "Tejas Kumar",
     "category": "dev",
-    "focus": ["harness-engineering", "ai-workflows", "web-dev", "testing"],
+    "focus": [
+      "harness-engineering",
+      "ai-workflows",
+      "web-dev",
+      "testing"
+    ],
     "profiles": {
       "github": "https://github.com/tejasq",
       "bsky": "https://bsky.app/profile/tej.as",
@@ -1042,7 +1350,10 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-05",
-        "topics": ["harness-engineering", "ai-workflows"]
+        "topics": [
+          "harness-engineering",
+          "ai-workflows"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1058,7 +1369,11 @@
     "id": "tuomas-artman",
     "name": "Tuomas Artman",
     "category": "dev-adjacent",
-    "focus": ["product-craft", "developer-experience", "ai-workflows"],
+    "focus": [
+      "product-craft",
+      "developer-experience",
+      "ai-workflows"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -1074,7 +1389,11 @@
         "event": "AI Engineer Europe 2026",
         "url": "https://www.youtube.com/watch?v=wjk0ulMAkbc",
         "date": "2026-05",
-        "topics": ["product-craft", "developer-experience", "ai-workflows"]
+        "topics": [
+          "product-craft",
+          "developer-experience",
+          "ai-workflows"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1090,7 +1409,12 @@
     "id": "laurie-voss",
     "name": "Laurie Voss",
     "category": "dev",
-    "focus": ["agent-design-patterns", "evals", "web-dev", "ai-workflows"],
+    "focus": [
+      "agent-design-patterns",
+      "evals",
+      "web-dev",
+      "ai-workflows"
+    ],
     "profiles": {
       "github": "https://github.com/seldo",
       "bsky": "https://bsky.app/profile/seldo.com",
@@ -1106,14 +1430,20 @@
         "event": "AI Engineer World's Fair 2025",
         "url": null,
         "date": "2025-06",
-        "topics": ["agent-design-patterns", "multi-agent-orchestration"]
+        "topics": [
+          "agent-design-patterns",
+          "multi-agent-orchestration"
+        ]
       },
       {
         "title": "Ship Real Agents: Hands-On Evals",
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-05",
-        "topics": ["evals", "testing-tdd"]
+        "topics": [
+          "evals",
+          "testing-tdd"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1129,7 +1459,12 @@
     "id": "samuel-colvin",
     "name": "Samuel Colvin",
     "category": "dev",
-    "focus": ["mcp", "pydantic", "agent-frameworks", "python"],
+    "focus": [
+      "mcp",
+      "pydantic",
+      "agent-frameworks",
+      "python"
+    ],
     "profiles": {
       "github": "https://github.com/samuelcolvin",
       "bsky": "https://bsky.app/profile/samuelcolvin.com",
@@ -1145,14 +1480,20 @@
         "event": "AI Engineer World's Fair 2025",
         "url": null,
         "date": "2025-06",
-        "topics": ["mcp", "agent-frameworks"]
+        "topics": [
+          "mcp",
+          "agent-frameworks"
+        ]
       },
       {
         "title": "Playground in Prod",
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-05",
-        "topics": ["mcp", "production-agents"]
+        "topics": [
+          "mcp",
+          "production-agents"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1168,7 +1509,11 @@
     "id": "peter-steinberger",
     "name": "Peter Steinberger",
     "category": "dev-adjacent",
-    "focus": ["consumer-ai", "personal-assistant", "open-source"],
+    "focus": [
+      "consumer-ai",
+      "personal-assistant",
+      "open-source"
+    ],
     "profiles": {
       "github": "https://github.com/steipete",
       "bsky": "https://bsky.app/profile/steipete.com",
@@ -1184,7 +1529,10 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-05",
-        "topics": ["consumer-ai", "personal-assistant"]
+        "topics": [
+          "consumer-ai",
+          "personal-assistant"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1199,7 +1547,12 @@
     "id": "david-gomes",
     "name": "David Gomes",
     "category": "dev",
-    "focus": ["skills", "claude-code", "code-reduction", "agent-design"],
+    "focus": [
+      "skills",
+      "claude-code",
+      "code-reduction",
+      "agent-design"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -1215,7 +1568,11 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-04-10",
-        "topics": ["skills", "claude-code", "code-reduction"]
+        "topics": [
+          "skills",
+          "claude-code",
+          "code-reduction"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1231,7 +1588,12 @@
     "id": "marc-klingen",
     "name": "Marc Klingen",
     "category": "dev",
-    "focus": ["skills", "claude-code", "agent-observability", "langfuse"],
+    "focus": [
+      "skills",
+      "claude-code",
+      "agent-observability",
+      "langfuse"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -1247,7 +1609,11 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-04-09",
-        "topics": ["skills", "claude-code", "agent-observability"]
+        "topics": [
+          "skills",
+          "claude-code",
+          "agent-observability"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1263,7 +1629,12 @@
     "id": "pedro-rodrigues",
     "name": "Pedro Rodrigues",
     "category": "dev",
-    "focus": ["skills", "mcp", "claude-code", "supabase"],
+    "focus": [
+      "skills",
+      "mcp",
+      "claude-code",
+      "supabase"
+    ],
     "profiles": {
       "github": null,
       "bsky": null,
@@ -1279,7 +1650,11 @@
         "event": "AI Engineer Europe 2026",
         "url": null,
         "date": "2026-04-09",
-        "topics": ["skills", "mcp", "claude-code"]
+        "topics": [
+          "skills",
+          "mcp",
+          "claude-code"
+        ]
       }
     ],
     "podcast_episodes": [],
@@ -1295,7 +1670,13 @@
     "id": "julius-brussee",
     "name": "Julius Brussee",
     "category": "dev",
-    "focus": ["claude-code", "token-efficiency", "session-management", "agent-memory", "ai-tooling"],
+    "focus": [
+      "claude-code",
+      "token-efficiency",
+      "session-management",
+      "agent-memory",
+      "ai-tooling"
+    ],
     "profiles": {
       "github": "https://github.com/JuliusBrussee",
       "bsky": null,
@@ -1321,7 +1702,12 @@
     "id": "jason-gorman",
     "name": "Jason Gorman",
     "category": "dev",
-    "focus": ["tdd", "software-craftsmanship", "ai-coding-workflow", "testing"],
+    "focus": [
+      "tdd",
+      "software-craftsmanship",
+      "ai-coding-workflow",
+      "testing"
+    ],
     "profiles": {
       "github": "https://github.com/jasongorman",
       "bsky": null,
@@ -1337,6 +1723,1077 @@
       "Founder of Codemanship Ltd — software craftsmanship training and consulting",
       "Practitioner analysis of TDD + AI-assisted programming: why red/green/refactor pairs naturally with coding agents",
       "Long-running blog on TDD, refactoring, and software design (codemanship.wordpress.com)"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "mikhail-parakhin",
+    "name": "Mikhail Parakhin",
+    "category": "dev-adjacent",
+    "focus": [
+      "enterprise-ai",
+      "ai-coding-workflow",
+      "claude-code",
+      "infrastructure"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/MParakhin",
+      "linkedin": "https://www.linkedin.com/in/mikhail-parakhin/",
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Shopify's AI Phase Transition",
+        "url": "https://www.latent.space/p/shopify",
+        "date": "2026-04-22",
+        "topics": [
+          "multi-agent-orchestration",
+          "session-management"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "CTO of Shopify; previously led Microsoft Windows/Edge/Bing/Ads",
+      "Advocates 'critique loops' (one agent generates, another critiques) over parallel agent farming — practical pattern for solo Claude Code users",
+      "Public stance: spend more on review than generation — directly applicable to Claude Code subscription workflows"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "simon-last",
+    "name": "Simon Last",
+    "category": "dev",
+    "focus": [
+      "agent-architecture",
+      "ai-product",
+      "knowledge-work-agents"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/simonlast",
+      "linkedin": "https://www.linkedin.com/in/simon-last-41404140",
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Notion's Token Town",
+        "url": "https://www.latent.space/p/notion",
+        "date": "2026-04-15",
+        "topics": [
+          "multi-agent-orchestration",
+          "skills",
+          "mcp-servers"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Cofounder & Head of AI at Notion",
+      "Notion's agent architecture: agents coordinate via native primitives (databases, pages, webhooks) rather than custom protocols — pattern transferable to any web app",
+      "Principle: 'give models what they want' — progressively simplified from custom XML to Markdown to SQL-like queries"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "sarah-sachs",
+    "name": "Sarah Sachs",
+    "category": "dev",
+    "focus": [
+      "ai-engineering",
+      "evals",
+      "model-behavior",
+      "agent-architecture"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/sarahmsachs",
+      "linkedin": "https://www.linkedin.com/in/sarahmsachs",
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Notion's Token Town",
+        "url": "https://www.latent.space/p/notion",
+        "date": "2026-04-15",
+        "topics": [
+          "multi-agent-orchestration",
+          "skills"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "AI Engineering lead at Notion (~50 engineer team)",
+      "Formalized 'Model Behavior Engineer' role — combines data science, PM, and prompt engineering",
+      "Treats evals as agent harness problem — agents autonomously download datasets, run tests, debug, fix"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "david-singleton",
+    "name": "David Singleton",
+    "category": "dev",
+    "focus": [
+      "personal-agents",
+      "agent-os",
+      "consumer-ai"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/davidpsingleton/",
+      "substack": null,
+      "medium": null,
+      "website": "https://dreamer.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Dreamer: the Personal Agent OS",
+        "url": "https://www.latent.space/p/dreamer",
+        "date": "2026-03-20",
+        "topics": [
+          "multi-agent-orchestration",
+          "unified-project-layer"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "CEO of Dreamer (formerly /dev/agents); previously CTO of Stripe; Android early-platform GM at Google",
+      "Building 'agent that builds agents' — natural-language agentic app authoring with full-stack infra (SDKs, DBs, serverless)",
+      "Adaptation gap: Dreamer is a consumer platform, but the 'sidekick + agent-as-a-product' pattern is informative for solo devs designing their own internal tooling"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "felix-rieseberg",
+    "name": "Felix Rieseberg",
+    "category": "dev",
+    "focus": [
+      "claude-code",
+      "claude-cowork",
+      "agent-sandboxing",
+      "skills",
+      "browser-integration"
+    ],
+    "profiles": {
+      "github": "https://github.com/felixrieseberg",
+      "bsky": null,
+      "x": "https://x.com/felixrieseberg",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://felixrieseberg.com/"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Why Anthropic Thinks AI Should Have Its Own Computer",
+        "url": "https://www.latent.space/p/felix-anthropic",
+        "date": "2026-03-17",
+        "topics": [
+          "claude-code",
+          "skills",
+          "low-level-fe-verification",
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Member of Technical Staff at Anthropic; PM for Claude Cowork (desktop sandbox app)",
+      "Public advocate of skills-as-portable-automation: write reusable markdown skills, share across agent products",
+      "Formerly built Slack desktop, Windows 95 in Electron — desktop-app perspective directly relevant to a solo Claude Code user's local workflow"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "simon-eskildsen",
+    "name": "Simon Hørup Eskildsen",
+    "category": "dev",
+    "focus": [
+      "search-infra",
+      "vector-search",
+      "rag",
+      "database-design"
+    ],
+    "profiles": {
+      "github": "https://github.com/Sirupsen",
+      "bsky": null,
+      "x": "https://x.com/Sirupsen",
+      "linkedin": "https://www.linkedin.com/in/sirupsen",
+      "substack": null,
+      "medium": null,
+      "website": "https://sirupsen.com/about"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Retrieval After RAG: Hybrid Search, Agents, and Database Design",
+        "url": "https://www.latent.space/p/turbopuffer",
+        "date": "2026-03-12",
+        "topics": [
+          "mcp-servers",
+          "session-management"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Founder & CEO of Turbopuffer — search engine for unstructured data (vector + full-text)",
+      "Public technical writing on 'agentic retrieval' — workloads shift from single calls to parallel concurrent queries",
+      "Practical: when integrating RAG/MCP with Claude Code, Turbopuffer is one of the leading hosted backends"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "jonas-gebhardt",
+    "name": "Jonas Gebhardt",
+    "category": "dev",
+    "focus": [
+      "cloud-agents",
+      "cursor",
+      "agent-orchestration"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://cursor.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Cursor's Third Era: Cloud Agents",
+        "url": "https://www.latent.space/p/cursor-third-era",
+        "date": "2026-03-06",
+        "topics": [
+          "multi-agent-orchestration",
+          "low-level-fe-verification",
+          "session-management"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Cloud Agents lead at Cursor (joined via Autotab acquisition)",
+      "Pattern: video-first review of agent runs — watch demo videos before reading diffs; /repro and /no_test slash commands",
+      "Adaptation gap: Cursor-specific, but parallel best-of-N + subagent context-compression ideas transfer to Claude Code multi-agent setups"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "aaron-levie",
+    "name": "Aaron Levie",
+    "category": "dev-adjacent",
+    "focus": [
+      "enterprise-ai",
+      "agent-sandboxing",
+      "agent-identity"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/levie",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://www.box.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Every Agent Needs a Box",
+        "url": "https://www.latent.space/p/box",
+        "date": "2026-03-05",
+        "topics": [
+          "multi-agent-orchestration",
+          "repo-template-governance"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "CEO/cofounder of Box; long-running public commentary on enterprise AI",
+      "'Every agent needs a box' framing — bounded filesystem, distinct identity, persistent workspace",
+      "Useful framing for solo devs: each Claude Code subagent should have a sandboxed worktree + scoped permissions, not unrestricted host access"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "ankit-jain",
+    "name": "Ankit Jain",
+    "category": "dev",
+    "focus": [
+      "code-review",
+      "ai-code-review",
+      "spec-driven-development"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/ankitxg",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://aviator.co"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "How to Kill the Code Review",
+        "url": "https://www.latent.space/p/reviews-dead",
+        "date": "2026-03-02",
+        "topics": [
+          "repo-template-governance",
+          "testing-tdd"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Founder/CEO of Aviator (PR/code-review platform)",
+      "Argues spec-driven verification replaces line-by-line review when AI generates most code — relevant to solo devs setting up Claude Code review hooks",
+      "Layered verification stack: multiple agent attempts + deterministic guardrails + BDD specs + permission systems + adversarial verification"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "doug-olaughlin",
+    "name": "Doug O'Laughlin",
+    "category": "dev-adjacent",
+    "focus": [
+      "semiconductors",
+      "ai-infrastructure",
+      "claude-code"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/Mule_Capital",
+      "linkedin": null,
+      "substack": "https://www.fabricatedknowledge.com",
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Claude Code for Finance + The Global Memory Shortage",
+        "url": "https://www.latent.space/p/valuemule",
+        "date": "2026-02-24",
+        "topics": [
+          "claude-code",
+          "session-management"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Semiconductor analyst at SemiAnalysis; runs Fabricated Knowledge Substack",
+      "Uses Claude Code as 'junior analyst' for financial research workflows — adaptation pattern for solo devs doing knowledge work in Claude Code",
+      "Public commentary on Claude Code's footprint (~4% of GitHub commits) and the looming memory/HBM supply crunch"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "james-reggio",
+    "name": "James Reggio",
+    "category": "dev",
+    "focus": [
+      "claude-code",
+      "multi-agent-orchestration",
+      "enterprise-ai",
+      "ai-first"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/jamesreggio",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://brex.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Brex's AI Hail Mary",
+        "url": "https://www.latent.space/p/brex",
+        "date": "2026-01-17",
+        "topics": [
+          "claude-code",
+          "multi-agent-orchestration",
+          "repo-template-governance"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "CTO of Brex; led 2024-2026 AI-first transformation that reached $500M+ ARR",
+      "Built custom multi-agent orchestration framework on TypeScript + Mastra; runs Greptile for AI code review; internal LLM gateway since Jan 2023",
+      "Re-interviewed all engineers (incl. managers) on agentic coding — strong signal that fluency, not tooling choice, is the lever"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "marc-andreessen",
+    "name": "Marc Andreessen",
+    "category": "dev-adjacent",
+    "focus": [
+      "industry-commentary",
+      "browser-history",
+      "ai-investing"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/pmarca",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://a16z.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Marc Andreessen Introspects on The Death of the Browser",
+        "url": "https://www.latent.space/p/pmarca",
+        "date": "2026-04-03",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Cofounder/GP at a16z; cocreator of Mosaic/Netscape",
+      "Tier 2 commentary — useful context on browser → agent OS transition (Pi, OpenClaw)"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "dylan-patel",
+    "name": "Dylan Patel",
+    "category": "dev-adjacent",
+    "focus": [
+      "semiconductors",
+      "ai-infrastructure",
+      "industry-analysis"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/dylan522p",
+      "linkedin": null,
+      "substack": "https://www.semianalysis.com",
+      "medium": null,
+      "website": "https://www.semianalysis.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Dylan Patel of SemiAnalysis on $200B AI CapEx",
+        "url": "https://www.latent.space/p/dylanpatel-cooking",
+        "date": "2026-02-28",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Founder/CEO of SemiAnalysis — leading independent semiconductor and AI infrastructure analyst",
+      "Tier 2 industry context: hyperscaler capex trajectory directly affects Claude API pricing/availability"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "joel-becker",
+    "name": "Joel Becker",
+    "category": "dev-adjacent",
+    "focus": [
+      "evals",
+      "ai-safety-research",
+      "time-horizon-evals"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://metr.org"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "METR's Joel Becker on exponential Time Horizon Evals",
+        "url": "https://www.latent.space/p/metr",
+        "date": "2026-02-27",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Researcher at METR (Model Evaluation & Threat Research)",
+      "Time Horizon Evals — measure how long an agent can stay on-task; the core eval framing the field has converged on",
+      "Tier 2: useful for setting realistic expectations on Claude Code long-running agents"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "yi-tay",
+    "name": "Yi Tay",
+    "category": "dev",
+    "focus": [
+      "llm-research",
+      "reasoning",
+      "deep-think",
+      "rl"
+    ],
+    "profiles": {
+      "github": "https://github.com/yitay",
+      "bsky": null,
+      "x": "https://x.com/YiTayML",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Captaining IMO Gold, Deep Think, On-Policy RL",
+        "url": "https://www.latent.space/p/captaining-imo-gold-deep-think-on",
+        "date": "2026-01-23",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Leads Reasoning & AGI team at Google DeepMind Singapore",
+      "Shipped Gemini Deep Think and the IMO Gold model",
+      "Tier 3 research context but useful for understanding reasoning-mode trade-offs"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "jeff-dean",
+    "name": "Jeff Dean",
+    "category": "dev",
+    "focus": [
+      "llm-research",
+      "infrastructure",
+      "google",
+      "tpu"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/JeffDean",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://research.google/people/jeffrey-dean/"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Owning the AI Pareto Frontier",
+        "url": "https://www.latent.space/p/jeffdean",
+        "date": "2026-02-12",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Chief Scientist at Google; cofounder of Google Brain; co-author of MapReduce, BigTable, TensorFlow",
+      "Tier 2 industry context — Pareto frontier framing useful when picking between Sonnet/Opus/Haiku for Claude Code work"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "anastasios-angelopoulos",
+    "name": "Anastasios Angelopoulos",
+    "category": "dev",
+    "focus": [
+      "evals",
+      "lmarena",
+      "model-leaderboards"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/ml_angelopoulos",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://lmarena.ai"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "LMArena's $1.7B Vision",
+        "url": "https://www.latent.space/p/state-of-evals-lmarenas-17b-vision",
+        "date": "2026-01-06",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Cofounder of LMArena (formerly Chatbot Arena, Berkeley)",
+      "$1.7B valuation Series A; de-facto industry leaderboard for human-preference model rankings"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "george-cameron",
+    "name": "George Cameron",
+    "category": "dev-adjacent",
+    "focus": [
+      "evals",
+      "model-benchmarking",
+      "artificial-analysis"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/georgecameron",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://artificialanalysis.ai"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Artificial Analysis: Independent LLM Evals as a Service",
+        "url": "https://www.latent.space/p/artificialanalysis",
+        "date": "2026-01-08",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Cofounder of Artificial Analysis — independent LLM benchmarking standard",
+      "Useful reference: when picking models for Claude Code, AA's hallucination/agentic-task evals are the trusted third-party numbers"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "micah-hill-smith",
+    "name": "Micah Hill-Smith",
+    "category": "dev-adjacent",
+    "focus": [
+      "evals",
+      "model-benchmarking",
+      "artificial-analysis"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/micahhsmith",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://artificialanalysis.ai"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Artificial Analysis: Independent LLM Evals as a Service",
+        "url": "https://www.latent.space/p/artificialanalysis",
+        "date": "2026-01-08",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Cofounder of Artificial Analysis (with George Cameron)",
+      "Co-runs the most-cited independent LLM eval feed — direct input for Claude Code model-selection decisions"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "kyle-kranen",
+    "name": "Kyle Kranen",
+    "category": "dev",
+    "focus": [
+      "inference-infra",
+      "nvidia-dynamo",
+      "agent-inference"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://www.nvidia.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "NVIDIA's AI Engineers (Brev + Dynamo)",
+        "url": "https://www.latent.space/p/nvidia-brev-dynamo",
+        "date": "2026-03-10",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Engineering lead/architect of NVIDIA Dynamo — datacenter-scale inference framework",
+      "Tier 2 infrastructure context: prefill/decode disaggregation is why agent inference is getting cheaper for Claude Code-style flows"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "nader-khalil",
+    "name": "Nader Khalil",
+    "category": "dev",
+    "focus": [
+      "devrel",
+      "nvidia-brev",
+      "gpu-access",
+      "agent-tooling"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/naderkhalil",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://brev.dev"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "NVIDIA's AI Engineers (Brev + Dynamo)",
+        "url": "https://www.latent.space/p/nvidia-brev-dynamo",
+        "date": "2026-03-10",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "DevRel/Open Source Agent Marketing at NVIDIA Brev (acquired)",
+      "Public advocate of CLI-first agent UX — directly aligns with Claude Code subscription workflow"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "martin-casado",
+    "name": "Martin Casado",
+    "category": "dev-adjacent",
+    "focus": [
+      "venture",
+      "ai-investing",
+      "infrastructure"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/martin_casado",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://a16z.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Bitter Lessons in Venture vs Growth",
+        "url": "https://www.latent.space/p/a16z",
+        "date": "2026-02-19",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "GP at a16z (infrastructure); cofounder Nicira (Networking)",
+      "Tier 2: market-side commentary on AI capex/infra cycles"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "sarah-wang",
+    "name": "Sarah Wang",
+    "category": "dev-adjacent",
+    "focus": [
+      "venture",
+      "ai-investing",
+      "growth"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/sarahdingwang",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://a16z.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Bitter Lessons in Venture vs Growth",
+        "url": "https://www.latent.space/p/a16z",
+        "date": "2026-02-19",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "GP at a16z Growth; covers AI model companies and infrastructure",
+      "Tier 2 commentary on capital flow + talent dynamics"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "nathan-lambert",
+    "name": "Nathan Lambert",
+    "category": "dev",
+    "focus": [
+      "llm-research",
+      "post-training",
+      "open-models",
+      "rlhf"
+    ],
+    "profiles": {
+      "github": "https://github.com/natolambert",
+      "bsky": null,
+      "x": "https://x.com/natolambert",
+      "linkedin": null,
+      "substack": "https://www.interconnects.ai",
+      "medium": null,
+      "website": "https://www.natolambert.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Anthropic Distillation & How Models Cheat",
+        "url": "https://www.latent.space/p/paid-anthropic-distillation-and-how",
+        "date": "2026-02-26",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Researcher at Ai2 (formerly AI2/HuggingFace); writes Interconnects newsletter",
+      "Tier 2 research context — distillation patterns inform why smaller Anthropic models can replicate Sonnet behavior"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "sebastian-raschka",
+    "name": "Sebastian Raschka",
+    "category": "education",
+    "focus": [
+      "llm-research",
+      "education",
+      "deep-learning",
+      "post-training"
+    ],
+    "profiles": {
+      "github": "https://github.com/rasbt",
+      "bsky": null,
+      "x": "https://x.com/rasbt",
+      "linkedin": "https://www.linkedin.com/in/sebastianraschka/",
+      "substack": "https://magazine.sebastianraschka.com",
+      "medium": null,
+      "website": "https://sebastianraschka.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "Anthropic Distillation & How Models Cheat",
+        "url": "https://www.latent.space/p/paid-anthropic-distillation-and-how",
+        "date": "2026-02-26",
+        "topics": [
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Author 'Build a Large Language Model (From Scratch)' and 'Machine Learning Q and AI'",
+      "Staff Research Engineer at Lightning AI",
+      "Tier 2 educator; high-signal LLM internals explainers"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "mia-glaese",
+    "name": "Mia Glaese",
+    "category": "dev",
+    "focus": [
+      "evals",
+      "frontier-research",
+      "openai",
+      "swe-bench"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://openai.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "The End of SWE-Bench Verified",
+        "url": "https://www.latent.space/p/swe-bench-dead",
+        "date": "2026-02-23",
+        "topics": [
+          "multi-agent-orchestration",
+          "testing-tdd"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Frontier evaluation lead at OpenAI",
+      "Co-announced retirement of SWE-Bench Verified due to saturation/contamination — 60%+ of remaining problems unsolvable",
+      "Endorsement of SWE-Bench Pro signals where coding-agent evals are heading"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "olivia-watkins",
+    "name": "Olivia Watkins",
+    "category": "dev",
+    "focus": [
+      "evals",
+      "frontier-research",
+      "openai"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://openai.com"
+    },
+    "talks": [],
+    "podcast_episodes": [
+      {
+        "show": "Latent Space",
+        "episode_title": "The End of SWE-Bench Verified",
+        "url": "https://www.latent.space/p/swe-bench-dead",
+        "date": "2026-02-23",
+        "topics": [
+          "multi-agent-orchestration",
+          "testing-tdd"
+        ]
+      }
+    ],
+    "notable_contributions": [
+      "Frontier evals team at OpenAI (with Mia Glaese)",
+      "Co-author of SWE-Bench Verified retirement announcement"
     ],
     "is_new": true,
     "added": "2026-05-05",
