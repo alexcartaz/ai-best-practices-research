@@ -584,7 +584,6 @@ const REPORT_SUBSECTIONS: Record<ReportSection, { label: string; id: string }[]>
   ],
   gaps: [
     { label: 'Open', id: 'gaps-open' },
-    { label: 'Monitoring', id: 'gaps-monitoring' },
     { label: 'Resolved', id: 'gaps-resolved' },
   ],
   stack: [
