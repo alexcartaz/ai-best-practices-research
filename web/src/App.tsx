@@ -1610,10 +1610,17 @@ function GovernanceContent() {
   const govTopic = topics.find(t => t.id === 'repo-template-governance')
   const subs = govTopic?.sub_sections ?? {}
 
-  const govTools = tools.filter(t =>
-    t.category === 'governance' ||
-    t.topics.some(tag => ['claude-code-governance', 'skills', 'hooks', 'subagent_profiles', 'repo-template-governance', 'CLAUDE.md'].includes(tag))
+  // All governance tools — single source of truth, same as Tooling > Governance
+  const govTools = tools.filter(t => t.category === 'governance')
+
+  // Distribute into subsections by topic priority
+  const skillsTools   = govTools.filter(t => t.topics.includes('skills'))
+  const hooksTools    = govTools.filter(t => t.topics.includes('hooks') && !t.topics.includes('skills'))
+  const subagentTools = govTools.filter(t => t.topics.includes('subagent_profiles') && !t.topics.includes('skills') && !t.topics.includes('hooks'))
+  const claudeMdTools = govTools.filter(t =>
+    !t.topics.includes('skills') && !t.topics.includes('hooks') && !t.topics.includes('subagent_profiles')
   )
+
   const govPeople = people.filter(p =>
     p.focus.some(f => ['repo-template-governance', 'skills', 'hooks', 'harness-engineering'].some(k => f.includes(k)))
   )
@@ -1624,20 +1631,16 @@ function GovernanceContent() {
         {GOVERNANCE_SETUPS.map((s, i) => <TopSetupCard key={i} setup={s} />)}
       </ReportSubsection>
 
-      {govTools.length > 0 && (
-        <ReportSubsection id="gov-tools" title="Tools">
-          {govTools.map(t => <ToolRow key={t.id} tool={t} />)}
-        </ReportSubsection>
-      )}
-
       {subs.md_governance && (
         <ReportSubsection id="gov-claude-md" title="CLAUDE.md Patterns" description={subs.md_governance.description}>
+          {claudeMdTools.map(t => <ToolRow key={t.id} tool={t} />)}
           {subs.md_governance.approaches.map((a, i) => <ApproachItem key={i} text={a} />)}
         </ReportSubsection>
       )}
 
       <ReportSubsection id="gov-skills" title="Skills" description={subs.skills?.description}>
-        <div className="space-y-5">
+        {skillsTools.map(t => <ToolRow key={t.id} tool={t} />)}
+        <div className="space-y-5 mt-2">
           {SKILLS_REGISTRY.map(source => {
             const tool = source.toolId ? tools.find(t => t.id === source.toolId) : null
             return (
@@ -1676,12 +1679,14 @@ function GovernanceContent() {
 
       {subs.hooks && (
         <ReportSubsection id="gov-hooks" title="Hooks" description={subs.hooks.description}>
+          {hooksTools.map(t => <ToolRow key={t.id} tool={t} />)}
           {subs.hooks.approaches.map((a, i) => <ApproachItem key={i} text={a} />)}
         </ReportSubsection>
       )}
 
       {subs.subagent_profiles && (
         <ReportSubsection id="gov-subagents" title="Subagent Profiles" description={subs.subagent_profiles.description}>
+          {subagentTools.map(t => <ToolRow key={t.id} tool={t} />)}
           {subs.subagent_profiles.approaches.map((a, i) => <ApproachItem key={i} text={a} />)}
         </ReportSubsection>
       )}

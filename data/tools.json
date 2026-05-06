@@ -62,7 +62,7 @@
   {
     "id": "gstack",
     "name": "gstack",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": "garry-tan",
     "url": "https://github.com/garrytan/gstack",
     "description": "Garry Tan's open-source Claude Code configuration: 23 specialist skills and 8 power tools packaged as slash commands. Turns Claude Code into a virtual engineering team (CEO, Designer, Eng Manager, Release Manager, Doc Engineer, QA roles). Viral on release (March 2026): 16k+ stars, 9100+ forks. MIT licensed, v0.15.14 as of April 2026.",
@@ -76,7 +76,7 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05",
+    "last_updated": "2026-05-06",
     "github_stars": 89865
   },
   {
@@ -187,7 +187,7 @@
   {
     "id": "awesome-claude-code",
     "name": "awesome-claude-code (hesreallyhim)",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": null,
     "url": "https://github.com/hesreallyhim/awesome-claude-code",
     "github_url": "https://github.com/hesreallyhim/awesome-claude-code",
@@ -202,7 +202,7 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-06"
   },
   {
     "id": "llm-wiki-karpathy",
@@ -286,7 +286,7 @@
   {
     "id": "awesome-claude-code-subagents",
     "name": "awesome-claude-code-subagents (VoltAgent)",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": "necati-ozmen",
     "url": "https://github.com/VoltAgent/awesome-claude-code-subagents",
     "description": "Curated list of 100+ Claude Code subagent profiles by VoltAgent. 19k+ stars. Complements hesreallyhim/awesome-claude-code (skills/hooks focus) with a subagent-persona focus.",
@@ -298,13 +298,13 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05",
+    "last_updated": "2026-05-06",
     "github_stars": 19171
   },
   {
     "id": "awesome-claude-skills-composio",
     "name": "awesome-claude-skills (ComposioHQ)",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": null,
     "url": "https://github.com/ComposioHQ/awesome-claude-skills",
     "description": "Curated list of Claude Skills, resources, and tools by Composio. 58k+ stars \u2014 the largest Claude skills repo by stars. Covers content creation, dev automation, orchestration skills. Community contributions across 1000+ skills.",
@@ -315,7 +315,7 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05",
+    "last_updated": "2026-05-06",
     "github_stars": 58150
   },
   {
@@ -442,7 +442,7 @@
   {
     "id": "karpathy-claude-md",
     "name": "andrej-karpathy-skills CLAUDE.md",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": null,
     "url": "https://github.com/forrestchang/andrej-karpathy-skills",
     "github_url": "https://github.com/forrestchang/andrej-karpathy-skills",
@@ -456,12 +456,12 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-06"
   },
   {
     "id": "awesome-claude-code-toolkit",
     "name": "awesome-claude-code-toolkit (rohitg00)",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": null,
     "url": "https://github.com/rohitg00/awesome-claude-code-toolkit",
     "description": "Comprehensive toolkit: 135 agents, 35 curated skills (+400k via SkillKit), 42 commands, 176+ plugins, 20 hooks, 15 rules, 7 templates, 14 MCP configs, 26 companion apps. Anthropic x Forum Ventures hackathon winner. 1.5k stars.",
@@ -474,7 +474,7 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05",
+    "last_updated": "2026-05-06",
     "github_stars": 1551
   },
   {
@@ -501,7 +501,7 @@
   {
     "id": "addyosmani-agent-skills",
     "name": "agent-skills (Addy Osmani)",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": "addy-osmani",
     "url": "https://github.com/addyosmani/agent-skills",
     "github_url": "https://github.com/addyosmani/agent-skills",
@@ -517,12 +517,12 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-06"
   },
   {
     "id": "mattpocock-skills",
     "name": "skills (Matt Pocock)",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": "matt-pocock",
     "url": "https://github.com/mattpocock/skills",
     "github_url": "https://github.com/mattpocock/skills",
@@ -537,7 +537,7 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-06"
   },
   {
     "id": "claude-context-zilliz",
@@ -582,7 +582,7 @@
   {
     "id": "wshobson-agents",
     "name": "agents (wshobson)",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": null,
     "url": "https://github.com/wshobson/agents",
     "github_url": "https://github.com/wshobson/agents",
@@ -597,7 +597,7 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-06"
   },
   {
     "id": "archon-coleam",
@@ -621,7 +621,7 @@
   {
     "id": "claude-code-hooks-mastery",
     "name": "claude-code-hooks-mastery",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": null,
     "url": "https://github.com/disler/claude-code-hooks-mastery",
     "github_url": "https://github.com/disler/claude-code-hooks-mastery",
@@ -635,7 +635,7 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-06"
   },
   {
     "id": "lean-ctx",
@@ -660,7 +660,7 @@
   {
     "id": "revfactory-harness",
     "name": "harness (revfactory)",
-    "category": "claude-code-tooling",
+    "category": "governance",
     "author_id": null,
     "url": "https://github.com/revfactory/harness",
     "github_url": "https://github.com/revfactory/harness",
@@ -675,7 +675,7 @@
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-06"
   },
   {
     "id": "open-design-nexu",
