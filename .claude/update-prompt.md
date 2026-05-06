@@ -29,8 +29,11 @@ You are a research agent maintaining a living knowledge base about the AI coding
    - **Inbox items are always processed regardless of the research window** — they represent user-curated signals that take priority over automated research
 
 1. **Determine the research window**
-   - Weekly runs: research the last **2 months** of content
-   - First run (if `reports/updates/` is empty): research the last **12 months**, plus any keystone items older than that which are still widely referenced
+   - The global default window is **2 months back** from today.
+   - First run (if `reports/updates/` is empty): use **12 months** as the global default, plus any keystone items older than that which are still widely referenced.
+   - **Per-source startDate**: when processing each source in Step 3, read its `last_checked` field from `data/sources.json`. If `last_checked` is set, use that date as the startDate for that source instead of the global default — only fetch content published after `last_checked`. If `last_checked` is null, fall back to the global default.
+   - After successfully processing a source, update its `last_checked` field in `data/sources.json` to today's date. Do this even if no new content was found (so the next run knows it was checked).
+   - **Never re-fetch content you've already ingested.** Before adding any episode, article, or person, check the relevant JSON file. If the URL or name already exists, skip it.
 
 2. **Research each active topic** in `data/topics.json`:
    - **repo-template-governance** — research each sub-section explicitly:

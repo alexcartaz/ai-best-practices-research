@@ -220,6 +220,7 @@ export interface ResearchSource {
   min_stars_velocity?: number
   notes: string
   added: string
+  last_checked?: string | null
 }
 
 export type SortOrder = 'relevance' | 'recent' | 'alpha'

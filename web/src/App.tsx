@@ -60,18 +60,9 @@ const REPORT_SECTIONS: { id: ReportSection; label: string }[] = [
 ]
 
 const PERSON_CATEGORIES = ['dev', 'design', 'dev-adjacent', 'orchestration', 'education']
-const TOOL_CATEGORIES = ['governance', 'development', 'design', 'orchestration']
-const TOOL_CATEGORY_MATCH: Record<string, string> = {
-  'claude-code-tooling': 'development',
-  'testing': 'development',
-  'design-tooling': 'design',
-  'orchestration': 'orchestration',
-  'governance': 'governance',
-  'skills': 'governance',
-  'hooks': 'governance',
-  'mcp': 'governance',
-  'repo-template-governance': 'governance',
-}
+const TOOL_CATEGORIES = ['governance', 'design', 'orchestration', 'harness-engineering', 'development']
+// Categories in data are now canonical — no remapping needed
+const TOOL_CATEGORY_MATCH: Record<string, string> = {}
 const TOPIC_TAGS = [
   'session-management', 'skills', 'multi-agent-orchestration', 'design-systems',
   'design-tooling', 'testing-tdd', 'repo-template-governance', 'unified-project-layer',
@@ -1705,7 +1696,7 @@ function GovernanceContent() {
 function DesignContent() {
   const dsTopic = topics.find(t => t.id === 'design-systems')
   const dtTopic = topics.find(t => t.id === 'design-tooling')
-  const designTools = tools.filter(t => t.category === 'design-tooling' || t.topics.includes('design-systems') || t.topics.includes('design-tooling'))
+  const designTools = tools.filter(t => t.category === 'design')
   const designPeople = people.filter(p => p.category === 'design' || p.focus.some(f => f.includes('design')))
 
   return (
@@ -1747,7 +1738,7 @@ function DesignContent() {
 function OrchestrationContent() {
   const orchTopic = topics.find(t => t.id === 'multi-agent-orchestration')
   const sessionTopic = topics.find(t => t.id === 'session-management')
-  const orchTools = tools.filter(t => t.category === 'orchestration' || t.topics.includes('multi-agent-orchestration'))
+  const orchTools = tools.filter(t => t.category === 'orchestration')
   const orchPeople = people.filter(p => p.focus.some(f => f.includes('orchestration') || f.includes('multi-agent')))
 
   return (
@@ -1788,7 +1779,7 @@ function OrchestrationContent() {
 function HarnessContent() {
   const harnessTopic = topics.find(t => t.id === 'harness-engineering')
   const testingTopic = topics.find(t => t.id === 'testing-tdd')
-  const harnessTools = tools.filter(t => t.topics.some(tag => ['harness-engineering', 'testing-tdd', 'browser-automation', 'testing'].includes(tag)) || t.category === 'testing')
+  const harnessTools = tools.filter(t => t.category === 'harness-engineering')
   const harnessPeople = people.filter(p => p.focus.some(f => f.includes('harness') || f.includes('testing') || f.includes('repo-template-governance')))
 
   return (

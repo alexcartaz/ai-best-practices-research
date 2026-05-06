@@ -34,17 +34,18 @@ Pick exactly one from this list. When in doubt, use the decision rules below.
 | category | use when |
 |---|---|
 | `governance` | Tool helps you author, version, iterate, or validate CLAUDE.md / DESIGN.md / AGENTS.md / skills / hooks / subagent profiles. The output is a governance file or prompt, not running code. Examples: prompt-learning, skills registries, CLAUDE.md templates, hook configs. |
-| `claude-code-tooling` | General-purpose Claude Code tooling: session management, context compaction, token budgeting, harness engineering, MCP servers, browser testing, CI integration. Default category for tools that extend Claude Code but don't fit governance or design. |
-| `orchestration` | Multi-agent coordination, task routing, parallel execution, long-running mission management. The tool's primary value is managing multiple agents or sessions. |
-| `design-tooling` | Design systems, component libraries, token pipelines, AI-native design iteration, UI testing. The tool's primary audience is the design layer of a web app. |
-| `consumer-ai` | AI tools for non-dev use cases (image generation, chatbots for end users, etc.). |
-| `mcp` | MCP server implementations. Use this only if the repo IS an MCP server — not a tool that uses MCP. |
+| `design` | Design systems, component libraries, token pipelines, AI-native design iteration, UI generation. The tool's primary audience is the design layer of a web app. |
+| `orchestration` | Multi-agent coordination, task routing, parallel execution, MCP servers, long-running mission management. The tool's primary value is coordinating agents or connecting them to external services. |
+| `harness-engineering` | Testing, verification, browser automation, CI harness tooling, eval frameworks. The tool validates that code or agent output is correct. |
+| `development` | General Claude Code utilities that don't fit above: session management, context compaction, token budgeting, general productivity. Default catch-all for dev tooling. |
 
 **Decision rules:**
-- A tool that iterates or manages prompts/instructions → `governance`
-- A tool that runs code or agents → `claude-code-tooling` or `orchestration`
-- A tool that reads/writes UI → `design-tooling`
-- If a tool could be `governance` or `claude-code-tooling`, ask: does its primary output affect what's in a governance file? Yes → `governance`. No → `claude-code-tooling`.
+- Primary output is a governance file (CLAUDE.md, skill, hook, subagent profile) → `governance`
+- Primary purpose is testing, verification, or evaluation → `harness-engineering`
+- Primary purpose is connecting agents to external services or coordinating multiple agents → `orchestration`
+- Primary purpose is UI, tokens, or design systems → `design`
+- Everything else that extends Claude Code for development → `development`
+- When in doubt between `governance` and `development`: does its output live in `.claude/` or a `.md` governance file? Yes → `governance`.
 
 ### Step 3 — Assign topics
 Pick 1–4 topic IDs from `data/topics.json`. Use the actual `id` field values:
