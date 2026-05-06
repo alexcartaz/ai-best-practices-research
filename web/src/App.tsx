@@ -63,7 +63,7 @@ const TOPIC_TAGS = [
 
 // ---- Stack Builder data ----
 
-type StackLayerKey = 'governance' | 'skills' | 'hooks' | 'mcps' | 'tools'
+type StackLayerKey = 'governance' | 'profiles' | 'skills' | 'hooks' | 'mcps' | 'tools' | 'npm'
 
 interface StackItem {
   id: string
@@ -74,7 +74,20 @@ interface StackItem {
   default?: boolean
   radioGroup?: string       // items in the same radioGroup are mutually exclusive (one-select)
   linkedGroup?: string      // items in the same linkedGroup across ALL layers toggle atomically
+  defaultGroup?: string     // selecting the default item removes all non-defaults; selecting a non-default removes the default (but non-defaults coexist)
+  claudeMdSnippet?: string  // text appended to CLAUDE.md when this governance file is selected
   section?: string          // display grouping label within a layer
+  itemType?: 'structural' | 'reference'  // structural = requires .md integration; reference = user invokes as needed
+}
+
+interface StackSystem {
+  id: string
+  name: string
+  description: string
+  sourceBundle?: string  // bundle this system originates from
+  provides: Partial<Record<StackLayerKey, string[]>>
+  coupling?: string        // which items are required together vs. standalone
+  claudeMdSnippet?: string // relevant CLAUDE.md rule text extracted from the source repo
 }
 
 interface StackBundle {
@@ -90,11 +103,14 @@ interface StackBundle {
 
 interface StackSelection {
   governance: string[]
+  profiles: string[]
   skills: string[]
   hooks: string[]
   mcps: string[]
   tools: string[]
+  npm: string[]
   bundles: string[]
+  systems: string[]
 }
 
 interface StackConfig {
@@ -111,49 +127,115 @@ interface UserDefaults {
 
 const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
   governance: [
-    { id: 'claude-md', label: 'Claude Code default', description: 'Blank Claude Code CLAUDE.md — behavioral instructions and project context. The required baseline, customized per project.', default: true, radioGroup: 'claude-md-choice', section: 'CLAUDE.md' },
-    { id: 'karpathy-claude-md', label: 'Karpathy CLAUDE.md', toolId: 'karpathy-claude-md', description: 'Community CLAUDE.md synthesized from Karpathy\'s public observations on using Claude Code. Reference for how a prominent AI practitioner\'s workflow preferences translate into instruction form.', radioGroup: 'claude-md-choice', section: 'CLAUDE.md' },
-    { id: 'design-md', label: 'DESIGN.md', toolId: 'design-md-format', description: 'Design tokens (colors, spacing, typography) as persistent agent context. Google Labs format. CLI lints WCAG AA contrast and exports to Tailwind/DTCG.', linkedGroup: 'design-md-cli', section: 'Others' },
-    { id: 'agents-md', label: 'AGENTS.md', url: 'https://docs.anthropic.com/en/docs/claude-code/sub-agents', description: 'Multi-agent coordination: role definitions and handoff rules for when Claude spawns subagents.', section: 'Others' },
-    { id: 'llm-wiki', label: 'LLM Wiki (raw/+wiki/+schema/)', toolId: 'llm-wiki-karpathy', description: 'Three-layer memory: immutable sources + agent-maintained cross-referenced wiki + behavior config. Karpathy pattern, 27k+ stars.', section: 'Others' },
-    { id: 'default-design-system', label: 'claude-default-design-system', toolId: 'claude-default-design-system', description: 'TypeScript + React design system with token primitives, semantic theme roles (theme-as-prop), and ComponentMeta contracts. Fork and customize per project.', section: 'Others' },
-    { id: 'requirements-roadmap-md', label: 'REQUIREMENTS.md + ROADMAP.md', toolId: 'claude-template-subagents', description: 'Hierarchical behavioral requirements doc + milestone roadmap. Hooks auto-classify every file change and inject the requirements chain before edits.', section: 'Others' },
+    { id: 'claude-md', label: 'Claude Code default', description: 'Blank Claude Code CLAUDE.md — behavioral instructions and project context. The required baseline, customized per project.', default: true, section: 'CLAUDE.md (base file)', url: 'https://docs.anthropic.com/en/docs/claude-code/memory', defaultGroup: 'claude-md-choice', itemType: 'structural' },
+    { id: 'karpathy-claude-md', label: 'Karpathy CLAUDE.md', toolId: 'karpathy-claude-md', description: 'Community CLAUDE.md synthesized from Karpathy\'s public observations on using Claude Code. Reference for how a prominent AI practitioner\'s workflow preferences translate into instruction form.', section: 'CLAUDE.md (base file)', defaultGroup: 'claude-md-choice', itemType: 'structural' },
+    { id: 'template-claude-md-additions', label: 'CLAUDE.md (additions)', toolId: 'claude-template-subagents', description: 'Additional behavioral rules from claude-template-subagents not covered by individual systems: branch model, commit config, type/lint enforcement, FE verification toggle, upstream update checks, scope manifests.', section: 'CLAUDE.md (additions)', itemType: 'structural', claudeMdSnippet: `## Additional Rules (claude-template-subagents v1.3)\n\nRule 4 — Branch System: One active branch at all times. All work on session.json.activeBranch. Never create multiple branches or switch silently. Completion handshake before merge.\n\nRule 8 — Commit System: autoCommit=false by default. Mid-session: no commits unless toggle on. Session-end WIP commit is mandatory — wired via SessionEnd hook. git push is never automatic.\n\nRule 9 — Logs: Never inject full log files into reasoning. Use session.json fields (session-summary). If you must inspect a log, tail it.\n\nRule 10 — Setup Completion Handoff: After init, output "Initialization complete. Branch: setup / Status: ready" then ask "What would you like to build first?"\n\nRule 11 — Failure Handling: If any required condition is missing — STOP, explain what is missing, wait for user. Do not improvise past a gate.\n\nRule 13 — Type + Lint: Every frontend-engineer or backend-engineer task MUST leave a clean typecheck + lint pass. Not opt-in. Wired via typecheck-lint.sh PostToolUse hook. 3-attempt cap, then BLOCKED.\n\nRule 14 — Frontend Live Verification: Gated by strictFeVerification toggle (default off). When on: Playwright screenshot + selfVerification block required before returning.\n\nRule 15 — Upstream Updates: SessionStart check-updates.sh (24h cache). Emits when template, design-system, or tools are behind. Orchestrator must ask user before proceeding.\n\nRule 16 — Scope Manifest: Every producer task requires a scope: [] whitelist declared by orchestrator. filesChanged[] must be a subset of scope. Scope violations are mechanical failures.\n\nDesign System Vocabulary: Active DS in design-system/<name>/. Categories: Foundations, Primitives, Components, Page templates, Style guides, Rules, Recipes. Project-local components allowed if they conform to DS rules/. Exceptions in .claude/ds-exceptions.md.` },
+    { id: 'design-md', label: 'DESIGN.md', toolId: 'design-md-format', description: 'Design tokens (colors, spacing, typography) as persistent agent context. Google Labs format. CLI lints WCAG AA contrast and exports to Tailwind/DTCG.', linkedGroup: 'design-md-cli', section: 'Others', itemType: 'structural', claudeMdSnippet: `## Design System\n\nDESIGN.md at the repo root contains design tokens (colors, spacing, typography). Reference it as persistent context in every session. Use the DESIGN.md CLI to lint WCAG AA contrast and export tokens to Tailwind/DTCG.` },
+    { id: 'agents-md', label: 'AGENTS.md', url: 'https://docs.anthropic.com/en/docs/claude-code/sub-agents', description: 'Multi-agent coordination: role definitions and handoff rules for when Claude spawns subagents.', section: 'Others', itemType: 'structural', claudeMdSnippet: `## Sub-agents\n\nAGENTS.md defines sub-agent roles, capabilities, and handoff rules. When spawning a sub-agent, consult AGENTS.md for role constraints. Do not dispatch agents not defined there.` },
+    { id: 'llm-wiki', label: 'LLM Wiki (raw/+wiki/+schema/)', toolId: 'llm-wiki-karpathy', description: 'Three-layer memory: immutable sources + agent-maintained cross-referenced wiki + behavior config. Karpathy pattern, 27k+ stars.', section: 'Others', linkedGroup: 'karpathy-wiki-suite', itemType: 'structural', claudeMdSnippet: `## LLM Wiki\n\nThree-layer knowledge base at the repo root:\n- raw/ — immutable source material. Never modify.\n- wiki/ — agent-maintained cross-referenced markdown. Synthesized from raw/.\n- schema/ — behavior config directing agent synthesis.\n\nTo add knowledge: write to raw/ first, then trigger wiki synthesis. Never write directly to wiki/.` },
+    { id: 'default-design-system', label: 'claude-default-design-system', toolId: 'claude-default-design-system', description: 'TypeScript + React design system with token primitives, semantic theme roles (theme-as-prop), and ComponentMeta contracts. Fork and customize per project.', section: 'Others', itemType: 'structural', claudeMdSnippet: `## Design System Vocabulary\n\nThe active design system lives under design-system/<name>/. Categories:\n- Foundations — primitive tokens and semantic constants\n- Primitives — smallest reusable atoms (Button, Input, Icon)\n- Components — composite UI built from primitives (Card, Modal, Table)\n- Page templates — full-page layouts\n- Rules — constraints the validator enforces (tokens-only, no inline styles)\n\nProject-local components are allowed if they conform to the active DS rules/.` },
+    { id: 'requirements-md', label: 'REQUIREMENTS.md', toolId: 'claude-template-subagents', description: 'Hierarchical behavioral requirements doc. Hooks auto-classify every file change and inject the requirements chain before edits.', section: 'Others', itemType: 'structural', claudeMdSnippet: `## Requirements Enforcement\n\nREQUIREMENTS.md reflects **intended product behavior only** — not a changelog or TODO list. On every file change, classify as \`behavioral_change\` or \`non_behavioral_change\`:\n- behavioral_change → update REQUIREMENTS.md to reflect the intended product behavior\n- non_behavioral_change → do NOT touch REQUIREMENTS.md\n\nParent-level requirements belong in the parent file, not a child.` },
+    { id: 'roadmap-md', label: 'ROADMAP.md', toolId: 'claude-template-subagents', description: 'Milestone roadmap. Tracks prioritized work and upcoming phases.', section: 'Others', itemType: 'structural', claudeMdSnippet: `## Roadmap\n\nROADMAP.md tracks milestones and prioritized upcoming work. Reference it when planning new features or assessing scope. Do not modify it unless explicitly asked — roadmap changes are user decisions.` },
+  ],
+  profiles: [
+    { id: 'awesome-agent-profiles', label: 'awesome-claude-code-subagents', toolId: 'awesome-claude-code-subagents', description: '100+ generalist personas (ui-designer, frontend-developer, backend-developer, code-reviewer, etc.). Broader scope than the template profiles — no strict token rules or role boundaries.', section: 'Subagents', itemType: 'reference' },
+    { id: 'template-subagent-profiles', label: 'claude-template-subagents profiles', toolId: 'claude-template-subagents', description: '4 tightly-scoped profiles: designer (layout/tokens only, no code), frontend-engineer (strict token rules + type/lint enforcement), backend-engineer (server-side only), validator (schema/role/DS violations). Live in .claude/subagents/.', section: 'Subagents', itemType: 'structural' },
   ],
   skills: [
-    { id: 'grill-me', label: '/grill-me', toolId: 'sandcastle', description: 'Structured intake: 20+ questions to deeply understand a project before writing code. Matt Pocock / Sandcastle.' },
-    { id: 'tdd', label: '/tdd', toolId: 'sandcastle', description: 'TDD workflow skill: writes failing tests first, then implementation. Matt Pocock / Sandcastle.' },
-    { id: 'ralph-loop', label: '/ralph-loop', toolId: 'sandcastle', description: 'AFK coding loop: runs unattended, queues blockers as questions for you to answer later.' },
-    { id: 'awesome-subagent-skills', label: 'awesome-claude-code-subagents', toolId: 'awesome-claude-code-subagents', description: '100+ specialist personas (Designer, Debugger, Reviewer, Security Auditor). Drop individual profiles into .claude/agents/.' },
-    { id: 'gstack-skills', label: 'gstack skills (23)', toolId: 'gstack', description: 'CEO, Designer, Eng Manager, Release Manager, QA, Doc Engineer, Security. Role-routed from CLAUDE.md.' },
-    { id: 'toolkit-skills', label: 'awesome-claude-code-toolkit', toolId: 'awesome-claude-code-toolkit', description: '400k+ skills via SkillKit, 42 slash commands, 20 hooks, 7 templates.' },
-    { id: 'caveman', label: 'Caveman', toolId: 'caveman', description: 'Enforces terse, telegraphic prompting — cuts output tokens ~65%. Three intensity tiers (Lite/Full/Ultra). Bundled cavecrew subagents (investigate/build/review) and caveman-shrink MCP middleware.' },
-    { id: 'template-project-init', label: '/project-init', toolId: 'claude-template-subagents', description: 'Browser-based setup form (served at localhost:5173/project-setup.html). Soft-blocks all work until filled. Creates GitHub repo, scaffolds tech stack, seeds session state.' },
-    { id: 'template-session-resume', label: '/session-resume', toolId: 'claude-template-subagents', description: 'Emits 4-line status (branch, job, last task, next step) on resume after 30+ min inactivity. Edge-case handling for branch mismatch and empty job state.' },
-    { id: 'template-validation-loop', label: '/validation-loop', toolId: 'claude-template-subagents', description: 'Opt-in strict pipeline: validator → verification layer → tests. Runs only on explicit trigger ("prepare to merge"). 3-attempt cap per producer.' },
+    { id: 'wiki-skills', label: 'LLM Wiki skills', toolId: 'llm-wiki-karpathy', description: 'Agent skills for maintaining the three-layer wiki: add entries to raw/, trigger wiki/ synthesis, update schema/ config. Community implementations of the Karpathy pattern.', linkedGroup: 'karpathy-wiki-suite', itemType: 'structural' },
+    { id: 'grill-me', label: '/grill-me', toolId: 'sandcastle', description: 'Structured intake: 20+ questions to deeply understand a project before writing code. Matt Pocock / Sandcastle.', itemType: 'reference' },
+    { id: 'tdd', label: '/tdd', toolId: 'sandcastle', description: 'TDD workflow skill: writes failing tests first, then implementation. Matt Pocock / Sandcastle.', itemType: 'reference' },
+    { id: 'ralph-loop', label: '/ralph-loop', toolId: 'sandcastle', description: 'AFK coding loop: runs unattended, queues blockers as questions for you to answer later.', itemType: 'reference' },
+    { id: 'gstack-skills', label: 'gstack skills (23)', toolId: 'gstack', description: 'CEO, Designer, Eng Manager, Release Manager, QA, Doc Engineer, Security. Role-routed from CLAUDE.md.', itemType: 'structural' },
+    { id: 'toolkit-skills', label: 'awesome-claude-code-toolkit', toolId: 'awesome-claude-code-toolkit', description: '400k+ skills via SkillKit, 42 slash commands, 20 hooks, 7 templates.', itemType: 'reference' },
+    { id: 'caveman', label: 'Caveman', toolId: 'caveman', description: 'Enforces terse, telegraphic prompting — cuts output tokens ~65%. Three intensity tiers (Lite/Full/Ultra). Bundled cavecrew subagents (investigate/build/review) and caveman-shrink MCP middleware.', itemType: 'reference' },
+    { id: 'template-project-init', label: '/project-init', toolId: 'claude-template-subagents', description: 'Browser-based setup form (served at localhost:5173/project-setup.html). Soft-blocks all work until filled. Creates GitHub repo, scaffolds tech stack, seeds session state.', itemType: 'structural' },
+    { id: 'template-session-resume', label: '/session-resume', toolId: 'claude-template-subagents', description: 'Emits 4-line status (branch, job, last task, next step) on resume after 30+ min inactivity. Edge-case handling for branch mismatch and empty job state.', itemType: 'structural' },
+    { id: 'template-validation-loop', label: '/validation-loop', toolId: 'claude-template-subagents', description: 'Opt-in strict pipeline: validator → verification layer → tests. Runs only on explicit trigger ("prepare to merge"). 3-attempt cap per producer.', itemType: 'reference' },
   ],
   hooks: [
-    { id: 'pre-commit', label: 'Pre-commit validation', url: 'https://docs.anthropic.com/en/docs/claude-code/hooks', description: 'Runs lint, type-check, or tests before every commit. Prevents bad state from landing.' },
-    { id: 'post-tool-call', label: 'Post tool-call hook', url: 'https://docs.anthropic.com/en/docs/claude-code/hooks', description: 'Fires after each Claude tool call — useful for logging, notifications, or enforcing invariants.' },
-    { id: 'sandcastle-hooks', label: 'Sandcastle hook suite', toolId: 'sandcastle', description: 'Production-tested hooks: diff review gates, verification checkpoints, auto-merge conditions.' },
-    { id: 'template-session-hook', label: 'Session check hook', toolId: 'claude-template-subagents', description: 'UserPromptSubmit hook: emits 4-line session status after 30+ min inactivity, writes lastActiveDate. Silent otherwise.' },
-    { id: 'template-requirements-hooks', label: 'Requirements enforcement hooks', toolId: 'claude-template-subagents', description: 'Pre-edit: injects REQUIREMENTS.md chain + classification directive. Post-edit: classifies change as behavioral or non-behavioral, seeds REQUIREMENTS.md in new directories.' },
-    { id: 'template-session-end-hook', label: 'Session-end commit hook', toolId: 'claude-template-subagents', description: 'SessionEnd hook: mandatory "WIP: session checkpoint" commit. No exceptions.' },
+    { id: 'pre-commit', label: 'Pre-commit validation', url: 'https://docs.anthropic.com/en/docs/claude-code/hooks', description: 'Runs lint, type-check, or tests before every commit. Prevents bad state from landing.', itemType: 'structural' },
+    { id: 'post-tool-call', label: 'Post tool-call hook', url: 'https://docs.anthropic.com/en/docs/claude-code/hooks', description: 'Fires after each Claude tool call — useful for logging, notifications, or enforcing invariants.', itemType: 'structural' },
+    { id: 'sandcastle-hooks', label: 'Sandcastle hook suite', toolId: 'sandcastle', description: 'Production-tested hooks: diff review gates, verification checkpoints, auto-merge conditions.', itemType: 'structural' },
+    { id: 'template-session-hook', label: 'Session check hook', toolId: 'claude-template-subagents', description: 'UserPromptSubmit hook: emits 4-line session status after 30+ min inactivity, writes lastActiveDate. Silent otherwise.', itemType: 'structural' },
+    { id: 'template-requirements-hooks', label: 'Requirements enforcement hooks', toolId: 'claude-template-subagents', description: 'Pre-edit: injects REQUIREMENTS.md chain + classification directive. Post-edit: classifies change as behavioral or non-behavioral, seeds REQUIREMENTS.md in new directories.', itemType: 'structural' },
+    { id: 'template-session-end-hook', label: 'Session-end commit hook', toolId: 'claude-template-subagents', description: 'SessionEnd hook: mandatory "WIP: session checkpoint" commit. No exceptions.', itemType: 'structural' },
   ],
   mcps: [
-    { id: 'playwright', label: 'Playwright MCP', toolId: 'playwright-mcp', description: 'Browser automation. Claude verifies its own UI output. Community standard for closing the autonomous web app loop.' },
-    { id: 'github-mcp', label: 'GitHub MCP', url: 'https://github.com/github/github-mcp-server', description: 'Agents read/write issues, PRs, and code directly via GitHub API.' },
-    { id: 'filesystem-mcp', label: 'Filesystem MCP', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem', description: 'Scoped filesystem access beyond the current project directory.' },
+    { id: 'playwright', label: 'Playwright MCP', toolId: 'playwright-mcp', description: 'Browser automation. Claude verifies its own UI output. Community standard for closing the autonomous web app loop.', linkedGroup: 'playwright-suite', itemType: 'structural' },
+    { id: 'github-mcp', label: 'GitHub MCP', url: 'https://github.com/github/github-mcp-server', description: 'Agents read/write issues, PRs, and code directly via GitHub API.', itemType: 'reference' },
+    { id: 'filesystem-mcp', label: 'Filesystem MCP', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem', description: 'Scoped filesystem access beyond the current project directory.', itemType: 'reference' },
   ],
   tools: [
-    { id: 'vite-react-ts', label: 'Vite + React + TypeScript', description: 'Standard web app scaffold. Fast dev server, ESM, type-safe by default.', default: true },
-    { id: 'tailwind', label: 'Tailwind CSS', description: 'Utility-first CSS. Claude generates Tailwind naturally; pairs well with DESIGN.md tokens.', default: true },
-    { id: 'eslint', label: 'ESLint + Prettier', description: 'Code quality and formatting. Pair with the pre-commit hook to enforce on every commit.', default: true },
-    { id: 'designmd-cli', label: 'DESIGN.md CLI', toolId: 'design-md-format', description: 'Required if using DESIGN.md. Lints WCAG AA contrast, exports tokens to Tailwind/DTCG.', linkedGroup: 'design-md-cli' },
-    { id: 'playwright-pkg', label: 'Playwright', url: 'https://playwright.dev', description: 'Required package if using Playwright MCP.' },
-    { id: 'surface-ui-pkg', label: 'surface-ui', toolId: 'surface-ui', description: 'Dev-mode design toolbar overlay. Element inspector, design system panel, component gallery. Add to dev server for in-app design tooling. WIP.' },
-    { id: 'workflow-ai-pkg', label: 'workflow-ai', toolId: 'alexcartaz-workflow-ai', description: 'Multi-service AI workflow platform (React + Express + Cloud API). WIP orchestration layer for managing agent workflows.' },
+    { id: 'surface-ui-pkg', label: 'surface-ui', toolId: 'surface-ui', description: 'Dev-mode design toolbar overlay. Element inspector, design system panel, component gallery. Add to dev server for in-app design tooling. WIP.', itemType: 'reference' },
+    { id: 'workflow-ai-pkg', label: 'workflow-ai', toolId: 'alexcartaz-workflow-ai', description: 'Multi-service AI workflow platform (React + Express + Cloud API). WIP orchestration layer for managing agent workflows.', itemType: 'reference' },
+  ],
+  npm: [
+    { id: 'vite-react-ts', label: 'Vite + React + TypeScript', description: 'Standard web app scaffold. Fast dev server, ESM, type-safe by default.', default: true, url: 'https://vitejs.dev', itemType: 'structural' },
+    { id: 'tailwind', label: 'Tailwind CSS', description: 'Utility-first CSS. Claude generates Tailwind naturally; pairs well with DESIGN.md tokens.', default: true, url: 'https://tailwindcss.com', itemType: 'structural' },
+    { id: 'eslint', label: 'ESLint + Prettier', description: 'Code quality and formatting. Pair with the pre-commit hook to enforce on every commit.', default: true, url: 'https://eslint.org', itemType: 'structural' },
+    { id: 'postgres', label: 'Postgres (pg)', description: 'PostgreSQL client for Node.js. Standard relational DB for full-stack TypeScript projects.', default: true, url: 'https://node-postgres.com', itemType: 'structural' },
+    { id: 'designmd-cli', label: 'DESIGN.md CLI', toolId: 'design-md-format', description: 'Required if using DESIGN.md. Lints WCAG AA contrast, exports tokens to Tailwind/DTCG.', linkedGroup: 'design-md-cli', itemType: 'structural' },
+    { id: 'playwright-pkg', label: 'Playwright', url: 'https://playwright.dev', description: 'Required package if using Playwright MCP.', linkedGroup: 'playwright-suite', itemType: 'structural' },
   ],
 }
+
+const STACK_SYSTEMS: StackSystem[] = [
+  {
+    id: 'requirements-system',
+    name: 'Requirements',
+    description: 'REQUIREMENTS.md + hooks that auto-classify every file change as behavioral or non-behavioral and inject the requirements chain before edits.',
+    sourceBundle: 'claude-template-subagents',
+    provides: { governance: ['requirements-md'], hooks: ['template-requirements-hooks'] },
+    coupling: 'Tightly coupled — requirements-md and the hooks are interdependent. Hooks inject the file into context before edits and update it after. Neither works well without the other.',
+    claudeMdSnippet: `## Rule 12 — Requirements Enforcement (MANDATORY)\n\nOn every file change, classify as behavioral_change or non_behavioral_change:\n- behavioral_change → update REQUIREMENTS.md to reflect intended product behavior\n- non_behavioral_change → do NOT touch REQUIREMENTS.md\n\nREQUIREMENTS.md reflects intended behavior only — not a changelog or TODO list.\n\nHooks:\n- requirements-check.sh (PreToolUse Edit/Write) — injects REQUIREMENTS.md chain + directive\n- requirements-classify.sh (PostToolUse) — fires classification prompt (visible when requirementsDebug: true)\n- requirements-seed.sh (PostToolUse) — seeds REQUIREMENTS.md in every new non-gitignored directory`,
+  },
+  {
+    id: 'session-system',
+    name: 'Session / Job / Task',
+    description: 'Session state (session.json), job+task tracking, project-init setup flow, and session-end WIP commit hook.',
+    sourceBundle: 'claude-template-subagents',
+    provides: { skills: ['template-project-init'], hooks: ['template-session-hook', 'template-session-end-hook'] },
+    coupling: 'session-check hook and session-end hook are linked (state tracking + mandatory WIP commit). /project-init is required first-use — it seeds session.json and the branch that the hooks depend on.',
+    claudeMdSnippet: `## Rule 1 — Session State\n\n.claude/memory/session.json: { activeBranch, currentJob, lastTask, nextStep, lastActiveDate }\nUpdated after every task. lastActiveDate written by session-check.sh hook.\n\n## Rule 5 — Job + Task Model\n\n- Job = high-level goal (session.json.currentJob)\n- Task = current unit of work (session.json.lastTask / nextStep)\nIf currentJob is empty: propose a job, confirm with user, write to session.json. Do not dispatch subagents until set.\n\n## Rule 3 — Project Initialization (MANDATORY)\n\nIf .claude/project-config.json does not exist, run /project-init:\n1. Serve project-setup.html at localhost:5173/project-setup.html\n2. STOP — poll for .claude/project-config.json\n3. Create GitHub repo, scaffold tech stack, clone design-system + surface-ui into slots\n4. Write .claude/template.lock.json, seed session.json, initial commit → push main`,
+  },
+  {
+    id: 'resume-system',
+    name: 'Resume',
+    description: '4-line status block on session resume after 30+ min inactivity. Edge-case handling for branch mismatch and empty job state.',
+    sourceBundle: 'claude-template-subagents',
+    provides: { skills: ['template-session-resume'] },
+    coupling: 'Standalone skill — invoked by the session-check hook when 30+ min inactivity is detected. Requires session.json (session-system) to have written lastActiveDate.',
+    claudeMdSnippet: `## Rule 2 — Session Resume (MANDATORY)\n\nTrigger: user sends a message AND now - lastActiveDate ≥ 30 min (or first message of session).\n\nsession-check.sh (UserPromptSubmit) auto-emits:\n  Active branch / Remote sync / Other branches / Job / Last task / Next step / Toggles\n\nSee .claude/skills/session-resume.md for edge cases:\n- Branch mismatch (activeBranch ≠ current git branch)\n- Empty currentJob (propose before resuming)\n- Post-merge (job concluded, prompt for next)`,
+  },
+  {
+    id: 'roadmap-system',
+    name: 'Roadmap',
+    description: 'ROADMAP.md milestone tracker. Standalone — no hooks or skills required.',
+    sourceBundle: 'claude-template-subagents',
+    provides: { governance: ['roadmap-md'] },
+    coupling: 'Standalone governance file — no required companions. Can be added independently.',
+    claudeMdSnippet: `## ROADMAP.md\n\nMilestone tracker for prioritized upcoming work. Reference it when planning new features or assessing scope.\nDo not modify unless explicitly asked — roadmap changes are user decisions, not agent decisions.`,
+  },
+  {
+    id: 'subagent-delegation-system',
+    name: 'Subagent Delegation',
+    description: 'AGENTS.md role definitions + 4 tightly-scoped subagent profiles (designer, frontend-engineer, backend-engineer, validator).',
+    sourceBundle: 'claude-template-subagents',
+    provides: { governance: ['agents-md'], profiles: ['template-subagent-profiles'] },
+    coupling: 'Tightly coupled — AGENTS.md defines role constraints that the profiles implement. Profiles reference their role boundaries from AGENTS.md. Both required for the subagent model to function correctly.',
+    claudeMdSnippet: `## Subagents (fixed list)\n\n- designer — foundations/primitive/component/token selection. No code.\n- frontend-engineer — implementation. Satisfies Rule 13 (type/lint) and optionally Rule 14 (live verification).\n- backend-engineer (optional) — server-side code. Satisfies Rule 13.\n- validator — checks any producer output for schema/role/design-system violations.\n\nDefinitions: .claude/subagents/<name>/profile.md. Do NOT add more.\nAGENTS.md defines role constraints. When spawning a subagent, consult AGENTS.md.`,
+  },
+  {
+    id: 'validation-system',
+    name: 'Validation Loop',
+    description: 'Opt-in strict pipeline: validator → verification → tests. Triggered explicitly ("prepare to merge"). 3-attempt cap.',
+    sourceBundle: 'claude-template-subagents',
+    provides: { skills: ['template-validation-loop'] },
+    coupling: 'Standalone opt-in skill — only triggered explicitly. Does not run automatically. Works best alongside subagent-delegation-system (validator profile) but can run independently.',
+    claudeMdSnippet: `## Rule 6 — Validation Phase (opt-in)\n\nNOT automatic. Triggered only by: "prepare to merge", "run validation", "finalize this feature", "validate this branch".\n\nPipeline when triggered:\n1. Validator (strict) — design-system, structure, schema checks (validation-loop.md). Reads design-system/<name>/rules/ and .claude/ds-exceptions.md.\n2. Verification (Rule 7) — confirms code landed, every component exists, every token is referenced, no undeclared var(--x) drift.\n3. Tests — run test suite if present. Do NOT fabricate results.\n\nOn failure: output violations, fix, re-run. 3-attempt cap per producer. Then BLOCKED.`,
+  },
+]
 
 const STACK_BUNDLES: StackBundle[] = [
   {
@@ -177,8 +259,8 @@ const STACK_BUNDLES: StackBundle[] = [
     id: 'karpathy-wiki',
     name: 'Karpathy LLM Wiki',
     toolId: 'llm-wiki-karpathy',
-    description: 'Three-layer memory: raw/ (immutable) + wiki/ (agent-maintained) + schema/ (behavior config). 27k+ stars.',
-    provides: { governance: ['llm-wiki'] },
+    description: 'Three-layer memory: raw/ (immutable) + wiki/ (agent-maintained) + schema/ (behavior config). Includes wiki-maintenance skills. 27k+ stars.',
+    provides: { governance: ['llm-wiki'], skills: ['wiki-skills'] },
     conflicts: [],
   },
   {
@@ -186,7 +268,7 @@ const STACK_BUNDLES: StackBundle[] = [
     name: 'awesome-claude-code-subagents',
     toolId: 'awesome-claude-code-subagents',
     description: '100+ pre-built specialist personas. Designer, Debugger, Reviewer, Security Auditor — add individuals or the full set.',
-    provides: { skills: ['awesome-subagent-skills'] },
+    provides: { profiles: ['awesome-agent-profiles'] },
     displayCounts: { profiles: 100 },
     conflicts: ['gstack'],
   },
@@ -196,30 +278,35 @@ const STACK_BUNDLES: StackBundle[] = [
     toolId: 'claude-template-subagents',
     description: 'Full-stack governance template (v1.3). Ships REQUIREMENTS.md + ROADMAP.md, 4 subagent profiles (designer, frontend-engineer, backend-engineer, validator), requirements-enforcement hooks, session-state hooks, and project-init skill with browser-based setup form.',
     provides: {
-      governance: ['agents-md', 'requirements-roadmap-md'],
+      governance: ['agents-md', 'requirements-md', 'roadmap-md', 'template-claude-md-additions'],
+      profiles: ['template-subagent-profiles'],
       skills: ['template-project-init', 'template-session-resume', 'template-validation-loop'],
       hooks: ['template-session-hook', 'template-requirements-hooks', 'template-session-end-hook'],
     },
-    profileCount: 4,
     conflicts: [],
   },
 ]
 
 const DEFAULT_SELECTION: StackSelection = {
   governance: ['claude-md'],
+  profiles: [],
   skills: [],
   hooks: [],
   mcps: [],
-  tools: ['vite-react-ts', 'tailwind', 'eslint'],
+  tools: [],
+  npm: ['vite-react-ts', 'tailwind', 'eslint', 'postgres'],
   bundles: [],
+  systems: [],
 }
 
 const STACK_LAYER_LABELS: Record<StackLayerKey, { label: string; description: string }> = {
   governance: { label: 'Governance', description: '.md files Claude reads as persistent context in every session.' },
+  profiles: { label: 'Profiles', description: 'Sub-agent role definitions — personas Claude adopts or spawns for specialized tasks.' },
   skills: { label: 'Skills', description: 'Slash commands agents can invoke — structured procedures for repeated workflows.' },
   hooks: { label: 'Hooks', description: 'Shell commands that fire on Claude Code events (pre-commit, post-tool-call, etc.).' },
   mcps: { label: 'MCPs', description: 'Model Context Protocol servers that extend what agents can do.' },
-  tools: { label: 'npm Packages', description: 'Packages scaffolded into the new repo.' },
+  tools: { label: 'Tools', description: 'GitHub repos added to the project (dev tooling, overlays, platforms).' },
+  npm: { label: 'NPM Packages', description: 'Packages scaffolded into the new repo.' },
 }
 
 // ---- Curated setup recommendations ----
@@ -1373,12 +1460,100 @@ function useUserDefaults() {
   return { defaults, update }
 }
 
-const LAYER_ORDER: StackLayerKey[] = ['governance', 'skills', 'hooks', 'mcps', 'tools']
+const LAYER_ORDER: StackLayerKey[] = ['governance', 'skills', 'hooks', 'profiles', 'mcps', 'tools', 'npm']
 
 function getItemUrl(item: StackItem): string | null {
   if (item.url) return item.url
   if (item.toolId) return tools.find(t => t.id === item.toolId)?.url ?? null
   return null
+}
+
+// ---- Stack invariant validation (dev only) ----
+if (import.meta.env.DEV) {
+  const errs: string[] = []
+
+  // 1. Every bundle provides[] id must exist in STACK_LAYER_ITEMS
+  STACK_BUNDLES.forEach(b => {
+    ;(Object.entries(b.provides) as [StackLayerKey, string[]][]).forEach(([layer, ids]) => {
+      ids.forEach(id => {
+        if (!STACK_LAYER_ITEMS[layer]?.find(i => i.id === id))
+          errs.push(`Bundle "${b.id}" provides "${id}" in layer "${layer}" but no such item exists`)
+      })
+    })
+  })
+
+  // 2. Every item must have a derivable source (bundle, toolId, or url)
+  LAYER_ORDER.forEach(layer => {
+    STACK_LAYER_ITEMS[layer].forEach(item => {
+      const inBundle = STACK_BUNDLES.some(b => (b.provides[layer] ?? []).includes(item.id))
+      const hasTool = !!item.toolId && !!tools.find(t => t.id === item.toolId)
+      const hasUrl = !!item.url
+      if (!inBundle && !hasTool && !hasUrl)
+        errs.push(`Item "${item.id}" (${layer}) has no source — add toolId, url, or include in a bundle`)
+    })
+  })
+
+  // 3. toolId on every item must resolve in tools[]
+  LAYER_ORDER.forEach(layer => {
+    STACK_LAYER_ITEMS[layer].forEach(item => {
+      if (item.toolId && !tools.find(t => t.id === item.toolId))
+        errs.push(`Item "${item.id}" (${layer}) has toolId "${item.toolId}" which does not exist in tools[]`)
+    })
+  })
+
+  // 4. Every linkedGroup must appear in at least 2 items across all layers
+  const linkedGroupCounts: Record<string, number> = {}
+  LAYER_ORDER.forEach(layer => {
+    STACK_LAYER_ITEMS[layer].forEach(item => {
+      if (item.linkedGroup) linkedGroupCounts[item.linkedGroup] = (linkedGroupCounts[item.linkedGroup] ?? 0) + 1
+    })
+  })
+  Object.entries(linkedGroupCounts).forEach(([group, count]) => {
+    if (count < 2) errs.push(`linkedGroup "${group}" only has ${count} item — needs at least 2`)
+  })
+
+  // 5. Every radioGroup must have at least 2 items in its layer
+  LAYER_ORDER.forEach(layer => {
+    const radioGroups: Record<string, number> = {}
+    STACK_LAYER_ITEMS[layer].forEach(item => {
+      if (item.radioGroup) radioGroups[item.radioGroup] = (radioGroups[item.radioGroup] ?? 0) + 1
+    })
+    Object.entries(radioGroups).forEach(([group, count]) => {
+      if (count < 2) errs.push(`radioGroup "${group}" in layer "${layer}" only has ${count} item — needs at least 2`)
+    })
+  })
+
+  // 6. Bundle toolId must resolve
+  STACK_BUNDLES.forEach(b => {
+    if (b.toolId && !tools.find(t => t.id === b.toolId))
+      errs.push(`Bundle "${b.id}" has toolId "${b.toolId}" which does not exist in tools[]`)
+  })
+
+  if (errs.length > 0) {
+    console.group('%c[Stack Builder] Invariant violations', 'color: red; font-weight: bold')
+    errs.forEach(e => console.error(e))
+    console.groupEnd()
+  }
+}
+
+function syncSystems(sel: StackSelection): StackSelection {
+  const systems = STACK_SYSTEMS
+    .filter(s => (Object.entries(s.provides) as [StackLayerKey, string[]][])
+      .every(([layer, ids]) => ids.every(id => sel[layer].includes(id))))
+    .map(s => s.id)
+  return { ...sel, systems }
+}
+
+function syncBundles(sel: StackSelection): StackSelection {
+  const bundles = STACK_BUNDLES
+    .filter(b => (Object.entries(b.provides) as [StackLayerKey, string[]][])
+      .every(([layer, ids]) => ids.every(id => sel[layer].includes(id))))
+    .map(b => b.id)
+  return { ...sel, bundles }
+}
+
+function sync(sel: StackSelection): StackSelection {
+  return syncBundles(syncSystems(sel))
 }
 
 function StackBuilderContent() {
@@ -1387,6 +1562,10 @@ function StackBuilderContent() {
   const [showSaveInput, setShowSaveInput] = useState(false)
   const [showScript, setShowScript] = useState(false)
   const [editingDefaults, setEditingDefaults] = useState(false)
+  const [expandedSnippets, setExpandedSnippets] = useState<Set<string>>(new Set())
+  const [expandedSystemSnippets, setExpandedSystemSnippets] = useState<Set<string>>(new Set())
+  const toggleSnippet = (id: string) => setExpandedSnippets(prev => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n })
+  const toggleSystemSnippet = (id: string) => setExpandedSystemSnippets(prev => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n })
   const { configs, save, remove } = useStackConfigs()
   const { defaults, update: updateDefaults } = useUserDefaults()
 
@@ -1402,10 +1581,25 @@ function StackBuilderContent() {
         if (turningOn) {
           next[layer] = [...prev[layer].filter(id => !siblings.includes(id)), itemId]
         } else {
-          // Don't allow deselecting the last radio in a group — must always have one
           return prev
         }
-        return next
+        return sync(next)
+      }
+
+      if (item.defaultGroup) {
+        const groupItems = STACK_LAYER_ITEMS[layer].filter(i => i.defaultGroup === item.defaultGroup)
+        const groupIds = groupItems.map(i => i.id)
+        if (turningOn) {
+          if (item.default) {
+            next[layer] = [...prev[layer].filter(id => !groupIds.includes(id)), itemId]
+          } else {
+            const defaultId = groupItems.find(i => i.default)?.id
+            next[layer] = [...prev[layer].filter(id => id !== defaultId), itemId]
+          }
+        } else {
+          next[layer] = prev[layer].filter(id => id !== itemId)
+        }
+        return sync(next)
       }
 
       if (item.linkedGroup) {
@@ -1423,12 +1617,30 @@ function StackBuilderContent() {
             next[l] = next[l].filter(x => x !== id)
           }
         })
-        return next
+        return sync(next)
       }
 
       // Default toggle
       next[layer] = turningOn ? [...prev[layer], itemId] : prev[layer].filter(id => id !== itemId)
-      return next
+      return sync(next)
+    })
+  }
+
+  const toggleSystem = (systemId: string) => {
+    const system = STACK_SYSTEMS.find(s => s.id === systemId)!
+    const isSelected = selection.systems.includes(systemId)
+    setSelection(prev => {
+      const next = { ...prev }
+      if (isSelected) {
+        ;(Object.entries(system.provides) as [StackLayerKey, string[]][]).forEach(([layer, ids]) => {
+          next[layer] = prev[layer].filter(id => !ids.includes(id))
+        })
+      } else {
+        ;(Object.entries(system.provides) as [StackLayerKey, string[]][]).forEach(([layer, ids]) => {
+          ids.forEach(id => { if (!next[layer].includes(id)) next[layer] = [...next[layer], id] })
+        })
+      }
+      return sync(next)
     })
   }
 
@@ -1480,39 +1692,6 @@ function StackBuilderContent() {
   return (
     <>
       {/* User Defaults */}
-      <ReportSubsection id="stack-user-defaults" title="User Defaults">
-        <p className="text-xs text-gray-400 mb-3">Always applied to every config and new repo.</p>
-        {editingDefaults ? (
-          <div className="space-y-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-            <div>
-              <label className="text-xs font-medium text-gray-600 block mb-1">Default tech stack</label>
-              <select value={defaults.techStack} onChange={e => updateDefaults({ techStack: e.target.value })}
-                className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 bg-white focus:outline-none focus:border-gray-400">
-                <option value="vite-react-ts">Vite + React + TypeScript + ESLint</option>
-                <option value="next-ts">Next.js + TypeScript + ESLint</option>
-                <option value="custom">Custom</option>
-              </select>
-            </div>
-            <div>
-              <label className="text-xs font-medium text-gray-600 block mb-1">CLAUDE.md snippets <span className="text-gray-400 font-normal">(appended to every CLAUDE.md)</span></label>
-              <textarea value={defaults.claudeMdText} onChange={e => updateDefaults({ claudeMdText: e.target.value })} rows={4}
-                placeholder={'e.g. Always use pnpm. Never use class components. Default branch is main.'}
-                className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-gray-400 resize-none font-mono" />
-            </div>
-            <button onClick={() => setEditingDefaults(false)}
-              className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-colors">Done</button>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2 flex-wrap">
-            <Tag label={defaults.techStack === 'vite-react-ts' ? 'Vite+React+TS' : defaults.techStack === 'next-ts' ? 'Next.js+TS' : 'Custom stack'} />
-            <Tag label="CLAUDE.md" />
-            <Tag label="ESLint" />
-            {defaults.claudeMdText.trim() && <Tag label="custom snippets" color="blue" />}
-            <button onClick={() => setEditingDefaults(true)} className="text-xs text-gray-400 hover:text-gray-700 ml-auto">Edit</button>
-          </div>
-        )}
-      </ReportSubsection>
-
       {/* Saved Configs */}
       <ReportSubsection id="stack-configs" title="Saved Configs">
         {configs.length > 0 && (
@@ -1559,6 +1738,39 @@ function StackBuilderContent() {
         )}
       </ReportSubsection>
 
+      <ReportSubsection id="stack-user-defaults" title="User Defaults">
+        <p className="text-xs text-gray-400 mb-3">Always applied to every config and new repo.</p>
+        {editingDefaults ? (
+          <div className="space-y-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
+              <label className="text-xs font-medium text-gray-600 block mb-1">Default tech stack</label>
+              <select value={defaults.techStack} onChange={e => updateDefaults({ techStack: e.target.value })}
+                className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 bg-white focus:outline-none focus:border-gray-400">
+                <option value="vite-react-ts">Vite + React + TypeScript + ESLint</option>
+                <option value="next-ts">Next.js + TypeScript + ESLint</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-xs font-medium text-gray-600 block mb-1">CLAUDE.md snippets <span className="text-gray-400 font-normal">(appended to every CLAUDE.md)</span></label>
+              <textarea value={defaults.claudeMdText} onChange={e => updateDefaults({ claudeMdText: e.target.value })} rows={4}
+                placeholder={'e.g. Always use pnpm. Never use class components. Default branch is main.'}
+                className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-gray-400 resize-none font-mono" />
+            </div>
+            <button onClick={() => setEditingDefaults(false)}
+              className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-colors">Done</button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2 flex-wrap">
+            <Tag label={defaults.techStack === 'vite-react-ts' ? 'Vite+React+TS' : defaults.techStack === 'next-ts' ? 'Next.js+TS' : 'Custom stack'} />
+            <Tag label="CLAUDE.md" />
+            <Tag label="ESLint" />
+            {defaults.claudeMdText.trim() && <Tag label="custom snippets" color="blue" />}
+            <button onClick={() => setEditingDefaults(true)} className="text-xs text-gray-400 hover:text-gray-700 ml-auto">Edit</button>
+          </div>
+        )}
+      </ReportSubsection>
+
       {/* Bundles */}
       <ReportSubsection id="stack-bundles" title="Bundles">
         <p className="text-xs text-gray-400 mb-3">Bundles pre-fill multiple layers. Conflicting bundles are mutually exclusive — you can still deselect individual items they include.</p>
@@ -1597,30 +1809,72 @@ function StackBuilderContent() {
                       </p>
                     )}
                     <p className="text-xs text-gray-500 leading-relaxed">{bundle.description}</p>
-                    {isSelected && (
-                      <div className="mt-2 pt-2 border-t border-gray-100 space-y-1.5">
-                        {(Object.entries(bundle.provides) as [StackLayerKey, string[]][]).map(([layer, ids]) => (
-                          <div key={layer} className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
-                            <span className="text-xs text-gray-400 uppercase tracking-wide shrink-0">{STACK_LAYER_LABELS[layer].label}:</span>
-                            {ids.map(id => {
-                              const item = STACK_LAYER_ITEMS[layer].find(i => i.id === id)
-                              if (!item) return null
-                              const url = getItemUrl(item)
-                              return (
-                                <span key={id} className="inline-flex items-center gap-0.5">
-                                  <span className="text-xs text-gray-700 font-medium">{item.label}</span>
-                                  {url && (
-                                    <ExternalLink href={url}>
-                                      <span className="text-xs text-blue-400 hover:text-blue-600">↗</span>
-                                    </ExternalLink>
-                                  )}
-                                </span>
-                              )
-                            })}
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    {isSelected && (() => {
+                      const bundleSystems = STACK_SYSTEMS.filter(s => s.sourceBundle === bundle.id)
+                      const systemItemIds = new Set(bundleSystems.flatMap(s => Object.values(s.provides).flat()))
+                      const looseItems: { layer: StackLayerKey; item: StackItem }[] = []
+                      ;(Object.entries(bundle.provides) as [StackLayerKey, string[]][]).forEach(([layer, ids]) => {
+                        ids.forEach(id => {
+                          if (!systemItemIds.has(id)) {
+                            const item = STACK_LAYER_ITEMS[layer].find(i => i.id === id)
+                            if (item) looseItems.push({ layer, item })
+                          }
+                        })
+                      })
+                      return (
+                        <div className="mt-2 pt-2 border-t border-gray-100 space-y-2">
+                          {bundleSystems.length > 0 && (
+                            <div>
+                              <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Systems</p>
+                              <div className="flex flex-wrap gap-1.5">
+                                {bundleSystems.map(s => (
+                                  <span key={s.id} className={`inline-flex items-center px-2 py-0.5 rounded text-xs border ${selection.systems.includes(s.id) ? 'bg-violet-50 border-violet-200 text-violet-700' : 'bg-gray-50 border-gray-200 text-gray-600'}`}>
+                                    {s.name}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                          {looseItems.length > 0 && (
+                            <div>
+                              {bundleSystems.length > 0 && <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Also includes</p>}
+                              <div className="space-y-0.5">
+                                {looseItems.map(({ layer, item }) => {
+                                  const url = getItemUrl(item)
+                                  return (
+                                    <div key={item.id} className="flex items-center gap-1.5">
+                                      <span className="text-xs text-gray-400">{STACK_LAYER_LABELS[layer].label}:</span>
+                                      <span className="text-xs text-gray-700 font-medium">{item.label}</span>
+                                      {url && <ExternalLink href={url}><span className="text-xs text-blue-400 hover:text-blue-600">↗</span></ExternalLink>}
+                                    </div>
+                                  )
+                                })}
+                              </div>
+                            </div>
+                          )}
+                          {bundleSystems.length === 0 && looseItems.length === 0 && (
+                            <div className="space-y-1.5">
+                              {(Object.entries(bundle.provides) as [StackLayerKey, string[]][]).map(([layer, ids]) => (
+                                <div key={layer} className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
+                                  <span className="text-xs text-gray-400 uppercase tracking-wide shrink-0">{STACK_LAYER_LABELS[layer].label}:</span>
+                                  {ids.map(id => {
+                                    const item = STACK_LAYER_ITEMS[layer].find(i => i.id === id)
+                                    if (!item) return null
+                                    const url = getItemUrl(item)
+                                    return (
+                                      <span key={id} className="inline-flex items-center gap-0.5">
+                                        <span className="text-xs text-gray-700 font-medium">{item.label}</span>
+                                        {url && <ExternalLink href={url}><span className="text-xs text-blue-400 hover:text-blue-600">↗</span></ExternalLink>}
+                                      </span>
+                                    )
+                                  })}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })()}
                     {/* Always-visible component count footer */}
                     {(() => {
                       const dc = bundle.displayCounts ?? {}
@@ -1642,6 +1896,65 @@ function StackBuilderContent() {
                         </div>
                       )
                     })()}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </ReportSubsection>
+
+      {/* Systems */}
+      <ReportSubsection id="stack-systems" title="Systems">
+        <p className="text-xs text-gray-400 mb-3">Named functional subsystems that span multiple layers. A bundle may contain one or more systems plus standalone items.</p>
+        <div className="space-y-2">
+          {STACK_SYSTEMS.map(system => {
+            const isSelected = selection.systems.includes(system.id)
+            const sourceBundleTool = system.sourceBundle
+              ? (() => { const b = STACK_BUNDLES.find(x => x.id === system.sourceBundle); return b?.toolId ? tools.find(t => t.id === b.toolId) : null })()
+              : null
+            const snippetOpen = expandedSystemSnippets.has(system.id)
+            return (
+              <div key={system.id}
+                onClick={() => toggleSystem(system.id)}
+                className={`p-3 rounded-lg border cursor-pointer transition-colors ${isSelected ? 'border-violet-200 bg-violet-50' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
+                <div className="flex items-start gap-2.5">
+                  <input type="checkbox" checked={isSelected} onChange={() => toggleSystem(system.id)}
+                    onClick={e => e.stopPropagation()} className="mt-0.5 flex-shrink-0 cursor-pointer" />
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-xs font-semibold text-gray-800">{system.name}</span>
+                      {system.sourceBundle && (
+                        <span className="text-xs text-gray-400">
+                          from{' '}
+                          {sourceBundleTool
+                            ? <ExternalLink href={sourceBundleTool.url}><span className="text-gray-500 hover:text-gray-700 underline underline-offset-2">{sourceBundleTool.name}</span></ExternalLink>
+                            : <span className="text-gray-500">{system.sourceBundle}</span>}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{system.description}</p>
+                    {system.coupling && (
+                      <p className="text-xs text-amber-600 mt-1 leading-relaxed">{system.coupling}</p>
+                    )}
+                    <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-1.5">
+                      {(Object.entries(system.provides) as [StackLayerKey, string[]][]).map(([layer, ids]) => (
+                        <span key={layer} className="text-xs text-gray-400">
+                          <span className="font-medium text-gray-600">{ids.length}</span> {STACK_LAYER_LABELS[layer].label.toLowerCase()}
+                        </span>
+                      ))}
+                    </div>
+                    {system.claudeMdSnippet && (
+                      <div className="mt-1.5" onClick={e => e.stopPropagation()}>
+                        <button onClick={() => toggleSystemSnippet(system.id)}
+                          className="text-xs text-gray-400 hover:text-gray-600">
+                          {snippetOpen ? '▾ hide CLAUDE.md snippet' : '▸ view CLAUDE.md snippet'}
+                        </button>
+                        {snippetOpen && (
+                          <pre className="mt-1 p-2 bg-gray-50 border border-gray-100 rounded text-xs text-gray-600 font-mono whitespace-pre-wrap leading-relaxed">{system.claudeMdSnippet}</pre>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -1674,6 +1987,14 @@ function StackBuilderContent() {
               if (bundleItems.length > 0) byBundle.set(b, bundleItems)
             })
 
+            // Reverse map: itemId → first bundle that provides it, across ALL bundles (for attribution)
+            const allBundleSource: Record<string, StackBundle> = {}
+            STACK_BUNDLES.forEach(b => {
+              ;(b.provides[layerKey] ?? []).forEach(id => {
+                if (!allBundleSource[id]) allBundleSource[id] = b
+              })
+            })
+
             // Group standalone items by section for display
             const sections: { name: string | undefined; items: StackItem[] }[] = []
             standaloneItems.forEach(item => {
@@ -1698,6 +2019,22 @@ function StackBuilderContent() {
                           {sectionItems.map(item => {
                             const isChecked = selected.includes(item.id)
                             const url = getItemUrl(item)
+                            const sourceBundle = allBundleSource[item.id]
+                            const sourceBundleTool = sourceBundle?.toolId ? tools.find(t => t.id === sourceBundle.toolId) : null
+                            const sourceTool = !sourceBundle && item.toolId ? tools.find(t => t.id === item.toolId) : null
+                            const sourceUrlLabel = !sourceBundle && !sourceTool && item.url
+                              ? (() => {
+                                  try {
+                                    const h = new URL(item.url).hostname.replace('www.', '')
+                                    if (h.includes('anthropic.com')) return { label: 'Anthropic', url: item.url }
+                                    if (h === 'github.com') {
+                                      const parts = new URL(item.url).pathname.split('/').filter(Boolean)
+                                      return { label: parts.slice(0, 2).join('/'), url: item.url }
+                                    }
+                                    return { label: h, url: item.url }
+                                  } catch { return null }
+                                })()
+                              : null
                             return (
                               <label key={item.id} className="flex items-start gap-2.5 cursor-pointer">
                                 {isRadioSection
@@ -1710,6 +2047,7 @@ function StackBuilderContent() {
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center gap-1.5 flex-wrap">
                                     <span className="text-xs font-medium text-gray-800">{item.label}</span>
+                                    {item.itemType === 'structural' && <span className="text-xs text-teal-600 bg-teal-50 px-1 py-0.5 rounded" title="Structural — requires .md integration or automation hook to function">structural</span>}
                                     {item.linkedGroup && <span className="text-xs text-amber-500" title="Selecting this also selects required companion items">linked</span>}
                                     {item.default && !item.radioGroup && <span className="text-xs text-gray-300">default</span>}
                                     {url && !item.default && (
@@ -1717,8 +2055,40 @@ function StackBuilderContent() {
                                         <span className="text-xs text-blue-500 hover:text-blue-700">↗</span>
                                       </ExternalLink>
                                     )}
+                                    {sourceBundle && (
+                                      <span className="text-xs text-gray-400">
+                                        from{' '}
+                                        {sourceBundleTool
+                                          ? <ExternalLink href={sourceBundleTool.url}><span className="text-gray-500 hover:text-gray-700 underline underline-offset-2">{sourceBundle.name}</span></ExternalLink>
+                                          : <span className="text-gray-500">{sourceBundle.name}</span>
+                                        }
+                                      </span>
+                                    )}
+                                    {sourceTool && (
+                                      <span className="text-xs text-gray-400">
+                                        from{' '}
+                                        <ExternalLink href={sourceTool.url}><span className="text-gray-500 hover:text-gray-700 underline underline-offset-2">{sourceTool.name}</span></ExternalLink>
+                                      </span>
+                                    )}
+                                    {sourceUrlLabel && (
+                                      <span className="text-xs text-gray-400">
+                                        from{' '}
+                                        <ExternalLink href={sourceUrlLabel.url}><span className="text-gray-500 hover:text-gray-700 underline underline-offset-2">{sourceUrlLabel.label}</span></ExternalLink>
+                                      </span>
+                                    )}
                                   </div>
                                   {item.description && <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{item.description}</p>}
+                                  {item.claudeMdSnippet && (
+                                    <div className="mt-1">
+                                      <button onClick={e => { e.preventDefault(); toggleSnippet(item.id) }}
+                                        className="text-xs text-gray-400 hover:text-gray-600">
+                                        {expandedSnippets.has(item.id) ? '▾ hide CLAUDE.md snippet' : '▸ view CLAUDE.md snippet'}
+                                      </button>
+                                      {expandedSnippets.has(item.id) && (
+                                        <pre className="mt-1 p-2 bg-gray-50 border border-gray-100 rounded text-xs text-gray-600 font-mono whitespace-pre-wrap leading-relaxed">{item.claudeMdSnippet}</pre>
+                                      )}
+                                    </div>
+                                  )}
                                 </div>
                               </label>
                             )
@@ -2665,20 +3035,20 @@ export default function App() {
           {activeTab === 'events' && <EventsIndex filter={yearFilter} setFilter={switchYear} />}
           {activeTab === 'stack' && (
             <IndexSidebar>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2 px-2">Sections</p>
               <div className="pl-2">
                 {[
-                  { label: 'User Defaults', id: 'stack-user-defaults' },
                   { label: 'Saved Configs', id: 'stack-configs' },
+                  { label: 'User Defaults', id: 'stack-user-defaults' },
                   { label: 'Bundles', id: 'stack-bundles' },
-                  { label: 'Governance', id: 'stack-layer-governance' },
-                  { label: 'Skills', id: 'stack-layer-skills' },
-                  { label: 'Hooks', id: 'stack-layer-hooks' },
-                  { label: 'MCPs', id: 'stack-layer-mcps' },
-                  { label: 'Tools', id: 'stack-layer-tools' },
+                  { label: 'Systems', id: 'stack-systems' },
+                  { label: 'Configure Layers', id: 'stack-layers' },
                 ].map(s => (
                   <IndexItem key={s.id} label={s.label} active={false}
                     onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
+                ))}
+                {LAYER_ORDER.map(k => (
+                  <SubIndexItem key={k} label={STACK_LAYER_LABELS[k].label}
+                    onClick={() => document.getElementById(`stack-layer-${k}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
                 ))}
               </div>
             </IndexSidebar>
