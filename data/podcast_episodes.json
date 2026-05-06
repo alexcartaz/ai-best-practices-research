@@ -657,5 +657,266 @@
     "thumbnail_url": null,
     "is_new": true,
     "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-one-year-of-mcp",
+    "show": "Latent Space",
+    "episode_title": "One Year of MCP — David Soria Parra + AAIF leads from OpenAI, Goose, Linux Foundation",
+    "guest_id": "david-soria-parra",
+    "url": "https://www.latent.space/p/one-year-of-mcp-with-david-soria",
+    "date": "2025-12-27",
+    "topics": [
+      "mcp-servers",
+      "multi-agent-orchestration"
+    ],
+    "summary": "MCP 1-year retro with David Soria Parra (Anthropic), Nick Cooper (OpenAI), Brad Howes (Block/Goose), Jim Zemlin (Linux Foundation). MCP joins the new Agentic AI Foundation under Linux Foundation — confirms MCP is the cross-vendor standard worth investing in for any Claude Code project template.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-gpt5-codex-max",
+    "show": "Latent Space",
+    "episode_title": "GPT5-Codex-Max: Training Agents with Personality, Tools & Trust — Brian Fioca & Bill Chen, OpenAI",
+    "guest_id": "brian-fioca",
+    "url": "https://www.latent.space/p/gpt5-codex-max-training-agents-with",
+    "date": "2025-12-26",
+    "topics": [
+      "claude-code",
+      "session-management",
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 2: Codex Max runs continuously 24+ hours and spawns sub-agents. Personality traits (communication, planning) deliberately trained for developer trust. Adaptation gap: not Claude Code, but the long-horizon + sub-agent + trust dimensions are directly applicable to Claude Code subagent design.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-state-of-code-evals",
+    "show": "Latent Space",
+    "episode_title": "[State of Code Evals] After SWE-bench, Code Clash & SOTA Coding Benchmarks recap — John Yang",
+    "guest_id": "john-yang",
+    "url": "https://www.latent.space/p/state-of-code-evals-after-swe-bench",
+    "date": "2025-12-31",
+    "topics": [
+      "testing-tdd"
+    ],
+    "summary": "John Yang (SWE-bench creator) on how SWE-bench became the de facto standard after Cognition's Devin launch, and emerging benchmarks (CodeClash) that emphasize long-horizon dev and human-AI collaboration over unit-test verification. Reference for picking benchmarks to actually trust.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-state-of-post-training",
+    "show": "Latent Space",
+    "episode_title": "[State of Post-Training] From GPT-4.1 to 5.1: RLVR, Agent & Token Efficiency — Josh McGrath, OpenAI",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/state-of-post-training-from-gpt-41",
+    "date": "2025-12-31",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Josh McGrath (OpenAI) on RLVR, data quality > algorithms, GPT-5.1 token efficiency. Background context for understanding model differences; not a workflow.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-state-of-rl-ashvin-nair",
+    "show": "Latent Space",
+    "episode_title": "[State of RL/Reasoning] IMO/IOI Gold, OpenAI o3/GPT-5, and Cursor Composer — Ashvin Nair",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/state-of-rlreasoning-imoioi-gold",
+    "date": "2025-12-30",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Ashvin Nair (Cursor model lead) on reasoning model breakthroughs and continual learning + infinite memory as the next frontier. Background context.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-state-of-ai-startups",
+    "show": "Latent Space",
+    "episode_title": "[State of AI Startups] Memory/Learning, RL Envs & DBT-Fivetran — Sarah Catanzaro, Amplify",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/state-of-ai-startups-memorylearning",
+    "date": "2025-12-30",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Sarah Catanzaro (Amplify) on memory/continual learning as 2026 growth driver and synthetic RL envs being overrated vs real-world data logs. Investor context.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-sam3-meta",
+    "show": "Latent Space",
+    "episode_title": "SAM 3: The Eyes for AI — Nikhila Ravi & Pengchuan Zhang (Meta), Joseph Nelson (Roboflow)",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/sam-3-the-eyes-for-ai-nikhila-and",
+    "date": "2025-12-18",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Meta SAM 3: concept-prompted segmentation via natural language. Useful only if you need vision/segmentation in your stack.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-jailbreaking-pliny",
+    "show": "Latent Space",
+    "episode_title": "Jailbreaking AGI: Pliny the Liberator & John V on Red Teaming, BT6, and the Future of AI Security",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/jailbreaking-agi-pliny-the-liberator",
+    "date": "2025-12-16",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Pliny the Liberator + John V on universal jailbreaks and the BT6 transparency-as-safety thesis. Useful awareness for hooks/security defaults in any Claude Code template.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-ai-to-aes-mirzadegan",
+    "show": "Latent Space",
+    "episode_title": "AI to AE's: Grit, Glean, and Kleiner Perkins' next Enterprise AI hit — Joubin Mirzadegan",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/ai-to-aes-grit-glean-and-kleiner",
+    "date": "2025-12-12",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 4 — Joubin Mirzadegan (Roadrunner / Kleiner) on enterprise GTM and CPQ pivot. Outside editorial lens.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-superhuman-houssier",
+    "show": "Latent Space",
+    "episode_title": "The Future of Email: Superhuman CTO on Your Inbox As the Real AI Agent — Loïc Houssier",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/the-future-of-email-superhuman-cto",
+    "date": "2025-12-11",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — Loïc Houssier (Superhuman, post-Grammarly acquisition) on agentic email with local-first caching and strategic per-task model selection. Adaptation: 'pick the cheapest model that works per task' is reusable for solo Claude Code workflows.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-world-models-pim-de-witte",
+    "show": "Latent Space",
+    "episode_title": "World Models & General Intuition: Khosla's largest bet since LLMs & OpenAI — Pim de Witte",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/world-models-and-general-intuition",
+    "date": "2025-12-06",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — General Intuition (ex-Medal) building world models on gameplay data; $134M seed from Khosla after turning down OpenAI's $500M offer. Background on the world-models-vs-LLMs frontier.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-after-llms-feifei-li",
+    "show": "Latent Space",
+    "episode_title": "After LLMs: Spatial Intelligence and World Models — Fei-Fei Li & Justin Johnson, World Labs",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/after-llms-spatial-intelligence-and",
+    "date": "2025-11-25",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 3 — World Labs' Marble: text/image-to-editable-3D-environments. Spatial intelligence framed as the 'after-LLMs' frontier. Notable speakers but no Claude Code workflow content.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-tenex-10x-engineers",
+    "show": "Latent Space",
+    "episode_title": "10x AI Engineers with $1m Salaries — Alex Lieberman & Arman Hezarkhani, Tenex",
+    "guest_id": "arman-hezarkhani",
+    "url": "https://www.latent.space/p/10x-ai-engineers-with-1m-salaries",
+    "date": "2025-11-19",
+    "topics": [
+      "claude-code",
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 2: Tenex consultancy compensates engineers via story-point output (not hours), with some clearing $1M+ via 10x AI-enabled productivity. Adaptable lesson for solo devs: measure your own throughput in story-point-equivalents per week, not hours-worked.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-deedy-das-menlo",
+    "show": "Latent Space",
+    "episode_title": "Anthropic, Glean & OpenRouter: How AI Moats Are Built — Deedy Das, Menlo Ventures",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/anthropic-glean-and-openrouter-how",
+    "date": "2025-11-14",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 4 — Deedy Das (Menlo Ventures) on Anthropic's growth and AI moats. Investor framing only; outside editorial lens.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-biohub-czi",
+    "show": "Latent Space",
+    "episode_title": "Biohub for Non-Biologists: Behind Priscilla Chan and Mark Zuckerberg's plan to cure all diseases",
+    "guest_id": null,
+    "url": "https://www.latent.space/p/biohub",
+    "date": "2025-11-13",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 4 — Priscilla Chan + Mark Zuckerberg on CZI Biohub's AI-for-bio strategy. Outside editorial lens.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-jared-palmer-agent-hq",
+    "show": "Latent Space",
+    "episode_title": "Inside GitHub's AI Revolution: Jared Palmer Reveals Agent HQ & The Future of Coding Agents",
+    "guest_id": "jared-palmer",
+    "url": "https://www.latent.space/p/inside-githubs-ai-revolution-jared",
+    "date": "2025-11-10",
+    "topics": [
+      "claude-code",
+      "multi-agent-orchestration"
+    ],
+    "summary": "Tier 1: Jared Palmer (ex-Vercel v0, now SVP GitHub / VP CoreAI Microsoft) on Agent HQ — collaboration platform for devs + AI agents. Direct lineage from v0 to Agent HQ. Highly relevant for understanding where code-hosting platforms are going (and how Claude Code will integrate).",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
+  },
+  {
+    "id": "latent-space-google-jules-borovik",
+    "show": "Latent Space",
+    "episode_title": "[AIE CODE Preview] Inside Google Labs: Building The Gemini Coding Agent — Jed Borovik, Jules",
+    "guest_id": "jed-borovik",
+    "url": "https://www.latent.space/p/aie-code-preview-inside-google-labs",
+    "date": "2025-11-10",
+    "topics": [
+      "claude-code",
+      "session-management"
+    ],
+    "summary": "Tier 2: Google Jules coding-agent infrastructure; shift from embeddings-based search toward attention-based. Adaptation gap: Jules not Claude Code, but the architectural choice (long context, no embeddings retrieval) is notable when designing any coding-agent setup.",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-05-05"
   }
 ]
