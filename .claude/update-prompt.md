@@ -162,7 +162,15 @@ Write 1-3 bullet points in `notable_contributions` explaining:
 4. **Find new tools / repos** related to the active topics
    - The `code-discovery` pipeline (GitHub Trending) handles systematic repo discovery — apply it
    - Also check awesome-claude-code lists for recent curated additions
-   - **Update `github_stars` for all existing tools** that have a `github_url` — fetch the current count and overwrite. Stars drift fast; keep them current.
+   - **Update `github_stars` and `github_pushed_at` for all existing tools** that have a `github_url` — fetch the GitHub API (`api.github.com/repos/{owner}/{repo}`) and read `stargazers_count` and `pushed_at`. Overwrite both fields.
+   - **Conditionally update `primary_files`**: compare the repo's new `pushed_at` against the tool's `files_checked` date. If `pushed_at` is more recent than `files_checked` (or `files_checked` is null), fetch the primary governance files for that tool and measure their size:
+     - For CLAUDE.md / AGENTS.md templates: fetch `CLAUDE.md` and `AGENTS.md` from the raw GitHub URL
+     - For skill repos: fetch each `.md` file under `.claude/commands/` or `skills/`
+     - For hook configs: fetch the hook script files
+     - For MCP servers: fetch the main config or `README.md` as a proxy
+     - Compute `chars` = character count of the file content; `tokens_approx` = `Math.round(chars / 4)`
+     - Write results as `primary_files: [{ path, chars, tokens_approx }]` and set `files_checked` to today's date
+   - If `pushed_at` has not changed since `files_checked`, skip the file fetch entirely — use the stored values as-is.
    - **Do not put star counts in `description` text.** The `github_stars` field is the single source of truth. In prose, use momentum language ("went viral", "fastest-growing repo that week") not specific numbers — those become stale immediately.
 
 5. **Find new events**

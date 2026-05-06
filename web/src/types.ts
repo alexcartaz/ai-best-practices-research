@@ -37,6 +37,12 @@ export interface PersonEpisode {
   topics: string[]
 }
 
+export interface ToolFile {
+  path: string
+  chars: number
+  tokens_approx: number
+}
+
 export interface Tool {
   id: string
   name: string
@@ -45,9 +51,12 @@ export interface Tool {
   url: string
   github_url?: string | null
   github_stars?: number | null
+  github_pushed_at?: string | null
   description: string
   topics: string[]
   status: 'active' | 'archived' | 'unknown'
+  primary_files?: ToolFile[] | null
+  files_checked?: string | null
   is_new?: boolean
   added: string
   last_updated: string
