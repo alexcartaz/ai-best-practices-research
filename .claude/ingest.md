@@ -122,7 +122,23 @@ Key rules specific to this spec:
 
   8. **DuckDuckGo image search (final fallback)** — if all above fail, set `pfp_url` to `https://unavatar.io/duckduckgo/{name}+{concise context}`, e.g. `https://unavatar.io/duckduckgo/Simon+Willison+AI+developer`. This is a single HTTP call that returns an image directly with no scraping. Use it only as a last resort — quality is good but provenance is opaque.
 
-  In practice: try Bluesky → X (unavatar) → Substack → Wikipedia → web search (og:image) → unavatar/duckduckgo in order. Leave `pfp_url: null` if GitHub is the only source (the UI auto-derives it). Prefer `null` over a wrong person's photo — when in doubt, skip.
+  **Mandatory verification before writing any `pfp_url`:** After finding a candidate URL from any source above, make a HEAD (or GET) request and confirm ALL of the following:
+  - HTTP status is `200`
+  - `Content-Type` starts with `image/`
+  - Response body size is `> 5 KB`
+
+  If any check fails, discard the URL and move to the next source. Do not write a `pfp_url` that has not passed this check. No exceptions — not even for URLs that "look right" or come from a trusted source.
+
+  **When none of the structured sources work, use Google Image search via the Chrome browser MCP tools.** Navigate to `https://www.google.com/search?q={name}+{context}&tbm=isch`, run the following JS to extract candidate URLs, and pick the first result that passes the verification check above:
+  ```js
+  const scripts = Array.from(document.querySelectorAll('script')).map(s => s.textContent).join(' ');
+  const urlPattern = /https?:\/\/[^\s"'\\]+\.(jpg|jpeg|png|webp)[^\s"'\\]*/gi;
+  const urls = [...new Set(scripts.match(urlPattern) || [])].filter(u => !u.includes('google.com/images/branding'));
+  urls.slice(0, 15)
+  ```
+  This approach reliably surfaces LinkedIn, X, and personal site headshots in the top 3 results for almost any known person.
+
+  In practice: try Bluesky → X (unavatar) → Substack → Wikipedia → Google Image search in order. Leave `pfp_url: null` if GitHub is the only source (the UI auto-derives it). Prefer `null` over a wrong person's photo — when in doubt, skip.
 
 ---
 
