@@ -2,6 +2,20 @@
   "last_updated": "2026-05-05",
   "tool_adoption": [
     {
+      "claim": "Claude Code pricing/branding is in flux: Anthropic briefly moved Claude Code to Max-only ($100-$200/mo) for ~2% of new signups in April 2026, then reverted after backlash. An apparent rebrand to 'Claude Cowork' surfaced on some signup paths.",
+      "source": "https://simonwillison.net/2026/Apr/22/claude-code-confusion/",
+      "date": "2026-04-22",
+      "confidence": "practitioner-report",
+      "recently_changed": true
+    },
+    {
+      "claim": "Skills-economy data point: David Gomes (Cursor) reports replacing 12K LoC with a 200 LoC SKILL.md at AIE Europe 2026 — 60x reduction. Reinforces the norm that well-written skills outperform imperative code for agent-driven work.",
+      "source": "https://www.ai.engineer/europe/schedule",
+      "date": "2026-04-10",
+      "confidence": "practitioner-report",
+      "recently_changed": true
+    },
+    {
       "claim": "GitHub Copilot leads raw market share at ~41.8% in 2026; Cursor at ~27.3%; Claude Code at ~12.5% (within 12 months of release); Windsurf at ~9.4%",
       "source": "https://www.digitalapplied.com/blog/ai-coding-tool-adoption-2026-developer-survey",
       "date": "2026",
@@ -120,6 +134,26 @@
       "source": "https://newsletter.pragmaticengineer.com/p/ai-tooling-2026",
       "date": "2026-02",
       "confidence": "survey"
+    },
+    {
+      "norm": "Token-efficiency primitives are emerging as a distinct category: caveman (terse-prompting style), claude-context (BM25+vector code search MCP), lean-ctx (Context-OS shell hooks). All target 40-95% token reduction. Solo Claude Code subscription users hitting context limits should adopt at least one.",
+      "source": "https://github.com/JuliusBrussee/caveman",
+      "date": "2026-05",
+      "confidence": "emerging",
+      "recently_changed": true
+    },
+    {
+      "norm": "Three-layer governance pattern is now community-default: CLAUDE.md (behavior) + DESIGN.md (visual rules, Google Labs format) + SKILL.md (procedures). VoltAgent's awesome-design-md (71k+) and Google Labs' design.md (11k+) are the canonical references for the design layer.",
+      "source": "https://github.com/google-labs-code/design.md",
+      "date": "2026-04",
+      "confidence": "practitioner-consensus"
+    },
+    {
+      "norm": "Hooks for safety are increasingly considered table-stakes for any team running Claude Code in CI. Adnan Khan's 'Clinejection' attack (March 2026) showed prompt injection via malicious GitHub issue titles can compromise the anthropics/claude-code-action workflow and steal NPM secrets via cache poisoning. disler/claude-code-hooks-mastery is the canonical hooks reference.",
+      "source": "https://simonwillison.net/2026/Mar/6/clinejection/",
+      "date": "2026-03-06",
+      "confidence": "practitioner-consensus",
+      "recently_changed": true
     }
   ],
   "notes": "This section tracks community consensus on tooling, model usage, and workflow norms. Each run should verify/update these against recent practitioner posts and conference talks. Last populated May 5 2026 from Pragmatic Engineer survey, official Claude docs, practitioner blogs, and Latent Space coverage."

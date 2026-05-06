@@ -537,13 +537,13 @@
     "category": "dev",
     "focus": ["mcp", "multi-agent-orchestration", "unified-project-layer"],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/dsp",
       "bsky": null,
-      "x": null,
-      "linkedin": null,
+      "x": "https://x.com/dsp_",
+      "linkedin": "https://uk.linkedin.com/in/david-soria-parra-4a78b3a",
       "substack": null,
       "medium": null,
-      "website": null
+      "website": "https://experimentalworks.net"
     },
     "talks": [
       {
@@ -659,7 +659,7 @@
     "category": "dev",
     "focus": ["multi-agent-orchestration", "skills", "testing-tdd", "coding-agents"],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/beyang",
       "bsky": null,
       "x": null,
       "linkedin": "https://www.linkedin.com/in/beyang-liu",
@@ -752,13 +752,13 @@
     "category": "dev",
     "focus": ["repo-template-governance", "multi-agent-orchestration", "ai-native-development", "context-engineering"],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/jedi4ever",
       "bsky": null,
-      "x": null,
-      "linkedin": null,
+      "x": "https://x.com/patrickdebois",
+      "linkedin": "https://be.linkedin.com/in/patrickdebois",
       "substack": null,
       "medium": null,
-      "website": null
+      "website": "https://www.jedi.be/blog"
     },
     "talks": [
       {
@@ -858,13 +858,13 @@
     "category": "dev",
     "focus": ["multi-agent-orchestration", "containerization", "testing-tdd"],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/shykes",
       "bsky": null,
-      "x": null,
-      "linkedin": null,
+      "x": "https://x.com/solomonstre",
+      "linkedin": "https://www.linkedin.com/in/solomonhykes",
       "substack": null,
       "medium": null,
-      "website": null
+      "website": "https://dagger.io"
     },
     "talks": [
       {
@@ -892,13 +892,13 @@
     "category": "dev",
     "focus": ["testing-tdd", "multi-agent-orchestration", "benchmarks"],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/john-b-yang",
       "bsky": null,
-      "x": null,
+      "x": "https://x.com/jyangballin",
       "linkedin": null,
       "substack": null,
       "medium": null,
-      "website": null
+      "website": "https://john-b-yang.github.io"
     },
     "talks": [],
     "podcast_episodes": [

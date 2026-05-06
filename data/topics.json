@@ -18,14 +18,23 @@
       "hooks": {
         "description": "Shell commands that fire on Claude Code events (pre/post tool use, session start/stop). What hooks should ship by default for safety and observability?",
         "approaches": [
+          "disler/claude-code-hooks-mastery: canonical reference for all 12 lifecycle events with build/validate orchestration patterns",
           "Intercom (Brian Scanlan): production-safe DB hooks (read-replica only, block critical tables, Okta auth, DynamoDB audit trail)",
+          "Matt Pocock git-guardrails-claude-code skill: hook-style block on dangerous git commands",
+          "Clinejection (March 2026, Adnan Khan): demonstrates prompt injection via malicious GitHub issue titles in claude-code-action workflow — hooks on tool/git/PR boundaries are now table-stakes for CI use",
           "hesreallyhim/awesome-claude-code: curated hook examples registry"
         ]
       },
       "skills": {
         "description": "Which slash-command skills to include out of the box. How to author them. How to version and share them.",
         "approaches": [
-          "gstack: 23 specialist skills covering CEO, Designer, Eng Manager, Release Manager, QA, Security, Doc Engineer roles",
+          "Skills > imperative code (David Gomes / Cursor, AIE Europe 2026): replacing 12K LoC with a 200 LoC SKILL.md as the new normal — write skills, not code",
+          "Matt Pocock /skills repo (61k+ stars, May 2026): 17 production workflow skills published from his own .claude/ directory",
+          "Addy Osmani agent-skills (28k+, Feb 2026): full SDLC skills bundle (Define-Plan-Build-Verify-Review-Ship) with reusable personas",
+          "wshobson/agents (34k+): pre-built subagent team for full-stack web (backend-architect, frontend-developer, test-automator, security-auditor, deployment-engineer)",
+          "gstack (89k+): 23 specialist skills covering CEO, Designer, Eng Manager, Release Manager, QA, Security, Doc Engineer roles",
+          "Marc Klingen (Langfuse, AIE Europe 2026): 'Skill issue' — practical pitfalls of writing SKILL.md that teaches a coding agent to use a specific library",
+          "Pedro Rodrigues (Supabase, AIE Europe 2026): skills + MCP are complementary (skills = static knowledge, MCP = live tools); design them together",
           "Matt Pocock: /grill-me (structured intake), /write-a-prd, /write-issues (plan-mode enforcement)",
           "hesreallyhim/awesome-claude-code: community-curated registry of validated skills"
         ]
@@ -70,15 +79,17 @@
     "description": "Claude's default context compaction loses state badly. Current best practice (Matt Pocock): backup context at ~100k tokens, /clear, reload backup. Need to verify if this fully solves context collapse or if additional structure is required.",
     "status": "active-pain",
     "approaches": [
+      "Token-efficiency primitives (May 2026): caveman (54k stars, terse-prompting style — ~65% output token cut), zilliztech/claude-context (10k, BM25+vector code search MCP — 40% reduction), yvgude/lean-ctx (1k, Context-OS shell hooks — 60-95% cut). Orthogonal strategies; pick at least one for any long-running session.",
       "backup-clear-reload at ~100k tokens (Matt Pocock / Sandcastle)",
       "Intervene at ~60% context utilization; auto-compact triggers at ~80-90%",
       "/compact with specific instructions ('Focus on the API changes') for better summaries",
       "Session Memory writes summaries continuously — /compact is now near-instant",
       "Karpathy LLM wiki pattern: wiki/ directory updated by agent provides cross-session memory",
+      "Cavemem (Julius Brussee): cross-agent persistent memory layer using compressed-grammar storage",
       "claude-code-transcripts (Simon Willison): export sessions to HTML/Gist for reference"
     ],
-    "related_people": ["matt-pocock", "simon-willison", "andrej-karpathy"],
-    "related_tools": ["sandcastle", "claude-code-transcripts", "llm-wiki-karpathy"]
+    "related_people": ["matt-pocock", "simon-willison", "andrej-karpathy", "julius-brussee"],
+    "related_tools": ["sandcastle", "claude-code-transcripts", "llm-wiki-karpathy", "caveman", "claude-context-zilliz", "lean-ctx"]
   },
   {
     "id": "low-level-fe-verification",
@@ -126,11 +137,14 @@
     "description": "Need to: (1) view design system tokens/primitives/components, (2) add to it, (3) navigate pages, (4) see viewports, (5) fast-iterate on UI similar to element inspector + claude.ai/design comment-on-element. Could be split: design system viewer + design toolbar.",
     "status": "active-pain",
     "approaches": [
-      "open design (YouTube reference)",
-      "claude.ai/design comment-on-element as reference UX"
+      "Open Design (nexu-io, 27.9k stars, May 2026): local-first open-source Claude Design alternative. Auto-detects 15+ coding-agent CLIs and uses them as design engines. Ships 129 design systems as DESIGN.md, 31 SKILL.md skills, exposes MCP server so Claude Code in any other repo can query live tokens.",
+      "design-extract (Manavarya09, ~2k stars, Apr 2026): Playwright-driven extractor that turns any live website into DTCG tokens, Tailwind v4 config, shadcn/ui components, Figma variables — exposed as MCP server",
+      "paper.design (Stephen Haney): code-native canvas on real React + Tailwind",
+      "claude.ai/design comment-on-element as reference UX",
+      "Open Design YouTube series (8XcbyliBwc4 etc.) — practitioner walkthroughs of the workflow"
     ],
     "related_people": ["stephen-haney"],
-    "related_tools": ["paper-design"]
+    "related_tools": ["paper-design", "open-design-nexu", "design-extract", "claude-design"]
   },
   {
     "id": "unified-project-layer",
@@ -148,12 +162,16 @@
     "status": "active-research",
     "approaches": [
       "Playwright MCP (executeautomation/mcp-playwright): browser automation + visual verification — the highest-value MCP for web app development",
+      "claude-context (zilliztech, ~10.7k): BM25 + dense vector + AST chunking MCP for searching big monorepos efficiently — ~40% token reduction",
+      "design-extract MCP (Manavarya09, Apr 2026): exposes a 'extract design system from live URL' tool to Claude Code",
+      "Open Design MCP (nexu-io): exposes live design tokens / CSS / components from your design repo to any Claude Code session",
       "designmd.ai MCP: direct DESIGN.md file integration without manual file downloads",
       "Ruflo ships 314 native MCP tools — source for discovering new MCPs in the agent orchestration space",
+      "Pedro Rodrigues (Supabase, AIE Europe 2026): pair skills (static knowledge) with MCP (live tools) — design them together",
       "CLAUDE.md pattern: list active MCPs and their purpose in the project root so Claude always knows what tools are available"
     ],
-    "related_people": ["david-soria-parra", "samuel-colvin"],
-    "related_tools": ["playwright-mcp", "designmd-ai", "ruflo"]
+    "related_people": ["david-soria-parra", "samuel-colvin", "pedro-rodrigues"],
+    "related_tools": ["playwright-mcp", "designmd-ai", "ruflo", "claude-context-zilliz", "design-extract", "open-design-nexu"]
   },
   {
     "id": "multi-agent-orchestration",

@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "id": "q-20260505-001",
+    "asked": "2026-05-05",
+    "run": "2026-05-05",
+    "type": "url-verify",
+    "question": "Profile-lookup pass needed for these untracked or null-heavy people. Investigate next run? owen-williams (7 nulls, Stripe Protodash designer), david-gomes (7 nulls, Cursor — '12K LoC -> 200 LoC Skill' talk), pedro-rodrigues (7 nulls, Supabase — Skills+MCP talk), marc-klingen (6 nulls, Langfuse co-founder), tuomas-artman (5 nulls, Linear co-founder), boris-cherny (5 nulls, Head of Claude Code at Anthropic), ryan-lopopolo (5 nulls, OpenAI 'Harness Engineering'), steve-ruiz (5 nulls, tldraw founder), gergely-orosz (5 nulls, Pragmatic Engineer).",
+    "context": "These all gave talks or wrote influential pieces in our research window but I did not run the profile-lookup pipeline against them this run (I prioritized david-soria-parra, solomon-hykes, john-yang, patrick-debois, beyang-liu). Worth a batch profile lookup next week.",
+    "status": "open",
+    "answer": null,
+    "answered_at": null
+  },
+  {
+    "id": "q-20260505-002",
+    "asked": "2026-05-05",
+    "run": "2026-05-05",
+    "type": "topic-classify",
+    "question": "Should we add a new top-level topic for 'token-efficiency / context economy'? Caveman, claude-context, lean-ctx, and parts of the Karpathy LLM wiki pattern all share a thesis (cut context spend) but currently scatter across session-management and skills topics.",
+    "context": "Three new tools added this run target token reduction as their core value: caveman (54.6k stars), zilliztech/claude-context (10.7k), yvgude/lean-ctx (1k). They're related but stylistically distinct (prompting style vs. retrieval vs. read-pipeline). Could justify its own topic — but per the rules, topics are user-controlled, so flagging instead of adding.",
+    "status": "open",
+    "answer": null,
+    "answered_at": null
+  },
+  {
+    "id": "q-20260505-003",
+    "asked": "2026-05-05",
+    "run": "2026-05-05",
+    "type": "person-ingest",
+    "question": "AIE Europe 2026 surfaced ~15 untracked practitioners with strong-signal talks. I ingested 3 (david-gomes, marc-klingen, pedro-rodrigues). Should I batch-ingest the rest next run? Candidates: Eric Zakariasson (Cursor, 'Building your own software factory'), Chris Parsons (Cherrypick, 'Ralph Loops'), Lou Bichard (Ona, 'Missing Primitive for Agent Swarms'), Nick Taylor (Pomerium, 'Securing OpenClaw'), Stephen Parkinson ('Nono.sh: dangerous mode'), Talha Sheikh (Checkout, 'Coding agent rule-following'), Marlene Mhangami (MS, 'Beyond Code Coverage'), Sam Morrow (GitHub, 'GitHub MCP Server'), Karan Sampath (Anthropic, MCP enterprise), Liad Yosef + Ido Salomon (MCP Apps), Ruben Casas (Postman, 'Generative UI'), Ara Khan (Cline, 'AI Agent Maturity'), Matan Grinberg (Factory).",
+    "context": "All gave talks at AIE Europe 2026 directly relevant to our active topics. Skipped this run for bandwidth — 3 highest-signal added.",
+    "status": "open",
+    "answer": null,
+    "answered_at": null
+  }
+]
