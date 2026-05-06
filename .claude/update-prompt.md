@@ -23,6 +23,7 @@ You are a research agent maintaining a living knowledge base about the AI coding
    - Which topics does it relate to? Add those topic IDs to the item's record
    - If it's a person not yet in `data/people.json`, research their profiles and add them
    - After processing all inbox items, clear `data/inbox.json` back to an empty array `[]`
+   - **If an inbox item has `"is_source": true`**: after processing the item itself, also create an entry in `data/sources.json` for it. Determine the correct `type` (podcast, youtube-channel, article-feed, etc.) from the URL and content, fill in reasonable `relevance_keywords` and `notes`, and set `added` to today's date.
    - **Inbox items are always processed regardless of the research window** — they represent user-curated signals that take priority over automated research
 
 1. **Determine the research window**
@@ -86,6 +87,20 @@ Apply the matching procedure based on each source's `type` field in `data/source
 3. **Assess signal** — Is this person sharing repos, tutorials, demos, or workflow patterns? Or just opinions? Opinions without concrete output = skip.
 4. **Cross-validate** — Resolve the username to a real person: check their profile for links to GitHub, personal site, or other platforms. A GitHub repo with stars = confirmed practitioner signal.
 5. **Ingest** — If the person passes the filter and isn't already tracked: run person ingestion. Note the source post URL in their `notable_contributions`.
+
+### Pipeline: `article-feed`
+
+1. **Find articles** — Fetch the RSS feed (`urls.rss`) or the website (`urls.website`) to enumerate new posts in the research window.
+2. **Identify topic + author** — Extract title, author, publish date. Check if the author is already tracked in `data/people.json`.
+3. **Assess relevance** — Apply `relevance_keywords`. For high-signal feeds like Simon Willison's blog, nearly everything is relevant — err toward inclusion.
+4. **Ingest** — Add relevant posts to `data/articles.json`. If the author isn't tracked and the post is Tier 1: run person ingestion.
+
+### Pipeline: `youtube-channel`
+
+1. **Find videos** — Fetch the channel page (`urls.youtube`) to enumerate new uploads in the research window.
+2. **Identify topic** — Extract video title and description. Apply `relevance_keywords`.
+3. **Score engagement** — Fetch like count and view count for each video. Videos below `min_engagement_views` are still ingested if the topic is Tier 1 but flagged as lower signal.
+4. **Ingest** — Add relevant videos as talks on the relevant person's record in `data/people.json`. If the channel belongs to an untracked person: run person ingestion first.
 
 ### Pipeline: `code-discovery` (GitHub Trending)
 
@@ -159,6 +174,27 @@ Write 1-3 bullet points in `notable_contributions` explaining:
 
 7. **Recency weighting rule**: Content older than 3 months gets a mental flag that best practices may have evolved. Content older than 6 months should be noted as potentially outdated. Do not surface old content just because it exists.
 
+## Agent questions
+
+Whenever you are uncertain about a decision — whether to ingest a person, how to classify a tool, whether a URL is real — write a question to `data/agent-questions.json` instead of guessing or skipping.
+
+Each question entry:
+```json
+{
+  "id": "q-YYYYMMDD-NNN",
+  "asked": "YYYY-MM-DD",
+  "run": "YYYY-MM-DD",
+  "type": "person-ingest | url-verify | topic-classify | threshold | other",
+  "question": "Plain-English question for the user.",
+  "context": "Relevant details: source URL, engagement numbers, why you're uncertain.",
+  "status": "open",
+  "answer": null,
+  "answered_at": null
+}
+```
+
+Before writing, check `data/agent-questions.json` for existing questions with `status: "answered"` — apply any answers that are relevant to your current run, then set those entries to `status: "dismissed"` so they don't accumulate.
+
 ## What to update
 
 Read the existing JSON files, then update them:
@@ -168,7 +204,7 @@ Read the existing JSON files, then update them:
 - `data/events.json` — add new events and notable talks
 - `data/articles.json` — add new articles (include: title, author_id, url, date, topics[], summary, recency_flag)
 - `data/podcast_episodes.json` — add new episodes (include: show, episode_title, guest_id, url, date, topics[], summary)
-- `data/topics.json` — add new approaches discovered for each topic
+- `data/topics.json` — add new approaches discovered for each topic. **Do not add new topics** — if you identify a gap in topic coverage, write a question to `data/agent-questions.json` proposing it instead
 
 ## Update industry norms
 
@@ -179,6 +215,8 @@ Update `data/industry_norms.json`:
 - Flag any norm that has visibly shifted in the last 2 months with a `"recently_changed": true` field.
 
 ## After updating JSON
+
+**Priority:** JSON data quality always comes first. If you are running low on context or time, skip the LANDSCAPE.md generation — never skip the data updates or agent-questions.
 
 Generate/overwrite `reports/LANDSCAPE.md` — a human-readable synthesis with these sections in order:
 
@@ -240,6 +278,7 @@ The email body should include:
 - **Diffs / Shifts**: any changes to `industry_norms.json` (e.g. model recommendation changes, adoption stat changes) — format these as "changed from X → Y"
 - **Topic Updates**: for each topic in `topics.json`, any new approaches or tools discovered
 - **Link to commit**: if GitHub remote is set, include a link to the diff
+- **Questions for you** (at the bottom): list any new open questions written to `data/agent-questions.json` this run — one line each with the question text and type tag
 
 If `RESEND_API_KEY` is not set, skip the email step and log a warning in the update file instead.
 

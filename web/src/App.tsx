@@ -10,7 +10,8 @@ import topicsRaw from '../../data/topics.json'
 import inboxRaw from '../../data/inbox.json'
 import eventsRaw from '../../data/events.json'
 import gapsRaw from '../../data/gaps.json'
-import type { Person, Tool, Article, PodcastEpisode, YouTubeChannel, IndustryNorms, Topic, Event, Gap } from './types'
+import agentQuestionsRaw from '../../data/agent-questions.json'
+import type { Person, Tool, Article, PodcastEpisode, YouTubeChannel, IndustryNorms, Topic, Event, Gap, AgentQuestion } from './types'
 
 const people = peopleRaw as Person[]
 const tools = toolsRaw as Tool[]
@@ -22,6 +23,7 @@ const topics = topicsRaw as Topic[]
 const inboxItems = (inboxRaw as InboxItem[]).filter(i => !i._comment)
 const allEvents = eventsRaw as Event[]
 const seedGaps = gapsRaw as Gap[]
+const seedQuestions = agentQuestionsRaw as AgentQuestion[]
 
 const REPO = 'alexcartaz/ai-best-practices-research'
 
@@ -32,7 +34,7 @@ function fmtDate(iso: string | null | undefined): string {
 }
 
 type MainTab = 'report' | 'youtube' | 'articles' | 'podcasts' | 'tools' | 'people' | 'events'
-type ReportSection = 'updates' | 'gaps' | 'stack' | 'governance' | 'design' | 'orchestration' | 'harness-engineering' | 'industry-norms' | 'queued'
+type ReportSection = 'updates' | 'gaps' | 'stack' | 'governance' | 'design' | 'orchestration' | 'harness-engineering' | 'industry-norms' | 'questions' | 'queued'
 
 const MAIN_TABS: { id: MainTab; label: string }[] = [
   { id: 'report', label: 'Report' },
@@ -53,6 +55,7 @@ const REPORT_SECTIONS: { id: ReportSection; label: string }[] = [
   { id: 'orchestration', label: 'Orchestration' },
   { id: 'harness-engineering', label: 'Harness Engineering' },
   { id: 'industry-norms', label: 'Industry Norms' },
+  { id: 'questions', label: 'Questions' },
   { id: 'queued', label: 'Queue' },
 ]
 
@@ -138,6 +141,26 @@ const STACK_LAYERS: StackLayer[] = [
       { id: 'manual', label: 'Manual review', complexity: 'simple', description: 'You review every diff. No automation. Right for short iteration cycles where you\'re watching the agent work.' },
       { id: 'playwright', label: 'Playwright MCP', toolId: 'playwright-mcp', complexity: 'standard', description: 'Agents verify their own UI output via browser automation. Community standard for closing the autonomous coding loop on web apps without human eyes on every render.' },
       { id: 'sandcastle', label: 'Sandcastle pattern', toolId: 'sandcastle', complexity: 'complex', description: 'Docker + git worktrees + automated merge + verification pipeline. The reference implementation for production-grade agent reliability. Patterns are adaptable even if you\'re on subscription (not API).' },
+    ],
+  },
+  {
+    id: 'subagent-profiles',
+    label: 'Subagent Profiles',
+    description: 'Persona definitions for specialist subagents — who Claude is when operating in a given role, not just what it does.',
+    options: [
+      { id: 'none', label: 'None', complexity: 'simple', description: 'No named subagent roles. Claude operates as a generalist in every session. Right for most solo web app work where you don\'t need specialist handoffs.' },
+      { id: 'voltagent', label: 'awesome-claude-code-subagents', toolId: 'awesome-claude-code-subagents', complexity: 'standard', description: '100+ pre-built subagent personas by VoltAgent — Designer, Debugger, Reviewer, Security Auditor, etc. Drop individual profiles into your .claude/agents/ folder as needed.' },
+      { id: 'gstack-roles', label: 'gstack roles', toolId: 'gstack', complexity: 'complex', description: 'Full gstack role system: CEO, Designer, Eng Manager, Release Manager, QA, Doc Engineer, Security. CLAUDE.md routes between them. Best when you want a full virtual team with opinionated handoff rules.' },
+    ],
+  },
+  {
+    id: 'memory',
+    label: 'Memory & Cross-session Context',
+    description: 'How project knowledge persists across Claude Code sessions — prevents losing context on every /clear or new session.',
+    options: [
+      { id: 'none', label: 'CLAUDE.md notes only', complexity: 'simple', description: 'Manually maintain a "Current state" or "Recent decisions" section in CLAUDE.md. Low overhead, always visible, but requires you to keep it updated. Right starting point for most projects.' },
+      { id: 'backup-reload', label: 'Backup → clear → reload', complexity: 'standard', description: 'Matt Pocock\'s pattern: at ~100k tokens, back up the current context summary, /clear, reload the backup. Prevents compaction drift without complex infrastructure.' },
+      { id: 'llm-wiki', label: 'Karpathy LLM Wiki', toolId: 'llm-wiki-karpathy', complexity: 'complex', description: 'Three-layer directory: raw/ (immutable sources) + wiki/ (agent-maintained cross-referenced markdown) + schema/ (behavior config). Agent actively maintains its own knowledge base between sessions. 27k+ stars. High setup cost, high long-term payoff for large or long-lived projects.' },
     ],
   },
 ]
@@ -566,7 +589,13 @@ const REPORT_SUBSECTIONS: Record<ReportSection, { label: string; id: string }[]>
   ],
   stack: [
     { label: 'Saved Configs', id: 'stack-configs' },
-    { label: 'Configure', id: 'stack-layers' },
+    { label: 'Context Files', id: 'stack-layer-context' },
+    { label: 'Governance', id: 'stack-layer-governance' },
+    { label: 'Subagent Profiles', id: 'stack-layer-subagent-profiles' },
+    { label: 'Memory', id: 'stack-layer-memory' },
+    { label: 'Orchestration', id: 'stack-layer-orchestration' },
+    { label: 'Isolation', id: 'stack-layer-isolation' },
+    { label: 'Verification', id: 'stack-layer-verification' },
   ],
   governance: [
     { label: 'Top Setups', id: 'gov-top-setups' },
@@ -604,6 +633,11 @@ const REPORT_SUBSECTIONS: Record<ReportSection, { label: string; id: string }[]>
     { label: 'Workflow Norms', id: 'norms-workflow' },
     { label: 'Non-Dev AI', id: 'norms-non-dev' },
   ],
+  questions: [
+    { label: 'Open', id: 'q-open' },
+    { label: 'Answered', id: 'q-answered' },
+    { label: 'Dismissed', id: 'q-dismissed' },
+  ],
   queued: [],
 }
 
@@ -628,6 +662,10 @@ function ReportIndex({ section, setSection }: { section: ReportSection; setSecti
       </div>
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mt-5 mb-2 px-2">Next Report Run</p>
       <div className="pl-2">
+        <IndexItem label="Questions" active={section === 'questions'} onClick={() => setSection('questions')} />
+        {section === 'questions' && REPORT_SUBSECTIONS['questions'].map(sub => (
+          <SubIndexItem key={sub.id} label={sub.label} onClick={() => scrollTo(sub.id)} />
+        ))}
         <IndexItem label="Queue" active={section === 'queued'} onClick={() => setSection('queued')} />
       </div>
     </IndexSidebar>
@@ -896,6 +934,15 @@ function useLocalGaps() {
     try { return JSON.parse(localStorage.getItem('ai-research-gaps') ?? '[]') }
     catch { return [] }
   })
+  const [overrides, setOverrides] = useState<Record<string, Partial<Gap>>>(() => {
+    try { return JSON.parse(localStorage.getItem('ai-research-gap-overrides') ?? '{}') }
+    catch { return {} }
+  })
+  const [deletedIds, setDeletedIds] = useState<string[]>(() => {
+    try { return JSON.parse(localStorage.getItem('ai-research-gap-deleted') ?? '[]') }
+    catch { return [] }
+  })
+
   const addGap = useCallback((gap: Gap) => {
     setLocalGaps(prev => {
       const next = [...prev, gap]
@@ -903,71 +950,153 @@ function useLocalGaps() {
       return next
     })
   }, [])
+
   const updateGap = useCallback((id: string, patch: Partial<Gap>) => {
-    setLocalGaps(prev => {
-      const next = prev.map(g => g.id === id ? { ...g, ...patch } : g)
-      localStorage.setItem('ai-research-gaps', JSON.stringify(next))
-      return next
-    })
+    const isLocal = JSON.parse(localStorage.getItem('ai-research-gaps') ?? '[]').some((g: Gap) => g.id === id)
+    if (isLocal) {
+      setLocalGaps(prev => {
+        const next = prev.map(g => g.id === id ? { ...g, ...patch } : g)
+        localStorage.setItem('ai-research-gaps', JSON.stringify(next))
+        return next
+      })
+    } else {
+      setOverrides(prev => {
+        const next = { ...prev, [id]: { ...(prev[id] ?? {}), ...patch } }
+        localStorage.setItem('ai-research-gap-overrides', JSON.stringify(next))
+        return next
+      })
+    }
   }, [])
-  return { localGaps, addGap, updateGap }
+
+  const deleteGap = useCallback((id: string) => {
+    const localList: Gap[] = JSON.parse(localStorage.getItem('ai-research-gaps') ?? '[]')
+    const isLocal = localList.some((g: Gap) => g.id === id)
+    if (isLocal) {
+      setLocalGaps(prev => {
+        const next = prev.filter(g => g.id !== id)
+        localStorage.setItem('ai-research-gaps', JSON.stringify(next))
+        return next
+      })
+    } else {
+      setDeletedIds(prev => {
+        const next = [...prev, id]
+        localStorage.setItem('ai-research-gap-deleted', JSON.stringify(next))
+        return next
+      })
+    }
+  }, [])
+
+  const mergedGaps = useMemo(() => {
+    const seeds = seedGaps
+      .filter(g => !deletedIds.includes(g.id))
+      .map(g => {
+        const { potential_solutions: _ps, ...safeOverride } = overrides[g.id] ?? {}
+        return { ...g, ...safeOverride }
+      })
+    const localFiltered = localGaps.filter(g => !deletedIds.includes(g.id))
+    return [...seeds, ...localFiltered]
+  }, [localGaps, overrides, deletedIds])
+
+  return { mergedGaps, localGaps, addGap, updateGap, deleteGap }
 }
 
 const GAP_AREAS = ['governance', 'design', 'orchestration', 'harness-engineering', 'general']
-const gapStatusColor: Record<string, string> = { open: 'orange', monitoring: 'blue', resolved: 'green' }
+const GAP_STATUSES: Gap['status'][] = ['open', 'resolved']
 
-function GapCard({ gap, onStatusChange }: { gap: Gap; onStatusChange?: (id: string, status: Gap['status']) => void }) {
+function GapCard({ gap, onUpdate, onDelete }: {
+  gap: Gap
+  onUpdate: (id: string, patch: Partial<Gap>) => void
+  onDelete: (id: string) => void
+}) {
+  const [editing, setEditing] = useState(false)
+  const [confirmDelete, setConfirmDelete] = useState(false)
   const linkedTools = gap.potential_solutions.map(id => tools.find(t => t.id === id)).filter(Boolean) as Tool[]
-  const nextStatus: Record<Gap['status'], Gap['status']> = { open: 'monitoring', monitoring: 'resolved', resolved: 'open' }
 
   return (
     <div className="border border-gray-200 rounded-lg p-4 mb-3 last:mb-0 bg-white">
       <div className="flex items-start gap-2 mb-2">
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap mb-1">
             <span className="text-sm font-semibold text-gray-900">{gap.title}</span>
-            <Tag label={gap.status} color={gapStatusColor[gap.status]} />
             <Tag label={gap.area} />
           </div>
           <p className="text-xs text-gray-600 leading-relaxed">{gap.description}</p>
         </div>
-        {onStatusChange && (
-          <button onClick={() => onStatusChange(gap.id, nextStatus[gap.status])}
-            className="text-xs text-gray-300 hover:text-gray-500 flex-shrink-0 transition-colors" title="Advance status">
-            →
-          </button>
-        )}
+        <div className="flex gap-1 flex-shrink-0">
+          <button onClick={() => setEditing(true)} title="Edit"
+            className="text-xs text-gray-300 hover:text-gray-600 transition-colors px-1">✎</button>
+          {!confirmDelete
+            ? <button onClick={() => setConfirmDelete(true)} title="Delete"
+                className="text-xs text-gray-300 hover:text-red-400 transition-colors px-1">×</button>
+            : <span className="flex items-center gap-1">
+                <button onClick={() => { onDelete(gap.id); setConfirmDelete(false) }}
+                  className="text-xs text-red-500 hover:text-red-700 font-medium">del?</button>
+                <button onClick={() => setConfirmDelete(false)} className="text-xs text-gray-400 hover:text-gray-600">cancel</button>
+              </span>
+          }
+        </div>
       </div>
+
+      <div className="flex gap-1 mb-2">
+        {GAP_STATUSES.map(s => (
+          <button key={s} onClick={() => onUpdate(gap.id, { status: s })}
+            className={`text-xs px-2 py-0.5 rounded-full border transition-colors ${gap.status === s
+              ? `${s === 'open' ? 'bg-orange-100 border-orange-300 text-orange-700' : 'bg-green-100 border-green-300 text-green-700'}`
+              : 'border-gray-200 text-gray-400 hover:border-gray-300 hover:text-gray-600'}`}>
+            {s}
+          </button>
+        ))}
+      </div>
+
       {gap.notes && <p className="text-xs text-gray-400 italic mb-2">{gap.notes}</p>}
-      {linkedTools.length > 0 && (
-        <div className="flex gap-1 flex-wrap">
-          <span className="text-xs text-gray-400">Watching:</span>
-          {linkedTools.map(t => (
-            <ExternalLink key={t.id} href={t.url}>
-              <span className="text-xs text-blue-500 hover:underline">{t.name}</span>
-            </ExternalLink>
+      {linkedTools.length > 0 ? (
+        <div className="flex gap-1 flex-wrap items-center">
+          <span className="text-xs text-gray-400">Potential solutions:</span>
+          {linkedTools.map((t, i) => (
+            <span key={t.id} className="flex items-center gap-1">
+              {i > 0 && <span className="text-xs text-gray-300 select-none">|</span>}
+              <ExternalLink href={t.url}>
+                <span className="text-xs text-blue-500 hover:underline">{t.name}</span>
+              </ExternalLink>
+            </span>
           ))}
         </div>
+      ) : (
+        <p className="text-xs text-gray-300 italic">No known solution · may need custom approach</p>
+      )}
+
+      {editing && (
+        <GapFormModal gap={gap} onClose={() => setEditing(false)}
+          onSave={patch => { onUpdate(gap.id, patch); setEditing(false) }} />
       )}
     </div>
   )
 }
 
-function AddGapModal({ onClose, onAdd }: { onClose: () => void; onAdd: (gap: Gap) => void }) {
-  const [title, setTitle] = useState('')
-  const [area, setArea] = useState('general')
-  const [description, setDescription] = useState('')
-  const [notes, setNotes] = useState('')
+function GapFormModal({ gap, onClose, onSave, onAdd }: {
+  gap?: Gap
+  onClose: () => void
+  onSave?: (patch: Partial<Gap>) => void
+  onAdd?: (gap: Gap) => void
+}) {
+  const [title, setTitle] = useState(gap?.title ?? '')
+  const [area, setArea] = useState(gap?.area ?? 'general')
+  const [description, setDescription] = useState(gap?.description ?? '')
+  const [notes, setNotes] = useState(gap?.notes ?? '')
+  const [status, setStatus] = useState<Gap['status']>(gap?.status === 'resolved' ? 'resolved' : 'open')
 
   const submit = () => {
     if (!title.trim() || !description.trim()) return
-    const gap: Gap = {
-      id: `gap-local-${Date.now()}`,
-      area, title: title.trim(), description: description.trim(),
-      status: 'open', identified: new Date().toISOString().split('T')[0],
-      potential_solutions: [], notes: notes.trim(),
+    if (gap && onSave) {
+      onSave({ title: title.trim(), area, description: description.trim(), notes: notes.trim(), status })
+    } else if (onAdd) {
+      onAdd({
+        id: `gap-local-${Date.now()}`,
+        area, title: title.trim(), description: description.trim(),
+        status, identified: new Date().toISOString().split('T')[0],
+        potential_solutions: [], notes: notes.trim(),
+      })
     }
-    onAdd(gap)
     onClose()
   }
 
@@ -975,7 +1104,7 @@ function AddGapModal({ onClose, onAdd }: { onClose: () => void; onAdd: (gap: Gap
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50" onClick={onClose}>
       <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-md" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-4">
-          <h2 className="font-bold text-gray-900">Add Gap</h2>
+          <h2 className="font-bold text-gray-900">{gap ? 'Edit Gap' : 'Add Gap'}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-lg leading-none">×</button>
         </div>
         <div className="space-y-3">
@@ -984,12 +1113,21 @@ function AddGapModal({ onClose, onAdd }: { onClose: () => void; onAdd: (gap: Gap
             <input value={title} onChange={e => setTitle(e.target.value)} placeholder="What's missing or broken?" autoFocus
               className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-400" />
           </div>
-          <div>
-            <label className="text-xs font-medium text-gray-600 block mb-1">Area</label>
-            <select value={area} onChange={e => setArea(e.target.value)}
-              className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:border-gray-400">
-              {GAP_AREAS.map(a => <option key={a} value={a}>{a}</option>)}
-            </select>
+          <div className="flex gap-2">
+            <div className="flex-1">
+              <label className="text-xs font-medium text-gray-600 block mb-1">Area</label>
+              <select value={area} onChange={e => setArea(e.target.value)}
+                className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:border-gray-400">
+                {GAP_AREAS.map(a => <option key={a} value={a}>{a}</option>)}
+              </select>
+            </div>
+            <div className="flex-1">
+              <label className="text-xs font-medium text-gray-600 block mb-1">Status</label>
+              <select value={status} onChange={e => setStatus(e.target.value as Gap['status'])}
+                className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:border-gray-400">
+                {GAP_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
           </div>
           <div>
             <label className="text-xs font-medium text-gray-600 block mb-1">Description</label>
@@ -999,7 +1137,7 @@ function AddGapModal({ onClose, onAdd }: { onClose: () => void; onAdd: (gap: Gap
           </div>
           <div>
             <label className="text-xs font-medium text-gray-600 block mb-1">Notes <span className="text-gray-400 font-normal">(optional)</span></label>
-            <input value={notes} onChange={e => setNotes(e.target.value)} placeholder="Anything you've already tried or ruled out"
+            <input value={notes} onChange={e => setNotes(e.target.value)} placeholder="Anything you've tried or ruled out"
               className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-400" />
           </div>
         </div>
@@ -1007,7 +1145,7 @@ function AddGapModal({ onClose, onAdd }: { onClose: () => void; onAdd: (gap: Gap
           <button onClick={onClose} className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800">Cancel</button>
           <button onClick={submit} disabled={!title.trim() || !description.trim()}
             className="px-4 py-2 text-sm bg-gray-900 text-white rounded-lg hover:bg-gray-700 disabled:opacity-50 transition-colors">
-            Add Gap
+            {gap ? 'Save' : 'Add Gap'}
           </button>
         </div>
       </div>
@@ -1015,56 +1153,40 @@ function AddGapModal({ onClose, onAdd }: { onClose: () => void; onAdd: (gap: Gap
   )
 }
 
-function GapsContent({ localGaps, onAddGap, onUpdateGap }: {
-  localGaps: Gap[]
+function GapsContent({ mergedGaps, onAddGap, onUpdateGap, onDeleteGap }: {
+  mergedGaps: Gap[]
   onAddGap: (gap: Gap) => void
-  onUpdateGap: (id: string, status: Gap['status']) => void
+  onUpdateGap: (id: string, patch: Partial<Gap>) => void
+  onDeleteGap: (id: string) => void
 }) {
   const [showModal, setShowModal] = useState(false)
-  const allGaps = [...seedGaps, ...localGaps]
-  const open = allGaps.filter(g => g.status === 'open')
-  const monitoring = allGaps.filter(g => g.status === 'monitoring')
-  const resolved = allGaps.filter(g => g.status === 'resolved')
-
-  const handleStatusChange = (id: string, status: Gap['status']) => {
-    const isLocal = localGaps.some(g => g.id === id)
-    if (isLocal) onUpdateGap(id, status)
-  }
+  const open = mergedGaps.filter(g => g.status === 'open')
+  const resolved = mergedGaps.filter(g => g.status === 'resolved')
 
   return (
     <>
-      <div className="flex justify-end mb-4">
+      <div className="flex items-center justify-between mb-4">
+        <p className="text-xs text-gray-400"><span className="font-medium text-orange-600">Open</span> = unsolved · <span className="font-medium text-green-600">Resolved</span> = solved</p>
         <button onClick={() => setShowModal(true)}
-          className="text-xs px-3 py-1.5 border border-dashed border-gray-200 rounded-lg text-gray-400 hover:border-gray-400 hover:text-gray-700 transition-colors">
+          className="text-xs px-3 py-1.5 border border-dashed border-gray-200 rounded-lg text-gray-400 hover:border-gray-400 hover:text-gray-700 transition-colors flex-shrink-0 ml-3">
           + Add Gap
         </button>
       </div>
 
       {open.length > 0 && (
-        <ReportSubsection id="gaps-open" title={`Open (${open.length})`}
-          description="Active pain points with no good solution yet.">
-          {open.map(g => <GapCard key={g.id} gap={g} onStatusChange={localGaps.some(x => x.id === g.id) ? handleStatusChange : undefined} />)}
+        <ReportSubsection id="gaps-open" title={`Open (${open.length})`}>
+          {open.map(g => <GapCard key={g.id} gap={g} onUpdate={onUpdateGap} onDelete={onDeleteGap} />)}
         </ReportSubsection>
       )}
-
-      {monitoring.length > 0 && (
-        <ReportSubsection id="gaps-monitoring" title={`Monitoring (${monitoring.length})`}
-          description="Potential solutions exist — watching for them to mature.">
-          {monitoring.map(g => <GapCard key={g.id} gap={g} onStatusChange={localGaps.some(x => x.id === g.id) ? handleStatusChange : undefined} />)}
-        </ReportSubsection>
-      )}
-
       {resolved.length > 0 && (
         <ReportSubsection id="gaps-resolved" title={`Resolved (${resolved.length})`}>
-          {resolved.map(g => <GapCard key={g.id} gap={g} />)}
+          {resolved.map(g => <GapCard key={g.id} gap={g} onUpdate={onUpdateGap} onDelete={onDeleteGap} />)}
         </ReportSubsection>
       )}
-
-      {allGaps.length === 0 && (
+      {mergedGaps.length === 0 && (
         <p className="text-sm text-gray-400">No gaps tracked yet. Add one when you hit a pain point.</p>
       )}
-
-      {showModal && <AddGapModal onClose={() => setShowModal(false)} onAdd={onAddGap} />}
+      {showModal && <GapFormModal onClose={() => setShowModal(false)} onAdd={onAddGap} />}
     </>
   )
 }
@@ -1172,7 +1294,7 @@ function StackBuilderContent() {
             const selectedOption = layer.options.find(o => o.id === selectedId)
             const tool = selectedOption?.toolId ? tools.find(t => t.id === selectedOption.toolId) : null
             return (
-              <div key={layer.id}>
+              <div key={layer.id} id={`stack-layer-${layer.id}`}>
                 <p className="text-xs font-semibold text-gray-800 mb-0.5">{layer.label}</p>
                 <p className="text-xs text-gray-400 mb-2">{layer.description}</p>
                 <div className="flex flex-wrap gap-1.5 mb-2">
@@ -1453,6 +1575,102 @@ function NonDevAISubsection() {
   )
 }
 
+// ---- Report: Agent Questions ----
+
+function useAgentQuestions(seed: AgentQuestion[]) {
+  const STORE = 'ai-research-questions'
+  const [local, setLocal] = useState<Record<string, { status: AgentQuestion['status']; answer?: string }>>(() => {
+    try { return JSON.parse(localStorage.getItem(STORE) ?? '{}') }
+    catch { return {} }
+  })
+  const questions = useMemo(() =>
+    seed.map(q => ({ ...q, ...(local[q.id] ?? {}) })),
+    [seed, local]
+  )
+  const update = useCallback((id: string, patch: { status: AgentQuestion['status']; answer?: string }) => {
+    setLocal(prev => {
+      const next = { ...prev, [id]: patch }
+      localStorage.setItem(STORE, JSON.stringify(next))
+      return next
+    })
+  }, [])
+  return { questions, update }
+}
+
+const Q_TYPE_LABELS: Record<AgentQuestion['type'], string> = {
+  'person-ingest': 'Person',
+  'url-verify': 'URL',
+  'topic-classify': 'Topic',
+  'threshold': 'Threshold',
+  'other': 'Other',
+}
+
+function QuestionCard({ q, onUpdate }: { q: AgentQuestion; onUpdate: (id: string, patch: { status: AgentQuestion['status']; answer?: string }) => void }) {
+  const [answering, setAnswering] = useState(false)
+  const [draft, setDraft] = useState('')
+  return (
+    <div className="py-4 border-b border-gray-100 last:border-0">
+      <div className="flex items-start gap-2 mb-1">
+        <Tag label={Q_TYPE_LABELS[q.type]} color={q.status === 'open' ? 'orange' : q.status === 'answered' ? 'green' : 'gray'} />
+        <Tag label={q.status} color={q.status === 'open' ? 'orange' : q.status === 'answered' ? 'green' : 'gray'} />
+        <span className="text-xs text-gray-400 ml-auto">{fmtDate(q.asked)}</span>
+      </div>
+      <p className="text-sm text-gray-800 mb-1">{q.question}</p>
+      {q.context && <p className="text-xs text-gray-500 mb-2 bg-gray-50 rounded px-2 py-1">{q.context}</p>}
+      {q.answer && <p className="text-xs text-green-700 bg-green-50 rounded px-2 py-1 mb-2">Answer: {q.answer}</p>}
+      {q.status === 'open' && (
+        <div className="flex gap-2 mt-2">
+          {!answering ? (
+            <>
+              <button onClick={() => setAnswering(true)} className="text-xs px-2 py-1 rounded border border-blue-200 text-blue-600 hover:bg-blue-50">Answer</button>
+              <button onClick={() => onUpdate(q.id, { status: 'dismissed' })} className="text-xs px-2 py-1 rounded border border-gray-200 text-gray-500 hover:bg-gray-50">Dismiss</button>
+            </>
+          ) : (
+            <div className="flex-1">
+              <textarea value={draft} onChange={e => setDraft(e.target.value)} placeholder="Type your answer…" rows={2}
+                className="w-full text-xs border border-gray-200 rounded px-2 py-1.5 mb-1 resize-none focus:outline-none focus:border-blue-400" />
+              <div className="flex gap-2">
+                <button onClick={() => { onUpdate(q.id, { status: 'answered', answer: draft }); setAnswering(false) }}
+                  className="text-xs px-2 py-1 rounded bg-blue-600 text-white hover:bg-blue-700">Save</button>
+                <button onClick={() => setAnswering(false)} className="text-xs px-2 py-1 rounded border border-gray-200 text-gray-500 hover:bg-gray-50">Cancel</button>
+              </div>
+              <p className="text-xs text-gray-400 mt-1">Answer saved locally — the research agent reads it on next run.</p>
+            </div>
+          )}
+        </div>
+      )}
+      {q.status === 'dismissed' && (
+        <button onClick={() => onUpdate(q.id, { status: 'open' })} className="text-xs text-gray-400 hover:text-gray-600 mt-1">Reopen</button>
+      )}
+    </div>
+  )
+}
+
+function QuestionsContent({ questions, onUpdate }: {
+  questions: AgentQuestion[]
+  onUpdate: (id: string, patch: { status: AgentQuestion['status']; answer?: string }) => void
+}) {
+  const open = questions.filter(q => q.status === 'open')
+  const answered = questions.filter(q => q.status === 'answered')
+  const dismissed = questions.filter(q => q.status === 'dismissed')
+  if (questions.length === 0) {
+    return <p className="text-sm text-gray-400">No questions from the research agent yet. They'll appear here when the agent needs your input.</p>
+  }
+  return (
+    <>
+      <ReportSubsection id="q-open" title="Open" description={`${open.length} question${open.length !== 1 ? 's' : ''} awaiting your input`}>
+        {open.length > 0 ? open.map(q => <QuestionCard key={q.id} q={q} onUpdate={onUpdate} />) : <p className="text-xs text-gray-400">No open questions.</p>}
+      </ReportSubsection>
+      <ReportSubsection id="q-answered" title="Answered" description="Answers stored locally, applied on next research run">
+        {answered.length > 0 ? answered.map(q => <QuestionCard key={q.id} q={q} onUpdate={onUpdate} />) : <p className="text-xs text-gray-400">None yet.</p>}
+      </ReportSubsection>
+      <ReportSubsection id="q-dismissed" title="Dismissed" description="Hidden from open queue">
+        {dismissed.length > 0 ? dismissed.map(q => <QuestionCard key={q.id} q={q} onUpdate={onUpdate} />) : <p className="text-xs text-gray-400">None dismissed.</p>}
+      </ReportSubsection>
+    </>
+  )
+}
+
 // ---- Report: Queue ----
 
 function QueuedContent({ localQueue }: { localQueue: InboxItem[] }) {
@@ -1488,13 +1706,15 @@ const REPORT_SECTION_META: Record<ReportSection, { title: string; subtitle: stri
   orchestration: { title: 'Orchestration', subtitle: 'Multi-agent coordination, session management, context compaction' },
   'harness-engineering': { title: 'Harness Engineering', subtitle: 'Humans steer, agents execute — structured constraints for coding agents' },
   'industry-norms': { title: 'Industry Norms', subtitle: `Updated ${fmtDate(industryNorms.last_updated)} · includes non-dev AI at the bottom` },
+  questions: { title: 'Agent Questions', subtitle: 'Things the research agent flagged for your input — answer or dismiss each one' },
   queued: { title: 'Queue', subtitle: 'Items queued for the next research run' },
 }
 
-function ReportContent({ section, sort, setSort, search, setSearch, localQueue, localGaps, onAddGap, onUpdateGap }: {
+function ReportContent({ section, sort, setSort, search, setSearch, localQueue, mergedGaps, onAddGap, onUpdateGap, onDeleteGap, questions, onUpdateQuestion }: {
   section: ReportSection; sort: SortOrder; setSort: (s: SortOrder) => void
   search: string; setSearch: (s: string) => void; localQueue: InboxItem[]
-  localGaps: Gap[]; onAddGap: (g: Gap) => void; onUpdateGap: (id: string, status: Gap['status']) => void
+  mergedGaps: Gap[]; onAddGap: (g: Gap) => void; onUpdateGap: (id: string, patch: Partial<Gap>) => void; onDeleteGap: (id: string) => void
+  questions: AgentQuestion[]; onUpdateQuestion: (id: string, patch: { status: AgentQuestion['status']; answer?: string }) => void
 }) {
   const meta = REPORT_SECTION_META[section]
   return (
@@ -1505,13 +1725,14 @@ function ReportContent({ section, sort, setSort, search, setSearch, localQueue, 
           <UpdatesContent sort={sort} search={search} />
         </>
       )}
-      {section === 'gaps' && <GapsContent localGaps={localGaps} onAddGap={onAddGap} onUpdateGap={onUpdateGap} />}
+      {section === 'gaps' && <GapsContent mergedGaps={mergedGaps} onAddGap={onAddGap} onUpdateGap={onUpdateGap} onDeleteGap={onDeleteGap} />}
       {section === 'stack' && <StackBuilderContent />}
       {section === 'governance' && <GovernanceContent />}
       {section === 'design' && <DesignContent />}
       {section === 'orchestration' && <OrchestrationContent />}
       {section === 'harness-engineering' && <HarnessContent />}
       {section === 'industry-norms' && <IndustryNormsContent />}
+      {section === 'questions' && <QuestionsContent questions={questions} onUpdate={onUpdateQuestion} />}
       {section === 'queued' && <QueuedContent localQueue={localQueue} />}
     </ContentArea>
   )
@@ -1678,13 +1899,14 @@ function AddItemModal({ onClose, onAdd }: { onClose: () => void; onAdd: (item: I
   const [url, setUrl] = useState('')
   const [type, setType] = useState('article')
   const [notes, setNotes] = useState('')
+  const [isSource, setIsSource] = useState(false)
   const [token, setToken] = useState(() => localStorage.getItem('ai-research-github-token') ?? '')
   const [status, setStatus] = useState<'idle' | 'saving' | 'done' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
   const submit = async () => {
     if (!url.trim()) return
-    const item: InboxItem = { url: url.trim(), type, notes: notes.trim(), added: new Date().toISOString().split('T')[0] }
+    const item: InboxItem = { url: url.trim(), type, notes: notes.trim(), added: new Date().toISOString().split('T')[0], ...(isSource ? { is_source: true } : {}) }
     setStatus('saving')
     try {
       if (token.trim()) {
@@ -1737,6 +1959,12 @@ function AddItemModal({ onClose, onAdd }: { onClose: () => void; onAdd: (item: I
             <textarea value={notes} onChange={e => setNotes(e.target.value)} rows={2} placeholder="Why is this relevant?"
               className="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:border-gray-400 resize-none" />
           </div>
+          <label className="flex items-center gap-2 cursor-pointer select-none">
+            <input type="checkbox" checked={isSource} onChange={e => setIsSource(e.target.checked)}
+              className="rounded border-gray-300" />
+            <span className="text-xs font-medium text-gray-700">Monitor as ongoing source</span>
+            <span className="text-xs text-gray-400">— agent adds to sources.json and sweeps it each run</span>
+          </label>
           <div>
             <label className="text-xs font-medium text-gray-600 block mb-1">
               GitHub Token <span className="text-gray-400 font-normal">(writes directly to inbox.json — stored in your browser only)</span>
@@ -1772,7 +2000,8 @@ export default function App() {
   const [showAddModal, setShowAddModal] = useState(false)
   const { starred, toggle } = useStars()
   const { queue, addItem } = useLocalQueue()
-  const { localGaps, addGap, updateGap } = useLocalGaps()
+  const { mergedGaps, addGap, updateGap, deleteGap } = useLocalGaps()
+  const { questions, update: updateQuestion } = useAgentQuestions(seedQuestions)
 
   const switchTab = (tab: MainTab) => {
     setActiveTab(tab)
@@ -1833,7 +2062,7 @@ export default function App() {
           {activeTab === 'events' && <EventsIndex filter={yearFilter} setFilter={switchYear} />}
 
           <div className="flex-1 overflow-y-auto">
-            {activeTab === 'report' && <ReportContent section={reportSection} sort={sort} setSort={setSort} search={search} setSearch={setSearch} localQueue={queue} localGaps={localGaps} onAddGap={addGap} onUpdateGap={(id, status) => updateGap(id, { status })} />}
+            {activeTab === 'report' && <ReportContent section={reportSection} sort={sort} setSort={setSort} search={search} setSearch={setSearch} localQueue={queue} mergedGaps={mergedGaps} onAddGap={addGap} onUpdateGap={updateGap} onDeleteGap={deleteGap} questions={questions} onUpdateQuestion={updateQuestion} />}
             {activeTab === 'people' && <PeopleContent filter={categoryFilter} sort={sort} setSort={setSort} search={search} setSearch={setSearch} />}
             {activeTab === 'tools' && <ToolsContent filter={categoryFilter} sort={sort} setSort={setSort} search={search} setSearch={setSearch} />}
             {activeTab === 'articles' && <ArticlesContent filter={topicFilter} sort={sort} setSort={setSort} search={search} setSearch={setSearch} />}

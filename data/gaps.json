@@ -15,7 +15,7 @@
     "area": "design",
     "title": "No default design system for new web apps",
     "description": "Claude doesn't guide toward a specific design system when starting a new project. Each project ends up with ad-hoc styles unless you manually set up DESIGN.md first. Need a normalized starting point.",
-    "status": "monitoring",
+    "status": "open",
     "identified": "2026-05-05",
     "linked_topic": "design-systems",
     "potential_solutions": ["design-md-format", "designmd-ai"],
@@ -37,7 +37,7 @@
     "area": "harness-engineering",
     "title": "Hard to verify UI output without running the app",
     "description": "Agents generate UI code but there's no automated way to verify it looks right. Manual review catches regressions late. Playwright MCP is the most promising solution but requires setup.",
-    "status": "monitoring",
+    "status": "open",
     "identified": "2026-05-05",
     "linked_topic": "low-level-fe-verification",
     "potential_solutions": ["playwright-mcp"],
@@ -51,7 +51,29 @@
     "status": "open",
     "identified": "2026-05-05",
     "linked_topic": "session-management",
-    "potential_solutions": ["llm-wiki-karpathy"],
-    "notes": "LLM Wiki pattern (raw/ + wiki/ + schema/) is the most structured approach seen so far."
+    "potential_solutions": ["llm-wiki-karpathy", "karpathy-claude-md"],
+    "notes": "LLM Wiki pattern (raw/ + wiki/ + schema/) is the most structured approach seen so far. Karpathy's CLAUDE.md is a simpler reference point for instruction persistence without a full wiki setup."
+  },
+  {
+    "id": "gap-rapid-ui-iteration",
+    "area": "design",
+    "title": "No rapid UI/UX design iteration loop",
+    "description": "There's no fast, low-friction path from design intent to working UI. Going prompt → Figma → Claude Code → browser involves too many manual handoff steps. Need tools that collapse the design-to-code loop so visual iteration can happen at AI speed.",
+    "status": "open",
+    "identified": "2026-05-05",
+    "linked_topic": "design-tooling",
+    "potential_solutions": ["figma-make", "claude-design", "paper-design"],
+    "notes": "All three are partial solutions — none fully closes the loop yet. Figma Make and Claude Design generate designs from prompts; paper.design focuses on the Figma-to-code handoff side."
+  },
+  {
+    "id": "gap-afk-overnight-usage",
+    "area": "orchestration",
+    "title": "No established pattern for AFK/overnight Claude usage",
+    "description": "Running Claude Code for long, unattended tasks (overnight builds, extended agent loops) is unreliable. Two open questions: (1) what are ralph loops actually useful for and where do they break down, and (2) what alternatives exist for tasks ralph loops can't handle — e.g. hooks, sub-agents, scheduled runs.",
+    "status": "open",
+    "identified": "2026-05-05",
+    "linked_topic": null,
+    "potential_solutions": [],
+    "notes": "Ralph loop is a public skill but its scope and failure modes are not well documented. Need to verify the skill exists and test its limits before recommending."
   }
 ]

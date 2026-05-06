@@ -55,6 +55,32 @@
     "added": "2026-05-05"
   },
   {
+    "id": "simon-willison-blog",
+    "name": "Simon Willison's Blog",
+    "type": "article-feed",
+    "urls": {
+      "website": "https://simonwillison.net",
+      "rss": "https://simonwillison.net/atom/everything/"
+    },
+    "relevance_keywords": ["Claude Code", "Claude", "LLM", "agent", "MCP", "coding", "workflow", "tool"],
+    "skip_keywords": [],
+    "notes": "Simon is one of the highest-signal individual bloggers on practical LLM use. Every post is worth checking — he writes about tooling, security (prompt injection), TDD with AI, and tracks the field comprehensively. Check for new posts in the research window.",
+    "added": "2026-05-05"
+  },
+  {
+    "id": "matt-pocock-youtube",
+    "name": "Matt Pocock (YouTube)",
+    "type": "youtube-channel",
+    "urls": {
+      "youtube": "https://www.youtube.com/@mattpocockuk"
+    },
+    "relevance_keywords": ["Claude Code", "Claude", "TypeScript", "agent", "skill", "workflow", "AI"],
+    "skip_keywords": [],
+    "min_engagement_views": 500,
+    "notes": "Highest-signal Claude Code subscription practitioner on YouTube. Tutorials, skill walkthroughs, Sandcastle demos. Check for new uploads each run.",
+    "added": "2026-05-05"
+  },
+  {
     "id": "hacker-news",
     "name": "Hacker News",
     "type": "social",

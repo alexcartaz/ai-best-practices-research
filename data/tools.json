@@ -404,6 +404,60 @@
     "last_updated": "2026-05-05"
   },
   {
+    "id": "figma-make",
+    "name": "Figma Make",
+    "category": "design-tooling",
+    "author_id": null,
+    "url": "https://www.figma.com/make/",
+    "github_url": null,
+    "github_stars": null,
+    "description": "Figma's AI-powered tool for generating UI from text prompts. Produces editable Figma designs directly, bridging the gap between prompt and production-ready component layout.",
+    "topics": [
+      "design-tooling",
+      "design-systems"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "claude-design",
+    "name": "Claude Design (claude.ai/design)",
+    "category": "design-tooling",
+    "author_id": null,
+    "url": "https://claude.ai/design",
+    "github_url": null,
+    "github_stars": null,
+    "description": "Anthropic's dedicated design interface within Claude — generates UI mockups and component designs from prompts. Outputs design artifacts that can be handed off to Claude Code for implementation.",
+    "topics": [
+      "design-tooling",
+      "design-systems"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "karpathy-claude-md",
+    "name": "Karpathy's CLAUDE.md",
+    "category": "claude-code-tooling",
+    "author_id": "andrej-karpathy",
+    "url": "https://github.com/karpathy",
+    "github_url": null,
+    "github_stars": null,
+    "description": "Andrej Karpathy's public CLAUDE.md — a reference example of how a prominent AI practitioner structures Claude Code instructions for cross-session context persistence. Exact file URL needs verification by research agent.",
+    "topics": [
+      "session-management",
+      "repo-template-governance"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
     "id": "awesome-claude-code-toolkit",
     "name": "awesome-claude-code-toolkit (rohitg00)",
     "category": "claude-code-tooling",

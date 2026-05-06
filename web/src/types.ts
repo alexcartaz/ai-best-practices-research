@@ -166,7 +166,7 @@ export interface Gap {
   area: string
   title: string
   description: string
-  status: 'open' | 'monitoring' | 'resolved'
+  status: 'open' | 'resolved'
   identified: string
   linked_topic?: string | null
   potential_solutions: string[]
@@ -178,13 +178,26 @@ export interface InboxItem {
   type: string
   notes: string
   added: string
+  is_source?: boolean
   _comment?: string
+}
+
+export interface AgentQuestion {
+  id: string
+  asked: string
+  run: string
+  type: 'person-ingest' | 'url-verify' | 'topic-classify' | 'threshold' | 'other'
+  question: string
+  context?: string | null
+  status: 'open' | 'answered' | 'dismissed'
+  answer?: string | null
+  answered_at?: string | null
 }
 
 export interface ResearchSource {
   id: string
   name: string
-  type: 'podcast' | 'event-series' | 'social' | 'code-discovery'
+  type: 'podcast' | 'event-series' | 'social' | 'code-discovery' | 'article-feed' | 'youtube-channel'
   urls: Record<string, string>
   relevance_keywords?: string[]
   skip_keywords?: string[]
