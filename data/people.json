@@ -1089,9 +1089,9 @@
       "ai-prototyping"
     ],
     "profiles": {
-      "github": null,
-      "bsky": null,
-      "x": null,
+      "github": "ow",
+      "bsky": "https://bsky.app/profile/owen.bsky.social",
+      "x": "https://x.com/ow",
       "linkedin": null,
       "substack": null,
       "medium": null,
@@ -1117,7 +1117,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/ow"
   },
   {
     "id": "zeke-sikelianos",
@@ -1648,7 +1649,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://www.ai.engineer/speakers/europe/david-gomes.jpg"
   },
   {
     "id": "marc-klingen",
@@ -1702,7 +1704,7 @@
       "supabase"
     ],
     "profiles": {
-      "github": null,
+      "github": "Rodriguespn",
       "bsky": null,
       "x": null,
       "linkedin": null,
@@ -1730,7 +1732,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": null
   },
   {
     "id": "julius-brussee",
@@ -1933,7 +1936,7 @@
     "profiles": {
       "github": null,
       "bsky": null,
-      "x": null,
+      "x": "https://x.com/dps",
       "linkedin": "https://www.linkedin.com/in/davidpsingleton/",
       "substack": null,
       "medium": null,
@@ -1959,7 +1962,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/dps"
   },
   {
     "id": "felix-rieseberg",
@@ -2085,7 +2089,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://pbs.twimg.com/profile_images/1823564048580972544/UFbWG5Z6_400x400.jpg"
   },
   {
     "id": "aaron-levie",
@@ -2844,7 +2849,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://pbs.twimg.com/profile_images/1448282023844618240/WXaajvLd_400x400.jpg"
   },
   {
     "id": "olivia-watkins",
@@ -2858,7 +2864,7 @@
     "profiles": {
       "github": null,
       "bsky": null,
-      "x": null,
+      "x": "https://x.com/OliviaGWatkins2",
       "linkedin": null,
       "substack": null,
       "medium": null,
@@ -2883,7 +2889,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/OliviaGWatkins2"
   },
   {
     "id": "jared-palmer",
@@ -2962,7 +2969,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://www.ai.engineer/speakers/jed-borovik.jpg"
   },
   {
     "id": "brian-fioca",
@@ -3002,7 +3010,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://www.ai.engineer/speakers/brian-fioca.jpg"
   },
   {
     "id": "arman-hezarkhani",
@@ -3041,7 +3050,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.prod.website-files.com/68af31ddf12f0b14be84dba1/68b3787f723be6c506e425e5_arman-statue.webp"
   },
   {
     "id": "malte-ubl",
@@ -3213,7 +3223,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://www.ai.engineer/speakers/europe/cristina-poncela-cubeiro.jpg"
   },
   {
     "id": "mario-zechner",
@@ -3423,7 +3434,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://www.ai.engineer/speakers/europe/hugo-santos.jpg"
   },
   {
     "id": "sarah-chieng",
@@ -3545,7 +3557,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://www.ai.engineer/speakers/europe/mike-spitz.jpg"
   },
   {
     "id": "ben-burtenshaw",
@@ -4003,7 +4016,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://i.ytimg.com/vi/X4BwOu0GWb8/maxresdefault.jpg"
   },
   {
     "id": "eno-reyes",
