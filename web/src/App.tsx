@@ -532,6 +532,9 @@ function ToolRow({ tool }: { tool: Tool }) {
         <StarBtn id={tool.id} />
         <div className="flex-1 flex items-center gap-2 flex-wrap">
           <span className="font-semibold text-gray-900 text-sm"><ExternalLink href={tool.url}>{tool.name}</ExternalLink></span>
+          {tool.github_url && tool.github_url !== tool.url && (
+            <ExternalLink href={tool.github_url}><span className="text-xs text-gray-400 hover:text-blue-500">GitHub ↗</span></ExternalLink>
+          )}
           {tool.is_new && <Tag label="new" color="new" />}
           <Tag label={tool.category} color={catColor[tool.category] ?? 'gray'} />
           <Stars n={tool.github_stars} />
@@ -540,7 +543,15 @@ function ToolRow({ tool }: { tool: Tool }) {
       <div className="pl-6">
         <p className="text-xs text-gray-600 mb-1.5">{tool.description}</p>
         <div className="flex gap-1 flex-wrap mb-1">{tool.topics.slice(0, 5).map(t => <Tag key={t} label={t} />)}</div>
-        {author && <p className="text-xs text-gray-400">by <NavLink tab="people" search={author.name}>{author.name}</NavLink></p>}
+        {author && (
+          <p className="text-xs text-gray-400">
+            by{' '}
+            {author.profiles.github
+              ? <ExternalLink href={author.profiles.github}>{author.name}</ExternalLink>
+              : <NavLink tab="people" search={author.name}>{author.name}</NavLink>
+            }
+          </p>
+        )}
       </div>
     </div>
   )
@@ -1613,6 +1624,12 @@ function GovernanceContent() {
         {GOVERNANCE_SETUPS.map((s, i) => <TopSetupCard key={i} setup={s} />)}
       </ReportSubsection>
 
+      {govTools.length > 0 && (
+        <ReportSubsection id="gov-tools" title="Tools">
+          {govTools.map(t => <ToolRow key={t.id} tool={t} />)}
+        </ReportSubsection>
+      )}
+
       {subs.md_governance && (
         <ReportSubsection id="gov-claude-md" title="CLAUDE.md Patterns" description={subs.md_governance.description}>
           {subs.md_governance.approaches.map((a, i) => <ApproachItem key={i} text={a} />)}
@@ -1666,12 +1683,6 @@ function GovernanceContent() {
       {subs.subagent_profiles && (
         <ReportSubsection id="gov-subagents" title="Subagent Profiles" description={subs.subagent_profiles.description}>
           {subs.subagent_profiles.approaches.map((a, i) => <ApproachItem key={i} text={a} />)}
-        </ReportSubsection>
-      )}
-
-      {govTools.length > 0 && (
-        <ReportSubsection id="gov-tools" title="Tools">
-          {govTools.map(t => <ToolRow key={t.id} tool={t} />)}
         </ReportSubsection>
       )}
 
