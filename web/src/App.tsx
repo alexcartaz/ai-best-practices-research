@@ -34,7 +34,7 @@ function fmtDate(iso: string | null | undefined): string {
 }
 
 type MainTab = 'report' | 'videos' | 'articles' | 'podcasts' | 'tools' | 'people' | 'events' | 'stack'
-type ReportSection = 'updates' | 'gaps' | 'governance' | 'design' | 'orchestration' | 'harness-engineering' | 'industry-norms' | 'questions' | 'queued' | 'sources'
+type ReportSection = 'updates' | 'questions' | 'queued' | 'sources' | 'gaps'
 
 const MAIN_TABS: { id: MainTab; label: string }[] = [
   { id: 'report', label: 'Report' },
@@ -48,15 +48,7 @@ const MAIN_TABS: { id: MainTab; label: string }[] = [
 
 const REPORT_SECTIONS: { id: ReportSection; label: string }[] = [
   { id: 'updates', label: 'Updates' },
-  { id: 'gaps', label: 'Gaps' },
-  { id: 'governance', label: 'Governance & Repo' },
-  { id: 'design', label: 'Design' },
-  { id: 'orchestration', label: 'Orchestration' },
-  { id: 'harness-engineering', label: 'Harness Engineering' },
-  { id: 'industry-norms', label: 'Industry Norms' },
   { id: 'questions', label: 'Questions' },
-  { id: 'queued', label: 'Queue' },
-  { id: 'sources', label: 'Sources' },
 ]
 
 const PERSON_CATEGORIES = ['dev', 'design', 'dev-adjacent', 'orchestration', 'education']
@@ -323,6 +315,21 @@ function getYouTubeThumbnail(url: string | null | undefined): string | null {
   return `https://img.youtube.com/vi/${m[1]}/mqdefault.jpg`
 }
 
+function githubOwnerAvatar(url: string | null | undefined, size = 60): string | null {
+  if (!url) return null
+  const m = url.match(/github\.com\/([^/?#]+)/)
+  if (!m) return null
+  return `https://github.com/${m[1]}.png?size=${size}`
+}
+
+function getPersonAvatar(person: Person): string | null {
+  return person.pfp_url ?? githubOwnerAvatar(person.profiles.github)
+}
+
+function getToolLogo(tool: Tool): string | null {
+  return tool.logo_url ?? githubOwnerAvatar(tool.github_url ?? tool.url, 40)
+}
+
 // ---- Stars context ----
 
 const StarsCtx = createContext<{ starred: Set<string>; toggle: (id: string) => void }>({
@@ -467,11 +474,16 @@ function PersonRow({ person }: { person: Person }) {
     personTools.length > 0 && `${personTools.length} tool${personTools.length > 1 ? 's' : ''}`,
   ].filter(Boolean) as string[]
   const hasWorks = workCounts.length > 0
+  const avatar = getPersonAvatar(person)
 
   return (
     <div className="py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-start gap-2 mb-1.5">
         <StarBtn id={person.id} />
+        {avatar
+          ? <img src={avatar} alt="" className="w-8 h-8 rounded-full object-cover flex-shrink-0 border border-gray-100" />
+          : <div className="w-8 h-8 rounded-full bg-gray-100 flex-shrink-0" />
+        }
         <div className="flex-1">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-semibold text-gray-900 text-sm">{person.name}</span>
@@ -486,7 +498,7 @@ function PersonRow({ person }: { person: Person }) {
           </button>
         )}
       </div>
-      <div className="pl-6">
+      <div className="pl-14">
         <div className="flex gap-1 flex-wrap mb-1.5">{person.focus.map(f => <Tag key={f} label={f} />)}</div>
         {person.notable_contributions[0] && <p className="text-xs text-gray-600 mb-1">{person.notable_contributions[0]}</p>}
         {workCounts.length > 0 && (
@@ -517,10 +529,15 @@ function ToolRow({ tool }: { tool: Tool }) {
     'claude-code-tooling': 'blue', orchestration: 'purple', 'design-tooling': 'pink', testing: 'green',
     governance: 'teal', development: 'blue', design: 'pink',
   }
+  const logo = getToolLogo(tool)
   return (
     <div className="py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-start gap-2 mb-1.5">
         <StarBtn id={tool.id} />
+        {logo
+          ? <img src={logo} alt="" className="w-8 h-8 rounded object-cover flex-shrink-0 border border-gray-100" />
+          : <div className="w-8 h-8 rounded bg-gray-50 flex-shrink-0 border border-gray-100" />
+        }
         <div className="flex-1 flex items-center gap-2 flex-wrap">
           <span className="font-semibold text-gray-900 text-sm"><ExternalLink href={tool.url}>{tool.name}</ExternalLink></span>
           {tool.github_url && tool.github_url !== tool.url && (
@@ -531,7 +548,7 @@ function ToolRow({ tool }: { tool: Tool }) {
           <Stars n={tool.github_stars} />
         </div>
       </div>
-      <div className="pl-6">
+      <div className="pl-14">
         <p className="text-xs text-gray-600 mb-1.5">{tool.description}</p>
         <div className="flex gap-1 flex-wrap mb-1">{tool.topics.slice(0, 5).map(t => <Tag key={t} label={t} />)}</div>
         {author && (
@@ -555,11 +572,12 @@ function ArticleRow({ article }: { article: Article }) {
     <div className="py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-start gap-2 mb-1.5">
         <StarBtn id={article.id} />
-        {article.thumbnail_url && (
-          <a href={article.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
-            <img src={article.thumbnail_url} alt="" className="w-14 h-10 object-cover rounded border border-gray-100" />
-          </a>
-        )}
+        <a href={article.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+          {article.thumbnail_url
+            ? <img src={article.thumbnail_url} alt="" className="w-14 h-10 object-cover rounded border border-gray-100" />
+            : <div className="w-14 h-10 rounded bg-gray-100 border border-gray-100 flex items-center justify-center text-gray-300 text-xs">📄</div>
+          }
+        </a>
         <div className="flex-1">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-semibold text-gray-900 text-sm"><ExternalLink href={article.url}>{article.title}</ExternalLink></span>
@@ -582,15 +600,17 @@ function ArticleRow({ article }: { article: Article }) {
 
 function PodcastRow({ episode }: { episode: PodcastEpisode }) {
   const guest = people.find(p => p.id === episode.guest_id)
+  const thumb = episode.thumbnail_url
   return (
     <div className="py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-start gap-2 mb-1">
         <StarBtn id={episode.id} />
-        {episode.thumbnail_url && (
-          <a href={episode.url ?? undefined} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
-            <img src={episode.thumbnail_url} alt="" className="w-10 h-10 object-cover rounded border border-gray-100" />
-          </a>
-        )}
+        <a href={episode.url ?? undefined} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+          {thumb
+            ? <img src={thumb} alt="" className="w-10 h-10 object-cover rounded border border-gray-100" />
+            : <div className="w-10 h-10 rounded bg-gray-100 border border-gray-100 flex items-center justify-center text-gray-300 text-xs">🎙</div>
+          }
+        </a>
         <div className="flex-1">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-semibold text-gray-900 text-sm"><ExternalLink href={episode.url}>{episode.episode_title}</ExternalLink></span>
@@ -621,6 +641,12 @@ function EventRow({ event }: { event: Event }) {
     <div className="py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-start gap-2 mb-1.5">
         <StarBtn id={event.id} />
+        <a href={event.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+          {event.thumbnail_url
+            ? <img src={event.thumbnail_url} alt="" className="w-10 h-10 object-cover rounded border border-gray-100" />
+            : <div className="w-10 h-10 rounded bg-gray-100 border border-gray-100 flex items-center justify-center text-gray-300 text-xs">📅</div>
+          }
+        </a>
         <div className="flex-1">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-semibold text-gray-900 text-sm"><ExternalLink href={event.url}>{event.name}</ExternalLink></span>
@@ -710,56 +736,18 @@ const REPORT_SUBSECTIONS: Record<ReportSection, { label: string; id: string }[]>
     { label: 'New Articles', id: 'updates-articles' },
     { label: 'New Podcasts', id: 'updates-podcasts' },
   ],
-  gaps: [
-    { label: 'Open', id: 'gaps-open' },
-    { label: 'Resolved', id: 'gaps-resolved' },
-  ],
-  governance: [
-    { label: 'Top Setups', id: 'gov-top-setups' },
-    { label: 'CLAUDE.md Patterns', id: 'gov-claude-md' },
-    { label: 'Skills', id: 'gov-skills' },
-    { label: 'Hooks', id: 'gov-hooks' },
-    { label: 'Subagent Profiles', id: 'gov-subagents' },
-    { label: 'Tools', id: 'gov-tools' },
-    { label: 'People', id: 'gov-people' },
-  ],
-  design: [
-    { label: 'Top Setups', id: 'design-top-setups' },
-    { label: 'Design Systems', id: 'design-systems' },
-    { label: 'Tooling Approaches', id: 'design-tooling' },
-    { label: 'Tools', id: 'design-tools' },
-    { label: 'People', id: 'design-people' },
-  ],
-  orchestration: [
-    { label: 'Top Setups', id: 'orch-top-setups' },
-    { label: 'Patterns', id: 'orch-patterns' },
-    { label: 'Session Management', id: 'orch-session' },
-    { label: 'Tools', id: 'orch-tools' },
-    { label: 'People', id: 'orch-people' },
-  ],
-  'harness-engineering': [
-    { label: 'Top Setups', id: 'harness-top-setups' },
-    { label: 'Core Patterns', id: 'harness-patterns' },
-    { label: 'Testing & Verification', id: 'harness-testing' },
-    { label: 'Tools', id: 'harness-tools' },
-    { label: 'People', id: 'harness-people' },
-  ],
-  'industry-norms': [
-    { label: 'Model Recommendations', id: 'norms-models' },
-    { label: 'Tool Adoption', id: 'norms-tools' },
-    { label: 'Workflow Norms', id: 'norms-workflow' },
-    { label: 'Non-Dev AI', id: 'norms-non-dev' },
-  ],
   questions: [
     { label: 'Open', id: 'q-open' },
     { label: 'Answered', id: 'q-answered' },
     { label: 'Dismissed', id: 'q-dismissed' },
   ],
+  gaps: [
+    { label: 'Open', id: 'gaps-open' },
+    { label: 'Resolved', id: 'gaps-resolved' },
+  ],
   queued: [],
   sources: [],
 }
-
-const MAIN_REPORT_SECTIONS = REPORT_SECTIONS.filter(s => s.id !== 'queued' && s.id !== 'sources' && s.id !== 'gaps')
 
 function ReportIndex({ section, setSection }: { section: ReportSection; setSection: (s: ReportSection) => void }) {
   const scrollTo = (id: string) => {
@@ -769,7 +757,7 @@ function ReportIndex({ section, setSection }: { section: ReportSection; setSecti
     <IndexSidebar>
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2 px-2">Sections</p>
       <div className="pl-2">
-        {MAIN_REPORT_SECTIONS.map(s => (
+        {REPORT_SECTIONS.map(s => (
           <div key={s.id}>
             <IndexItem label={s.label} active={section === s.id} onClick={() => setSection(s.id)} />
             {section === s.id && REPORT_SUBSECTIONS[s.id].map(sub => (
@@ -778,16 +766,9 @@ function ReportIndex({ section, setSection }: { section: ReportSection; setSecti
           </div>
         ))}
       </div>
-      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mt-5 mb-2 px-2">Next Report Run</p>
-      <div className="pl-2">
-        <IndexItem label="Questions" active={section === 'questions'} onClick={() => setSection('questions')} />
-        {section === 'questions' && REPORT_SUBSECTIONS['questions'].map(sub => (
-          <SubIndexItem key={sub.id} label={sub.label} onClick={() => scrollTo(sub.id)} />
-        ))}
-        <IndexItem label="Queue" active={section === 'queued'} onClick={() => setSection('queued')} />
-      </div>
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mt-5 mb-2 px-2">Controls</p>
       <div className="pl-2">
+        <IndexItem label="Queue" active={section === 'queued'} onClick={() => setSection('queued')} />
         <IndexItem label="Gaps" active={section === 'gaps'} onClick={() => setSection('gaps')} />
         <IndexItem label="Sources" count={allSources.length} active={section === 'sources'} onClick={() => setSection('sources')} />
       </div>
@@ -2050,13 +2031,8 @@ function SourcesContent() {
 
 const REPORT_SECTION_META: Record<ReportSection, { title: string; subtitle: string }> = {
   updates: { title: 'Updates', subtitle: 'What\'s new since the last research run, ranked by relevance' },
-  gaps: { title: 'Gaps', subtitle: 'Known pain points being monitored for solutions — add your own as you find them' },
-  governance: { title: 'Governance & Repo Structure', subtitle: 'CLAUDE.md · DESIGN.md · skills · hooks · subagent profiles' },
-  design: { title: 'Design', subtitle: 'Design systems, component libraries, and AI-native UI workflows' },
-  orchestration: { title: 'Orchestration', subtitle: 'Multi-agent coordination, session management, context compaction' },
-  'harness-engineering': { title: 'Harness Engineering', subtitle: 'Humans steer, agents execute — structured constraints for coding agents' },
-  'industry-norms': { title: 'Industry Norms', subtitle: `Updated ${fmtDate(industryNorms.last_updated)} · includes non-dev AI at the bottom` },
   questions: { title: 'Agent Questions', subtitle: 'Things the research agent flagged for your input — answer or dismiss each one' },
+  gaps: { title: 'Gaps', subtitle: 'Known pain points being monitored for solutions — add your own as you find them' },
   queued: { title: 'Queue', subtitle: 'Items queued for the next research run' },
   sources: { title: 'Sources', subtitle: `${allSources.length} monitored sources — podcasts, events, social, code discovery` },
 }
@@ -2076,13 +2052,8 @@ function ReportContent({ section, sort, setSort, search, setSearch, localQueue, 
           <UpdatesContent sort={sort} search={search} />
         </>
       )}
-      {section === 'gaps' && <GapsContent mergedGaps={mergedGaps} onAddGap={onAddGap} onUpdateGap={onUpdateGap} onDeleteGap={onDeleteGap} />}
-      {section === 'governance' && <GovernanceContent />}
-      {section === 'design' && <DesignContent />}
-      {section === 'orchestration' && <OrchestrationContent />}
-      {section === 'harness-engineering' && <HarnessContent />}
-      {section === 'industry-norms' && <IndustryNormsContent />}
       {section === 'questions' && <QuestionsContent questions={questions} onUpdate={onUpdateQuestion} />}
+      {section === 'gaps' && <GapsContent mergedGaps={mergedGaps} onAddGap={onAddGap} onUpdateGap={onUpdateGap} onDeleteGap={onDeleteGap} />}
       {section === 'queued' && <QueuedContent localQueue={localQueue} />}
       {section === 'sources' && <SourcesContent />}
     </ContentArea>

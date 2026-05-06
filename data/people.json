@@ -71,7 +71,8 @@
     ],
     "is_new": false,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:kft6lu4trxowqmter2b6vg6z/bafkreiewl57f52tt6jrd7gtn75edweos7z6bjxsqhottxw4l7zme6o55ma@jpeg"
   },
   {
     "id": "matt-pocock",
@@ -166,7 +167,8 @@
     ],
     "is_new": false,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:oeio7zuhrsvmlyhia7e44nk6/bafkreifn7cs24otu2sd6kr6t26t63xcrd7j42vmekbwfn255nokjjb324q@jpeg"
   },
   {
     "id": "garry-tan",
@@ -288,7 +290,8 @@
     ],
     "is_new": false,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:kc34cv7fzruymzxv7jvd7z6l/bafkreihdejpylqdxt2sd6evq6ibbcjravhn2kt2bnp4ecf37dja6vv7kvu@jpeg"
   },
   {
     "id": "addy-osmani",
@@ -322,7 +325,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:ympscj7qcsrcpj4qz35qhs3v/bafkreihbw56lvezlp2yhftxf3zxzoy4rd7gbb4u7wzmfbrb2nlxaunu5pm@jpeg"
   },
   {
     "id": "shawn-wang",
@@ -376,7 +380,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:xxuso5disl5vq5xfzlr7mf52/bafkreifsv3vf2aenwys5yhzlsv2ieyntastzjfhq6gjxwxhkaqsbm2lwx4@jpeg"
   },
   {
     "id": "brian-scanlan",
@@ -446,7 +451,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://substackcdn.com/image/fetch/w_128,h_128,c_fill,f_auto,q_auto:good/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F722e2df0-2e7e-492b-95ca-2c6358c79cd9_256x256.png"
   },
   {
     "id": "necati-ozmen",
@@ -591,7 +597,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:zos5kmlm4vle7b4xntem6sat/bafkreifks6oxx7ifhee5lpzvjbpq4lrm43eddhourflekdurbef3dugqdm@jpeg"
   },
   {
     "id": "amelia-wattenberger",
@@ -644,7 +651,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:t5z2ddjlyrgsljv4uuherdfl/bafkreignhvmy5xweqmpwcy4qtyoh4xckviuxugqrzfelrl7ebszzozl47u@jpeg"
   },
   {
     "id": "ryan-lopopolo",
@@ -657,7 +665,7 @@
       "testing-tdd"
     ],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/lopopolo-openai",
       "bsky": null,
       "x": "https://x.com/_lopopolo",
       "linkedin": null,
@@ -740,7 +748,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:yym5dkfbnzf6lspvh4hnstjg/bafkreifc36rqcfru7hosc4uj6my46rb4u5scc45sc3ko6ixoyt5n3gtxsq@jpeg"
   },
   {
     "id": "david-soria-parra",
@@ -822,7 +831,7 @@
       "education"
     ],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/johnlindquist",
       "bsky": null,
       "x": "https://x.com/johnlindquist",
       "linkedin": "https://www.linkedin.com/in/john-lindquist-84230766/",
@@ -865,7 +874,7 @@
       "canvas-ui"
     ],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/steveruizok",
       "bsky": null,
       "x": null,
       "linkedin": "https://www.linkedin.com/in/steve-ruiz-61a150239/",
@@ -958,8 +967,8 @@
       "multi-agent-orchestration"
     ],
     "profiles": {
-      "github": null,
-      "bsky": null,
+      "github": "https://github.com/gergelyorosz",
+      "bsky": "https://bsky.app/profile/gergely.pragmaticengineer.com",
       "x": "https://x.com/GergelyOrosz",
       "linkedin": null,
       "substack": null,
@@ -985,7 +994,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:3n5xhy6vl7smssmwxq5wgqa6/bafkreiff6ltslguxeg43g7etxnkhbetuzsvrkxonbpq6cle22k3xmsv5oi@jpeg"
   },
   {
     "id": "claire-vo",
@@ -1280,7 +1290,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://substackcdn.com/image/fetch/w_128,h_128,c_fill,f_auto,q_auto:good/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1a431648-d32b-4105-8a3c-feef18443104_2316x3088.jpeg"
   },
   {
     "id": "nick-nisi",
@@ -1332,7 +1343,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:qcyz4wcmgnz4mzxevrsrf6j6/bafkreigqa53eff2zrpj3ycievkcogzoj6yhyvsngidu6zowjnjofvzng4i@jpeg"
   },
   {
     "id": "sunil-pai",
@@ -1413,7 +1425,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:d477gatlklmreitui6t3scpv/bafkreiecuiezjmlbfl3j4u73kry4hsz7pxtfxlia5f5ethkqse7tvexoji@jpeg"
   },
   {
     "id": "tuomas-artman",
@@ -1425,7 +1438,7 @@
       "ai-workflows"
     ],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/artman",
       "bsky": null,
       "x": "https://x.com/artman",
       "linkedin": "https://www.linkedin.com/in/tuomasartman/",
@@ -1503,7 +1516,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://cdn.bsky.app/img/avatar/plain/did:plc:4w3lx5jmokfvihilz2q562ev/bafkreic3gypsfet4fdphv4pp3h3fbrbwuu54bu42ks4qs6h754syqo3fxi@jpeg"
   },
   {
     "id": "samuel-colvin",
@@ -1591,7 +1605,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://steipete.me/peter-avatar.jpg"
   },
   {
     "id": "david-gomes",
@@ -1645,7 +1660,7 @@
       "langfuse"
     ],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/marcklingen",
       "bsky": null,
       "x": null,
       "linkedin": null,
@@ -1746,7 +1761,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://substackcdn.com/image/fetch/w_128,h_128,c_fill,f_auto,q_auto:good/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f7d79bd-ca42-4421-9a6c-12c6fd69eef2_144x144.png"
   },
   {
     "id": "jason-gorman",
@@ -2105,7 +2121,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Aaron_Levie.jpg/330px-Aaron_Levie.jpg"
   },
   {
     "id": "ankit-jain",
@@ -2185,7 +2202,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://substackcdn.com/image/fetch/w_128,h_128,c_fill,f_auto,q_auto:good/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4063d155-1ee2-4c94-b009-2ed682737040_183x275.jpeg"
   },
   {
     "id": "james-reggio",
@@ -2265,7 +2283,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Marc_Andreessen-9_%28cropped%29.jpg/330px-Marc_Andreessen-9_%28cropped%29.jpg"
   },
   {
     "id": "dylan-patel",
@@ -2301,6 +2320,7 @@
       "Founder/CEO of SemiAnalysis \u2014 leading independent semiconductor and AI infrastructure analyst",
       "Tier 2 industry context: hyperscaler capex trajectory directly affects Claude API pricing/availability"
     ],
+    "pfp_url": "https://i0.wp.com/semianalysis.com/wp-content/uploads/2025/05/dylan2.png?resize=647%2C647&quality=80&ssl=1",
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
@@ -2323,6 +2343,7 @@
       "medium": null,
       "website": "https://metr.org"
     },
+    "pfp_url": "https://metr.org/assets/images/team/joel-becker.jpg",
     "talks": [],
     "podcast_episodes": [
       {
@@ -2421,7 +2442,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Jeff_Dean_in_2025_x.jpg/330px-Jeff_Dean_in_2025_x.jpg"
   },
   {
     "id": "anastasios-angelopoulos",
@@ -2547,7 +2569,7 @@
       "agent-inference"
     ],
     "profiles": {
-      "github": null,
+      "github": "https://github.com/kkranen",
       "bsky": null,
       "x": null,
       "linkedin": null,
@@ -2688,7 +2710,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2023/04/Sarah-Wang.png"
   },
   {
     "id": "nathan-lambert",
@@ -2727,7 +2750,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://substackcdn.com/image/fetch/w_128,h_128,c_fill,f_auto,q_auto:good/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdad13b2b-20b2-44e0-a84d-732f3be8bee7_4128x4128.jpeg"
   },
   {
     "id": "sebastian-raschka",
@@ -2767,7 +2791,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://substackcdn.com/image/fetch/w_128,h_128,c_fill,f_auto,q_auto:good/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2F61f4c017-506f-4e9b-a24f-76340dad0309_800x800.jpeg"
   },
   {
     "id": "mia-glaese",
@@ -3589,7 +3614,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://sequoiacap.com/wp-content/uploads/sites/6/2023/11/Matan-Grinberg-factory-Ink.jpg"
   },
   {
     "id": "eric-allam",
@@ -3682,7 +3708,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://secure.gravatar.com/avatar/bda67410f8ef2fc4b99cbb7451f8e20af9dceb9365632b27546f3647eb15841d?s=128"
   },
   {
     "id": "radek-sienkiewicz",

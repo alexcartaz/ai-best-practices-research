@@ -67,7 +67,14 @@ One sentence: what it does + who it's for + what's distinctive. Do NOT include s
 ### Step 5 — Resolve author
 If the repo author is a person in `data/people.json`, set `author_id`. If not tracked, run `ingest_person` on their profile URL before writing the tool.
 
-### Step 6 — Write record
+### Step 6 — Resolve logo
+The UI auto-derives the logo from the GitHub owner avatar. Only set `logo_url` explicitly if:
+- The tool has a dedicated logo/wordmark at a stable CDN URL that is clearly better than the owner avatar
+- The tool is not on GitHub (no owner avatar to derive)
+
+Otherwise leave `logo_url` as `null`.
+
+### Step 7 — Write record
 ```json
 {
   "id": "owner-reponame",
@@ -81,6 +88,7 @@ If the repo author is a person in `data/people.json`, set `author_id`. If not tr
   "description": "<one sentence>",
   "topics": ["<topic-id>"],
   "status": "active | archived | unknown",
+  "logo_url": null,
   "primary_files": null,
   "files_checked": null,
   "is_new": true,
@@ -99,6 +107,21 @@ Key rules specific to this spec:
 - `category` must be one of: `dev`, `design`, `dev-adjacent`, `orchestration`, `education`
 - All `profiles` fields must be present — use `null` for unverified, never omit
 - `notable_contributions` must have at least 1 bullet explaining relevance to the editorial lens
+- **`pfp_url`**: Try to set a direct avatar image URL. Resolution order:
+  1. **Bluesky** — public API, no auth required. Extract the handle from `profiles.bsky` URL (the last path segment, e.g. `simonwillison.net` from `https://bsky.app/profile/simonwillison.net`). Fetch `https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor={handle}` and use the `avatar` field from the JSON response. If that returns a 400, try `{handle}.bsky.social` as the actor.
+  2. **LinkedIn** — blocked, requires login. Skip.
+  3. **X** — blocked, requires API. Skip.
+  4. **Substack** — do NOT use `og:image` (it returns a publication banner, not a profile photo). Instead: fetch `{substack_url}/about`, then find the first `substackcdn.com/image/fetch/` URL containing `w_64,h_64,c_fill` or `w_128,h_128,c_fill` in a srcset attribute. Extract the encoded S3 source URL from it and rebuild as: `https://substackcdn.com/image/fetch/w_128,h_128,c_fill,f_auto,q_auto:good/{encoded_s3_url}`.
+  5. **GitHub** — auto-derived by the UI. Set `pfp_url: null` and the UI renders `https://github.com/{username}.png` automatically.
+
+  6. **Wikipedia** — fetch `https://en.wikipedia.org/api/rest_v1/page/summary/{Full_Name}` (spaces → underscores). Use `thumbnail.source` from the response if present. Rate-limit: add a 2–3s delay between requests; if you get a 429, wait and retry.
+  7. **Web search (last resort)** — use the WebSearch tool. Try these queries in order:
+     - `"{name}" site:aiengineer.com` → speaker bio pages often include a headshot; fetch the page and extract the `og:image` or a visible `<img>` of the speaker
+     - `"{name}" "{company}" profile` → company about/team pages often have photos; fetch and extract
+     - `"{name}" headshot OR "profile photo"` → scan results for a trustworthy source (personal site, company page, reputable press)
+     Once you find a candidate image URL, verify it actually resolves and looks like a person photo (not a logo or banner). Never use a photo you can't confidently attribute to the right person.
+
+  In practice: try Bluesky → Substack → Wikipedia → web search in order. Leave `pfp_url: null` if GitHub is the only source (the UI auto-derives it). Set `pfp_url: null` entirely if no reliable image is found — a placeholder is better than the wrong person's photo.
 
 ---
 
@@ -115,7 +138,10 @@ Find or create the author in `data/people.json`. If not tracked and the article 
 - Published 3–6 months ago → `aging`
 - Published 6+ months ago → `potentially-outdated`
 
-### Step 4 — Write record
+### Step 4 — Resolve thumbnail
+Check the page for an `og:image` meta tag. Use that URL as `thumbnail_url` if present, otherwise `null`.
+
+### Step 5 — Write record
 ```json
 {
   "id": "<author-slug>-<topic-slug>",
@@ -126,7 +152,7 @@ Find or create the author in `data/people.json`. If not tracked and the article 
   "topics": ["<topic-id>"],
   "summary": "<one sentence: what's actionable for a Claude Code user>",
   "recency_flag": "current | aging | potentially-outdated",
-  "thumbnail_url": null,
+  "thumbnail_url": "<og:image url or null>",
   "is_new": true,
   "added": "<today>"
 }
@@ -145,7 +171,10 @@ Find or create the guest in `data/people.json`. If not tracked, run `ingest_pers
 ### Step 3 — Also add to person record
 After writing the episode to `data/podcast_episodes.json`, add the episode to the guest's `podcast_episodes[]` in `data/people.json` if not already present.
 
-### Step 4 — Write record
+### Step 4 — Resolve thumbnail
+Use the show's podcast artwork image URL as `thumbnail_url`. Check the episode page for `og:image` or podcast player embed. Prefer a consistent per-show artwork image over per-episode images (so all episodes from the same show look consistent in the UI). Use `null` if no image can be found.
+
+### Step 5 — Write record
 ```json
 {
   "id": "<show-slug>-<YYYYMMDD>",
@@ -156,7 +185,7 @@ After writing the episode to `data/podcast_episodes.json`, add the episode to th
   "date": "<YYYY-MM-DD or null>",
   "topics": ["<topic-id>"],
   "summary": "<one sentence: what's actionable for a Claude Code user>",
-  "thumbnail_url": null,
+  "thumbnail_url": "<show artwork url or null>",
   "is_new": true,
   "added": "<today>"
 }

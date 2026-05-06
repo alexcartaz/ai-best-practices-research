@@ -13,6 +13,7 @@ export interface Person {
     youtube?: string | null
     website?: string | null
   }
+  pfp_url?: string | null
   talks: Talk[]
   podcast_episodes: PersonEpisode[]
   notable_contributions: string[]
@@ -55,6 +56,7 @@ export interface Tool {
   description: string
   topics: string[]
   status: 'active' | 'archived' | 'unknown'
+  logo_url?: string | null
   primary_files?: ToolFile[] | null
   files_checked?: string | null
   is_new?: boolean
@@ -68,6 +70,7 @@ export interface Event {
   url: string
   date: string
   description: string
+  thumbnail_url?: string | null
   notable_talks: EventTalk[]
   all_speakers?: Speaker[]
   is_new?: boolean
