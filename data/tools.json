@@ -701,16 +701,15 @@
   {
     "id": "arize-prompt-learning",
     "name": "arize/prompt-learning",
-    "category": "testing",
+    "category": "governance",
     "author_id": "sally-ann-delucia",
     "url": "https://github.com/arize-ai/prompt-learning",
     "github_url": "https://github.com/arize-ai/prompt-learning",
     "github_stars": 310,
     "description": "SDK and CLI for optimizing LLM prompts using natural-language critiques as the error signal (not numeric scores). Observe \u2192 Evaluate \u2192 Improve loop that rewrites only the fenced instruction block of a system prompt.",
     "topics": [
-      "testing-tdd",
-      "session-management",
-      "repo-template-governance"
+      "repo-template-governance",
+      "session-management"
     ],
     "status": "active",
     "is_new": true,
