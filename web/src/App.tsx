@@ -205,6 +205,65 @@ interface SetupRec {
   url?: string
 }
 
+interface SkillEntry {
+  name: string
+  description: string
+  sourceUrl: string
+  skillFileUrl?: string | null
+  roleTag?: string
+}
+
+interface SkillSource {
+  id: string
+  name: string
+  toolId?: string
+  skills: SkillEntry[]
+}
+
+const SKILLS_REGISTRY: SkillSource[] = [
+  {
+    id: 'sandcastle',
+    name: 'Sandcastle',
+    toolId: 'sandcastle',
+    skills: [
+      { name: '/grill-me', description: 'Structured intake: 20+ questions to deeply understand a project before writing code.', sourceUrl: 'https://github.com/mattpocock/sandcastle', skillFileUrl: 'https://github.com/mattpocock/sandcastle/tree/main/.claude/commands' },
+      { name: '/tdd', description: 'Writes failing tests first, then implements to pass them. Enforces test-driven discipline.', sourceUrl: 'https://github.com/mattpocock/sandcastle', skillFileUrl: 'https://github.com/mattpocock/sandcastle/tree/main/.claude/commands' },
+      { name: '/ralph-loop', description: 'AFK coding loop: runs unattended, queues blockers as questions for you to answer later.', sourceUrl: 'https://github.com/mattpocock/sandcastle', skillFileUrl: 'https://github.com/mattpocock/sandcastle/tree/main/.claude/commands' },
+    ],
+  },
+  {
+    id: 'gstack',
+    name: 'gstack',
+    toolId: 'gstack',
+    skills: [
+      { name: '/ceo', description: 'Strategic planning and task decomposition.', sourceUrl: 'https://github.com/garrytan/gstack', skillFileUrl: 'https://github.com/garrytan/gstack/tree/main/.claude/commands', roleTag: 'CEO' },
+      { name: '/designer', description: 'UI/UX design decisions and component planning.', sourceUrl: 'https://github.com/garrytan/gstack', skillFileUrl: 'https://github.com/garrytan/gstack/tree/main/.claude/commands', roleTag: 'Designer' },
+      { name: '/eng-manager', description: 'Code review, architecture guidance, ticket sizing.', sourceUrl: 'https://github.com/garrytan/gstack', skillFileUrl: 'https://github.com/garrytan/gstack/tree/main/.claude/commands', roleTag: 'Eng Manager' },
+      { name: '/qa', description: 'Test planning, quality assurance, and coverage review.', sourceUrl: 'https://github.com/garrytan/gstack', skillFileUrl: 'https://github.com/garrytan/gstack/tree/main/.claude/commands', roleTag: 'QA' },
+      { name: '/security', description: 'Security audit and vulnerability assessment.', sourceUrl: 'https://github.com/garrytan/gstack', skillFileUrl: 'https://github.com/garrytan/gstack/tree/main/.claude/commands', roleTag: 'Security' },
+      { name: '/doc-engineer', description: 'Documentation generation and maintenance.', sourceUrl: 'https://github.com/garrytan/gstack', skillFileUrl: 'https://github.com/garrytan/gstack/tree/main/.claude/commands', roleTag: 'Doc Engineer' },
+      { name: '/release-manager', description: 'Release planning, changelog, and versioning.', sourceUrl: 'https://github.com/garrytan/gstack', skillFileUrl: 'https://github.com/garrytan/gstack/tree/main/.claude/commands', roleTag: 'Release Manager' },
+    ],
+  },
+  {
+    id: 'awesome-claude-code-subagents',
+    name: 'awesome-claude-code-subagents',
+    toolId: 'awesome-claude-code-subagents',
+    skills: [
+      { name: '100+ specialist personas', description: 'Designer, Debugger, Reviewer, Security Auditor, Data Scientist, DevOps Engineer, and more. Drop individual .md files into .claude/agents/.', sourceUrl: 'https://github.com/VoltAgent/awesome-claude-code-subagents', skillFileUrl: 'https://github.com/VoltAgent/awesome-claude-code-subagents/tree/main/agents' },
+    ],
+  },
+  {
+    id: 'awesome-claude-code-toolkit',
+    name: 'awesome-claude-code-toolkit',
+    toolId: 'awesome-claude-code-toolkit',
+    skills: [
+      { name: '42 slash commands', description: 'Comprehensive command library: code review, debugging, documentation, testing, and more.', sourceUrl: 'https://github.com/rohitg00/awesome-claude-code-toolkit', skillFileUrl: 'https://github.com/rohitg00/awesome-claude-code-toolkit/tree/main/commands' },
+      { name: '400k+ skills via SkillKit', description: 'Mass community skill collection discoverable through SkillKit.', sourceUrl: 'https://github.com/rohitg00/awesome-claude-code-toolkit', skillFileUrl: null },
+    ],
+  },
+]
+
 const GOVERNANCE_SETUPS: SetupRec[] = [
   { toolId: 'gstack', name: 'gstack', tag: 'Heavy structure', why: '23 specialist skills + 8 power tools. CLAUDE.md acts as a router, delegating to CEO, Designer, Eng Manager, QA, Security roles. Best for teams wanting a full virtual engineering team out of the box.' },
   { toolId: 'llm-wiki-karpathy', name: 'LLM Wiki (Karpathy pattern)', tag: 'Living memory', why: 'Three-layer architecture: raw/ (immutable source) + wiki/ (agent-maintained markdown with cross-references) + schema/ (behavior config). Agents maintain their own knowledge base across sessions.' },
@@ -1522,11 +1581,43 @@ function GovernanceContent() {
         </ReportSubsection>
       )}
 
-      {subs.skills && (
-        <ReportSubsection id="gov-skills" title="Skills" description={subs.skills.description}>
-          {subs.skills.approaches.map((a, i) => <ApproachItem key={i} text={a} />)}
-        </ReportSubsection>
-      )}
+      <ReportSubsection id="gov-skills" title="Skills" description={subs.skills?.description}>
+        <div className="space-y-5">
+          {SKILLS_REGISTRY.map(source => {
+            const tool = source.toolId ? tools.find(t => t.id === source.toolId) : null
+            return (
+              <div key={source.id}>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold text-gray-700">{source.name}</span>
+                  {tool && (
+                    <ExternalLink href={tool.url}>
+                      <span className="text-xs text-blue-500 hover:underline">repo →</span>
+                    </ExternalLink>
+                  )}
+                </div>
+                <div className="space-y-1.5 pl-3 border-l border-gray-100">
+                  {source.skills.map(skill => (
+                    <div key={skill.name} className="flex items-start gap-2">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-xs font-mono font-medium text-gray-800">{skill.name}</span>
+                          {skill.roleTag && <Tag label={skill.roleTag} />}
+                          {skill.skillFileUrl && (
+                            <ExternalLink href={skill.skillFileUrl}>
+                              <span className="text-xs text-gray-400 hover:text-blue-500 hover:underline">view skill ↗</span>
+                            </ExternalLink>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{skill.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </ReportSubsection>
 
       {subs.hooks && (
         <ReportSubsection id="gov-hooks" title="Hooks" description={subs.hooks.description}>

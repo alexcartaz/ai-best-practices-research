@@ -214,6 +214,30 @@ Update `data/industry_norms.json`:
 - **Workflow norms**: emerging consensus patterns — e.g. token budget management, context window strategies, when to use subagents vs. single session, etc.
 - Flag any norm that has visibly shifted in the last 2 months with a `"recently_changed": true` field.
 
+## QA pass (run after all JSON updates, before LANDSCAPE.md)
+
+Run these checks on the data you just wrote. Fix what you can inline; flag what you can't with an agent-question.
+
+### 1. Null audit — people
+For each person in `data/people.json`, count null fields in `profiles`. If a person has **4 or more** null profile fields and you did not attempt a profile lookup this run, write an agent-question of type `url-verify` asking whether to investigate further. Do not write duplicate questions for the same person.
+
+### 2. Null audit — tools and articles
+- Any tool missing `url`: fix or remove the entry.
+- Any article missing `author_id` where the author is tracked in `people.json`: fill it in.
+- Any article missing `summary`: write a one-sentence summary from the title and topics.
+
+### 3. Deduplication — IDs
+For each JSON file, check that all `id` values are unique. If two entries share an ID, keep the one with more non-null fields and merge any unique data from the other. Log the merge in the update file.
+
+### 4. Deduplication — URLs
+Check for the same `url` appearing under different IDs in the same file. If found: merge into the record with more data, delete the thinner one. URLs to check: `people.profiles.*`, `tools.url`, `articles.url`, `podcast_episodes.url`.
+
+### 5. Cross-reference integrity
+For every `author_id`, `guest_id`, and `speaker_id` in any JSON file: confirm the referenced ID exists in `data/people.json`. If it doesn't, set the field to `null` and write an agent-question of type `person-ingest` naming the unresolved reference.
+
+### 6. Fix-or-flag threshold
+If you find **more than 5 issues total** across all checks, fix every auto-fixable issue (nulling bad refs, merging exact URL dupes) before proceeding. Do not continue to LANDSCAPE.md with known data integrity problems.
+
 ## After updating JSON
 
 **Priority:** JSON data quality always comes first. If you are running low on context or time, skip the LANDSCAPE.md generation — never skip the data updates or agent-questions.
