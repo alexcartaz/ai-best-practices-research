@@ -72,6 +72,9 @@ interface StackItem {
   toolId?: string
   url?: string
   default?: boolean
+  radioGroup?: string       // items in the same radioGroup are mutually exclusive (one-select)
+  linkedGroup?: string      // items in the same linkedGroup across ALL layers toggle atomically
+  section?: string          // display grouping label within a layer
 }
 
 interface StackBundle {
@@ -106,11 +109,11 @@ interface UserDefaults {
 
 const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
   governance: [
-    { id: 'claude-md', label: 'CLAUDE.md', description: 'Behavioral instructions and project context. The required baseline — start here and expand as pain appears.', default: true },
-    { id: 'design-md', label: 'DESIGN.md', toolId: 'design-md-format', description: 'Design tokens (colors, spacing, typography) as persistent agent context. Google Labs format. CLI lints WCAG AA contrast and exports to Tailwind/DTCG.' },
-    { id: 'agents-md', label: 'AGENTS.md', url: 'https://docs.anthropic.com/en/docs/claude-code/sub-agents', description: 'Multi-agent coordination: role definitions and handoff rules for when Claude spawns subagents.' },
-    { id: 'llm-wiki', label: 'LLM Wiki (raw/+wiki/+schema/)', toolId: 'llm-wiki-karpathy', description: 'Three-layer memory: immutable sources + agent-maintained cross-referenced wiki + behavior config. Karpathy pattern, 27k+ stars.' },
-    { id: 'karpathy-claude-md', label: 'Karpathy CLAUDE.md', toolId: 'karpathy-claude-md', description: 'Community CLAUDE.md synthesized from Karpathy\'s public observations on using Claude Code. Reference for how a prominent AI practitioner\'s workflow preferences translate into instruction form.' },
+    { id: 'claude-md', label: 'Claude Code default', description: 'Blank Claude Code CLAUDE.md — behavioral instructions and project context. The required baseline, customized per project.', default: true, radioGroup: 'claude-md-choice', section: 'CLAUDE.md' },
+    { id: 'karpathy-claude-md', label: 'Karpathy CLAUDE.md', toolId: 'karpathy-claude-md', description: 'Community CLAUDE.md synthesized from Karpathy\'s public observations on using Claude Code. Reference for how a prominent AI practitioner\'s workflow preferences translate into instruction form.', radioGroup: 'claude-md-choice', section: 'CLAUDE.md' },
+    { id: 'design-md', label: 'DESIGN.md', toolId: 'design-md-format', description: 'Design tokens (colors, spacing, typography) as persistent agent context. Google Labs format. CLI lints WCAG AA contrast and exports to Tailwind/DTCG.', linkedGroup: 'design-md-cli', section: 'Others' },
+    { id: 'agents-md', label: 'AGENTS.md', url: 'https://docs.anthropic.com/en/docs/claude-code/sub-agents', description: 'Multi-agent coordination: role definitions and handoff rules for when Claude spawns subagents.', section: 'Others' },
+    { id: 'llm-wiki', label: 'LLM Wiki (raw/+wiki/+schema/)', toolId: 'llm-wiki-karpathy', description: 'Three-layer memory: immutable sources + agent-maintained cross-referenced wiki + behavior config. Karpathy pattern, 27k+ stars.', section: 'Others' },
   ],
   skills: [
     { id: 'grill-me', label: '/grill-me', toolId: 'sandcastle', description: 'Structured intake: 20+ questions to deeply understand a project before writing code. Matt Pocock / Sandcastle.' },
@@ -135,7 +138,7 @@ const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
     { id: 'vite-react-ts', label: 'Vite + React + TypeScript', description: 'Standard web app scaffold. Fast dev server, ESM, type-safe by default.', default: true },
     { id: 'tailwind', label: 'Tailwind CSS', description: 'Utility-first CSS. Claude generates Tailwind naturally; pairs well with DESIGN.md tokens.', default: true },
     { id: 'eslint', label: 'ESLint + Prettier', description: 'Code quality and formatting. Pair with the pre-commit hook to enforce on every commit.', default: true },
-    { id: 'designmd-cli', label: 'DESIGN.md CLI', toolId: 'design-md-format', description: 'Required if using DESIGN.md. Lints WCAG AA contrast, exports tokens to Tailwind/DTCG.' },
+    { id: 'designmd-cli', label: 'DESIGN.md CLI', toolId: 'design-md-format', description: 'Required if using DESIGN.md. Lints WCAG AA contrast, exports tokens to Tailwind/DTCG.', linkedGroup: 'design-md-cli' },
     { id: 'playwright-pkg', label: 'Playwright', url: 'https://playwright.dev', description: 'Required package if using Playwright MCP.' },
   ],
 }
@@ -1361,10 +1364,44 @@ function StackBuilderContent() {
   const { defaults, update: updateDefaults } = useUserDefaults()
 
   const toggleItem = (layer: StackLayerKey, itemId: string) => {
+    const item = STACK_LAYER_ITEMS[layer].find(i => i.id === itemId)!
+    const turningOn = !selection[layer].includes(itemId)
     setSelection(prev => {
-      const current = prev[layer]
-      const next = current.includes(itemId) ? current.filter(id => id !== itemId) : [...current, itemId]
-      return { ...prev, [layer]: next }
+      const next = { ...prev }
+
+      if (item.radioGroup) {
+        // One-select within the same layer: deselect siblings, select this one
+        const siblings = STACK_LAYER_ITEMS[layer].filter(i => i.radioGroup === item.radioGroup).map(i => i.id)
+        if (turningOn) {
+          next[layer] = [...prev[layer].filter(id => !siblings.includes(id)), itemId]
+        } else {
+          // Don't allow deselecting the last radio in a group — must always have one
+          return prev
+        }
+        return next
+      }
+
+      if (item.linkedGroup) {
+        // Atomic toggle: find all items with same linkedGroup across all layers
+        const allLinked: { layer: StackLayerKey; id: string }[] = []
+        LAYER_ORDER.forEach(l => {
+          STACK_LAYER_ITEMS[l].forEach(i => {
+            if (i.linkedGroup === item.linkedGroup) allLinked.push({ layer: l, id: i.id })
+          })
+        })
+        allLinked.forEach(({ layer: l, id }) => {
+          if (turningOn) {
+            if (!next[l].includes(id)) next[l] = [...next[l], id]
+          } else {
+            next[l] = next[l].filter(x => x !== id)
+          }
+        })
+        return next
+      }
+
+      // Default toggle
+      next[layer] = turningOn ? [...prev[layer], itemId] : prev[layer].filter(id => id !== itemId)
+      return next
     })
   }
 
@@ -1574,31 +1611,57 @@ function StackBuilderContent() {
               if (bundleItems.length > 0) byBundle.set(b, bundleItems)
             })
 
+            // Group standalone items by section for display
+            const sections: { name: string | undefined; items: StackItem[] }[] = []
+            standaloneItems.forEach(item => {
+              const last = sections[sections.length - 1]
+              if (last && last.name === item.section) { last.items.push(item) }
+              else { sections.push({ name: item.section, items: [item] }) }
+            })
+
             return (
               <div key={layerKey} id={`stack-layer-${layerKey}`}>
                 <p className="text-xs font-semibold text-gray-800 mb-0.5">{label}</p>
                 <p className="text-xs text-gray-400 mb-2">{description}</p>
-                <div className="space-y-2">
-                  {standaloneItems.map(item => {
-                    const isChecked = selected.includes(item.id)
-                    const url = getItemUrl(item)
+                <div className="space-y-3">
+                  {sections.map(({ name: sectionName, items: sectionItems }) => {
+                    const isRadioSection = sectionItems.some(i => i.radioGroup)
                     return (
-                      <label key={item.id} className="flex items-start gap-2.5 cursor-pointer">
-                        <input type="checkbox" checked={isChecked} onChange={() => toggleItem(layerKey, item.id)}
-                          className="mt-0.5 flex-shrink-0 cursor-pointer" />
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            <span className="text-xs font-medium text-gray-800">{item.label}</span>
-                            {item.default && <span className="text-xs text-gray-300">default</span>}
-                            {!item.default && url && (
-                              <ExternalLink href={url}>
-                                <span className="text-xs text-blue-500 hover:text-blue-700">↗</span>
-                              </ExternalLink>
-                            )}
-                          </div>
-                          {isChecked && <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{item.description}</p>}
+                      <div key={sectionName ?? '__default'}>
+                        {sectionName && (
+                          <p className="text-xs font-medium text-gray-500 mb-1.5">{sectionName}</p>
+                        )}
+                        <div className="space-y-2">
+                          {sectionItems.map(item => {
+                            const isChecked = selected.includes(item.id)
+                            const url = getItemUrl(item)
+                            return (
+                              <label key={item.id} className="flex items-start gap-2.5 cursor-pointer">
+                                {isRadioSection
+                                  ? <input type="radio" checked={isChecked} onChange={() => toggleItem(layerKey, item.id)}
+                                      name={`radio-${layerKey}-${item.radioGroup}`}
+                                      className="mt-0.5 flex-shrink-0 cursor-pointer" />
+                                  : <input type="checkbox" checked={isChecked} onChange={() => toggleItem(layerKey, item.id)}
+                                      className="mt-0.5 flex-shrink-0 cursor-pointer" />
+                                }
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-1.5 flex-wrap">
+                                    <span className="text-xs font-medium text-gray-800">{item.label}</span>
+                                    {item.linkedGroup && <span className="text-xs text-amber-500" title="Selecting this also selects required companion items">linked</span>}
+                                    {item.default && !item.radioGroup && <span className="text-xs text-gray-300">default</span>}
+                                    {url && !item.default && (
+                                      <ExternalLink href={url}>
+                                        <span className="text-xs text-blue-500 hover:text-blue-700">↗</span>
+                                      </ExternalLink>
+                                    )}
+                                  </div>
+                                  {item.description && <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{item.description}</p>}
+                                </div>
+                              </label>
+                            )
+                          })}
                         </div>
-                      </label>
+                      </div>
                     )
                   })}
                   {Array.from(byBundle.entries()).map(([bundle, bundleItems]) => {
