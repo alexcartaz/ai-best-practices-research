@@ -429,7 +429,7 @@
     "url": "https://claude.ai/design",
     "github_url": null,
     "github_stars": null,
-    "description": "Anthropic's dedicated design interface within Claude — generates UI mockups and component designs from prompts. Outputs design artifacts that can be handed off to Claude Code for implementation.",
+    "description": "Anthropic's dedicated design interface within Claude \u2014 generates UI mockups and component designs from prompts. Outputs design artifacts that can be handed off to Claude Code for implementation.",
     "topics": [
       "design-tooling",
       "design-systems"
@@ -447,7 +447,7 @@
     "url": "https://github.com/forrestchang/andrej-karpathy-skills",
     "github_url": "https://github.com/forrestchang/andrej-karpathy-skills",
     "github_stars": 114208,
-    "description": "Community-created CLAUDE.md by Forrest Chang, synthesized from Andrej Karpathy's public observations about how he uses Claude Code. Not authored by Karpathy directly — Karpathy has no published CLAUDE.md in his own repos. Reference value: shows how a prominent AI practitioner's workflow preferences translate into instruction form.",
+    "description": "Community-created CLAUDE.md by Forrest Chang, synthesized from Andrej Karpathy's public observations about how he uses Claude Code. Not authored by Karpathy directly \u2014 Karpathy has no published CLAUDE.md in his own repos. Reference value: shows how a prominent AI practitioner's workflow preferences translate into instruction form.",
     "topics": [
       "session-management",
       "repo-template-governance",
@@ -567,7 +567,7 @@
     "url": "https://github.com/Manavarya09/design-extract",
     "github_url": "https://github.com/Manavarya09/design-extract",
     "github_stars": 2175,
-    "description": "Created Apr 2026 by Manavarya09. Extracts a live website's design system into DTCG tokens, Tailwind v4 config, shadcn/ui components, and Figma variables — using Playwright under the hood. Ships as an MCP server for Claude Code. Bridge from 'I like that site's design' to working tokens/Tailwind config in your project. Directly addresses the design-tooling pain point.",
+    "description": "Created Apr 2026 by Manavarya09. Extracts a live website's design system into DTCG tokens, Tailwind v4 config, shadcn/ui components, and Figma variables \u2014 using Playwright under the hood. Ships as an MCP server for Claude Code. Bridge from 'I like that site's design' to working tokens/Tailwind config in your project. Directly addresses the design-tooling pain point.",
     "topics": [
       "design-tooling",
       "design-systems",
@@ -607,7 +607,7 @@
     "url": "https://github.com/coleam00/Archon",
     "github_url": "https://github.com/coleam00/Archon",
     "github_stars": 20849,
-    "description": "Open-source 'harness builder' that aims to make AI coding deterministic and repeatable across runs. Reproducibility layer over Claude Code/Codex. Aligns with the harness-engineering thesis (Lopopolo, Kumar) — packages it as a usable tool.",
+    "description": "Open-source 'harness builder' that aims to make AI coding deterministic and repeatable across runs. Reproducibility layer over Claude Code/Codex. Aligns with the harness-engineering thesis (Lopopolo, Kumar) \u2014 packages it as a usable tool.",
     "topics": [
       "multi-agent-orchestration",
       "repo-template-governance",
@@ -645,7 +645,7 @@
     "url": "https://github.com/yvgude/lean-ctx",
     "github_url": "https://github.com/yvgude/lean-ctx",
     "github_stars": 1089,
-    "description": "Created Mar 2026 by yvgude. 'Context OS' — a Rust binary plus MCP server that ships shell hooks, 49 tools, 10 read modes, and 90+ patterns for cutting Claude Code token waste 60-95%. Alternative philosophy to caveman: optimize the read pipeline rather than the prompt style.",
+    "description": "Created Mar 2026 by yvgude. 'Context OS' \u2014 a Rust binary plus MCP server that ships shell hooks, 49 tools, 10 read modes, and 90+ patterns for cutting Claude Code token waste 60-95%. Alternative philosophy to caveman: optimize the read pipeline rather than the prompt style.",
     "topics": [
       "session-management",
       "token-efficiency",
@@ -685,7 +685,7 @@
     "url": "https://github.com/nexu-io/open-design",
     "github_url": "https://github.com/nexu-io/open-design",
     "github_stars": 27927,
-    "description": "Local-first, open-source alternative to Anthropic's Claude Design. Auto-detects 15+ coding-agent CLIs (Claude Code, Cursor, Copilot CLI, Gemini CLI, Codex, OpenCode, Qwen, Hermes, Kimi CLI, etc.) and uses them as interchangeable design engines — BYOK, no subscription. Ships 129 portable design systems as DESIGN.md files (Linear, Stripe, Vercel, Notion, Apple, etc.) plus 31 SKILL.md skills. Local Express + SQLite daemon spawns the chosen agent with real filesystem access; web UI is Next.js, optional Electron desktop. Exposes a stdio MCP server so Claude Code in any other repo can query live design tokens / CSS / components without re-export cycles. Apache-2.0. Maintained by the nexu.io org (also publishes a 'harness-engineering-guide').",
+    "description": "Local-first, open-source alternative to Anthropic's Claude Design. Auto-detects 15+ coding-agent CLIs (Claude Code, Cursor, Copilot CLI, Gemini CLI, Codex, OpenCode, Qwen, Hermes, Kimi CLI, etc.) and uses them as interchangeable design engines \u2014 BYOK, no subscription. Ships 129 portable design systems as DESIGN.md files (Linear, Stripe, Vercel, Notion, Apple, etc.) plus 31 SKILL.md skills. Local Express + SQLite daemon spawns the chosen agent with real filesystem access; web UI is Next.js, optional Electron desktop. Exposes a stdio MCP server so Claude Code in any other repo can query live design tokens / CSS / components without re-export cycles. Apache-2.0. Maintained by the nexu.io org (also publishes a 'harness-engineering-guide').",
     "topics": [
       "design-tooling",
       "design-systems",
@@ -697,5 +697,24 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
+  },
+  {
+    "id": "arize-prompt-learning",
+    "name": "arize/prompt-learning",
+    "category": "testing",
+    "author_id": "sally-ann-delucia",
+    "url": "https://github.com/arize-ai/prompt-learning",
+    "github_url": "https://github.com/arize-ai/prompt-learning",
+    "github_stars": 310,
+    "description": "SDK and CLI for optimizing LLM prompts using natural-language critiques as the error signal (not numeric scores). Observe \u2192 Evaluate \u2192 Improve loop that rewrites only the fenced instruction block of a system prompt.",
+    "topics": [
+      "testing-tdd",
+      "session-management",
+      "repo-template-governance"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-06",
+    "last_updated": "2026-05-06"
   }
 ]
