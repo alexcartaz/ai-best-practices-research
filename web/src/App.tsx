@@ -69,101 +69,131 @@ const TOPIC_TAGS = [
 
 // ---- Stack Builder data ----
 
-interface StackOption {
+type StackLayerKey = 'governance' | 'skills' | 'hooks' | 'mcps' | 'tools'
+
+interface StackItem {
   id: string
   label: string
-  toolId?: string
   description: string
-  complexity: 'simple' | 'standard' | 'complex'
+  toolId?: string
+  default?: boolean
 }
 
-interface StackLayer {
+interface StackBundle {
   id: string
-  label: string
+  name: string
   description: string
-  options: StackOption[]
+  toolId?: string
+  provides: Partial<Record<StackLayerKey, string[]>>
+  conflicts: string[]
+}
+
+interface StackSelection {
+  governance: string[]
+  skills: string[]
+  hooks: string[]
+  mcps: string[]
+  tools: string[]
+  bundles: string[]
 }
 
 interface StackConfig {
   id: string
   name: string
-  selections: Record<string, string>
+  selection: StackSelection
   savedAt: string
 }
 
-const STACK_LAYERS: StackLayer[] = [
+interface UserDefaults {
+  techStack: string
+  claudeMdText: string
+}
+
+const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
+  governance: [
+    { id: 'claude-md', label: 'CLAUDE.md', description: 'Behavioral instructions and project context. The required baseline — start here and expand as pain appears.', default: true },
+    { id: 'design-md', label: 'DESIGN.md', toolId: 'design-md-format', description: 'Design tokens (colors, spacing, typography) as persistent agent context. Google Labs format. CLI lints WCAG AA contrast and exports to Tailwind/DTCG.' },
+    { id: 'agents-md', label: 'AGENTS.md', description: 'Multi-agent coordination: role definitions and handoff rules for when Claude spawns subagents.' },
+    { id: 'llm-wiki', label: 'LLM Wiki (raw/+wiki/+schema/)', toolId: 'llm-wiki-karpathy', description: 'Three-layer memory: immutable sources + agent-maintained cross-referenced wiki + behavior config. Karpathy pattern, 27k+ stars.' },
+  ],
+  skills: [
+    { id: 'grill-me', label: '/grill-me', toolId: 'sandcastle', description: 'Structured intake: 20+ questions to deeply understand a project before writing code. Matt Pocock / Sandcastle.' },
+    { id: 'tdd', label: '/tdd', toolId: 'sandcastle', description: 'TDD workflow skill: writes failing tests first, then implementation. Matt Pocock / Sandcastle.' },
+    { id: 'ralph-loop', label: '/ralph-loop', toolId: 'sandcastle', description: 'AFK coding loop: runs unattended, queues blockers as questions for you to answer later.' },
+    { id: 'awesome-subagent-skills', label: 'awesome-claude-code-subagents', toolId: 'awesome-claude-code-subagents', description: '100+ specialist personas (Designer, Debugger, Reviewer, Security Auditor). Drop individual profiles into .claude/agents/.' },
+    { id: 'gstack-skills', label: 'gstack skills (23)', toolId: 'gstack', description: 'CEO, Designer, Eng Manager, Release Manager, QA, Doc Engineer, Security. Role-routed from CLAUDE.md.' },
+    { id: 'toolkit-skills', label: 'awesome-claude-code-toolkit', toolId: 'awesome-claude-code-toolkit', description: '400k+ skills via SkillKit, 42 slash commands, 20 hooks, 7 templates.' },
+  ],
+  hooks: [
+    { id: 'pre-commit', label: 'Pre-commit validation', description: 'Runs lint, type-check, or tests before every commit. Prevents bad state from landing.' },
+    { id: 'post-tool-call', label: 'Post tool-call hook', description: 'Fires after each Claude tool call — useful for logging, notifications, or enforcing invariants.' },
+    { id: 'sandcastle-hooks', label: 'Sandcastle hook suite', toolId: 'sandcastle', description: 'Production-tested hooks: diff review gates, verification checkpoints, auto-merge conditions.' },
+  ],
+  mcps: [
+    { id: 'playwright', label: 'Playwright MCP', toolId: 'playwright-mcp', description: 'Browser automation. Claude verifies its own UI output. Community standard for closing the autonomous web app loop.' },
+    { id: 'github-mcp', label: 'GitHub MCP', description: 'Agents read/write issues, PRs, and code directly via GitHub API.' },
+    { id: 'filesystem-mcp', label: 'Filesystem MCP', description: 'Scoped filesystem access beyond the current project directory.' },
+  ],
+  tools: [
+    { id: 'vite-react-ts', label: 'Vite + React + TypeScript', description: 'Standard web app scaffold. Fast dev server, ESM, type-safe by default.', default: true },
+    { id: 'tailwind', label: 'Tailwind CSS', description: 'Utility-first CSS. Claude generates Tailwind naturally; pairs well with DESIGN.md tokens.', default: true },
+    { id: 'eslint', label: 'ESLint + Prettier', description: 'Code quality and formatting. Pair with the pre-commit hook to enforce on every commit.', default: true },
+    { id: 'designmd-cli', label: 'DESIGN.md CLI', toolId: 'design-md-format', description: 'Required if using DESIGN.md. Lints WCAG AA contrast, exports tokens to Tailwind/DTCG.' },
+    { id: 'playwright-pkg', label: 'Playwright', description: 'Required package if using Playwright MCP.' },
+  ],
+}
+
+const STACK_BUNDLES: StackBundle[] = [
   {
-    id: 'context',
-    label: 'Context Files',
-    description: 'Persistent files Claude reads as background context in every session.',
-    options: [
-      { id: 'claude-only', label: 'CLAUDE.md only', complexity: 'simple', description: 'Behavioral instructions for Claude Code. The required baseline — start here and expand as pain appears.' },
-      { id: 'claude-design', label: 'CLAUDE.md + DESIGN.md', complexity: 'standard', description: 'Adds a design token file (colors, spacing, typography) as persistent visual context. Community standard for web apps using DESIGN.md format (Google Labs).' },
-      { id: 'full', label: 'CLAUDE.md + DESIGN.md + SKILL.md', complexity: 'complex', description: 'Full three-layer stack. SKILL.md defines reusable procedures agents can invoke. Good when you have repeated multi-step workflows you want consistent.' },
-    ],
+    id: 'sandcastle',
+    name: 'Sandcastle',
+    toolId: 'sandcastle',
+    description: 'AFK coding harness by Matt Pocock. Includes /grill-me, /tdd, /ralph-loop skills and the Sandcastle hook suite. Reference implementation for unattended coding loops.',
+    provides: { skills: ['grill-me', 'tdd', 'ralph-loop'], hooks: ['sandcastle-hooks'] },
+    conflicts: ['gstack'],
   },
   {
-    id: 'governance',
-    label: 'Governance Template',
-    description: 'The overall structure of your repo for AI-assisted development.',
-    options: [
-      { id: 'custom', label: 'Custom', complexity: 'simple', description: 'Write your own CLAUDE.md from scratch. Most control, most work. Right for most solo web app projects starting out.' },
-      { id: 'gstack', label: 'gstack', toolId: 'gstack', complexity: 'complex', description: '23 specialist skills + 8 power tools. CLAUDE.md acts as a router delegating to CEO, Designer, Eng Manager, QA roles. Heavy but production-tested.' },
-      { id: 'llm-wiki', label: 'LLM Wiki pattern', toolId: 'llm-wiki-karpathy', complexity: 'standard', description: 'Three-layer: raw/ (immutable source) + wiki/ (agent-maintained markdown) + schema/ (behavior config). Agents maintain their own cross-referenced knowledge base.' },
-      { id: 'subagents', label: 'awesome-claude-code-subagents', toolId: 'awesome-claude-code-subagents', complexity: 'standard', description: '100+ pre-built subagent personas. Drop-in specialist roles (designer, reviewer, debugger) without the full gstack structure.' },
-    ],
+    id: 'gstack',
+    name: 'gstack',
+    toolId: 'gstack',
+    description: '23 specialist skills + 8 power tools. CLAUDE.md acts as a role-router: CEO, Designer, Eng Manager, QA, Security. Includes AGENTS.md definitions.',
+    provides: { governance: ['agents-md'], skills: ['gstack-skills'] },
+    conflicts: ['sandcastle', 'awesome-subagents'],
   },
   {
-    id: 'orchestration',
-    label: 'Orchestration',
-    description: 'How you run and coordinate Claude Code sessions.',
-    options: [
-      { id: 'single', label: 'Single session', complexity: 'simple', description: 'One Claude Code session at a time. Right for most solo web app work — no overhead, human stays in the loop naturally.' },
-      { id: 'conductor', label: 'Conductor', toolId: 'conductor', complexity: 'standard', description: 'macOS dashboard: parallel Claude Code instances in separate git worktrees. Real-time progress, diff review, GitHub sync. Good when you want to run tasks in parallel without losing oversight.' },
-      { id: 'vibe-kanban', label: 'Vibe Kanban', toolId: 'vibe-kanban', complexity: 'complex', description: 'Multi-agent kanban across 10+ agent types. Parallel execution + diff review + browser preview. Better suited to project-scale parallelism than solo web app iteration.' },
-    ],
+    id: 'karpathy-wiki',
+    name: 'Karpathy LLM Wiki',
+    toolId: 'llm-wiki-karpathy',
+    description: 'Three-layer memory: raw/ (immutable) + wiki/ (agent-maintained) + schema/ (behavior config). 27k+ stars.',
+    provides: { governance: ['llm-wiki'] },
+    conflicts: [],
   },
   {
-    id: 'isolation',
-    label: 'Isolation',
-    description: 'How agent actions are sandboxed to prevent runaway changes.',
-    options: [
-      { id: 'none', label: 'None', complexity: 'simple', description: 'Agents work directly on your branch. Fine for most sessions — you review before committing. Lowest friction.' },
-      { id: 'worktrees', label: 'Git worktrees', complexity: 'standard', description: 'Each task runs in its own worktree. Lightweight: no container overhead, easy to inspect mid-task. Good middle ground for parallel work.' },
-      { id: 'dagger', label: 'Dagger container-use', toolId: 'dagger-container-use', complexity: 'complex', description: 'Full container isolation per agent. Prevents filesystem and network escape entirely. By Solomon Hykes (Docker). Overkill for most web app work but ideal if agents touch infra.' },
-    ],
-  },
-  {
-    id: 'verification',
-    label: 'Verification',
-    description: 'How you verify agent output is correct before it lands.',
-    options: [
-      { id: 'manual', label: 'Manual review', complexity: 'simple', description: 'You review every diff. No automation. Right for short iteration cycles where you\'re watching the agent work.' },
-      { id: 'playwright', label: 'Playwright MCP', toolId: 'playwright-mcp', complexity: 'standard', description: 'Agents verify their own UI output via browser automation. Community standard for closing the autonomous coding loop on web apps without human eyes on every render.' },
-      { id: 'sandcastle', label: 'Sandcastle pattern', toolId: 'sandcastle', complexity: 'complex', description: 'Docker + git worktrees + automated merge + verification pipeline. The reference implementation for production-grade agent reliability. Patterns are adaptable even if you\'re on subscription (not API).' },
-    ],
-  },
-  {
-    id: 'subagent-profiles',
-    label: 'Subagent Profiles',
-    description: 'Persona definitions for specialist subagents — who Claude is when operating in a given role, not just what it does.',
-    options: [
-      { id: 'none', label: 'None', complexity: 'simple', description: 'No named subagent roles. Claude operates as a generalist in every session. Right for most solo web app work where you don\'t need specialist handoffs.' },
-      { id: 'voltagent', label: 'awesome-claude-code-subagents', toolId: 'awesome-claude-code-subagents', complexity: 'standard', description: '100+ pre-built subagent personas by VoltAgent — Designer, Debugger, Reviewer, Security Auditor, etc. Drop individual profiles into your .claude/agents/ folder as needed.' },
-      { id: 'gstack-roles', label: 'gstack roles', toolId: 'gstack', complexity: 'complex', description: 'Full gstack role system: CEO, Designer, Eng Manager, Release Manager, QA, Doc Engineer, Security. CLAUDE.md routes between them. Best when you want a full virtual team with opinionated handoff rules.' },
-    ],
-  },
-  {
-    id: 'memory',
-    label: 'Memory & Cross-session Context',
-    description: 'How project knowledge persists across Claude Code sessions — prevents losing context on every /clear or new session.',
-    options: [
-      { id: 'none', label: 'CLAUDE.md notes only', complexity: 'simple', description: 'Manually maintain a "Current state" or "Recent decisions" section in CLAUDE.md. Low overhead, always visible, but requires you to keep it updated. Right starting point for most projects.' },
-      { id: 'backup-reload', label: 'Backup → clear → reload', complexity: 'standard', description: 'Matt Pocock\'s pattern: at ~100k tokens, back up the current context summary, /clear, reload the backup. Prevents compaction drift without complex infrastructure.' },
-      { id: 'llm-wiki', label: 'Karpathy LLM Wiki', toolId: 'llm-wiki-karpathy', complexity: 'complex', description: 'Three-layer directory: raw/ (immutable sources) + wiki/ (agent-maintained cross-referenced markdown) + schema/ (behavior config). Agent actively maintains its own knowledge base between sessions. 27k+ stars. High setup cost, high long-term payoff for large or long-lived projects.' },
-    ],
+    id: 'awesome-subagents',
+    name: 'awesome-claude-code-subagents',
+    toolId: 'awesome-claude-code-subagents',
+    description: '100+ pre-built specialist personas. Designer, Debugger, Reviewer, Security Auditor — add individuals or the full set.',
+    provides: { skills: ['awesome-subagent-skills'] },
+    conflicts: ['gstack'],
   },
 ]
+
+const DEFAULT_SELECTION: StackSelection = {
+  governance: ['claude-md'],
+  skills: [],
+  hooks: [],
+  mcps: [],
+  tools: ['vite-react-ts', 'tailwind', 'eslint'],
+  bundles: [],
+}
+
+const STACK_LAYER_LABELS: Record<StackLayerKey, { label: string; description: string }> = {
+  governance: { label: 'Governance', description: '.md files Claude reads as persistent context in every session.' },
+  skills: { label: 'Skills', description: 'Slash commands agents can invoke — structured procedures for repeated workflows.' },
+  hooks: { label: 'Hooks', description: 'Shell commands that fire on Claude Code events (pre-commit, post-tool-call, etc.).' },
+  mcps: { label: 'MCPs', description: 'Model Context Protocol servers that extend what agents can do.' },
+  tools: { label: 'Tools', description: 'npm packages and integrations scaffolded into the new repo.' },
+}
 
 // ---- Curated setup recommendations ----
 
@@ -587,14 +617,14 @@ const REPORT_SUBSECTIONS: Record<ReportSection, { label: string; id: string }[]>
     { label: 'Resolved', id: 'gaps-resolved' },
   ],
   stack: [
+    { label: 'User Defaults', id: 'stack-user-defaults' },
     { label: 'Saved Configs', id: 'stack-configs' },
-    { label: 'Context Files', id: 'stack-layer-context' },
+    { label: 'Bundles', id: 'stack-bundles' },
     { label: 'Governance', id: 'stack-layer-governance' },
-    { label: 'Subagent Profiles', id: 'stack-layer-subagent-profiles' },
-    { label: 'Memory', id: 'stack-layer-memory' },
-    { label: 'Orchestration', id: 'stack-layer-orchestration' },
-    { label: 'Isolation', id: 'stack-layer-isolation' },
-    { label: 'Verification', id: 'stack-layer-verification' },
+    { label: 'Skills', id: 'stack-layer-skills' },
+    { label: 'Hooks', id: 'stack-layer-hooks' },
+    { label: 'MCPs', id: 'stack-layer-mcps' },
+    { label: 'Tools', id: 'stack-layer-tools' },
   ],
   governance: [
     { label: 'Top Setups', id: 'gov-top-setups' },
@@ -1197,8 +1227,8 @@ function useStackConfigs() {
     try { return JSON.parse(localStorage.getItem('ai-research-stack-configs') ?? '[]') }
     catch { return [] }
   })
-  const save = useCallback((name: string, selections: Record<string, string>) => {
-    const config: StackConfig = { id: Date.now().toString(), name, selections, savedAt: new Date().toISOString().split('T')[0] }
+  const save = useCallback((name: string, selection: StackSelection) => {
+    const config: StackConfig = { id: Date.now().toString(), name, selection, savedAt: new Date().toISOString().split('T')[0] }
     setConfigs(prev => {
       const next = [...prev, config]
       localStorage.setItem('ai-research-stack-configs', JSON.stringify(next))
@@ -1215,42 +1245,128 @@ function useStackConfigs() {
   return { configs, save, remove }
 }
 
-const complexityColor: Record<string, string> = { simple: 'green', standard: 'blue', complex: 'orange' }
+function useUserDefaults() {
+  const [defaults, setDefaults] = useState<UserDefaults>(() => {
+    try { return JSON.parse(localStorage.getItem('ai-research-user-defaults') ?? 'null') ?? { techStack: 'vite-react-ts', claudeMdText: '' } }
+    catch { return { techStack: 'vite-react-ts', claudeMdText: '' } }
+  })
+  const update = useCallback((patch: Partial<UserDefaults>) => {
+    setDefaults(prev => {
+      const next = { ...prev, ...patch }
+      localStorage.setItem('ai-research-user-defaults', JSON.stringify(next))
+      return next
+    })
+  }, [])
+  return { defaults, update }
+}
+
+const LAYER_ORDER: StackLayerKey[] = ['governance', 'skills', 'hooks', 'mcps', 'tools']
 
 function StackBuilderContent() {
-  const [selections, setSelections] = useState<Record<string, string>>({})
+  const [selection, setSelection] = useState<StackSelection>(() => ({ ...DEFAULT_SELECTION, tools: [...DEFAULT_SELECTION.tools] }))
   const [saveName, setSaveName] = useState('')
   const [showSaveInput, setShowSaveInput] = useState(false)
+  const [showScript, setShowScript] = useState(false)
+  const [editingDefaults, setEditingDefaults] = useState(false)
   const { configs, save, remove } = useStackConfigs()
+  const { defaults, update: updateDefaults } = useUserDefaults()
 
-  const select = (layerId: string, optionId: string) =>
-    setSelections(prev => ({ ...prev, [layerId]: optionId }))
+  const toggleItem = (layer: StackLayerKey, itemId: string) => {
+    setSelection(prev => {
+      const current = prev[layer]
+      const next = current.includes(itemId) ? current.filter(id => id !== itemId) : [...current, itemId]
+      return { ...prev, [layer]: next }
+    })
+  }
 
-  const loadConfig = (config: StackConfig) => setSelections(config.selections)
+  const toggleBundle = (bundleId: string) => {
+    const bundle = STACK_BUNDLES.find(b => b.id === bundleId)!
+    const isSelected = selection.bundles.includes(bundleId)
+    setSelection(prev => {
+      if (isSelected) {
+        const newBundles = prev.bundles.filter(id => id !== bundleId)
+        const still = STACK_BUNDLES.filter(b => newBundles.includes(b.id))
+        const newSel = { ...prev, bundles: newBundles }
+        ;(Object.keys(bundle.provides) as StackLayerKey[]).forEach(layer => {
+          const toRemove = bundle.provides[layer] ?? []
+          const keepAnyway = still.flatMap(b => b.provides[layer] ?? [])
+          newSel[layer] = newSel[layer].filter(id => !toRemove.includes(id) || keepAnyway.includes(id))
+        })
+        return newSel
+      } else {
+        const newBundles = [...prev.bundles.filter(id => !bundle.conflicts.includes(id)), bundleId]
+        const newSel = { ...prev, bundles: newBundles }
+        STACK_BUNDLES.filter(b => bundle.conflicts.includes(b.id)).forEach(c => {
+          ;(Object.keys(c.provides) as StackLayerKey[]).forEach(layer => {
+            newSel[layer] = newSel[layer].filter(id => !(c.provides[layer] ?? []).includes(id))
+          })
+        })
+        ;(Object.keys(bundle.provides) as StackLayerKey[]).forEach(layer => {
+          newSel[layer] = [...new Set([...newSel[layer], ...(bundle.provides[layer] ?? [])])]
+        })
+        return newSel
+      }
+    })
+  }
 
   const saveConfig = () => {
     if (!saveName.trim()) return
-    save(saveName.trim(), selections)
+    save(saveName.trim(), selection)
     setSaveName('')
     setShowSaveInput(false)
   }
 
-  const selectedCount = Object.keys(selections).length
-  const complexityCounts = STACK_LAYERS.reduce((acc, layer) => {
-    const opt = layer.options.find(o => o.id === selections[layer.id])
-    if (opt) acc[opt.complexity] = (acc[opt.complexity] ?? 0) + 1
-    return acc
-  }, {} as Record<string, number>)
-  const overallComplexity = complexityCounts.complex ? 'complex' : complexityCounts.standard ? 'standard' : selectedCount > 0 ? 'simple' : null
+  const repoScript = [
+    `gh repo create new-project-$(date +%s) --private --clone`,
+    `cd new-project-*`,
+    `# Scaffold: ${selection.governance.map(id => STACK_LAYER_ITEMS.governance.find(i => i.id === id)?.label ?? id).join(', ')}`,
+    selection.bundles.length > 0 ? `# Bundles: ${selection.bundles.join(', ')}` : null,
+    `# Then run your /project-init skill to rename and configure`,
+  ].filter(Boolean).join('\n')
 
   return (
     <>
+      {/* User Defaults */}
+      <ReportSubsection id="stack-user-defaults" title="User Defaults">
+        <p className="text-xs text-gray-400 mb-3">Always applied to every config and new repo.</p>
+        {editingDefaults ? (
+          <div className="space-y-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+            <div>
+              <label className="text-xs font-medium text-gray-600 block mb-1">Default tech stack</label>
+              <select value={defaults.techStack} onChange={e => updateDefaults({ techStack: e.target.value })}
+                className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 bg-white focus:outline-none focus:border-gray-400">
+                <option value="vite-react-ts">Vite + React + TypeScript + ESLint</option>
+                <option value="next-ts">Next.js + TypeScript + ESLint</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-xs font-medium text-gray-600 block mb-1">CLAUDE.md snippets <span className="text-gray-400 font-normal">(appended to every CLAUDE.md)</span></label>
+              <textarea value={defaults.claudeMdText} onChange={e => updateDefaults({ claudeMdText: e.target.value })} rows={4}
+                placeholder={'e.g. Always use pnpm. Never use class components. Default branch is main.'}
+                className="w-full text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-gray-400 resize-none font-mono" />
+            </div>
+            <button onClick={() => setEditingDefaults(false)}
+              className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-colors">Done</button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2 flex-wrap">
+            <Tag label={defaults.techStack === 'vite-react-ts' ? 'Vite+React+TS' : defaults.techStack === 'next-ts' ? 'Next.js+TS' : 'Custom stack'} />
+            <Tag label="CLAUDE.md" />
+            <Tag label="ESLint" />
+            {defaults.claudeMdText.trim() && <Tag label="custom snippets" color="blue" />}
+            <button onClick={() => setEditingDefaults(true)} className="text-xs text-gray-400 hover:text-gray-700 ml-auto">Edit</button>
+          </div>
+        )}
+      </ReportSubsection>
+
+      {/* Saved Configs */}
       <ReportSubsection id="stack-configs" title="Saved Configs">
         {configs.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-3">
             {configs.map(c => (
               <div key={c.id} className="flex items-center gap-1 px-2.5 py-1 bg-gray-50 border border-gray-200 rounded-lg">
-                <button onClick={() => loadConfig(c)} className="text-xs text-gray-700 hover:text-blue-600 font-medium">{c.name}</button>
+                <button onClick={() => setSelection(c.selection)} className="text-xs text-gray-700 hover:text-blue-600 font-medium">{c.name}</button>
                 <span className="text-xs text-gray-300 mx-0.5">·</span>
                 <span className="text-xs text-gray-400">{fmtDate(c.savedAt)}</span>
                 <button onClick={() => remove(c.id)} className="text-gray-300 hover:text-red-400 ml-1 text-sm leading-none">×</button>
@@ -1259,14 +1375,14 @@ function StackBuilderContent() {
           </div>
         )}
         {configs.length === 0 && !showSaveInput && (
-          <p className="text-xs text-gray-400 mb-3">No saved configs yet. Configure the layers below, then save.</p>
+          <p className="text-xs text-gray-400 mb-3">No saved configs yet.</p>
         )}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           {showSaveInput ? (
             <>
               <input value={saveName} onChange={e => setSaveName(e.target.value)} placeholder="Config name…" autoFocus
                 onKeyDown={e => { if (e.key === 'Enter') saveConfig(); if (e.key === 'Escape') setShowSaveInput(false) }}
-                className="text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-gray-400 w-40" />
+                className="text-xs border border-gray-200 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-gray-400 w-36" />
               <button onClick={saveConfig} disabled={!saveName.trim()}
                 className="text-xs px-3 py-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-700 disabled:opacity-40 transition-colors">Save</button>
               <button onClick={() => setShowSaveInput(false)} className="text-xs text-gray-400 hover:text-gray-600">Cancel</button>
@@ -1274,52 +1390,103 @@ function StackBuilderContent() {
           ) : (
             <button onClick={() => setShowSaveInput(true)}
               className="text-xs text-gray-400 hover:text-gray-700 border border-dashed border-gray-200 rounded-lg px-2.5 py-1.5 hover:border-gray-400 transition-colors">
-              + Save current config
+              + Save config
             </button>
           )}
-          {overallComplexity && (
-            <div className="ml-auto flex items-center gap-1.5">
-              <span className="text-xs text-gray-400">Stack:</span>
-              <Tag label={overallComplexity} color={complexityColor[overallComplexity]} />
-            </div>
-          )}
+          <button onClick={() => setShowScript(v => !v)}
+            className="text-xs px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ml-auto">
+            {showScript ? 'Hide script' : 'Create Repo →'}
+          </button>
+        </div>
+        {showScript && (
+          <div className="mt-3 p-3 bg-gray-900 rounded-lg">
+            <p className="text-xs text-gray-400 mb-2">Run in terminal. /project-init skill renames from <code className="text-gray-300">new-project-#</code>:</p>
+            <pre className="text-xs text-green-400 font-mono whitespace-pre-wrap select-all">{repoScript}</pre>
+          </div>
+        )}
+      </ReportSubsection>
+
+      {/* Bundles */}
+      <ReportSubsection id="stack-bundles" title="Bundles">
+        <p className="text-xs text-gray-400 mb-3">Bundles pre-fill multiple layers. Conflicting bundles are mutually exclusive — you can still deselect individual items they include.</p>
+        <div className="space-y-2">
+          {STACK_BUNDLES.map(bundle => {
+            const isSelected = selection.bundles.includes(bundle.id)
+            const hasConflict = !isSelected && bundle.conflicts.some(id => selection.bundles.includes(id))
+            const tool = bundle.toolId ? tools.find(t => t.id === bundle.toolId) : null
+            return (
+              <div key={bundle.id}
+                className={`border rounded-lg p-3 transition-colors ${isSelected ? 'border-gray-900 bg-gray-50' : hasConflict ? 'border-gray-100 opacity-40' : 'border-gray-200'}`}>
+                <div className="flex items-start gap-2.5">
+                  <button onClick={() => !hasConflict && toggleBundle(bundle.id)}
+                    className={`flex-shrink-0 w-4 h-4 rounded border mt-0.5 flex items-center justify-center transition-colors ${isSelected ? 'bg-gray-900 border-gray-900' : 'border-gray-300 hover:border-gray-500'} ${hasConflict ? 'cursor-not-allowed' : 'cursor-pointer'}`}>
+                    {isSelected && <span className="text-white text-xs leading-none">✓</span>}
+                  </button>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className="text-xs font-semibold text-gray-900">{bundle.name}</span>
+                      {hasConflict && <span className="text-xs text-gray-400 italic">conflicts with selected</span>}
+                      {tool && <ExternalLink href={tool.url}><span className="text-xs text-blue-500 hover:underline">View →</span></ExternalLink>}
+                    </div>
+                    <p className="text-xs text-gray-500 leading-relaxed">{bundle.description}</p>
+                    {isSelected && (
+                      <div className="flex flex-wrap gap-1 mt-1.5">
+                        {(Object.entries(bundle.provides) as [StackLayerKey, string[]][]).map(([layer, ids]) =>
+                          ids.map(id => {
+                            const item = STACK_LAYER_ITEMS[layer].find(i => i.id === id)
+                            return item ? <Tag key={id} label={`${layer}: ${item.label}`} color="blue" /> : null
+                          })
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </ReportSubsection>
 
-      <ReportSubsection id="stack-layers" title="Configure Your Stack">
-        <div className="space-y-7">
-          {STACK_LAYERS.map(layer => {
-            const selectedId = selections[layer.id]
-            const selectedOption = layer.options.find(o => o.id === selectedId)
-            const tool = selectedOption?.toolId ? tools.find(t => t.id === selectedOption.toolId) : null
+      {/* Layers */}
+      <ReportSubsection id="stack-layers" title="Configure Layers">
+        <div className="space-y-6">
+          {LAYER_ORDER.map(layerKey => {
+            const { label, description } = STACK_LAYER_LABELS[layerKey]
+            const items = STACK_LAYER_ITEMS[layerKey]
+            const selected = selection[layerKey]
+            const bundleProvided = STACK_BUNDLES
+              .filter(b => selection.bundles.includes(b.id))
+              .flatMap(b => b.provides[layerKey] ?? [])
             return (
-              <div key={layer.id} id={`stack-layer-${layer.id}`}>
-                <p className="text-xs font-semibold text-gray-800 mb-0.5">{layer.label}</p>
-                <p className="text-xs text-gray-400 mb-2">{layer.description}</p>
-                <div className="flex flex-wrap gap-1.5 mb-2">
-                  {layer.options.map(opt => {
-                    const isSelected = selectedId === opt.id
+              <div key={layerKey} id={`stack-layer-${layerKey}`}>
+                <p className="text-xs font-semibold text-gray-800 mb-0.5">{label}</p>
+                <p className="text-xs text-gray-400 mb-2">{description}</p>
+                <div className="space-y-2">
+                  {items.map(item => {
+                    const isChecked = selected.includes(item.id)
+                    const isFromBundle = bundleProvided.includes(item.id)
+                    const tool = item.toolId ? tools.find(t => t.id === item.toolId) : null
                     return (
-                      <button key={opt.id} onClick={() => select(layer.id, opt.id)}
-                        className={`text-xs px-3 py-1 rounded-full border transition-colors ${isSelected
-                          ? 'bg-gray-900 text-white border-gray-900'
-                          : 'text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-800'}`}>
-                        {opt.label}
-                      </button>
+                      <label key={item.id} className="flex items-start gap-2.5 cursor-pointer group">
+                        <input type="checkbox" checked={isChecked} onChange={() => toggleItem(layerKey, item.id)}
+                          className="mt-0.5 flex-shrink-0 cursor-pointer" />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="text-xs font-medium text-gray-800">{item.label}</span>
+                            {isFromBundle && <span className="text-xs text-blue-400">via bundle</span>}
+                            {item.default && !isFromBundle && <span className="text-xs text-gray-300">default</span>}
+                            {tool && (
+                              <ExternalLink href={tool.url}>
+                                <span className="text-xs text-blue-500 hover:underline opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                              </ExternalLink>
+                            )}
+                          </div>
+                          {isChecked && <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{item.description}</p>}
+                        </div>
+                      </label>
                     )
                   })}
                 </div>
-                {selectedOption && (
-                  <div className="flex items-start gap-2 pl-1">
-                    <Tag label={selectedOption.complexity} color={complexityColor[selectedOption.complexity]} />
-                    <p className="text-xs text-gray-500 leading-relaxed flex-1">{selectedOption.description}</p>
-                    {tool && (
-                      <ExternalLink href={tool.url}>
-                        <span className="text-xs text-blue-500 hover:underline whitespace-nowrap flex-shrink-0">View →</span>
-                      </ExternalLink>
-                    )}
-                  </div>
-                )}
               </div>
             )
           })}
@@ -1358,7 +1525,6 @@ function GovernanceContent() {
       {subs.skills && (
         <ReportSubsection id="gov-skills" title="Skills" description={subs.skills.description}>
           {subs.skills.approaches.map((a, i) => <ApproachItem key={i} text={a} />)}
-          {skillsTopic?.approaches.map((a, i) => <ApproachItem key={`s${i}`} text={a} />)}
         </ReportSubsection>
       )}
 
@@ -1699,7 +1865,7 @@ function QueuedContent({ localQueue }: { localQueue: InboxItem[] }) {
 const REPORT_SECTION_META: Record<ReportSection, { title: string; subtitle: string }> = {
   updates: { title: 'Updates', subtitle: 'What\'s new since the last research run, ranked by relevance' },
   gaps: { title: 'Gaps', subtitle: 'Known pain points being monitored for solutions — add your own as you find them' },
-  stack: { title: 'Stack Builder', subtitle: 'Configure your Claude Code stack layer by layer — save and switch between setups' },
+  stack: { title: 'Stack Builder', subtitle: 'Pick governance files, skills, hooks, MCPs, and tools — save configs and create new repos' },
   governance: { title: 'Governance & Repo Structure', subtitle: 'CLAUDE.md · DESIGN.md · skills · hooks · subagent profiles' },
   design: { title: 'Design', subtitle: 'Design systems, component libraries, and AI-native UI workflows' },
   orchestration: { title: 'Orchestration', subtitle: 'Multi-agent coordination, session management, context compaction' },
