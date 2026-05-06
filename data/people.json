@@ -1025,7 +1025,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/clairevo"
   },
   {
     "id": "patrick-debois",
@@ -1833,7 +1834,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/MParakhin"
   },
   {
     "id": "simon-last",
@@ -1874,7 +1876,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/simonlast"
   },
   {
     "id": "sarah-sachs",
@@ -1915,7 +1918,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/sarahmsachs"
   },
   {
     "id": "david-singleton",
@@ -2162,7 +2166,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/ankitxg"
   },
   {
     "id": "doug-olaughlin",
@@ -2245,7 +2250,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/jamesreggio"
   },
   {
     "id": "marc-andreessen",
@@ -2481,7 +2487,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/ml_angelopoulos"
   },
   {
     "id": "george-cameron",
@@ -2519,7 +2526,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/georgecameron"
   },
   {
     "id": "micah-hill-smith",
@@ -2557,7 +2565,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/micahhsmith"
   },
   {
     "id": "kyle-kranen",
@@ -2634,7 +2643,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/naderkhalil"
   },
   {
     "id": "martin-casado",
@@ -2672,7 +2682,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/martin_casado"
   },
   {
     "id": "sarah-wang",
@@ -3451,7 +3462,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/sarahchieng"
   },
   {
     "id": "louis-knight-webb",
@@ -3884,13 +3896,14 @@
     "profiles": {
       "github": null,
       "bsky": null,
-      "x": null,
+      "x": "https://x.com/chu_onthis",
       "linkedin": "https://www.linkedin.com/in/theodorachu/",
       "substack": null,
       "medium": null,
       "youtube": null,
       "website": null
     },
+    "pfp_url": "https://unavatar.io/twitter/chu_onthis",
     "talks": [
       {
         "title": "MCP Origins & RFS",
@@ -4068,7 +4081,8 @@
     ],
     "is_new": true,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-05-05",
+    "pfp_url": "https://unavatar.io/twitter/yegordb"
   },
   {
     "id": "sam-bhagwat",

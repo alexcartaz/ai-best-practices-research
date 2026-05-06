@@ -110,18 +110,19 @@ Key rules specific to this spec:
 - **`pfp_url`**: Try to set a direct avatar image URL. Resolution order:
   1. **Bluesky** — public API, no auth required. Extract the handle from `profiles.bsky` URL (the last path segment, e.g. `simonwillison.net` from `https://bsky.app/profile/simonwillison.net`). Fetch `https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor={handle}` and use the `avatar` field from the JSON response. If that returns a 400, try `{handle}.bsky.social` as the actor.
   2. **LinkedIn** — blocked, requires login. Skip.
-  3. **X** — blocked, requires API. Skip.
+  3. **X** — use `unavatar.io` proxy (no auth required). Extract the handle from `profiles.x` URL (last path segment, e.g. `simonw` from `https://x.com/simonw`). Set `pfp_url` to `https://unavatar.io/twitter/{handle}`.
   4. **Substack** — do NOT use `og:image` (it returns a publication banner, not a profile photo). Instead: fetch `{substack_url}/about`, then find the first `substackcdn.com/image/fetch/` URL containing `w_64,h_64,c_fill` or `w_128,h_128,c_fill` in a srcset attribute. Extract the encoded S3 source URL from it and rebuild as: `https://substackcdn.com/image/fetch/w_128,h_128,c_fill,f_auto,q_auto:good/{encoded_s3_url}`.
   5. **GitHub** — auto-derived by the UI. Set `pfp_url: null` and the UI renders `https://github.com/{username}.png` automatically.
 
   6. **Wikipedia** — fetch `https://en.wikipedia.org/api/rest_v1/page/summary/{Full_Name}` (spaces → underscores). Use `thumbnail.source` from the response if present. Rate-limit: add a 2–3s delay between requests; if you get a 429, wait and retry.
-  7. **Web search (last resort)** — use the WebSearch tool. Try these queries in order:
-     - `"{name}" site:aiengineer.com` → speaker bio pages often include a headshot; fetch the page and extract the `og:image` or a visible `<img>` of the speaker
-     - `"{name}" "{company}" profile` → company about/team pages often have photos; fetch and extract
-     - `"{name}" headshot OR "profile photo"` → scan results for a trustworthy source (personal site, company page, reputable press)
-     Once you find a candidate image URL, verify it actually resolves and looks like a person photo (not a logo or banner). Never use a photo you can't confidently attribute to the right person.
+  7. **Web search** — use the WebSearch tool. Try these queries in order, fetching the top result and extracting its `og:image` meta tag (one fetch per query, stop at the first hit):
+     - `"{name}" site:aiengineer.com` → speaker bio pages often include a headshot
+     - `"{name}" "{company}" profile` → company about/team pages often have photos
+     Once you find a candidate `og:image` URL, verify it resolves and looks like a person photo (not a logo or banner). Never use a photo you can't confidently attribute to the right person.
 
-  In practice: try Bluesky → Substack → Wikipedia → web search in order. Leave `pfp_url: null` if GitHub is the only source (the UI auto-derives it). Set `pfp_url: null` entirely if no reliable image is found — a placeholder is better than the wrong person's photo.
+  8. **DuckDuckGo image search (final fallback)** — if all above fail, set `pfp_url` to `https://unavatar.io/duckduckgo/{name}+{concise context}`, e.g. `https://unavatar.io/duckduckgo/Simon+Willison+AI+developer`. This is a single HTTP call that returns an image directly with no scraping. Use it only as a last resort — quality is good but provenance is opaque.
+
+  In practice: try Bluesky → X (unavatar) → Substack → Wikipedia → web search (og:image) → unavatar/duckduckgo in order. Leave `pfp_url: null` if GitHub is the only source (the UI auto-derives it). Prefer `null` over a wrong person's photo — when in doubt, skip.
 
 ---
 
