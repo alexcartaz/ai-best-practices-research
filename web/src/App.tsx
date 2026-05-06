@@ -70,6 +70,7 @@ interface StackItem {
   label: string
   description: string
   toolId?: string
+  url?: string
   default?: boolean
 }
 
@@ -107,8 +108,9 @@ const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
   governance: [
     { id: 'claude-md', label: 'CLAUDE.md', description: 'Behavioral instructions and project context. The required baseline — start here and expand as pain appears.', default: true },
     { id: 'design-md', label: 'DESIGN.md', toolId: 'design-md-format', description: 'Design tokens (colors, spacing, typography) as persistent agent context. Google Labs format. CLI lints WCAG AA contrast and exports to Tailwind/DTCG.' },
-    { id: 'agents-md', label: 'AGENTS.md', description: 'Multi-agent coordination: role definitions and handoff rules for when Claude spawns subagents.' },
+    { id: 'agents-md', label: 'AGENTS.md', url: 'https://docs.anthropic.com/en/docs/claude-code/sub-agents', description: 'Multi-agent coordination: role definitions and handoff rules for when Claude spawns subagents.' },
     { id: 'llm-wiki', label: 'LLM Wiki (raw/+wiki/+schema/)', toolId: 'llm-wiki-karpathy', description: 'Three-layer memory: immutable sources + agent-maintained cross-referenced wiki + behavior config. Karpathy pattern, 27k+ stars.' },
+    { id: 'karpathy-claude-md', label: 'Karpathy CLAUDE.md', toolId: 'karpathy-claude-md', description: 'Community CLAUDE.md synthesized from Karpathy\'s public observations on using Claude Code. Reference for how a prominent AI practitioner\'s workflow preferences translate into instruction form.' },
   ],
   skills: [
     { id: 'grill-me', label: '/grill-me', toolId: 'sandcastle', description: 'Structured intake: 20+ questions to deeply understand a project before writing code. Matt Pocock / Sandcastle.' },
@@ -117,23 +119,24 @@ const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
     { id: 'awesome-subagent-skills', label: 'awesome-claude-code-subagents', toolId: 'awesome-claude-code-subagents', description: '100+ specialist personas (Designer, Debugger, Reviewer, Security Auditor). Drop individual profiles into .claude/agents/.' },
     { id: 'gstack-skills', label: 'gstack skills (23)', toolId: 'gstack', description: 'CEO, Designer, Eng Manager, Release Manager, QA, Doc Engineer, Security. Role-routed from CLAUDE.md.' },
     { id: 'toolkit-skills', label: 'awesome-claude-code-toolkit', toolId: 'awesome-claude-code-toolkit', description: '400k+ skills via SkillKit, 42 slash commands, 20 hooks, 7 templates.' },
+    { id: 'caveman', label: 'Caveman', toolId: 'caveman', description: 'Enforces terse, telegraphic prompting — cuts output tokens ~65%. Three intensity tiers (Lite/Full/Ultra). Bundled cavecrew subagents (investigate/build/review) and caveman-shrink MCP middleware.' },
   ],
   hooks: [
-    { id: 'pre-commit', label: 'Pre-commit validation', description: 'Runs lint, type-check, or tests before every commit. Prevents bad state from landing.' },
-    { id: 'post-tool-call', label: 'Post tool-call hook', description: 'Fires after each Claude tool call — useful for logging, notifications, or enforcing invariants.' },
+    { id: 'pre-commit', label: 'Pre-commit validation', url: 'https://docs.anthropic.com/en/docs/claude-code/hooks', description: 'Runs lint, type-check, or tests before every commit. Prevents bad state from landing.' },
+    { id: 'post-tool-call', label: 'Post tool-call hook', url: 'https://docs.anthropic.com/en/docs/claude-code/hooks', description: 'Fires after each Claude tool call — useful for logging, notifications, or enforcing invariants.' },
     { id: 'sandcastle-hooks', label: 'Sandcastle hook suite', toolId: 'sandcastle', description: 'Production-tested hooks: diff review gates, verification checkpoints, auto-merge conditions.' },
   ],
   mcps: [
     { id: 'playwright', label: 'Playwright MCP', toolId: 'playwright-mcp', description: 'Browser automation. Claude verifies its own UI output. Community standard for closing the autonomous web app loop.' },
-    { id: 'github-mcp', label: 'GitHub MCP', description: 'Agents read/write issues, PRs, and code directly via GitHub API.' },
-    { id: 'filesystem-mcp', label: 'Filesystem MCP', description: 'Scoped filesystem access beyond the current project directory.' },
+    { id: 'github-mcp', label: 'GitHub MCP', url: 'https://github.com/github/github-mcp-server', description: 'Agents read/write issues, PRs, and code directly via GitHub API.' },
+    { id: 'filesystem-mcp', label: 'Filesystem MCP', url: 'https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem', description: 'Scoped filesystem access beyond the current project directory.' },
   ],
   tools: [
     { id: 'vite-react-ts', label: 'Vite + React + TypeScript', description: 'Standard web app scaffold. Fast dev server, ESM, type-safe by default.', default: true },
     { id: 'tailwind', label: 'Tailwind CSS', description: 'Utility-first CSS. Claude generates Tailwind naturally; pairs well with DESIGN.md tokens.', default: true },
     { id: 'eslint', label: 'ESLint + Prettier', description: 'Code quality and formatting. Pair with the pre-commit hook to enforce on every commit.', default: true },
     { id: 'designmd-cli', label: 'DESIGN.md CLI', toolId: 'design-md-format', description: 'Required if using DESIGN.md. Lints WCAG AA contrast, exports tokens to Tailwind/DTCG.' },
-    { id: 'playwright-pkg', label: 'Playwright', description: 'Required package if using Playwright MCP.' },
+    { id: 'playwright-pkg', label: 'Playwright', url: 'https://playwright.dev', description: 'Required package if using Playwright MCP.' },
   ],
 }
 
@@ -186,7 +189,7 @@ const STACK_LAYER_LABELS: Record<StackLayerKey, { label: string; description: st
   skills: { label: 'Skills', description: 'Slash commands agents can invoke — structured procedures for repeated workflows.' },
   hooks: { label: 'Hooks', description: 'Shell commands that fire on Claude Code events (pre-commit, post-tool-call, etc.).' },
   mcps: { label: 'MCPs', description: 'Model Context Protocol servers that extend what agents can do.' },
-  tools: { label: 'Tools', description: 'npm packages and integrations scaffolded into the new repo.' },
+  tools: { label: 'npm Packages', description: 'Packages scaffolded into the new repo.' },
 }
 
 // ---- Curated setup recommendations ----
@@ -1342,6 +1345,12 @@ function useUserDefaults() {
 
 const LAYER_ORDER: StackLayerKey[] = ['governance', 'skills', 'hooks', 'mcps', 'tools']
 
+function getItemUrl(item: StackItem): string | null {
+  if (item.url) return item.url
+  if (item.toolId) return tools.find(t => t.id === item.toolId)?.url ?? null
+  return null
+}
+
 function StackBuilderContent() {
   const [selection, setSelection] = useState<StackSelection>(() => ({ ...DEFAULT_SELECTION, tools: [...DEFAULT_SELECTION.tools] }))
   const [saveName, setSaveName] = useState('')
@@ -1510,13 +1519,27 @@ function StackBuilderContent() {
                     </div>
                     <p className="text-xs text-gray-500 leading-relaxed">{bundle.description}</p>
                     {isSelected && (
-                      <div className="flex flex-wrap gap-1 mt-1.5">
-                        {(Object.entries(bundle.provides) as [StackLayerKey, string[]][]).map(([layer, ids]) =>
-                          ids.map(id => {
-                            const item = STACK_LAYER_ITEMS[layer].find(i => i.id === id)
-                            return item ? <Tag key={id} label={`${layer}: ${item.label}`} color="blue" /> : null
-                          })
-                        )}
+                      <div className="mt-2 pt-2 border-t border-gray-100 space-y-1.5">
+                        {(Object.entries(bundle.provides) as [StackLayerKey, string[]][]).map(([layer, ids]) => (
+                          <div key={layer} className="flex flex-wrap items-baseline gap-x-1.5 gap-y-1">
+                            <span className="text-xs text-gray-400 uppercase tracking-wide shrink-0">{STACK_LAYER_LABELS[layer].label}:</span>
+                            {ids.map(id => {
+                              const item = STACK_LAYER_ITEMS[layer].find(i => i.id === id)
+                              if (!item) return null
+                              const url = getItemUrl(item)
+                              return (
+                                <span key={id} className="inline-flex items-center gap-0.5">
+                                  <span className="text-xs text-gray-700 font-medium">{item.label}</span>
+                                  {url && (
+                                    <ExternalLink href={url}>
+                                      <span className="text-xs text-blue-400 hover:text-blue-600">↗</span>
+                                    </ExternalLink>
+                                  )}
+                                </span>
+                              )
+                            })}
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
@@ -1534,36 +1557,80 @@ function StackBuilderContent() {
             const { label, description } = STACK_LAYER_LABELS[layerKey]
             const items = STACK_LAYER_ITEMS[layerKey]
             const selected = selection[layerKey]
-            const bundleProvided = STACK_BUNDLES
-              .filter(b => selection.bundles.includes(b.id))
-              .flatMap(b => b.provides[layerKey] ?? [])
+
+            // Map itemId → bundle that provides it (for active bundles only)
+            const activeBundles = STACK_BUNDLES.filter(b => selection.bundles.includes(b.id))
+            const providedByBundle: Record<string, StackBundle> = {}
+            activeBundles.forEach(b => {
+              ;(b.provides[layerKey] ?? []).forEach(id => { providedByBundle[id] = b })
+            })
+
+            const standaloneItems = items.filter(item => !providedByBundle[item.id])
+
+            // Group bundle-provided items by their source bundle
+            const byBundle: Map<StackBundle, StackItem[]> = new Map()
+            activeBundles.forEach(b => {
+              const bundleItems = (b.provides[layerKey] ?? []).map(id => items.find(i => i.id === id)).filter(Boolean) as StackItem[]
+              if (bundleItems.length > 0) byBundle.set(b, bundleItems)
+            })
+
             return (
               <div key={layerKey} id={`stack-layer-${layerKey}`}>
                 <p className="text-xs font-semibold text-gray-800 mb-0.5">{label}</p>
                 <p className="text-xs text-gray-400 mb-2">{description}</p>
                 <div className="space-y-2">
-                  {items.map(item => {
+                  {standaloneItems.map(item => {
                     const isChecked = selected.includes(item.id)
-                    const isFromBundle = bundleProvided.includes(item.id)
-                    const tool = item.toolId ? tools.find(t => t.id === item.toolId) : null
+                    const url = getItemUrl(item)
                     return (
-                      <label key={item.id} className="flex items-start gap-2.5 cursor-pointer group">
+                      <label key={item.id} className="flex items-start gap-2.5 cursor-pointer">
                         <input type="checkbox" checked={isChecked} onChange={() => toggleItem(layerKey, item.id)}
                           className="mt-0.5 flex-shrink-0 cursor-pointer" />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 flex-wrap">
                             <span className="text-xs font-medium text-gray-800">{item.label}</span>
-                            {isFromBundle && <span className="text-xs text-blue-400">via bundle</span>}
-                            {item.default && !isFromBundle && <span className="text-xs text-gray-300">default</span>}
-                            {tool && (
-                              <ExternalLink href={tool.url}>
-                                <span className="text-xs text-blue-500 hover:underline opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                            {item.default && <span className="text-xs text-gray-300">default</span>}
+                            {!item.default && url && (
+                              <ExternalLink href={url}>
+                                <span className="text-xs text-blue-500 hover:text-blue-700">↗</span>
                               </ExternalLink>
                             )}
                           </div>
                           {isChecked && <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{item.description}</p>}
                         </div>
                       </label>
+                    )
+                  })}
+                  {Array.from(byBundle.entries()).map(([bundle, bundleItems]) => {
+                    const bundleTool = bundle.toolId ? tools.find(t => t.id === bundle.toolId) : null
+                    return (
+                      <div key={bundle.id} className="pl-2 border-l-2 border-blue-100 mt-1">
+                        <div className="flex items-center gap-1 mb-1">
+                          <span className="text-xs text-blue-400">from</span>
+                          <span className="text-xs font-medium text-blue-600">{bundle.name}</span>
+                          {bundleTool && (
+                            <ExternalLink href={bundleTool.url}>
+                              <span className="text-xs text-blue-400 hover:text-blue-600">↗</span>
+                            </ExternalLink>
+                          )}
+                        </div>
+                        <div className="space-y-1">
+                          {bundleItems.map(item => {
+                            const url = getItemUrl(item)
+                            return (
+                              <div key={item.id} className="flex items-center gap-1.5">
+                                <span className="text-xs text-gray-500 w-3 text-center">·</span>
+                                <span className="text-xs text-gray-700">{item.label}</span>
+                                {url && (
+                                  <ExternalLink href={url}>
+                                    <span className="text-xs text-blue-400 hover:text-blue-600">↗</span>
+                                  </ExternalLink>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
                     )
                   })}
                 </div>
