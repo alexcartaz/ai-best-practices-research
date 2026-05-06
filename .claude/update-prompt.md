@@ -18,13 +18,14 @@ You are a research agent maintaining a living knowledge base about the AI coding
 ## Your job each run
 
 0. **Process the inbox first**
+
+   Read `.claude/ingest.md` before processing any inbox item — all entity additions must follow that spec.
+
    - Read `data/inbox.json`
-   - For each item: fetch the URL, determine what it is (article, podcast, video, event, tool, person), extract relevant metadata, and add it to the appropriate data file
-   - Which topics does it relate to? Add those topic IDs to the item's record
-   - If it's a person not yet in `data/people.json`, research their profiles and add them
+   - For each regular item: call `ingest(url, type?)` as defined in `.claude/ingest.md`. The `type` field on the inbox item is a hint — use it if present, otherwise auto-detect.
    - After processing all inbox items, clear `data/inbox.json` back to an empty array `[]`
-   - **If an inbox item has `"is_source": true`**: after processing the item itself, also create an entry in `data/sources.json` for it. Determine the correct `type` (podcast, youtube-channel, article-feed, etc.) from the URL and content, fill in reasonable `relevance_keywords` and `notes`, and set `added` to today's date.
-   - **If an inbox item has `"type": "url-find"`**: the `notes` field describes a specific piece of content (talk, episode, article) whose URL is unknown. Use the provided `url` as a starting point (e.g. a YouTube channel or speaker page), search for the specific content named in `notes`, and if found: update the relevant record in the appropriate data file with the resolved URL. If not found after reasonable search, write an agent-question and leave the inbox item cleared (do not re-add it).
+   - **If an inbox item has `"is_source": true`**: after ingesting the item itself, also create an entry in `data/sources.json` for it. Determine the correct `type` (podcast, youtube-channel, article-feed, etc.) from the URL and content, fill in reasonable `relevance_keywords` and `notes`, and set `added` to today's date.
+   - **If an inbox item has `"type": "url-find"`**: the `notes` field describes a specific piece of content (talk, episode, article) whose URL is unknown. Use the provided `url` as a starting point, search for the specific content named in `notes`, and if found: call the appropriate ingest handler with the resolved URL. If not found after reasonable search, write an agent-question and clear the inbox item.
    - **Inbox items are always processed regardless of the research window** — they represent user-curated signals that take priority over automated research
 
 1. **Determine the research window**
@@ -114,50 +115,9 @@ Apply the matching procedure based on each source's `type` field in `data/source
 
 ## Person ingestion procedure
 
+Read `.claude/ingest.md → Handler: ingest_person` for the full procedure. The detailed steps (seed URLs, verify standard URL patterns, resolve name variants, capture non-standard platforms, write record, notable_contributions) live there as the single source of truth.
+
 Run this for every new person being added to `data/people.json`, and for the profile-lookup pass on existing people with null fields.
-
-**The goal:** a complete, verified record of who this person is and where they publish — not just the platforms we anticipated. People use unexpected platforms. Capture whatever is real and verifiable.
-
-### Step 1 — Seed URLs from available context
-- Their GitHub profile bio often links every other account
-- Conference speaker page bio often has a short bio with links
-- Their personal website's footer or /links page
-- Any Linktree, bio.link, bento.me, or similar link aggregator — fetch it and extract all URLs
-
-### Step 2 — Try standard URL patterns
-Fetch each of the following. A 200 response with their name or handle on the page = confirmed. Anything else = null. Do not guess.
-
-- `github.com/[handle]`
-- `bsky.app/profile/[handle].bsky.social` or `bsky.app/profile/[handle]`
-- `x.com/[handle]`
-- `[handle].substack.com`
-- `medium.com/@[handle]`
-- `youtube.com/@[handle]`
-- `linkedin.com/in/[handle]`
-- Personal website (from bio or bio link)
-
-### Step 3 — Resolve name variants
-Some people use different handles across platforms. Search `"[full name]" site:github.com` and `"[full name]" site:bsky.app` if the handle is unknown. Conference speaker pages often list the canonical handle.
-
-### Step 4 — Capture non-standard platforms
-Beyond the standard list, check for and capture:
-- Podcast hosting pages (e.g. their own show on Transistor, Buzzsprout)
-- Newsletter platforms (Beehiiv, Ghost, Buttondown — not just Substack)
-- Community profiles (Discord, Slack communities they run)
-- Any other platform linked from their verified profiles
-
-Store non-standard platforms in the `website` field (if not used) or add a note in `notable_contributions`. The schema's `profiles` object accepts any of: `github`, `bsky`, `x`, `linkedin`, `substack`, `medium`, `youtube`, `website`.
-
-### Step 5 — Verify and write
-- Fetch each candidate URL before writing it — confirm their name/handle appears on the page
-- Prefer the URL they actively use over stale or abandoned accounts
-- Write the person record to `data/people.json` with all verified fields filled and unverified fields as `null` (never omit a field — null is better than missing)
-
-### Step 6 — Assess relevance for notable_contributions
-Write 1-3 bullet points in `notable_contributions` explaining:
-- What concrete output they have (repos, tutorials, tools, talks)
-- Why they're relevant to the editorial lens
-- If they're Tier 2 (adaptable), note the adaptation gap explicitly
 
 4. **Find new tools / repos** related to the active topics
    - The `code-discovery` pipeline (GitHub Trending) handles systematic repo discovery — apply it

@@ -79,77 +79,9 @@ Before writing any episode, check `data/podcast_episodes.json` for an existing e
 
 ## Person ingestion procedure
 
-Run this for every untracked guest.
+Read `.claude/ingest.md → Handler: ingest_person` for the full canonical procedure. Follow it exactly for every untracked guest.
 
-### Step 1 — Seed URLs
-- swyx's show notes / episode page often links the guest's GitHub and social
-- The guest's GitHub profile bio often links every other account
-- Their personal website footer or /links page
-
-### Step 2 — Try standard URL patterns
-Fetch each. 200 with their name = confirmed. Otherwise = null.
-
-- `github.com/[handle]`
-- `bsky.app/profile/[handle].bsky.social`
-- `x.com/[handle]`
-- `[handle].substack.com`
-- `medium.com/@[handle]`
-- `youtube.com/@[handle]`
-- `linkedin.com/in/[handle]`
-- Personal website
-
-### Step 3 — Resolve name variants
-Search `"[full name]" site:github.com` if handle is unknown.
-
-### Step 4 — Verify and write
-Fetch each candidate URL before writing. Write the person record with all verified fields filled and unverified fields as `null`.
-
-Person record structure:
-```json
-{
-  "id": "firstname-lastname",
-  "name": "Full Name",
-  "category": "dev | design | dev-adjacent | orchestration | education",
-  "focus": ["topic-area-1"],
-  "profiles": {
-    "github": null,
-    "bsky": null,
-    "x": null,
-    "linkedin": null,
-    "substack": null,
-    "medium": null,
-    "youtube": null,
-    "website": null
-  },
-  "talks": [],
-  "podcast_episodes": [
-    {
-      "show": "Latent Space",
-      "episode_title": "...",
-      "url": "...",
-      "date": "YYYY-MM-DD",
-      "topics": ["topic-id"]
-    }
-  ],
-  "notable_contributions": ["What they've built/shared that's relevant"],
-  "is_new": true,
-  "added": "2026-05-05",
-  "last_updated": "2026-05-05"
-}
-```
-
-Category guide:
-- `dev` — primarily software engineers, devs who build and code
-- `dev-adjacent` — PMs, designers, researchers who work closely with dev workflows
-- `orchestration` — focused on AI orchestration, multi-agent systems, infra
-- `education` — primarily educators, tutorial creators, content makers
-- `design` — primarily designers or design systems practitioners
-
-### Step 5 — notable_contributions
-Write 1-3 bullet points:
-- What concrete output they have (repos, tutorials, tools, talks)
-- Why they're relevant to the editorial lens
-- If Tier 2 (adaptable), note the adaptation gap explicitly
+For Latent Space guests specifically: swyx's show notes page often links the guest's GitHub — use that as the seed URL for Step 1.
 
 ---
 

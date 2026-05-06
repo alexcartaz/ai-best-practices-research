@@ -88,63 +88,12 @@ When in doubt, ingest and note the uncertainty in `notable_contributions`.
 
 ## Step 5 — Person ingestion for each untracked, relevant speaker
 
-Run this procedure for each speaker being added:
+Read `.claude/ingest.md → Handler: ingest_person` for the full canonical procedure.
 
-### Find profiles
-- Check the AI Engineer speaker page bio for links
-- Try `github.com/[handle]` — the speaker bio often lists their GitHub
-- Try `bsky.app/profile/[handle].bsky.social`
-- Try `x.com/[handle]`
-- Try `[handle].substack.com`
-- Try their personal website from the bio
-- Fetch each candidate URL — 200 with their name = confirmed, otherwise null
+For AI Engineer speakers specifically: the speaker bio page often links their GitHub directly — use that as the seed URL for Step 1. Also call `ingest_talk` (from `ingest.md`) to add the talk to their record rather than writing it inline.
 
-### Write person record
-```json
-{
-  "id": "firstname-lastname",
-  "name": "Full Name",
-  "category": "dev | design | dev-adjacent | orchestration | education",
-  "focus": ["topic-area"],
-  "profiles": {
-    "github": null,
-    "bsky": null,
-    "x": null,
-    "linkedin": null,
-    "substack": null,
-    "medium": null,
-    "youtube": null,
-    "website": null
-  },
-  "talks": [
-    {
-      "title": "Talk title",
-      "event": "AI Engineer [Event Name]",
-      "url": null,
-      "date": "YYYY-MM-DD",
-      "topics": ["topic-id"]
-    }
-  ],
-  "podcast_episodes": [],
-  "notable_contributions": ["What they built/shared relevant to the lens"],
-  "is_new": true,
-  "added": "2026-05-05",
-  "last_updated": "2026-05-05"
-}
-```
-
-Category guide:
-- `dev` — primarily software engineers who code
-- `dev-adjacent` — PMs, researchers, designers working closely with dev workflows  
-- `orchestration` — focused on AI orchestration, multi-agent, infra
-- `education` — primarily educators, tutorial creators
-- `design` — design systems practitioners
-
-Topic IDs (use from `data/topics.json`):
-- `repo-template-governance`, `session-management`, `low-level-fe-verification`, `testing-tdd`, `design-systems`, `design-tooling`, `unified-project-layer`, `mcp-servers`, `multi-agent-orchestration`
-
-### Also update their talks array on existing people
-For speakers already in people.json who gave a talk at an AI Engineer event that isn't in their `talks` array — add it.
+### Also update existing people's talks arrays
+For speakers already in people.json who gave a talk at an AI Engineer event not yet in their `talks` array — call `ingest_talk` to add it.
 
 ---
 
