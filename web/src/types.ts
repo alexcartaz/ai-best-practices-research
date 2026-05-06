@@ -90,6 +90,7 @@ export interface Article {
   topics: string[]
   summary: string
   recency_flag: 'current' | 'aging' | 'potentially-outdated'
+  thumbnail_url?: string | null
   is_new?: boolean
   added: string
 }
@@ -103,6 +104,7 @@ export interface PodcastEpisode {
   date?: string | null
   topics: string[]
   summary: string
+  thumbnail_url?: string | null
   is_new?: boolean
   added: string
 }

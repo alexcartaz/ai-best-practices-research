@@ -4,20 +4,20 @@ import peopleRaw from '../../data/people.json'
 import toolsRaw from '../../data/tools.json'
 import articlesRaw from '../../data/articles.json'
 import podcastsRaw from '../../data/podcast_episodes.json'
-import youtubeRaw from '../../data/youtube_channels.json'
+import sourcesRaw from '../../data/sources.json'
 import industryNormsRaw from '../../data/industry_norms.json'
 import topicsRaw from '../../data/topics.json'
 import inboxRaw from '../../data/inbox.json'
 import eventsRaw from '../../data/events.json'
 import gapsRaw from '../../data/gaps.json'
 import agentQuestionsRaw from '../../data/agent-questions.json'
-import type { Person, Tool, Article, PodcastEpisode, YouTubeChannel, IndustryNorms, Topic, Event, Gap, AgentQuestion } from './types'
+import type { Person, Tool, Article, PodcastEpisode, ResearchSource, IndustryNorms, Topic, Event, Gap, AgentQuestion } from './types'
 
 const people = peopleRaw as Person[]
 const tools = toolsRaw as Tool[]
 const articles = articlesRaw as Article[]
 const podcasts = podcastsRaw as PodcastEpisode[]
-const youtubeChannels = youtubeRaw as YouTubeChannel[]
+const allSources = sourcesRaw as unknown as ResearchSource[]
 const industryNorms = industryNormsRaw as IndustryNorms
 const topics = topicsRaw as Topic[]
 const inboxItems = (inboxRaw as InboxItem[]).filter(i => !i._comment)
@@ -33,15 +33,15 @@ function fmtDate(iso: string | null | undefined): string {
   return `${d.getUTCMonth() + 1}/${d.getUTCDate()}/${String(d.getUTCFullYear()).slice(2)}`
 }
 
-type MainTab = 'report' | 'youtube' | 'articles' | 'podcasts' | 'tools' | 'people' | 'events'
-type ReportSection = 'updates' | 'gaps' | 'stack' | 'governance' | 'design' | 'orchestration' | 'harness-engineering' | 'industry-norms' | 'questions' | 'queued'
+type MainTab = 'report' | 'videos' | 'articles' | 'podcasts' | 'tools' | 'people' | 'events'
+type ReportSection = 'updates' | 'gaps' | 'stack' | 'governance' | 'design' | 'orchestration' | 'harness-engineering' | 'industry-norms' | 'questions' | 'queued' | 'sources'
 
 const MAIN_TABS: { id: MainTab; label: string }[] = [
   { id: 'report', label: 'Report' },
-  { id: 'youtube', label: 'YouTube' },
+  { id: 'videos', label: 'Videos' },
   { id: 'articles', label: 'Articles' },
   { id: 'podcasts', label: 'Podcasts' },
-  { id: 'tools', label: 'Tools' },
+  { id: 'tools', label: 'Tooling' },
   { id: 'people', label: 'People' },
   { id: 'events', label: 'Events' },
 ]
@@ -57,10 +57,22 @@ const REPORT_SECTIONS: { id: ReportSection; label: string }[] = [
   { id: 'industry-norms', label: 'Industry Norms' },
   { id: 'questions', label: 'Questions' },
   { id: 'queued', label: 'Queue' },
+  { id: 'sources', label: 'Sources' },
 ]
 
 const PERSON_CATEGORIES = ['dev', 'design', 'dev-adjacent', 'orchestration', 'education']
-const TOOL_CATEGORIES = ['claude-code-tooling', 'orchestration', 'design-tooling', 'testing']
+const TOOL_CATEGORIES = ['governance', 'development', 'design', 'orchestration']
+const TOOL_CATEGORY_MATCH: Record<string, string> = {
+  'claude-code-tooling': 'development',
+  'testing': 'development',
+  'design-tooling': 'design',
+  'orchestration': 'orchestration',
+  'governance': 'governance',
+  'skills': 'governance',
+  'hooks': 'governance',
+  'mcp': 'governance',
+  'repo-template-governance': 'governance',
+}
 const TOPIC_TAGS = [
   'session-management', 'skills', 'multi-agent-orchestration', 'design-systems',
   'design-tooling', 'testing-tdd', 'repo-template-governance', 'unified-project-layer',
@@ -310,6 +322,17 @@ const lastRunDate = (() => {
   return fmtDate(iso)
 })()
 
+// ---- Nav context (internal cross-tab navigation) ----
+
+const NavCtx = createContext<(tab: MainTab, search?: string) => void>(() => {})
+
+function getYouTubeThumbnail(url: string | null | undefined): string | null {
+  if (!url) return null
+  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([A-Za-z0-9_-]{11})/)
+  if (!m) return null
+  return `https://img.youtube.com/vi/${m[1]}/mqdefault.jpg`
+}
+
 // ---- Stars context ----
 
 const StarsCtx = createContext<{ starred: Set<string>; toggle: (id: string) => void }>({
@@ -391,6 +414,16 @@ function ExternalLink({ href, children }: { href?: string | null; children: Reac
   return <a href={href} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{children}</a>
 }
 
+function NavLink({ tab, search, children, className }: { tab: MainTab; search?: string; children: React.ReactNode; className?: string }) {
+  const navigate = useContext(NavCtx)
+  return (
+    <button onClick={e => { e.stopPropagation(); navigate(tab, search) }}
+      className={className ?? 'text-blue-600 hover:underline text-xs'}>
+      {children}
+    </button>
+  )
+}
+
 function ProfileLinks({ profiles }: { profiles: Person['profiles'] }) {
   const links = [
     { key: 'github', label: 'GH', url: profiles.github }, { key: 'bsky', label: 'BSky', url: profiles.bsky },
@@ -466,7 +499,14 @@ function PersonRow({ person }: { person: Person }) {
       <div className="pl-6">
         <div className="flex gap-1 flex-wrap mb-1.5">{person.focus.map(f => <Tag key={f} label={f} />)}</div>
         {person.notable_contributions[0] && <p className="text-xs text-gray-600 mb-1">{person.notable_contributions[0]}</p>}
-        {workCounts.length > 0 && <p className="text-xs text-gray-400 mb-1">{workCounts.join(' · ')}</p>}
+        {workCounts.length > 0 && (
+          <div className="flex gap-1.5 flex-wrap mb-1 text-xs text-gray-400">
+            {person.talks.length > 0 && <NavLink tab="videos" search={person.name}>{person.talks.length} talk{person.talks.length > 1 ? 's' : ''}</NavLink>}
+            {person.podcast_episodes.length > 0 && <NavLink tab="podcasts" search={person.name}>{person.podcast_episodes.length} ep{person.podcast_episodes.length > 1 ? 's' : ''}</NavLink>}
+            {personArticles.length > 0 && <NavLink tab="articles" search={person.name}>{personArticles.length} article{personArticles.length > 1 ? 's' : ''}</NavLink>}
+            {personTools.length > 0 && <NavLink tab="tools" search={person.name}>{personTools.length} tool{personTools.length > 1 ? 's' : ''}</NavLink>}
+          </div>
+        )}
         {expanded && (
           <div className="mt-2 pl-3 border-l-2 border-gray-100 space-y-1 text-xs text-gray-600">
             {person.talks.map((t, i) => <div key={i}>🎤 <ExternalLink href={t.url}>{t.title}</ExternalLink>{t.event && <span className="text-gray-400"> — {t.event}</span>}</div>)}
@@ -483,7 +523,10 @@ function PersonRow({ person }: { person: Person }) {
 
 function ToolRow({ tool }: { tool: Tool }) {
   const author = people.find(p => p.id === tool.author_id)
-  const catColor: Record<string, string> = { 'claude-code-tooling': 'blue', orchestration: 'purple', 'design-tooling': 'pink', testing: 'green' }
+  const catColor: Record<string, string> = {
+    'claude-code-tooling': 'blue', orchestration: 'purple', 'design-tooling': 'pink', testing: 'green',
+    governance: 'teal', development: 'blue', design: 'pink',
+  }
   return (
     <div className="py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-start gap-2 mb-1.5">
@@ -498,7 +541,7 @@ function ToolRow({ tool }: { tool: Tool }) {
       <div className="pl-6">
         <p className="text-xs text-gray-600 mb-1.5">{tool.description}</p>
         <div className="flex gap-1 flex-wrap mb-1">{tool.topics.slice(0, 5).map(t => <Tag key={t} label={t} />)}</div>
-        {author && <p className="text-xs text-gray-400">by {author.name}</p>}
+        {author && <p className="text-xs text-gray-400">by <NavLink tab="people" search={author.name}>{author.name}</NavLink></p>}
       </div>
     </div>
   )
@@ -511,6 +554,11 @@ function ArticleRow({ article }: { article: Article }) {
     <div className="py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-start gap-2 mb-1.5">
         <StarBtn id={article.id} />
+        {article.thumbnail_url && (
+          <a href={article.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+            <img src={article.thumbnail_url} alt="" className="w-14 h-10 object-cover rounded border border-gray-100" />
+          </a>
+        )}
         <div className="flex-1">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-semibold text-gray-900 text-sm"><ExternalLink href={article.url}>{article.title}</ExternalLink></span>
@@ -518,7 +566,7 @@ function ArticleRow({ article }: { article: Article }) {
             <Tag label={article.recency_flag} color={flagColor[article.recency_flag] ?? 'gray'} />
           </div>
           <div className="flex gap-2 items-center mt-0.5">
-            {author && <span className="text-xs text-gray-500">{author.name}</span>}
+            {author && <NavLink tab="people" search={author.name} className="text-xs text-gray-500 hover:text-blue-600 hover:underline">{author.name}</NavLink>}
             {article.date && <span className="text-xs text-gray-400">{fmtDate(article.date)}</span>}
           </div>
         </div>
@@ -537,6 +585,11 @@ function PodcastRow({ episode }: { episode: PodcastEpisode }) {
     <div className="py-3 border-b border-gray-100 last:border-0">
       <div className="flex items-start gap-2 mb-1">
         <StarBtn id={episode.id} />
+        {episode.thumbnail_url && (
+          <a href={episode.url ?? undefined} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+            <img src={episode.thumbnail_url} alt="" className="w-10 h-10 object-cover rounded border border-gray-100" />
+          </a>
+        )}
         <div className="flex-1">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-semibold text-gray-900 text-sm"><ExternalLink href={episode.url}>{episode.episode_title}</ExternalLink></span>
@@ -544,7 +597,7 @@ function PodcastRow({ episode }: { episode: PodcastEpisode }) {
           </div>
           <div className="flex gap-2 items-center mt-0.5">
             <span className="text-xs font-medium text-gray-600">{episode.show}</span>
-            {guest && <span className="text-xs text-gray-500">with {guest.name}</span>}
+            {guest && <span className="text-xs text-gray-500">with <NavLink tab="people" search={guest.name} className="text-gray-500 hover:text-blue-600 hover:underline">{guest.name}</NavLink></span>}
             {episode.date && <span className="text-xs text-gray-400">{fmtDate(episode.date)}</span>}
           </div>
         </div>
@@ -552,21 +605,6 @@ function PodcastRow({ episode }: { episode: PodcastEpisode }) {
       <div className="pl-6">
         {episode.summary && <p className="text-xs text-gray-600 mb-1.5">{episode.summary}</p>}
         <div className="flex gap-1 flex-wrap">{episode.topics.slice(0, 4).map(t => <Tag key={t} label={t} />)}</div>
-      </div>
-    </div>
-  )
-}
-
-function YouTubeRow({ channel }: { channel: YouTubeChannel }) {
-  return (
-    <div className="py-3 border-b border-gray-100 last:border-0">
-      <div className="flex items-start gap-2 mb-1.5">
-        <StarBtn id={channel.id} />
-        <span className="font-semibold text-gray-900 text-sm"><ExternalLink href={channel.url}>{channel.name}</ExternalLink></span>
-      </div>
-      <div className="pl-6">
-        <p className="text-xs text-gray-600 mb-1.5">{channel.description}</p>
-        <div className="flex gap-1 flex-wrap">{channel.topics.slice(0, 4).map(t => <Tag key={t} label={t} />)}</div>
       </div>
     </div>
   )
@@ -727,9 +765,10 @@ const REPORT_SUBSECTIONS: Record<ReportSection, { label: string; id: string }[]>
     { label: 'Dismissed', id: 'q-dismissed' },
   ],
   queued: [],
+  sources: [],
 }
 
-const MAIN_REPORT_SECTIONS = REPORT_SECTIONS.filter(s => s.id !== 'queued')
+const MAIN_REPORT_SECTIONS = REPORT_SECTIONS.filter(s => s.id !== 'queued' && s.id !== 'sources')
 
 function ReportIndex({ section, setSection }: { section: ReportSection; setSection: (s: ReportSection) => void }) {
   const scrollTo = (id: string) => {
@@ -755,6 +794,7 @@ function ReportIndex({ section, setSection }: { section: ReportSection; setSecti
           <SubIndexItem key={sub.id} label={sub.label} onClick={() => scrollTo(sub.id)} />
         ))}
         <IndexItem label="Queue" active={section === 'queued'} onClick={() => setSection('queued')} />
+        <IndexItem label="Sources" count={allSources.length} active={section === 'sources'} onClick={() => setSection('sources')} />
       </div>
     </IndexSidebar>
   )
@@ -770,12 +810,16 @@ function PeopleIndex({ filter, setFilter }: { filter: string; setFilter: (f: str
   )
 }
 
+function toolDisplayCategory(tool: Tool): string {
+  return TOOL_CATEGORY_MATCH[tool.category] ?? tool.category
+}
+
 function ToolsIndex({ filter, setFilter }: { filter: string; setFilter: (f: string) => void }) {
   return (
     <IndexSidebar>
       <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2 px-2">Category</p>
       <IndexItem label="All" count={tools.length} active={!filter} onClick={() => setFilter('')} />
-      {TOOL_CATEGORIES.map(cat => <IndexItem key={cat} label={cat} count={tools.filter(t => t.category === cat).length} active={filter === cat} onClick={() => setFilter(cat)} />)}
+      {TOOL_CATEGORIES.map(cat => <IndexItem key={cat} label={cat} count={tools.filter(t => toolDisplayCategory(t) === cat).length} active={filter === cat} onClick={() => setFilter(cat)} />)}
     </IndexSidebar>
   )
 }
@@ -844,14 +888,6 @@ function SearchBar({ search, setSearch }: { search: string; setSearch: (s: strin
 
 // ---- Report building blocks ----
 
-function SectionHeader({ label, count }: { label: string; count: number }) {
-  return (
-    <div className="flex items-center gap-2 mb-2 mt-6 first:mt-0">
-      <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wide">{label}</h3>
-      <span className="text-xs text-gray-300">{count}</span>
-    </div>
-  )
-}
 
 function ReportSubsection({ id, title, description, children }: { id?: string; title: string; description?: string; children: React.ReactNode }) {
   return (
@@ -1559,7 +1595,6 @@ function StackBuilderContent() {
 
 function GovernanceContent() {
   const govTopic = topics.find(t => t.id === 'repo-template-governance')
-  const skillsTopic = topics.find(t => t.id === 'skills')
   const subs = govTopic?.sub_sections ?? {}
 
   const govTools = tools.filter(t =>
@@ -1951,6 +1986,56 @@ function QueuedContent({ localQueue }: { localQueue: InboxItem[] }) {
   )
 }
 
+// ---- Report: Sources ----
+
+const SOURCE_TYPE_LABELS: Record<ResearchSource['type'], string> = {
+  podcast: 'Podcast',
+  'event-series': 'Event series',
+  social: 'Social',
+  'code-discovery': 'Code discovery',
+  'article-feed': 'Article feed',
+  'youtube-channel': 'YouTube',
+}
+
+function SourcesContent() {
+  const byType = useMemo(() => {
+    const grouped: Record<string, ResearchSource[]> = {}
+    allSources.forEach(s => {
+      if (!grouped[s.type]) grouped[s.type] = []
+      grouped[s.type].push(s)
+    })
+    return grouped
+  }, [])
+
+  return (
+    <>
+      <p className="text-xs text-gray-400 mb-4">Sources the research agent monitors each run. Add new sources via + Add (mark as "Monitor as ongoing source").</p>
+      {Object.entries(byType).map(([type, srcs]) => (
+        <ReportSubsection key={type} title={SOURCE_TYPE_LABELS[type as ResearchSource['type']] ?? type}>
+          {srcs.map(src => (
+            <div key={src.id} className="py-3 border-b border-gray-100 last:border-0">
+              <div className="flex items-start gap-2 mb-1">
+                <span className="font-semibold text-gray-900 text-sm">{src.name}</span>
+              </div>
+              <div className="flex gap-2 flex-wrap mb-1.5">
+                {Object.entries(src.urls).map(([k, url]) => (
+                  <ExternalLink key={k} href={url}><span className="text-xs text-blue-500 hover:underline">{k} ↗</span></ExternalLink>
+                ))}
+              </div>
+              {src.notes && <p className="text-xs text-gray-400 leading-relaxed">{src.notes}</p>}
+              {src.relevance_keywords && src.relevance_keywords.length > 0 && (
+                <div className="flex gap-1 flex-wrap mt-1.5">
+                  {src.relevance_keywords.slice(0, 8).map(k => <Tag key={k} label={k} />)}
+                </div>
+              )}
+            </div>
+          ))}
+        </ReportSubsection>
+      ))}
+    </>
+  )
+}
+
 // ---- Report: router ----
 
 const REPORT_SECTION_META: Record<ReportSection, { title: string; subtitle: string }> = {
@@ -1964,6 +2049,7 @@ const REPORT_SECTION_META: Record<ReportSection, { title: string; subtitle: stri
   'industry-norms': { title: 'Industry Norms', subtitle: `Updated ${fmtDate(industryNorms.last_updated)} · includes non-dev AI at the bottom` },
   questions: { title: 'Agent Questions', subtitle: 'Things the research agent flagged for your input — answer or dismiss each one' },
   queued: { title: 'Queue', subtitle: 'Items queued for the next research run' },
+  sources: { title: 'Sources', subtitle: `${allSources.length} monitored sources — podcasts, events, social, code discovery` },
 }
 
 function ReportContent({ section, sort, setSort, search, setSearch, localQueue, mergedGaps, onAddGap, onUpdateGap, onDeleteGap, questions, onUpdateQuestion }: {
@@ -1990,6 +2076,7 @@ function ReportContent({ section, sort, setSort, search, setSearch, localQueue, 
       {section === 'industry-norms' && <IndustryNormsContent />}
       {section === 'questions' && <QuestionsContent questions={questions} onUpdate={onUpdateQuestion} />}
       {section === 'queued' && <QueuedContent localQueue={localQueue} />}
+      {section === 'sources' && <SourcesContent />}
     </ContentArea>
   )
 }
@@ -2023,12 +2110,17 @@ function ToolsContent({ filter, sort, setSort, search, setSearch }: {
   const q = search.toLowerCase()
   const filtered = useMemo(() => {
     let t = [...tools]
-    if (filter) t = t.filter(x => x.category === filter)
-    if (q) t = t.filter(x => x.name.toLowerCase().includes(q) || x.description.toLowerCase().includes(q))
+    if (filter) t = t.filter(x => toolDisplayCategory(x) === filter)
+    if (q) {
+      t = t.filter(x => {
+        const author = people.find(p => p.id === x.author_id)
+        return x.name.toLowerCase().includes(q) || x.description.toLowerCase().includes(q) || (author?.name ?? '').toLowerCase().includes(q)
+      })
+    }
     return sortItems(t, sort, starred, x => x.github_stars ?? 0, x => x.name)
   }, [filter, sort, q, starred])
   return (
-    <ContentArea title="Tools" subtitle={`${tools.length} tracked tools & repos`}>
+    <ContentArea title="Tooling" subtitle={`${tools.length} tracked tools & repos`}>
       <FilterBar sort={sort} setSort={setSort} search={search} setSearch={setSearch} />
       {filtered.map(t => <ToolRow key={t.id} tool={t} />)}
       {filtered.length === 0 && <p className="text-sm text-gray-400">No results.</p>}
@@ -2044,7 +2136,12 @@ function ArticlesContent({ filter, sort, setSort, search, setSearch }: {
   const filtered = useMemo(() => {
     let a = [...articles]
     if (filter) a = a.filter(x => x.topics.includes(filter))
-    if (q) a = a.filter(x => x.title.toLowerCase().includes(q) || x.summary.toLowerCase().includes(q))
+    if (q) {
+      a = a.filter(x => {
+        const author = people.find(p => p.id === x.author_id)
+        return x.title.toLowerCase().includes(q) || x.summary.toLowerCase().includes(q) || (author?.name ?? '').toLowerCase().includes(q)
+      })
+    }
     return sortItems(a, sort, starred, articleRelevance, x => x.title)
   }, [filter, sort, q, starred])
   return (
@@ -2064,7 +2161,12 @@ function PodcastsContent({ filter, sort, setSort, search, setSearch }: {
   const filtered = useMemo(() => {
     let p = [...podcasts]
     if (filter) p = p.filter(x => x.show === filter)
-    if (q) p = p.filter(x => x.episode_title.toLowerCase().includes(q) || x.summary.toLowerCase().includes(q) || x.show.toLowerCase().includes(q))
+    if (q) {
+      p = p.filter(x => {
+        const guest = people.find(g => g.id === x.guest_id)
+        return x.episode_title.toLowerCase().includes(q) || x.summary.toLowerCase().includes(q) || x.show.toLowerCase().includes(q) || (guest?.name ?? '').toLowerCase().includes(q)
+      })
+    }
     return sortItems(p, sort, starred, () => 0, x => x.episode_title)
   }, [filter, sort, q, starred])
   return (
@@ -2076,18 +2178,80 @@ function PodcastsContent({ filter, sort, setSort, search, setSearch }: {
   )
 }
 
-function YouTubeContent({ filter, search, setSearch }: { filter: string; search: string; setSearch: (s: string) => void }) {
+interface VideoEntry {
+  id: string
+  title: string
+  url: string
+  speakerId?: string
+  speakerName: string
+  event: string
+  date?: string | null
+  topics: string[]
+  thumbnail: string | null
+}
+
+function VideosContent({ search, setSearch }: { search: string; setSearch: (s: string) => void }) {
+  const allVideos = useMemo<VideoEntry[]>(() => {
+    const vids: VideoEntry[] = []
+    people.forEach(person => {
+      person.talks.forEach((talk, i) => {
+        const thumb = getYouTubeThumbnail(talk.url)
+        if (talk.url && (talk.url.includes('youtube') || talk.url.includes('youtu.be') || thumb)) {
+          vids.push({
+            id: `${person.id}-talk-${i}`,
+            title: talk.title,
+            url: talk.url,
+            speakerId: person.id,
+            speakerName: person.name,
+            event: talk.event,
+            date: talk.date,
+            topics: talk.topics,
+            thumbnail: thumb,
+          })
+        }
+      })
+    })
+    return vids.sort((a, b) => (b.date ?? '') > (a.date ?? '') ? 1 : -1)
+  }, [])
+
   const q = search.toLowerCase()
   const filtered = useMemo(() => {
-    let c = [...youtubeChannels]
-    if (filter) c = c.filter(x => x.topics.includes(filter))
-    if (q) c = c.filter(x => x.name.toLowerCase().includes(q) || x.description.toLowerCase().includes(q))
-    return c
-  }, [filter, q])
+    if (!q) return allVideos
+    return allVideos.filter(v =>
+      v.title.toLowerCase().includes(q) || v.speakerName.toLowerCase().includes(q) ||
+      v.event.toLowerCase().includes(q) || v.topics.some(t => t.includes(q))
+    )
+  }, [allVideos, q])
+
   return (
-    <ContentArea title="YouTube" subtitle={`${youtubeChannels.length} channels`}>
+    <ContentArea title="Videos" subtitle={`${allVideos.length} talks & presentations`}>
       <SearchBar search={search} setSearch={setSearch} />
-      {filtered.map(c => <YouTubeRow key={c.id} channel={c} />)}
+      {filtered.map(v => (
+        <div key={v.id} className="py-3 border-b border-gray-100 last:border-0">
+          <div className="flex items-start gap-3">
+            {v.thumbnail ? (
+              <a href={v.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+                <img src={v.thumbnail} alt="" className="w-24 h-14 object-cover rounded border border-gray-100" />
+              </a>
+            ) : (
+              <div className="w-24 h-14 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
+                <span className="text-red-400 text-lg">▶</span>
+              </div>
+            )}
+            <div className="flex-1 min-w-0">
+              <p className="font-semibold text-gray-900 text-sm leading-snug mb-0.5">
+                <ExternalLink href={v.url}>{v.title}</ExternalLink>
+              </p>
+              <div className="flex items-center gap-2 text-xs text-gray-500 flex-wrap">
+                <NavLink tab="people" search={v.speakerName} className="text-gray-600 hover:text-blue-600 hover:underline font-medium">{v.speakerName}</NavLink>
+                {v.event && <span className="text-gray-400">— {v.event}</span>}
+                {v.date && <span className="text-gray-300">{fmtDate(v.date)}</span>}
+              </div>
+              {v.topics.length > 0 && <div className="flex gap-1 flex-wrap mt-1">{v.topics.slice(0, 4).map(t => <Tag key={t} label={t} />)}</div>}
+            </div>
+          </div>
+        </div>
+      ))}
       {filtered.length === 0 && <p className="text-sm text-gray-400">No results.</p>}
     </ContentArea>
   )
@@ -2268,12 +2432,18 @@ export default function App() {
     if (tab === 'report') setReportSection('updates')
   }
 
+  const navigate = useCallback((tab: MainTab, search?: string) => {
+    switchTab(tab)
+    if (search) setSearch(search)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   const switchReportSection = (s: ReportSection) => { setReportSection(s); setSearch('') }
   const switchCategory = (f: string) => { setCategoryFilter(f); setSearch('') }
   const switchTopic = (f: string) => { setTopicFilter(f); setSearch('') }
   const switchYear = (f: string) => { setYearFilter(f); setSearch('') }
 
   return (
+    <NavCtx.Provider value={navigate}>
     <StarsCtx.Provider value={{ starred, toggle }}>
       <div className="flex h-screen flex-col bg-gray-50 overflow-hidden">
         <div className="bg-white border-b border-gray-200 flex-shrink-0">
@@ -2314,7 +2484,6 @@ export default function App() {
           {activeTab === 'tools' && <ToolsIndex filter={categoryFilter} setFilter={switchCategory} />}
           {activeTab === 'articles' && <TopicIndex filter={topicFilter} setFilter={switchTopic} heading="Topic" />}
           {activeTab === 'podcasts' && <ShowIndex filter={categoryFilter} setFilter={switchCategory} />}
-          {activeTab === 'youtube' && <TopicIndex filter={topicFilter} setFilter={switchTopic} heading="Topic" />}
           {activeTab === 'events' && <EventsIndex filter={yearFilter} setFilter={switchYear} />}
 
           <div className="flex-1 overflow-y-auto">
@@ -2323,7 +2492,7 @@ export default function App() {
             {activeTab === 'tools' && <ToolsContent filter={categoryFilter} sort={sort} setSort={setSort} search={search} setSearch={setSearch} />}
             {activeTab === 'articles' && <ArticlesContent filter={topicFilter} sort={sort} setSort={setSort} search={search} setSearch={setSearch} />}
             {activeTab === 'podcasts' && <PodcastsContent filter={categoryFilter} sort={sort} setSort={setSort} search={search} setSearch={setSearch} />}
-            {activeTab === 'youtube' && <YouTubeContent filter={topicFilter} search={search} setSearch={setSearch} />}
+            {activeTab === 'videos' && <VideosContent search={search} setSearch={setSearch} />}
             {activeTab === 'events' && <EventsContent filter={yearFilter} search={search} setSearch={setSearch} />}
           </div>
         </div>
@@ -2333,5 +2502,6 @@ export default function App() {
         )}
       </div>
     </StarsCtx.Provider>
+    </NavCtx.Provider>
   )
 }
