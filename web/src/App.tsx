@@ -84,6 +84,7 @@ interface StackBundle {
   toolId?: string
   provides: Partial<Record<StackLayerKey, string[]>>
   profileCount?: number
+  displayCounts?: Partial<Record<StackLayerKey | 'profiles', number>>  // overrides provides[key].length for the count footer
   conflicts: string[]
 }
 
@@ -169,6 +170,7 @@ const STACK_BUNDLES: StackBundle[] = [
     toolId: 'gstack',
     description: '23 specialist skills + 8 power tools. CLAUDE.md acts as a role-router: CEO, Designer, Eng Manager, QA, Security. Includes AGENTS.md definitions.',
     provides: { governance: ['agents-md'], skills: ['gstack-skills'] },
+    displayCounts: { skills: 23, tools: 8 },
     conflicts: ['sandcastle', 'awesome-subagents'],
   },
   {
@@ -185,6 +187,7 @@ const STACK_BUNDLES: StackBundle[] = [
     toolId: 'awesome-claude-code-subagents',
     description: '100+ pre-built specialist personas. Designer, Debugger, Reviewer, Security Auditor — add individuals or the full set.',
     provides: { skills: ['awesome-subagent-skills'] },
+    displayCounts: { profiles: 100 },
     conflicts: ['gstack'],
   },
   {
@@ -1564,6 +1567,12 @@ function StackBuilderContent() {
             const isSelected = selection.bundles.includes(bundle.id)
             const hasConflict = !isSelected && bundle.conflicts.some(id => selection.bundles.includes(id))
             const tool = bundle.toolId ? tools.find(t => t.id === bundle.toolId) : null
+            const author = tool?.author_id ? people.find(p => p.id === tool.author_id) : null
+            const authorLabel = author
+              ? author.name
+              : tool?.github_url
+                ? tool.github_url.replace('https://github.com/', '').split('/')[0]
+                : null
             return (
               <div key={bundle.id}
                 className={`border rounded-lg p-3 transition-colors ${isSelected ? 'border-gray-900 bg-gray-50' : hasConflict ? 'border-gray-100 opacity-40' : 'border-gray-200'}`}>
@@ -1578,6 +1587,15 @@ function StackBuilderContent() {
                       {hasConflict && <span className="text-xs text-gray-400 italic">conflicts with selected</span>}
                       {tool && <ExternalLink href={tool.url}><span className="text-xs text-blue-500 hover:underline">View →</span></ExternalLink>}
                     </div>
+                    {authorLabel && (
+                      <p className="text-xs text-gray-400 mb-1">
+                        by{' '}
+                        {author?.profiles?.github
+                          ? <ExternalLink href={`https://github.com/${author.profiles.github}`}><span className="hover:text-gray-700 underline underline-offset-2">{authorLabel}</span></ExternalLink>
+                          : <span>{authorLabel}</span>
+                        }
+                      </p>
+                    )}
                     <p className="text-xs text-gray-500 leading-relaxed">{bundle.description}</p>
                     {isSelected && (
                       <div className="mt-2 pt-2 border-t border-gray-100 space-y-1.5">
@@ -1605,13 +1623,14 @@ function StackBuilderContent() {
                     )}
                     {/* Always-visible component count footer */}
                     {(() => {
+                      const dc = bundle.displayCounts ?? {}
                       const counts: { label: string; n: number }[] = [
-                        { label: '.md files', n: (bundle.provides.governance ?? []).length },
-                        { label: 'skills',    n: (bundle.provides.skills ?? []).length },
-                        { label: 'hooks',     n: (bundle.provides.hooks ?? []).length },
-                        { label: 'MCPs',      n: (bundle.provides.mcps ?? []).length },
-                        { label: 'profiles',  n: bundle.profileCount ?? 0 },
-                        { label: 'tools',     n: (bundle.provides.tools ?? []).length },
+                        { label: '.md files', n: dc.governance  ?? (bundle.provides.governance ?? []).length },
+                        { label: 'skills',    n: dc.skills      ?? (bundle.provides.skills ?? []).length },
+                        { label: 'hooks',     n: dc.hooks       ?? (bundle.provides.hooks ?? []).length },
+                        { label: 'MCPs',      n: dc.mcps        ?? (bundle.provides.mcps ?? []).length },
+                        { label: 'profiles',  n: dc.profiles    ?? bundle.profileCount ?? 0 },
+                        { label: 'tools',     n: dc.tools       ?? (bundle.provides.tools ?? []).length },
                       ]
                       return (
                         <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 pt-2 border-t border-gray-100">
