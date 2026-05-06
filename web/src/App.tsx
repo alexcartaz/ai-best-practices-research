@@ -83,6 +83,7 @@ interface StackBundle {
   description: string
   toolId?: string
   provides: Partial<Record<StackLayerKey, string[]>>
+  profileCount?: number
   conflicts: string[]
 }
 
@@ -114,6 +115,8 @@ const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
     { id: 'design-md', label: 'DESIGN.md', toolId: 'design-md-format', description: 'Design tokens (colors, spacing, typography) as persistent agent context. Google Labs format. CLI lints WCAG AA contrast and exports to Tailwind/DTCG.', linkedGroup: 'design-md-cli', section: 'Others' },
     { id: 'agents-md', label: 'AGENTS.md', url: 'https://docs.anthropic.com/en/docs/claude-code/sub-agents', description: 'Multi-agent coordination: role definitions and handoff rules for when Claude spawns subagents.', section: 'Others' },
     { id: 'llm-wiki', label: 'LLM Wiki (raw/+wiki/+schema/)', toolId: 'llm-wiki-karpathy', description: 'Three-layer memory: immutable sources + agent-maintained cross-referenced wiki + behavior config. Karpathy pattern, 27k+ stars.', section: 'Others' },
+    { id: 'default-design-system', label: 'claude-default-design-system', toolId: 'claude-default-design-system', description: 'TypeScript + React design system with token primitives, semantic theme roles (theme-as-prop), and ComponentMeta contracts. Fork and customize per project.', section: 'Others' },
+    { id: 'requirements-roadmap-md', label: 'REQUIREMENTS.md + ROADMAP.md', toolId: 'claude-template-subagents', description: 'Hierarchical behavioral requirements doc + milestone roadmap. Hooks auto-classify every file change and inject the requirements chain before edits.', section: 'Others' },
   ],
   skills: [
     { id: 'grill-me', label: '/grill-me', toolId: 'sandcastle', description: 'Structured intake: 20+ questions to deeply understand a project before writing code. Matt Pocock / Sandcastle.' },
@@ -123,11 +126,17 @@ const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
     { id: 'gstack-skills', label: 'gstack skills (23)', toolId: 'gstack', description: 'CEO, Designer, Eng Manager, Release Manager, QA, Doc Engineer, Security. Role-routed from CLAUDE.md.' },
     { id: 'toolkit-skills', label: 'awesome-claude-code-toolkit', toolId: 'awesome-claude-code-toolkit', description: '400k+ skills via SkillKit, 42 slash commands, 20 hooks, 7 templates.' },
     { id: 'caveman', label: 'Caveman', toolId: 'caveman', description: 'Enforces terse, telegraphic prompting — cuts output tokens ~65%. Three intensity tiers (Lite/Full/Ultra). Bundled cavecrew subagents (investigate/build/review) and caveman-shrink MCP middleware.' },
+    { id: 'template-project-init', label: '/project-init', toolId: 'claude-template-subagents', description: 'Browser-based setup form (served at localhost:5173/project-setup.html). Soft-blocks all work until filled. Creates GitHub repo, scaffolds tech stack, seeds session state.' },
+    { id: 'template-session-resume', label: '/session-resume', toolId: 'claude-template-subagents', description: 'Emits 4-line status (branch, job, last task, next step) on resume after 30+ min inactivity. Edge-case handling for branch mismatch and empty job state.' },
+    { id: 'template-validation-loop', label: '/validation-loop', toolId: 'claude-template-subagents', description: 'Opt-in strict pipeline: validator → verification layer → tests. Runs only on explicit trigger ("prepare to merge"). 3-attempt cap per producer.' },
   ],
   hooks: [
     { id: 'pre-commit', label: 'Pre-commit validation', url: 'https://docs.anthropic.com/en/docs/claude-code/hooks', description: 'Runs lint, type-check, or tests before every commit. Prevents bad state from landing.' },
     { id: 'post-tool-call', label: 'Post tool-call hook', url: 'https://docs.anthropic.com/en/docs/claude-code/hooks', description: 'Fires after each Claude tool call — useful for logging, notifications, or enforcing invariants.' },
     { id: 'sandcastle-hooks', label: 'Sandcastle hook suite', toolId: 'sandcastle', description: 'Production-tested hooks: diff review gates, verification checkpoints, auto-merge conditions.' },
+    { id: 'template-session-hook', label: 'Session check hook', toolId: 'claude-template-subagents', description: 'UserPromptSubmit hook: emits 4-line session status after 30+ min inactivity, writes lastActiveDate. Silent otherwise.' },
+    { id: 'template-requirements-hooks', label: 'Requirements enforcement hooks', toolId: 'claude-template-subagents', description: 'Pre-edit: injects REQUIREMENTS.md chain + classification directive. Post-edit: classifies change as behavioral or non-behavioral, seeds REQUIREMENTS.md in new directories.' },
+    { id: 'template-session-end-hook', label: 'Session-end commit hook', toolId: 'claude-template-subagents', description: 'SessionEnd hook: mandatory "WIP: session checkpoint" commit. No exceptions.' },
   ],
   mcps: [
     { id: 'playwright', label: 'Playwright MCP', toolId: 'playwright-mcp', description: 'Browser automation. Claude verifies its own UI output. Community standard for closing the autonomous web app loop.' },
@@ -140,6 +149,8 @@ const STACK_LAYER_ITEMS: Record<StackLayerKey, StackItem[]> = {
     { id: 'eslint', label: 'ESLint + Prettier', description: 'Code quality and formatting. Pair with the pre-commit hook to enforce on every commit.', default: true },
     { id: 'designmd-cli', label: 'DESIGN.md CLI', toolId: 'design-md-format', description: 'Required if using DESIGN.md. Lints WCAG AA contrast, exports tokens to Tailwind/DTCG.', linkedGroup: 'design-md-cli' },
     { id: 'playwright-pkg', label: 'Playwright', url: 'https://playwright.dev', description: 'Required package if using Playwright MCP.' },
+    { id: 'surface-ui-pkg', label: 'surface-ui', toolId: 'surface-ui', description: 'Dev-mode design toolbar overlay. Element inspector, design system panel, component gallery. Add to dev server for in-app design tooling. WIP.' },
+    { id: 'workflow-ai-pkg', label: 'workflow-ai', toolId: 'alexcartaz-workflow-ai', description: 'Multi-service AI workflow platform (React + Express + Cloud API). WIP orchestration layer for managing agent workflows.' },
   ],
 }
 
@@ -175,6 +186,19 @@ const STACK_BUNDLES: StackBundle[] = [
     description: '100+ pre-built specialist personas. Designer, Debugger, Reviewer, Security Auditor — add individuals or the full set.',
     provides: { skills: ['awesome-subagent-skills'] },
     conflicts: ['gstack'],
+  },
+  {
+    id: 'claude-template-subagents',
+    name: 'claude-template-subagents',
+    toolId: 'claude-template-subagents',
+    description: 'Full-stack governance template (v1.3). Ships REQUIREMENTS.md + ROADMAP.md, 4 subagent profiles (designer, frontend-engineer, backend-engineer, validator), requirements-enforcement hooks, session-state hooks, and project-init skill with browser-based setup form.',
+    provides: {
+      governance: ['agents-md', 'requirements-roadmap-md'],
+      skills: ['template-project-init', 'template-session-resume', 'template-validation-loop'],
+      hooks: ['template-session-hook', 'template-requirements-hooks', 'template-session-end-hook'],
+    },
+    profileCount: 4,
+    conflicts: [],
   },
 ]
 
@@ -1579,6 +1603,26 @@ function StackBuilderContent() {
                         ))}
                       </div>
                     )}
+                    {/* Always-visible component count footer */}
+                    {(() => {
+                      const counts: { label: string; n: number }[] = [
+                        { label: '.md files', n: (bundle.provides.governance ?? []).length },
+                        { label: 'skills',    n: (bundle.provides.skills ?? []).length },
+                        { label: 'hooks',     n: (bundle.provides.hooks ?? []).length },
+                        { label: 'MCPs',      n: (bundle.provides.mcps ?? []).length },
+                        { label: 'profiles',  n: bundle.profileCount ?? 0 },
+                        { label: 'tools',     n: (bundle.provides.tools ?? []).length },
+                      ]
+                      return (
+                        <div className="flex flex-wrap gap-x-3 gap-y-0.5 mt-2 pt-2 border-t border-gray-100">
+                          {counts.map(({ label, n }) => (
+                            <span key={label} className="text-xs text-gray-400">
+                              <span className={n > 0 ? 'text-gray-700 font-medium' : ''}>{n}</span> {label}
+                            </span>
+                          ))}
+                        </div>
+                      )
+                    })()}
                   </div>
                 </div>
               </div>

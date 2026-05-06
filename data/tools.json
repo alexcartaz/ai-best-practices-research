@@ -715,5 +715,92 @@
     "is_new": true,
     "added": "2026-05-06",
     "last_updated": "2026-05-06"
+  },
+  {
+    "id": "claude-template-subagents",
+    "name": "claude-template-subagents",
+    "category": "governance",
+    "author_id": null,
+    "url": "https://github.com/alexcartaz/claude-template-subagents",
+    "github_url": "https://github.com/alexcartaz/claude-template-subagents",
+    "github_stars": null,
+    "github_pushed_at": null,
+    "description": "Constrained multi-subagent governance template (v1.3). Ships CLAUDE.md, REQUIREMENTS.md, ROADMAP.md, 4 subagent profiles (designer, frontend-engineer, backend-engineer, validator), requirements-enforcement hooks, session-state tracking, and a project-init skill with browser-based setup form.",
+    "topics": [
+      "repo-template-governance",
+      "session-management"
+    ],
+    "status": "active",
+    "logo_url": null,
+    "primary_files": null,
+    "files_checked": null,
+    "is_new": true,
+    "added": "2026-05-06",
+    "last_updated": "2026-05-06"
+  },
+  {
+    "id": "claude-default-design-system",
+    "name": "claude-default-design-system",
+    "category": "design",
+    "author_id": null,
+    "url": "https://github.com/alexcartaz/claude-default-design-system",
+    "github_url": "https://github.com/alexcartaz/claude-default-design-system",
+    "github_stars": null,
+    "github_pushed_at": null,
+    "description": "TypeScript + React design system generated via claude.ai/design. Token primitives (color scales, spacing, typography, motion) compose into semantic theme roles via theme-as-prop. Every component ships a ComponentMeta contract and a gallery renderer.",
+    "topics": [
+      "design-systems",
+      "design-tooling"
+    ],
+    "status": "active",
+    "logo_url": null,
+    "primary_files": null,
+    "files_checked": null,
+    "is_new": true,
+    "added": "2026-05-06",
+    "last_updated": "2026-05-06"
+  },
+  {
+    "id": "surface-ui",
+    "name": "surface-ui",
+    "category": "design",
+    "author_id": null,
+    "url": "https://github.com/alexcartaz/surface-ui",
+    "github_url": "https://github.com/alexcartaz/surface-ui",
+    "github_stars": null,
+    "github_pushed_at": null,
+    "description": "Dev-mode design toolbar overlay for React apps. Includes element inspector, design system panel, and component gallery. Planned: comment-to-Claude flow for annotating UI elements and routing context to Claude Code. WIP.",
+    "topics": [
+      "design-tooling",
+      "low-level-fe-verification"
+    ],
+    "status": "active",
+    "logo_url": null,
+    "primary_files": null,
+    "files_checked": null,
+    "is_new": true,
+    "added": "2026-05-06",
+    "last_updated": "2026-05-06"
+  },
+  {
+    "id": "alexcartaz-workflow-ai",
+    "name": "workflow-ai",
+    "category": "orchestration",
+    "author_id": null,
+    "url": "https://github.com/alexcartaz/workflow-ai",
+    "github_url": "https://github.com/alexcartaz/workflow-ai",
+    "github_stars": null,
+    "github_pushed_at": null,
+    "description": "Multi-service AI workflow platform (React frontend + Express server + Cloud API). Orchestration layer for managing agent workflows and research tooling. WIP.",
+    "topics": [
+      "multi-agent-orchestration"
+    ],
+    "status": "active",
+    "logo_url": null,
+    "primary_files": null,
+    "files_checked": null,
+    "is_new": true,
+    "added": "2026-05-06",
+    "last_updated": "2026-05-06"
   }
 ]
