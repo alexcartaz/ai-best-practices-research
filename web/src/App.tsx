@@ -33,8 +33,8 @@ function fmtDate(iso: string | null | undefined): string {
   return `${d.getUTCMonth() + 1}/${d.getUTCDate()}/${String(d.getUTCFullYear()).slice(2)}`
 }
 
-type MainTab = 'report' | 'videos' | 'articles' | 'podcasts' | 'tools' | 'people' | 'events'
-type ReportSection = 'updates' | 'gaps' | 'stack' | 'governance' | 'design' | 'orchestration' | 'harness-engineering' | 'industry-norms' | 'questions' | 'queued' | 'sources'
+type MainTab = 'report' | 'videos' | 'articles' | 'podcasts' | 'tools' | 'people' | 'events' | 'stack'
+type ReportSection = 'updates' | 'gaps' | 'governance' | 'design' | 'orchestration' | 'harness-engineering' | 'industry-norms' | 'questions' | 'queued' | 'sources'
 
 const MAIN_TABS: { id: MainTab; label: string }[] = [
   { id: 'report', label: 'Report' },
@@ -49,7 +49,6 @@ const MAIN_TABS: { id: MainTab; label: string }[] = [
 const REPORT_SECTIONS: { id: ReportSection; label: string }[] = [
   { id: 'updates', label: 'Updates' },
   { id: 'gaps', label: 'Gaps' },
-  { id: 'stack', label: 'Stack Builder' },
   { id: 'governance', label: 'Governance & Repo' },
   { id: 'design', label: 'Design' },
   { id: 'orchestration', label: 'Orchestration' },
@@ -712,16 +711,6 @@ const REPORT_SUBSECTIONS: Record<ReportSection, { label: string; id: string }[]>
   gaps: [
     { label: 'Open', id: 'gaps-open' },
     { label: 'Resolved', id: 'gaps-resolved' },
-  ],
-  stack: [
-    { label: 'User Defaults', id: 'stack-user-defaults' },
-    { label: 'Saved Configs', id: 'stack-configs' },
-    { label: 'Bundles', id: 'stack-bundles' },
-    { label: 'Governance', id: 'stack-layer-governance' },
-    { label: 'Skills', id: 'stack-layer-skills' },
-    { label: 'Hooks', id: 'stack-layer-hooks' },
-    { label: 'MCPs', id: 'stack-layer-mcps' },
-    { label: 'Tools', id: 'stack-layer-tools' },
   ],
   governance: [
     { label: 'Top Setups', id: 'gov-top-setups' },
@@ -2041,7 +2030,6 @@ function SourcesContent() {
 const REPORT_SECTION_META: Record<ReportSection, { title: string; subtitle: string }> = {
   updates: { title: 'Updates', subtitle: 'What\'s new since the last research run, ranked by relevance' },
   gaps: { title: 'Gaps', subtitle: 'Known pain points being monitored for solutions — add your own as you find them' },
-  stack: { title: 'Stack Builder', subtitle: 'Pick governance files, skills, hooks, MCPs, and tools — save configs and create new repos' },
   governance: { title: 'Governance & Repo Structure', subtitle: 'CLAUDE.md · DESIGN.md · skills · hooks · subagent profiles' },
   design: { title: 'Design', subtitle: 'Design systems, component libraries, and AI-native UI workflows' },
   orchestration: { title: 'Orchestration', subtitle: 'Multi-agent coordination, session management, context compaction' },
@@ -2068,7 +2056,6 @@ function ReportContent({ section, sort, setSort, search, setSearch, localQueue, 
         </>
       )}
       {section === 'gaps' && <GapsContent mergedGaps={mergedGaps} onAddGap={onAddGap} onUpdateGap={onUpdateGap} onDeleteGap={onDeleteGap} />}
-      {section === 'stack' && <StackBuilderContent />}
       {section === 'governance' && <GovernanceContent />}
       {section === 'design' && <DesignContent />}
       {section === 'orchestration' && <OrchestrationContent />}
@@ -2468,13 +2455,19 @@ export default function App() {
               </button>
             </div>
           </div>
-          <div className="flex px-4">
+          <div className="flex px-4 items-center">
             {MAIN_TABS.map(t => (
               <button key={t.id} onClick={() => switchTab(t.id)}
                 className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${activeTab === t.id ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700'}`}>
                 {t.label}
               </button>
             ))}
+            <div className="ml-auto">
+              <button onClick={() => switchTab('stack')}
+                className={`px-4 py-2.5 text-sm font-medium border-b-2 transition-colors ${activeTab === 'stack' ? 'border-violet-500 text-violet-600' : 'border-transparent text-gray-400 hover:text-gray-600'}`}>
+                Stack Builder
+              </button>
+            </div>
           </div>
         </div>
 
@@ -2485,6 +2478,26 @@ export default function App() {
           {activeTab === 'articles' && <TopicIndex filter={topicFilter} setFilter={switchTopic} heading="Topic" />}
           {activeTab === 'podcasts' && <ShowIndex filter={categoryFilter} setFilter={switchCategory} />}
           {activeTab === 'events' && <EventsIndex filter={yearFilter} setFilter={switchYear} />}
+          {activeTab === 'stack' && (
+            <IndexSidebar>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2 px-2">Sections</p>
+              <div className="pl-2">
+                {[
+                  { label: 'User Defaults', id: 'stack-user-defaults' },
+                  { label: 'Saved Configs', id: 'stack-configs' },
+                  { label: 'Bundles', id: 'stack-bundles' },
+                  { label: 'Governance', id: 'stack-layer-governance' },
+                  { label: 'Skills', id: 'stack-layer-skills' },
+                  { label: 'Hooks', id: 'stack-layer-hooks' },
+                  { label: 'MCPs', id: 'stack-layer-mcps' },
+                  { label: 'Tools', id: 'stack-layer-tools' },
+                ].map(s => (
+                  <IndexItem key={s.id} label={s.label} active={false}
+                    onClick={() => document.getElementById(s.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })} />
+                ))}
+              </div>
+            </IndexSidebar>
+          )}
 
           <div className="flex-1 overflow-y-auto">
             {activeTab === 'report' && <ReportContent section={reportSection} sort={sort} setSort={setSort} search={search} setSearch={setSearch} localQueue={queue} mergedGaps={mergedGaps} onAddGap={addGap} onUpdateGap={updateGap} onDeleteGap={deleteGap} questions={questions} onUpdateQuestion={updateQuestion} />}
@@ -2494,6 +2507,11 @@ export default function App() {
             {activeTab === 'podcasts' && <PodcastsContent filter={categoryFilter} sort={sort} setSort={setSort} search={search} setSearch={setSearch} />}
             {activeTab === 'videos' && <VideosContent search={search} setSearch={setSearch} />}
             {activeTab === 'events' && <EventsContent filter={yearFilter} search={search} setSearch={setSearch} />}
+            {activeTab === 'stack' && (
+              <ContentArea title="Stack Builder" subtitle="Pick governance files, skills, hooks, MCPs, and tools — save configs and create new repos">
+                <StackBuilderContent />
+              </ContentArea>
+            )}
           </div>
         </div>
 
