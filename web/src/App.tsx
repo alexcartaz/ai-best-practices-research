@@ -895,10 +895,19 @@ function ReportSubsection({ id, title, description, children }: { id?: string; t
 }
 
 function ApproachItem({ text }: { text: string }) {
+  const parts: React.ReactNode[] = []
+  const linkRe = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g
+  let last = 0, m: RegExpExecArray | null
+  while ((m = linkRe.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index))
+    parts.push(<a key={m.index} href={m[2]} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{m[1]}</a>)
+    last = m.index + m[0].length
+  }
+  if (last < text.length) parts.push(text.slice(last))
   return (
     <div className="flex items-start gap-2 py-1.5 border-b border-gray-50 last:border-0">
       <span className="text-gray-300 flex-shrink-0 mt-0.5">—</span>
-      <p className="text-xs text-gray-700 leading-relaxed">{text}</p>
+      <p className="text-xs text-gray-700 leading-relaxed">{parts}</p>
     </div>
   )
 }
@@ -1591,6 +1600,7 @@ function GovernanceContent() {
   const subs = govTopic?.sub_sections ?? {}
 
   const govTools = tools.filter(t =>
+    t.category === 'governance' ||
     t.topics.some(tag => ['claude-code-governance', 'skills', 'hooks', 'subagent_profiles', 'repo-template-governance', 'CLAUDE.md'].includes(tag))
   )
   const govPeople = people.filter(p =>
