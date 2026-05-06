@@ -76,8 +76,22 @@
         "title": "Full Walkthrough: Workflow for AI Coding",
         "event": "YouTube",
         "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
-        "date": null,
-        "topics": ["claude-code", "session-management", "ai-tooling"]
+        "date": "2026-04",
+        "topics": ["claude-code", "session-management", "ai-tooling", "skills"]
+      },
+      {
+        "title": "Building a REAL feature with Claude Code: every step explained",
+        "event": "YouTube",
+        "url": "https://www.youtube.com/watch?v=hX7yG1KVYhI",
+        "date": "2026-03-18",
+        "topics": ["claude-code", "ai-tooling", "skills", "repo-template-governance"]
+      },
+      {
+        "title": "I Open-Sourced My Own AFK Software Factory (Sandcastle launch)",
+        "event": "YouTube",
+        "url": "https://www.youtube.com/watch?v=E5-QK3CDVQM",
+        "date": "2026-04-29",
+        "topics": ["claude-code", "multi-agent-orchestration", "session-management", "sandcastle"]
       },
       {
         "title": "AI SDK v5: A Crash Course",
@@ -1176,6 +1190,128 @@
     "podcast_episodes": [],
     "notable_contributions": [
       "Founder of PSPDFKit (now Nutrient); created OpenClaw (formerly ClawdBot/MoltBook), a personal AI assistant that reached 100k GitHub stars. Now at OpenAI. Tracked primarily because OpenClaw is the canonical example in the Non-Dev AI section."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "david-gomes",
+    "name": "David Gomes",
+    "category": "dev",
+    "focus": ["skills", "claude-code", "code-reduction", "agent-design"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "Replacing 12K LoC with a 200 LoC Skill",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-04-10",
+        "topics": ["skills", "claude-code", "code-reduction"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Cursor team. AIE Europe 2026 talk 'Replacing 12K LoC with a 200 LoC Skill' is one of the strongest data points for the skills-economy thesis: a single well-written SKILL.md can replace orders of magnitude of imperative code.",
+      "Profile fields null pending lookup — flagged for next run."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "marc-klingen",
+    "name": "Marc Klingen",
+    "category": "dev",
+    "focus": ["skills", "claude-code", "agent-observability", "langfuse"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://langfuse.com"
+    },
+    "talks": [
+      {
+        "title": "Skill issue: Lessons from skilling up coding agents to use Langfuse",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-04-09",
+        "topics": ["skills", "claude-code", "agent-observability"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Langfuse co-founder. AIE Europe 2026 talk on the practical pitfalls of writing SKILL.md files that teach coding agents to use a specific library — directly relevant to anyone authoring skills for their stack.",
+      "Profile fields null pending lookup — flagged for next run."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "pedro-rodrigues",
+    "name": "Pedro Rodrigues",
+    "category": "dev",
+    "focus": ["skills", "mcp", "claude-code", "supabase"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "Combine Skills and MCP to Close the Context Gap",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-04-09",
+        "topics": ["skills", "mcp", "claude-code"]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Supabase team. AIE Europe 2026 talk arguing skills and MCP servers are complementary (skills = static knowledge, MCP = live tools) and should be designed together. Directly relevant to anyone building a Claude Code template that uses both.",
+      "Profile fields null pending lookup — flagged for next run."
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "julius-brussee",
+    "name": "Julius Brussee",
+    "category": "dev",
+    "focus": ["claude-code", "token-efficiency", "session-management", "agent-memory", "ai-tooling"],
+    "profiles": {
+      "github": "https://github.com/JuliusBrussee",
+      "bsky": null,
+      "x": "https://x.com/julius_brussee",
+      "linkedin": "https://www.linkedin.com/in/julius-brussee",
+      "substack": "https://polder.substack.com",
+      "medium": null,
+      "website": "https://juliusbrussee.com"
+    },
+    "talks": [],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Caveman — Claude Code skill that compresses output tokens ~65% by enforcing terse, telegraphic prompting. Most-starred Claude Code skill on GitHub (54.6k+).",
+      "Cavekit — spec-driven Claude Code plugin for orchestrating parallel builds with adversarial review",
+      "Cavemem — cross-agent persistent memory layer using compressed-grammar storage; works across Claude Code, Cursor, Codex",
+      "19-year-old full-stack dev from the Netherlands; signature philosophy: 'do more with less' applied to LLM context economy. Directly relevant to Claude Code subscription users hitting context limits."
     ],
     "is_new": true,
     "added": "2026-05-05",

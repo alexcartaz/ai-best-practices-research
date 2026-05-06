@@ -14,7 +14,7 @@
       "docker",
       "git-worktrees"
     ],
-    "github_stars": 3586,
+    "github_stars": 3619,
     "status": "active",
     "is_new": false,
     "added": "2026-05-05",
@@ -77,7 +77,7 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05",
-    "github_stars": 16000
+    "github_stars": 89865
   },
   {
     "id": "gbrain",
@@ -93,7 +93,7 @@
       "orchestration",
       "knowledge-base"
     ],
-    "github_stars": 13279,
+    "github_stars": 13281,
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -147,7 +147,7 @@
     "author_id": null,
     "url": "https://github.com/ruvnet/ruflo",
     "github_url": "https://github.com/ruvnet/ruflo",
-    "github_stars": 43526,
+    "github_stars": 43819,
     "description": "Multi-agent orchestration platform for Claude. Deploys intelligent agent swarms with self-learning memory, RAG integration, federated cross-machine comms, and WASM/Rust policy engine. Renamed from claude-flow in Jan 2026 to avoid trademark issues. v3.6 shipped April 29 2026 with 314 native MCP tools.",
     "topics": [
       "orchestration",
@@ -169,7 +169,7 @@
     "author_id": null,
     "url": "https://github.com/executeautomation/mcp-playwright",
     "github_url": "https://github.com/executeautomation/mcp-playwright",
-    "github_stars": 5490,
+    "github_stars": 5491,
     "description": "Model Context Protocol server that exposes Playwright browser automation to AI agents (Claude Code, Cline, Cursor, etc.). Enables navigate, click, type, screenshot, evaluate, and wait_for_selector from within Claude Code sessions. Community standard for AI-driven browser testing and visual verification. Microsoft Playwright CLI companion released early 2026 as lower-token alternative.",
     "topics": [
       "testing",
@@ -191,7 +191,7 @@
     "author_id": null,
     "url": "https://github.com/hesreallyhim/awesome-claude-code",
     "github_url": "https://github.com/hesreallyhim/awesome-claude-code",
-    "github_stars": 42627,
+    "github_stars": 42644,
     "description": "Community-curated list of skills, hooks, slash-commands, agent orchestrators, applications, and plugins for Claude Code. One of several 'awesome' lists \u2014 this one focused on curated quality over quantity.",
     "topics": [
       "claude-code-governance",
@@ -242,7 +242,7 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05",
-    "github_stars": 11600
+    "github_stars": 11699
   },
   {
     "id": "designmd-ai",
@@ -263,7 +263,7 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05",
-    "github_stars": 71000
+    "github_stars": 71555
   },
   {
     "id": "voltagent",
@@ -281,7 +281,7 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05",
-    "github_stars": 8600
+    "github_stars": 8637
   },
   {
     "id": "awesome-claude-code-subagents",
@@ -299,7 +299,7 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05",
-    "github_stars": 19000
+    "github_stars": 19171
   },
   {
     "id": "awesome-claude-skills-composio",
@@ -316,7 +316,7 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05",
-    "github_stars": 58000
+    "github_stars": 58150
   },
   {
     "id": "openclaw",
@@ -333,7 +333,7 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05",
-    "github_stars": 100000
+    "github_stars": 368688
   },
   {
     "id": "dagger-container-use",
@@ -393,7 +393,7 @@
     "author_id": null,
     "url": "https://github.com/mastra-ai/mastra",
     "github_url": "https://github.com/mastra-ai/mastra",
-    "github_stars": 23592,
+    "github_stars": 23595,
     "description": "TypeScript-native agent framework supporting both agents and workflows ('Agents vs Workflows: Why Not Both?'). Used by WorkOS for AI Pipelines in Pure TypeScript. Discussed at AIEWF 2025.",
     "topics": [
       "multi-agent-orchestration"
@@ -446,7 +446,7 @@
     "author_id": null,
     "url": "https://github.com/forrestchang/andrej-karpathy-skills",
     "github_url": "https://github.com/forrestchang/andrej-karpathy-skills",
-    "github_stars": null,
+    "github_stars": 114208,
     "description": "Community-created CLAUDE.md by Forrest Chang, synthesized from Andrej Karpathy's public observations about how he uses Claude Code. Not authored by Karpathy directly — Karpathy has no published CLAUDE.md in his own repos. Reference value: shows how a prominent AI practitioner's workflow preferences translate into instruction form.",
     "topics": [
       "session-management",
@@ -475,6 +475,227 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05",
-    "github_stars": 1500
+    "github_stars": 1551
+  },
+  {
+    "id": "caveman",
+    "name": "Caveman",
+    "category": "claude-code-tooling",
+    "author_id": "julius-brussee",
+    "url": "https://github.com/JuliusBrussee/caveman",
+    "github_url": "https://github.com/JuliusBrussee/caveman",
+    "github_stars": 54562,
+    "description": "Claude Code skill (and cross-agent plugin) that enforces terse, telegraphic prompting to cut output tokens ~65% (range 22-87% across tasks). Three intensity tiers (Lite / Full / Ultra) plus Classical Chinese mode. Bundled subagents (cavecrew) for investigate/build/review, an MCP middleware (caveman-shrink) that compresses tool descriptions, and caveman-stats for live session-savings tracking. v1.7.0 May 2026 added smart installer and stats receipts. Detects 30+ agents (Claude Code, Cursor, Codex, Gemini CLI, etc.). Pairs with the author's cavemem (cross-agent memory) and cavekit (spec-driven build automation). Cites a March 2026 paper finding constrained brief responses improved accuracy by 26pp on certain benchmarks.",
+    "topics": [
+      "session-management",
+      "skills",
+      "token-efficiency",
+      "claude-code-governance",
+      "mcp"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "addyosmani-agent-skills",
+    "name": "agent-skills (Addy Osmani)",
+    "category": "claude-code-tooling",
+    "author_id": "addy-osmani",
+    "url": "https://github.com/addyosmani/agent-skills",
+    "github_url": "https://github.com/addyosmani/agent-skills",
+    "github_stars": 28774,
+    "description": "Addy Osmani's open-source skill bundle covering the production SDLC for AI coding agents: Define -> Plan -> Build -> Verify -> Review -> Ship. Bundles reusable personas (code-reviewer, test-engineer, etc.) as drop-in SKILL.md files. Created Feb 2026, surged Mar-May. Drop into any Claude Code project's skills/ directory for a full-lifecycle workflow.",
+    "topics": [
+      "skills",
+      "claude-code-governance",
+      "testing-tdd",
+      "subagent_profiles",
+      "repo-template-governance"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "mattpocock-skills",
+    "name": "skills (Matt Pocock)",
+    "category": "claude-code-tooling",
+    "author_id": "matt-pocock",
+    "url": "https://github.com/mattpocock/skills",
+    "github_url": "https://github.com/mattpocock/skills",
+    "github_stars": 61163,
+    "description": "Matt Pocock's personal Claude Code .claude/ directory, published as 17 production-ready skills: /grill-me (design stress-testing), /write-a-prd, /write-issues, git-guardrails-claude-code (blocks dangerous git commands), and more. TypeScript-flavored. The canonical reference for what an opinionated solo-practitioner skills folder looks like.",
+    "topics": [
+      "skills",
+      "hooks",
+      "claude-code-governance",
+      "repo-template-governance"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "claude-context-zilliz",
+    "name": "claude-context (Zilliz)",
+    "category": "mcp",
+    "author_id": null,
+    "url": "https://github.com/zilliztech/claude-context",
+    "github_url": "https://github.com/zilliztech/claude-context",
+    "github_stars": 10750,
+    "description": "MCP server from the Milvus team that combines BM25 keyword search + dense vector search with AST-aware code chunking. ~40% token reduction on large-codebase queries. Lets Claude Code subscription users work efficiently across web app monorepos without blowing the context window.",
+    "topics": [
+      "mcp",
+      "session-management",
+      "token-efficiency",
+      "claude-code"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "design-extract",
+    "name": "design-extract",
+    "category": "design-tooling",
+    "author_id": null,
+    "url": "https://github.com/Manavarya09/design-extract",
+    "github_url": "https://github.com/Manavarya09/design-extract",
+    "github_stars": 2175,
+    "description": "Created Apr 2026 by Manavarya09. Extracts a live website's design system into DTCG tokens, Tailwind v4 config, shadcn/ui components, and Figma variables — using Playwright under the hood. Ships as an MCP server for Claude Code. Bridge from 'I like that site's design' to working tokens/Tailwind config in your project. Directly addresses the design-tooling pain point.",
+    "topics": [
+      "design-tooling",
+      "design-systems",
+      "mcp",
+      "low-level-fe-verification"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "wshobson-agents",
+    "name": "agents (wshobson)",
+    "category": "claude-code-tooling",
+    "author_id": null,
+    "url": "https://github.com/wshobson/agents",
+    "github_url": "https://github.com/wshobson/agents",
+    "github_stars": 34834,
+    "description": "Pre-built subagent team for full-stack web app delivery: backend-architect, database-architect, frontend-developer, test-automator, security-auditor, deployment-engineer. Drop-in personas for the multi-agent-orchestration topic. One of the most-starred subagent collections.",
+    "topics": [
+      "subagent_profiles",
+      "multi-agent-orchestration",
+      "claude-code-governance",
+      "skills"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "archon-coleam",
+    "name": "Archon",
+    "category": "orchestration",
+    "author_id": null,
+    "url": "https://github.com/coleam00/Archon",
+    "github_url": "https://github.com/coleam00/Archon",
+    "github_stars": 20849,
+    "description": "Open-source 'harness builder' that aims to make AI coding deterministic and repeatable across runs. Reproducibility layer over Claude Code/Codex. Aligns with the harness-engineering thesis (Lopopolo, Kumar) — packages it as a usable tool.",
+    "topics": [
+      "multi-agent-orchestration",
+      "repo-template-governance",
+      "claude-code"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "claude-code-hooks-mastery",
+    "name": "claude-code-hooks-mastery",
+    "category": "claude-code-tooling",
+    "author_id": null,
+    "url": "https://github.com/disler/claude-code-hooks-mastery",
+    "github_url": "https://github.com/disler/claude-code-hooks-mastery",
+    "github_stars": 3627,
+    "description": "Reference implementation for all 12 Claude Code hook lifecycle events with build/validate orchestration patterns. Most-cited hooks tutorial. Direct fit for the repo-template-governance hooks sub-section.",
+    "topics": [
+      "hooks",
+      "repo-template-governance",
+      "claude-code-governance"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "lean-ctx",
+    "name": "lean-ctx",
+    "category": "claude-code-tooling",
+    "author_id": null,
+    "url": "https://github.com/yvgude/lean-ctx",
+    "github_url": "https://github.com/yvgude/lean-ctx",
+    "github_stars": 1089,
+    "description": "Created Mar 2026 by yvgude. 'Context OS' — a Rust binary plus MCP server that ships shell hooks, 49 tools, 10 read modes, and 90+ patterns for cutting Claude Code token waste 60-95%. Alternative philosophy to caveman: optimize the read pipeline rather than the prompt style.",
+    "topics": [
+      "session-management",
+      "token-efficiency",
+      "mcp",
+      "hooks"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "revfactory-harness",
+    "name": "harness (revfactory)",
+    "category": "claude-code-tooling",
+    "author_id": null,
+    "url": "https://github.com/revfactory/harness",
+    "github_url": "https://github.com/revfactory/harness",
+    "github_stars": 3134,
+    "description": "Created Mar 2026. Meta-skill that designs domain-specific agent teams and generates the skills they use. Lets you bootstrap a project-specific Claude Code setup by describing the project, instead of curating skills manually. Operationalizes the 'harness engineering' framing as a generator.",
+    "topics": [
+      "skills",
+      "subagent_profiles",
+      "repo-template-governance",
+      "multi-agent-orchestration"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "open-design-nexu",
+    "name": "Open Design (nexu-io)",
+    "category": "design-tooling",
+    "author_id": null,
+    "url": "https://github.com/nexu-io/open-design",
+    "github_url": "https://github.com/nexu-io/open-design",
+    "github_stars": 27927,
+    "description": "Local-first, open-source alternative to Anthropic's Claude Design. Auto-detects 15+ coding-agent CLIs (Claude Code, Cursor, Copilot CLI, Gemini CLI, Codex, OpenCode, Qwen, Hermes, Kimi CLI, etc.) and uses them as interchangeable design engines — BYOK, no subscription. Ships 129 portable design systems as DESIGN.md files (Linear, Stripe, Vercel, Notion, Apple, etc.) plus 31 SKILL.md skills. Local Express + SQLite daemon spawns the chosen agent with real filesystem access; web UI is Next.js, optional Electron desktop. Exposes a stdio MCP server so Claude Code in any other repo can query live design tokens / CSS / components without re-export cycles. Apache-2.0. Maintained by the nexu.io org (also publishes a 'harness-engineering-guide').",
+    "topics": [
+      "design-tooling",
+      "design-systems",
+      "mcp",
+      "repo-template-governance",
+      "claude-code"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
   }
 ]
