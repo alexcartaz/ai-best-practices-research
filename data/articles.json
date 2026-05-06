@@ -146,7 +146,7 @@
   {
     "id": "codemanship-tdd-ai-programming",
     "title": "Why Does Test-Driven Development Work So Well In 'AI'-assisted Programming?",
-    "author_id": null,
+    "author_id": "jason-gorman",
     "url": "https://codemanship.wordpress.com/2026/01/09/why-does-test-driven-development-work-so-well-in-ai-assisted-programming/",
     "date": "2026-01-09",
     "topics": ["tdd", "ai-coding-workflow", "testing", "software-fundamentals"],

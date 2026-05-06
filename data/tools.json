@@ -93,7 +93,7 @@
       "orchestration",
       "knowledge-base"
     ],
-    "github_stars": null,
+    "github_stars": 13279,
     "status": "active",
     "is_new": true,
     "added": "2026-05-05",
@@ -106,7 +106,7 @@
     "author_id": "simon-willison",
     "url": "https://github.com/simonw/claude-code-transcripts",
     "github_url": "https://github.com/simonw/claude-code-transcripts",
-    "github_stars": null,
+    "github_stars": 1496,
     "description": "Python CLI tool by Simon Willison for converting Claude Code session files (JSONL from ~/.claude/projects/ or JSON from Claude Code for web) into browseable multi-page HTML transcripts. Supports --gist flag to auto-publish to GitHub Gist with shareable gistpreview.github.io URL. Published December 25 2025.",
     "topics": [
       "session-management",
@@ -441,16 +441,17 @@
   },
   {
     "id": "karpathy-claude-md",
-    "name": "Karpathy's CLAUDE.md",
+    "name": "andrej-karpathy-skills CLAUDE.md",
     "category": "claude-code-tooling",
-    "author_id": "andrej-karpathy",
-    "url": "https://github.com/karpathy",
-    "github_url": null,
+    "author_id": null,
+    "url": "https://github.com/forrestchang/andrej-karpathy-skills",
+    "github_url": "https://github.com/forrestchang/andrej-karpathy-skills",
     "github_stars": null,
-    "description": "Andrej Karpathy's public CLAUDE.md — a reference example of how a prominent AI practitioner structures Claude Code instructions for cross-session context persistence. Exact file URL needs verification by research agent.",
+    "description": "Community-created CLAUDE.md by Forrest Chang, synthesized from Andrej Karpathy's public observations about how he uses Claude Code. Not authored by Karpathy directly — Karpathy has no published CLAUDE.md in his own repos. Reference value: shows how a prominent AI practitioner's workflow preferences translate into instruction form.",
     "topics": [
       "session-management",
-      "repo-template-governance"
+      "repo-template-governance",
+      "CLAUDE.md"
     ],
     "status": "active",
     "is_new": true,
