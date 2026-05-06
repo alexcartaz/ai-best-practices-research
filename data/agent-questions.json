@@ -31,5 +31,27 @@
     "status": "open",
     "answer": null,
     "answered_at": null
+  },
+  {
+    "id": "q-20260505-004",
+    "asked": "2026-05-05",
+    "run": "2026-05-05",
+    "type": "url-verify",
+    "question": "Profile-lookup verification needed for these new AIE-sourced people whose profiles are partially or entirely null. Verify GitHub/X/LinkedIn handles next run: cristina-poncela-cubeiro (Sentry?), hugo-santos (talk: CI/CD Is Dead), louis-knight-webb (talk: Plan and Review), mike-spitz (talk: Agents Don't Do Standups), radek-sienkiewicz, rustin-banks (WF 2025), theodora-chu (Anthropic MCP). For each, confirm the GH/X handles guessed in this sweep or replace with verified URLs.",
+    "context": "Ingested with best-effort profile data during the AI Engineer sweep (2026-05-05) but did not run a per-URL HTTP verification pass — defaulted to null for uncertain handles. None are blocking, but a follow-up batch verify would tighten the records.",
+    "status": "open",
+    "answer": null,
+    "answered_at": null
+  },
+  {
+    "id": "q-20260505-005",
+    "asked": "2026-05-05",
+    "run": "2026-05-05",
+    "type": "event-schedule",
+    "question": "Three AI Engineer events have no public schedule yet (ai-engineer-worlds-fair-2026, ai-engineer-nyc-2026, ai-engineer-code-summit-2026). WF 2026 call for speakers closes 2026-06-05 with announcements 2026-06-02; NYC opens after WF; Code Summit 2026 is TBA SF. Re-run this sweep after 2026-06-02 to populate WF 2026 speakers when the schedule drops.",
+    "context": "Per the source pages: WF 2026 (https://www.ai.engineer/worldsfair) is in CFP. NYC (https://www.ai.engineer/nyc) shows 'Details Coming Soon — Speaker applications open after World's Fair'. Code Summit 2026 page redirects to /code which currently shows the 2025 NYC event; the 2026 Code Summit was announced for SF in November but no schedule has been posted.",
+    "status": "open",
+    "answer": null,
+    "answered_at": null
   }
 ]

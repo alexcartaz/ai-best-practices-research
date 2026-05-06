@@ -356,6 +356,13 @@
           "spade-model",
           "state-of-the-field"
         ]
+      },
+      {
+        "title": "AMA + Improving AI Engineer with AI",
+        "event": "AI Engineer Europe 2026",
+        "url": null,
+        "date": "2026-04-10",
+        "topics": ["ai-engineering"]
       }
     ],
     "podcast_episodes": [],
@@ -390,7 +397,9 @@
       "medium": null,
       "website": null
     },
-    "talks": [],
+    "talks": [
+      { "title": "How Building with AI Can Double the Throughput of Your Engineering Team", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["repo-template-governance"] }
+    ],
     "podcast_episodes": [
       {
         "show": "How I AI (Lenny's Podcast)",
@@ -593,7 +602,9 @@
       "medium": null,
       "website": "https://wattenberger.com/"
     },
-    "talks": [],
+    "talks": [
+      { "title": "The last 30% is the hardest", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["design-tooling", "unified-project-layer"] }
+    ],
     "podcast_episodes": [
       {
         "show": "Refactoring",
@@ -740,6 +751,13 @@
           "mcp",
           "multi-agent-orchestration"
         ]
+      },
+      {
+        "title": "MCP Origins & RFS (with Theodora Chu)",
+        "event": "AI Engineer World's Fair 2025",
+        "url": null,
+        "date": "2025-06-04",
+        "topics": ["mcp-servers"]
       }
     ],
     "podcast_episodes": [
@@ -1169,7 +1187,9 @@
       "medium": null,
       "website": "https://john-b-yang.github.io"
     },
-    "talks": [],
+    "talks": [
+      { "title": "SWE-bench / State of Code Evals", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["testing-tdd"] }
+    ],
     "podcast_episodes": [
       {
         "show": "Latent Space",
@@ -2953,6 +2973,766 @@
     "notable_contributions": [
       "Co-founder of Tenex — software consultancy with story-point output-based comp (not hours), some engineers clearing $1M+",
       "Demonstrates the 'measure throughput in story-points/week' framing for solo Claude Code users"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "malte-ubl",
+    "name": "Malte Ubl",
+    "category": "dev",
+    "focus": ["frontend-infra", "vercel", "ai-app-platform", "claude-code"],
+    "profiles": {
+      "github": "https://github.com/cramforce",
+      "bsky": null,
+      "x": "https://x.com/cramforce",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://www.industrialempathy.com/"
+    },
+    "talks": [
+      { "title": "The New Application Layer", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-09", "topics": ["repo-template-governance", "unified-project-layer"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "CTO at Vercel — shapes the default deployment + AI app stack (Next.js, AI SDK, v0)",
+      "Keynote framing: AI as the new application layer; how the dev stack reorganizes around agents",
+      "Tier-2 relevance for the editorial lens — Vercel's product directions strongly influence Claude Code patterns for web app dev"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "kitze",
+    "name": "Kitze",
+    "category": "dev",
+    "focus": ["solo-dev", "claude-code", "ai-agents", "indie-hacking"],
+    "profiles": {
+      "github": "https://github.com/kitze",
+      "bsky": null,
+      "x": "https://x.com/thekitze",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": "https://www.youtube.com/@thekitze",
+      "website": "https://kitze.io"
+    },
+    "talks": [
+      { "title": "Personal AI Agent Journey", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-09", "topics": ["session-management", "multi-agent-orchestration"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Indie dev / YouTuber documenting personal AI agent setup as a solo developer — direct match for the editorial lens",
+      "Long-form videos on Claude Code, Cursor, and personal-agent rigs"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "philipp-schmid",
+    "name": "Philipp Schmid",
+    "category": "dev",
+    "focus": ["llm-engineering", "google-deepmind", "ai-agents", "education"],
+    "profiles": {
+      "github": "https://github.com/philschmid",
+      "bsky": null,
+      "x": "https://x.com/_philschmid",
+      "linkedin": "https://www.linkedin.com/in/philipp-schmid-a6a2bb196/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://www.philschmid.de"
+    },
+    "talks": [
+      { "title": "Why (Senior) Engineers Struggle to Build AI Agents", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-09", "topics": ["multi-agent-orchestration", "repo-template-governance"] },
+      { "title": "Building Conversational Agents (workshop)", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-08", "topics": ["multi-agent-orchestration"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Sr. AI DevRel at Google DeepMind (previously Hugging Face); writes a widely-read newsletter on agent engineering and Gemini patterns",
+      "Highlights a recurring failure mode: senior engineers over-engineer agent abstractions when simpler primitives suffice"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "cristina-poncela-cubeiro",
+    "name": "Cristina Poncela Cubeiro",
+    "category": "dev",
+    "focus": ["claude-code", "developer-experience", "sentry"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "The Friction Is Your Judgment (with Armin Ronacher)", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["repo-template-governance"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-presented Armin Ronacher's keynote on agent friction and judgment; Sentry / dev-tooling practitioner",
+      "Profile metadata thin — agent question raised to confirm GitHub/X handles"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "mario-zechner",
+    "name": "Mario Zechner",
+    "category": "dev",
+    "focus": ["solo-dev", "claude-code", "indie-hacking", "agent-shipping"],
+    "profiles": {
+      "github": "https://github.com/badlogic",
+      "bsky": null,
+      "x": "https://x.com/badlogicgames",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://mariozechner.at/"
+    },
+    "talks": [
+      { "title": "Building pi in a World of Slop", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["repo-template-governance", "session-management"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Long-time game/library dev (libGDX, Spine) shipping AI-native side projects ('pi') in agentic flows — strong solo-dev signal",
+      "Practical 'avoid slop' framing for Claude Code-style workflows"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "paige-bailey",
+    "name": "Paige Bailey",
+    "category": "dev",
+    "focus": ["google-deepmind", "developer-relations", "ai-agents", "gemini"],
+    "profiles": {
+      "github": "https://github.com/dynamicwebpaige",
+      "bsky": null,
+      "x": "https://x.com/DynamicWebPaige",
+      "linkedin": "https://www.linkedin.com/in/dynamicwebpaige/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Build & deploy AI-powered apps (workshop)", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-08", "topics": ["multi-agent-orchestration"] },
+      { "title": "Veo 3 for developers", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["multi-agent-orchestration"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Lead DevRel for Gemini API and Google AI Studio; major channel for new Google AI capabilities reaching engineers",
+      "Workshop facilitator focused on shipping AI apps end-to-end"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "vincent-koc",
+    "name": "Vincent Koc",
+    "category": "dev",
+    "focus": ["dark-factory-pattern", "claude-code", "ai-shipping-velocity"],
+    "profiles": {
+      "github": "https://github.com/koconder",
+      "bsky": null,
+      "x": "https://x.com/koconder",
+      "linkedin": "https://www.linkedin.com/in/koconder/",
+      "substack": null,
+      "medium": "https://medium.com/@koconder",
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-09", "topics": ["multi-agent-orchestration", "repo-template-governance"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Practitioner exploring the 'dark factory' pattern (autonomous shipping outpacing human review) in OpenClaw context",
+      "Tier 1 for the editorial lens — direct relevance to harness/governance for Claude Code-style autonomous flows"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "marlene-mhangami",
+    "name": "Marlene Mhangami",
+    "category": "dev",
+    "focus": ["testing-tdd", "playwright", "low-level-fe-verification"],
+    "profiles": {
+      "github": "https://github.com/marlenezw",
+      "bsky": null,
+      "x": "https://x.com/marlene_zw",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Beyond Code Coverage: Functionality Testing with Playwright", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["testing-tdd", "low-level-fe-verification"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Microsoft DevRel; Playwright + functional testing focus — directly relevant to low-level FE verification gap",
+      "Frames testing beyond coverage metrics, toward agent-verifiable functionality"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "hugo-santos",
+    "name": "Hugo Santos",
+    "category": "dev",
+    "focus": ["agent-infra", "ci-cd", "continuous-compute"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "CI/CD Is Dead, Agents Need Continuous Compute", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["multi-agent-orchestration", "repo-template-governance"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Argues traditional CI/CD pipelines don't fit agent-driven dev loops — agents need always-on, continuous compute environments",
+      "Adaptation gap: framing applies to Claude Code subagent + sandbox setups even if the underlying infra differs"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "sarah-chieng",
+    "name": "Sarah Chieng",
+    "category": "dev",
+    "focus": ["ai-engineering", "developer-velocity", "ai-product"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/sarahchieng",
+      "linkedin": "https://www.linkedin.com/in/sarah-chieng/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Fast Models Need Slow Developers", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["repo-template-governance"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Counter-narrative talk: as models get faster, the developer-side bottleneck (review, intent, judgment) becomes the dominant constraint",
+      "Maps to the editorial lens as a frame for solo-dev pacing with Claude Code"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "louis-knight-webb",
+    "name": "Louis Knight-Webb",
+    "category": "dev",
+    "focus": ["claude-code", "plan-mode", "code-review", "agentic-engineering"],
+    "profiles": {
+      "github": "https://github.com/louisgv",
+      "bsky": null,
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/louisknightwebb/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Software Engineering Is Becoming Plan and Review", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["repo-template-governance", "session-management"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Argues the SWE workflow is collapsing to two activities — plan and review — with code generation in the middle handled by agents",
+      "Tier 1 relevance: directly informs Claude Code plan-mode + diff-review workflow",
+      "Profile handles uncertain — agent question raised"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "mike-spitz",
+    "name": "Mike Spitz",
+    "category": "dev-adjacent",
+    "focus": ["engineering-management", "agent-org-design", "claude-code"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Agents Don't Do Standups: Building the Post-Engineer Engineering Org", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["multi-agent-orchestration", "repo-template-governance"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Reorg-of-engineering framing for agent-heavy teams — relevant context for solo devs operating like a small org of agents",
+      "Profile thin — agent question raised"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "ben-burtenshaw",
+    "name": "Ben Burtenshaw",
+    "category": "dev",
+    "focus": ["ai-system-engineering", "huggingface", "evals", "agents"],
+    "profiles": {
+      "github": "https://github.com/burtenshaw",
+      "bsky": null,
+      "x": "https://x.com/ben_burtenshaw",
+      "linkedin": "https://www.linkedin.com/in/benburtenshaw/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Your Coding Agent Should Do AI System Engineering", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["multi-agent-orchestration", "repo-template-governance"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Hugging Face engineer; argues coding agents should take on AI system-engineering tasks (evals, fine-tunes, dataset curation), not just code edits",
+      "Tier 1 relevance: expands the scope of what Claude Code-class agents can be tasked with"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "matan-grinberg",
+    "name": "Matan Grinberg",
+    "category": "dev",
+    "focus": ["multi-agent-orchestration", "factory-ai", "long-running-agents"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/matan_grinberg",
+      "linkedin": "https://www.linkedin.com/in/matangrinberg/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://factory.ai"
+    },
+    "talks": [
+      { "title": "Factory Missions - Multi-Agent Systems That Ship for Days", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["multi-agent-orchestration", "session-management"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder/CEO of Factory.ai — long-running multi-agent platform ('Missions' / 'Droids') for shipping software autonomously over days",
+      "Adaptation gap: hosted product, but the long-horizon mission decomposition pattern is portable to Claude Code subagent rigs"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "eric-allam",
+    "name": "Eric Allam",
+    "category": "dev",
+    "focus": ["durable-agents", "trigger-dev", "agent-infra"],
+    "profiles": {
+      "github": "https://github.com/ericallam",
+      "bsky": null,
+      "x": "https://x.com/eallam",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://trigger.dev"
+    },
+    "talks": [
+      { "title": "Two Roads to Durable Agents: Replay vs. Snapshot", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-10", "topics": ["multi-agent-orchestration", "session-management"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder/CTO of Trigger.dev — background jobs / durable execution platform now extended to AI agents",
+      "Talk frames the two practical durability patterns (event replay vs. process snapshot) that any long-running agent system has to choose between"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "sally-ann-delucia",
+    "name": "Sally-Ann DeLucia",
+    "category": "dev",
+    "focus": ["context-engineering", "memory", "arize", "evals"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/sallyann-delucia/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://arize.com"
+    },
+    "talks": [
+      { "title": "Hierarchical Memory: Context Management in Agents", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-09", "topics": ["session-management", "multi-agent-orchestration"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "ML engineer at Arize AI; teaches hierarchical memory patterns for long-running agents",
+      "Direct relevance to session-management gap: frames memory layers (short-term, episodic, semantic) for agent design"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "radek-sienkiewicz",
+    "name": "Radek Sienkiewicz",
+    "category": "dev",
+    "focus": ["solo-dev", "personal-agents", "claude-code"],
+    "profiles": {
+      "github": "https://github.com/RadekSienkiewicz",
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "I Gave an AI Agent the Keys to My Life", "event": "AI Engineer Europe 2026", "url": null, "date": "2026-04-09", "topics": ["multi-agent-orchestration", "session-management"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Solo-dev experiment: full personal-agent setup with broad permissions; high-signal anecdote source for solo Claude Code patterns",
+      "Profile handles uncertain — agent question raised"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "christopher-chedeau",
+    "name": "Christopher Chedeau",
+    "category": "design",
+    "focus": ["design-engineering", "design-tooling", "react", "meta"],
+    "profiles": {
+      "github": "https://github.com/vjeux",
+      "bsky": null,
+      "x": "https://x.com/Vjeux",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://blog.vjeux.com/"
+    },
+    "talks": [
+      { "title": "AI and Human Whiteboarding Partnership", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["design-tooling", "unified-project-layer"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-creator of React Native, Prettier, and styled-components patterns; Meta engineering",
+      "AIE WF 2025 talk explores the human-AI loop in collaborative design / whiteboarding — directly relevant to design-tooling gap"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "harrison-chase",
+    "name": "Harrison Chase",
+    "category": "dev",
+    "focus": ["langchain", "agents", "agent-infra"],
+    "profiles": {
+      "github": "https://github.com/hwchase17",
+      "bsky": null,
+      "x": "https://x.com/hwchase17",
+      "linkedin": "https://www.linkedin.com/in/harrison-chase-961287118/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://www.langchain.com"
+    },
+    "talks": [
+      { "title": "3 ingredients for building reliable enterprise agents", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["multi-agent-orchestration"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder/CEO of LangChain; central voice in agent framework design and reliability",
+      "Adaptation gap for Claude Code users: enterprise patterns are heavier than what a solo Claude Code user needs, but the reliability decomposition (planning, tool-use, eval) maps cleanly"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "scott-wu",
+    "name": "Scott Wu",
+    "category": "dev",
+    "focus": ["coding-agents", "cognition", "devin", "swe-agents"],
+    "profiles": {
+      "github": "https://github.com/silver-fox-7",
+      "bsky": null,
+      "x": "https://x.com/ScottWu46",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://cognition.ai"
+    },
+    "talks": [
+      { "title": "Devin 2.0 and the Future of SWE", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["multi-agent-orchestration", "session-management"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder/CEO of Cognition (Devin) — full-autonomy coding agent; major reference point for SWE-agent design",
+      "Adaptation gap: Devin is fully managed, but its planning + verification loops are the most-studied alternative to Claude Code's interactive harness"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "theodora-chu",
+    "name": "Theodora Chu",
+    "category": "dev-adjacent",
+    "focus": ["mcp", "anthropic", "protocol-design"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/theodorachu/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "MCP Origins & RFS", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["mcp-servers"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Anthropic MCP product/PM — co-presented MCP origins with David Soria Parra at WF 2025",
+      "Direct source for canonical MCP design rationale"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "robert-brennan",
+    "name": "Robert Brennan",
+    "category": "dev",
+    "focus": ["coding-agents", "openhands", "all-hands-ai", "swe-agents"],
+    "profiles": {
+      "github": "https://github.com/rbren",
+      "bsky": null,
+      "x": "https://x.com/rbrenab",
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://www.all-hands.dev"
+    },
+    "talks": [
+      { "title": "Software Development Agents: What Works and What Doesn't", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["multi-agent-orchestration", "testing-tdd"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder of All Hands AI / OpenHands (formerly OpenDevin) — open-source SWE-agent platform",
+      "Tier 1: direct field report on what coding-agent patterns work in practice, transferable to Claude Code"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "rustin-banks",
+    "name": "Rustin Banks",
+    "category": "dev",
+    "focus": ["coding-agents", "claude-code", "agent-cloning"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": "https://www.linkedin.com/in/rustinbanks/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Your Coding Agent Just Got Cloned And Your Brain Isn't Ready", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["multi-agent-orchestration", "session-management"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Practitioner talk on parallel-agent management — direct precursor to the multi-agent orchestration patterns now standard in Claude Code subagent setups",
+      "Profile handles uncertain — agent question raised"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "eno-reyes",
+    "name": "Eno Reyes",
+    "category": "dev",
+    "focus": ["coding-agents", "factory-ai", "production-shipping"],
+    "profiles": {
+      "github": "https://github.com/enoreyes",
+      "bsky": null,
+      "x": "https://x.com/enoreyes",
+      "linkedin": "https://www.linkedin.com/in/enoreyes/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://factory.ai"
+    },
+    "talks": [
+      { "title": "Ship Production Software in Minutes, Not Months", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["multi-agent-orchestration"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder/CTO of Factory.ai — long-running coding-agent platform (with Matan Grinberg)",
+      "Adaptation gap: hosted product; the velocity claims are aspirational reference points for Claude Code workflows"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "yegor-denisov-blanch",
+    "name": "Yegor Denisov-Blanch",
+    "category": "dev-adjacent",
+    "focus": ["developer-productivity", "research", "stanford"],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": "https://x.com/yegordb",
+      "linkedin": "https://www.linkedin.com/in/yegordb/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": null
+    },
+    "talks": [
+      { "title": "Does AI Actually Boost Developer Productivity? (Stanford 100k Dev Study)", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["repo-template-governance"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Stanford researcher behind the 100k-dev productivity study — empirical baseline for AI's actual lift on engineering output",
+      "Useful counterweight to vendor productivity claims"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "sam-bhagwat",
+    "name": "Sam Bhagwat",
+    "category": "dev",
+    "focus": ["mastra", "agents", "typescript", "workflows"],
+    "profiles": {
+      "github": "https://github.com/sambhagwat",
+      "bsky": null,
+      "x": "https://x.com/sam_bhagwat",
+      "linkedin": "https://www.linkedin.com/in/sambhagwat/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://mastra.ai"
+    },
+    "talks": [
+      { "title": "Agents vs Workflows: Why Not Both?", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["multi-agent-orchestration"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder of Mastra.ai — TypeScript-first agent + workflow framework (Gatsby alum)",
+      "Talk argues agents and workflows are complementary, not opposing — useful frame for Claude Code subagent + skill design"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "eric-simons",
+    "name": "Eric Simons",
+    "category": "dev",
+    "focus": ["bolt-new", "stackblitz", "ai-app-builders", "web-containers"],
+    "profiles": {
+      "github": "https://github.com/EricSimons",
+      "bsky": null,
+      "x": "https://x.com/ericsimons40",
+      "linkedin": "https://www.linkedin.com/in/ericsimons/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://stackblitz.com"
+    },
+    "talks": [
+      { "title": "Bolt.new: How we scaled $0-20m ARR in 60 days, with 15 people", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["repo-template-governance"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Co-founder/CEO of StackBlitz — built Bolt.new, the WebContainer-powered AI app builder",
+      "Tier 2 for the editorial lens — Bolt.new is a competing surface for solo web-app dev; useful context for what 'no-Claude-Code' AI dev looks like at scale"
+    ],
+    "is_new": true,
+    "added": "2026-05-05",
+    "last_updated": "2026-05-05"
+  },
+  {
+    "id": "victor-dibia",
+    "name": "Victor Dibia",
+    "category": "dev",
+    "focus": ["multi-agent-orchestration", "autogen", "microsoft", "ux-for-agents"],
+    "profiles": {
+      "github": "https://github.com/victordibia",
+      "bsky": null,
+      "x": "https://x.com/vykthur",
+      "linkedin": "https://www.linkedin.com/in/dibiavictor/",
+      "substack": null,
+      "medium": null,
+      "youtube": null,
+      "website": "https://victordibia.com"
+    },
+    "talks": [
+      { "title": "UX Design Principles for (Semi) Autonomous Multi-Agent Systems", "event": "AI Engineer World's Fair 2025", "url": null, "date": "2025-06-04", "topics": ["multi-agent-orchestration", "unified-project-layer"] }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Microsoft Research engineer; AutoGen Studio author and contributor to AutoGen multi-agent framework",
+      "Direct match for the unified-project-layer gap: frames UX patterns for monitoring/steering multiple agents at once"
     ],
     "is_new": true,
     "added": "2026-05-05",

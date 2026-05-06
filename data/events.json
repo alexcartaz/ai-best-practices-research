@@ -14,7 +14,13 @@
       { "speaker_id": "steve-ruiz", "title": "Agents on the Canvas in tldraw", "url": "https://www.youtube.com/watch?v=sPUjIBH5Cwg", "topics": ["design-tooling"] },
       { "speaker_id": "patrick-debois", "title": "Context Is the New Code", "url": null, "topics": ["context-engineering", "repo-template-governance"] },
       { "speaker_id": "brian-scanlan", "title": "How Building with AI Can Double the Throughput of Your Engineering Team", "url": null, "topics": ["claude-code", "engineering-productivity"] },
-      { "speaker_id": "gergely-orosz", "title": "Software Engineering + AI = ?", "url": null, "topics": ["multi-agent-orchestration"] }
+      { "speaker_id": "gergely-orosz", "title": "Software Engineering + AI = ?", "url": null, "topics": ["multi-agent-orchestration"] },
+      { "speaker_id": "marlene-mhangami", "title": "Beyond Code Coverage: Functionality Testing with Playwright", "url": null, "topics": ["testing-tdd", "low-level-fe-verification"] },
+      { "speaker_id": "louis-knight-webb", "title": "Software Engineering Is Becoming Plan and Review", "url": null, "topics": ["repo-template-governance", "session-management"] },
+      { "speaker_id": "vincent-koc", "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff", "url": null, "topics": ["multi-agent-orchestration", "repo-template-governance"] },
+      { "speaker_id": "sally-ann-delucia", "title": "Hierarchical Memory: Context Management in Agents", "url": null, "topics": ["session-management"] },
+      { "speaker_id": "ben-burtenshaw", "title": "Your Coding Agent Should Do AI System Engineering", "url": null, "topics": ["multi-agent-orchestration"] },
+      { "speaker_id": "david-gomes", "title": "Replacing 12K LoC with a 200 LoC Skill", "url": null, "topics": ["repo-template-governance"] }
     ],
     "all_speakers": [
       { "name": "Matt Pocock", "talk": "It Ain't Broke: Why Software Fundamentals Matter More Than Ever", "track": "Keynote", "day": "Apr 9" },
@@ -40,7 +46,6 @@
       { "name": "Nick Nisi", "talk": "Skills at Scale (workshop)", "track": "Workshop", "day": "Apr 8" },
       { "name": "Samuel Colvin", "talk": "Playground in Prod (workshop)", "track": "Workshop", "day": "Apr 8" },
       { "name": "Laurie Voss", "talk": "Ship Real Agents: Hands-On Evals (workshop)", "track": "Workshop", "day": "Apr 8" },
-      { "name": "Philipp Schmid", "talk": "Building Conversational Agents (workshop)", "track": "Workshop", "day": "Apr 8" },
       { "name": "Paige Bailey", "talk": "Build & deploy AI-powered apps (workshop)", "track": "Workshop", "day": "Apr 8" },
       { "name": "swyx", "talk": "AMA + Improving AI Engineer with AI", "track": "Keynote/Expo", "day": "Apr 10" },
       { "name": "Vincent Koc", "talk": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff", "track": "Fleming", "day": "Apr 9" },
@@ -77,7 +82,11 @@
       { "speaker_id": "beyang-liu", "title": "The emerging skillset of wielding coding agents", "url": "https://www.youtube.com/watch?v=F_RyElT_gJk", "topics": ["multi-agent-orchestration", "skills"] },
       { "speaker_id": "solomon-hykes", "title": "Containing Agent Chaos", "url": null, "topics": ["multi-agent-orchestration", "containerization"] },
       { "speaker_id": "john-yang", "title": "State of Code Evals / SWE-bench", "url": null, "topics": ["testing-tdd"] },
-      { "speaker_id": "patrick-debois", "title": "The 4 Patterns of AI Native Development", "url": null, "topics": ["repo-template-governance"] }
+      { "speaker_id": "patrick-debois", "title": "The 4 Patterns of AI Native Development", "url": null, "topics": ["repo-template-governance"] },
+      { "speaker_id": "amelia-wattenberger", "title": "The last 30% is the hardest", "url": null, "topics": ["design-tooling", "unified-project-layer"] },
+      { "speaker_id": "christopher-chedeau", "title": "AI and Human Whiteboarding Partnership", "url": null, "topics": ["design-tooling", "unified-project-layer"] },
+      { "speaker_id": "robert-brennan", "title": "Software Development Agents: What Works and What Doesn't", "url": null, "topics": ["multi-agent-orchestration", "testing-tdd"] },
+      { "speaker_id": "victor-dibia", "title": "UX Design Principles for (Semi) Autonomous Multi-Agent Systems", "url": null, "topics": ["multi-agent-orchestration", "unified-project-layer"] }
     ],
     "all_speakers": [
       { "name": "Simon Willison", "talk": "2025 in LLMs so far", "track": "" },
