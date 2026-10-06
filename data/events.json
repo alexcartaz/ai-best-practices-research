@@ -15,7 +15,7 @@
       { "speaker_id": "patrick-debois", "title": "Context Is the New Code", "url": null, "topics": ["context-engineering", "repo-template-governance"] },
       { "speaker_id": "brian-scanlan", "title": "How Building with AI Can Double the Throughput of Your Engineering Team", "url": null, "topics": ["claude-code", "engineering-productivity"] },
       { "speaker_id": "gergely-orosz", "title": "Software Engineering + AI = ?", "url": null, "topics": ["multi-agent-orchestration"] },
-      { "speaker_id": "marlene-mhangami", "title": "Beyond Code Coverage: Functionality Testing with Playwright", "url": null, "topics": ["testing-tdd", "low-level-fe-verification"] },
+      { "speaker_id": "marlene-mhangami", "title": "Beyond Code Coverage: Functionality Testing with Playwright", "url": "https://www.youtube.com/watch?v=FWEInOtngmM", "topics": ["testing-tdd", "low-level-fe-verification"] },
       { "speaker_id": "louis-knight-webb", "title": "Software Engineering Is Becoming Plan and Review", "url": null, "topics": ["repo-template-governance", "session-management"] },
       { "speaker_id": "vincent-koc", "title": "Dark Factory: OpenClaw Ships Faster Than You Can Read the Diff", "url": null, "topics": ["multi-agent-orchestration", "repo-template-governance"] },
       { "speaker_id": "sally-ann-delucia", "title": "Hierarchical Memory: Context Management in Agents", "url": null, "topics": ["session-management"] },
@@ -128,12 +128,21 @@
     "name": "AI Engineer World's Fair 2026",
     "url": "https://www.ai.engineer/worldsfair",
     "date": "2026-06-29",
-    "description": "June 29 - July 2, 2026, San Francisco (Moscone). Announced March 2026: 29 tracks, 300 speakers, 6,000+ attendees expected. Successor to AIEWF 2025.",
-    "notable_talks": [],
-    "all_speakers": [],
-    "is_new": true,
+    "description": "June 29 - July 2, 2026, Moscone West, San Francisco. 29 tracks, 300 speakers, 6,000+ attendees. Five days: Workshop Day (Jun 29), 'Software Factories' opening keynote (Jun 30), 'Autoresearch' Day 3 keynote (Jul 1). SWE Agents track included Claude Code, Devin, Jules, Cascade. MCP workshop by Mahesh Murag (Anthropic). 'Lifestyles of the AI-Native' workshop by Zack Proser (WorkOS) covered voice coding, agentic loops, verification gates, scheduled tasks.",
+    "notable_talks": [
+      { "speaker_id": "boris-cherny", "title": "What's Next for Claude Code", "url": null, "topics": ["claude-code", "session-management"] },
+      { "speaker_id": "mahesh-murag", "title": "Building AI Agents with MCP (2-hour workshop)", "url": null, "topics": ["mcp-servers"] },
+      { "speaker_id": "zack-proser", "title": "Lifestyles of the AI-Native", "url": "https://zackproser.com/speaking/lifestyles-of-the-ai-native", "topics": ["session-management", "repo-template-governance"] }
+    ],
+    "all_speakers": [
+      { "name": "Boris Cherny", "talk": "What's Next for Claude Code", "track": "SWE Agents" },
+      { "name": "Mahesh Murag", "talk": "Building AI Agents with MCP (workshop)", "track": "MCP" },
+      { "name": "Zack Proser", "talk": "Lifestyles of the AI-Native (workshop)", "track": "Workshop" }
+    ],
+    "source_url": "https://ai.engineer/worldsfair/schedule",
+    "is_new": false,
     "added": "2026-05-05",
-    "last_updated": "2026-05-05"
+    "last_updated": "2026-10-06"
   },
   {
     "id": "ai-engineer-nyc-2026",

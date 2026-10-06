@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-05",
+  "last_updated": "2026-10-06",
   "tool_adoption": [
     {
       "claim": "Claude Code pricing/branding is in flux: Anthropic briefly moved Claude Code to Max-only ($100-$200/mo) for ~2% of new signups in April 2026, then reverted after backlash. An apparent rebrand to 'Claude Cowork' surfaced on some signup paths.",
@@ -50,13 +50,43 @@
       "source": "https://addyosmani.com/blog/ai-coding-workflow/",
       "date": "2025-12",
       "confidence": "practitioner-report"
+    },
+    {
+      "claim": "Claude Code accounts for ~12% of all public GitHub commits as of Q3 2026, up from near-zero in Q1 2025",
+      "source": "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/",
+      "date": "2026-09-27",
+      "confidence": "practitioner-report",
+      "recently_changed": true
+    },
+    {
+      "claim": "Claude Code has ~4.2M weekly active users as of September 2026",
+      "source": "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/",
+      "date": "2026-09-27",
+      "confidence": "practitioner-report",
+      "recently_changed": true
+    },
+    {
+      "claim": "Claude Code August 2026 feature wave: Artifacts (shareable pages published from sessions), In-app Browser (live preview), /doctor (configuration diagnosis), Agent View (monitor all running subagents in a single pane), Background Agents (agents continue running when session is idle or closed).",
+      "source": "https://docs.anthropic.com/en/docs/claude-code/changelog",
+      "date": "2026-08",
+      "confidence": "official-docs",
+      "recently_changed": true
     }
   ],
   "model_recommendations": [
     {
+      "model": "claude-sonnet-5",
+      "recommended_for": ["main coding tasks", "day-to-day implementation", "default subagent work", "real-time collaboration", "agentic loops"],
+      "rationale": "Default model as of August 2026. 1M token context window. Claude Code subscription defaults to Sonnet 5 for interactive sessions. Strongest cost/quality ratio for web app work.",
+      "source": "https://docs.anthropic.com/en/docs/claude-code/changelog",
+      "date": "2026-08",
+      "confidence": "official-docs",
+      "recently_changed": true
+    },
+    {
       "model": "claude-sonnet-4-6",
       "recommended_for": ["main coding tasks", "day-to-day implementation", "default subagent work", "real-time collaboration"],
-      "rationale": "Best cost/quality balance for iterative coding. $3/$15 per million tokens. Handles 90%+ of coding tasks. Released February 17 2026.",
+      "rationale": "Best cost/quality balance for iterative coding. $3/$15 per million tokens. Handles 90%+ of coding tasks. Released February 17 2026. Superseded by Sonnet 5 as default.",
       "source": "https://tech-insider.org/claude-opus-vs-sonnet-vs-haiku-2026/",
       "date": "2026",
       "confidence": "community-consensus"
@@ -152,9 +182,22 @@
       "norm": "Hooks for safety are increasingly considered table-stakes for any team running Claude Code in CI. Adnan Khan's 'Clinejection' attack (March 2026) showed prompt injection via malicious GitHub issue titles can compromise the anthropics/claude-code-action workflow and steal NPM secrets via cache poisoning. disler/claude-code-hooks-mastery is the canonical hooks reference.",
       "source": "https://simonwillison.net/2026/Mar/6/clinejection/",
       "date": "2026-03-06",
-      "confidence": "practitioner-consensus",
+      "confidence": "practitioner-consensus"
+    },
+    {
+      "norm": "Background Agents (August 2026): Claude Code agents can now continue running when the session is idle or the terminal is closed. Pair with Agent View (single-pane visibility across all running agents) for AFK development workflows. Changes the default from 'agent runs while I watch' to 'agent runs overnight; I review in the morning'.",
+      "source": "https://docs.anthropic.com/en/docs/claude-code/changelog",
+      "date": "2026-08",
+      "confidence": "official-docs",
+      "recently_changed": true
+    },
+    {
+      "norm": "Claude Code Mods (October 2026, v2.1.287): TypeScript/JS functions that hook directly into Claude Code internals via a documented mod API. Distinct from shell hooks — mods have programmatic access to agent state, tool call queue, and output stream. Enable custom tool wrappers, output transformers, and conditional logic impossible with shell hooks. Still early-adopter; community examples accumulating in awesome-claude-code.",
+      "source": "https://docs.anthropic.com/en/docs/claude-code/mods",
+      "date": "2026-10-01",
+      "confidence": "official-docs",
       "recently_changed": true
     }
   ],
-  "notes": "This section tracks community consensus on tooling, model usage, and workflow norms. Each run should verify/update these against recent practitioner posts and conference talks. Last populated May 5 2026 from Pragmatic Engineer survey, official Claude docs, practitioner blogs, and Latent Space coverage."
+  "notes": "This section tracks community consensus on tooling, model usage, and workflow norms. Each run should verify/update these against recent practitioner posts and conference talks. Last populated Oct 6 2026 from official Claude docs, Willison's Sep 27 keynote, AIEWF 2026 talks, and practitioner blogs."
 }

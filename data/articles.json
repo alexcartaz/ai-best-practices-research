@@ -406,5 +406,24 @@
     "thumbnail_url": null,
     "is_new": true,
     "added": "2026-05-05"
+  },
+  {
+    "id": "willison-2026-in-llms-so-far",
+    "title": "2026 in LLMs (so far)",
+    "author_id": "simon-willison",
+    "url": "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/",
+    "date": "2026-09-27",
+    "topics": [
+      "llm-tooling",
+      "claude-code",
+      "coding-agents",
+      "year-in-review",
+      "state-of-the-field"
+    ],
+    "summary": "Willison's closing keynote at WeAreDevelopers World Congress North America. Chronological exploration of 2026 LLM developments. Argues November 2025 (Claude Opus 4.5 + GPT-5.1 release) as the inflection point where coding agents went from 'often make mistakes' to 'reliable enough for day-to-day use'. Annotated slides with video.",
+    "recency_flag": "current",
+    "thumbnail_url": null,
+    "is_new": true,
+    "added": "2026-10-06"
   }
 ]

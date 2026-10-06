@@ -50,6 +50,28 @@
     "type": "event-schedule",
     "question": "Three AI Engineer events have no public schedule yet (ai-engineer-worlds-fair-2026, ai-engineer-nyc-2026, ai-engineer-code-summit-2026). WF 2026 call for speakers closes 2026-06-05 with announcements 2026-06-02; NYC opens after WF; Code Summit 2026 is TBA SF. Re-run this sweep after 2026-06-02 to populate WF 2026 speakers when the schedule drops.",
     "context": "Per the source pages: WF 2026 (https://www.ai.engineer/worldsfair) is in CFP. NYC (https://www.ai.engineer/nyc) shows 'Details Coming Soon — Speaker applications open after World's Fair'. Code Summit 2026 page redirects to /code which currently shows the 2025 NYC event; the 2026 Code Summit was announced for SF in November but no schedule has been posted.",
+    "status": "partial",
+    "answer": "AI Engineer World's Fair 2026 happened June 29 - July 2 2026 at Moscone West, San Francisco. 29 tracks, 300 speakers, 6000+ attendees. Added notable talks: Boris Cherny (Claude Code internals), Mahesh Murag (MCP 2-hour workshop), Zack Proser (Lifestyles of the AI-Native). Full speaker list populated in events.json (speakers: boris-cherny, mahesh-murag, zack-proser). NYC 2026 is coming Oct 12-14 — event added to events.json as upcoming. Code Summit 2026 still no schedule.",
+    "answered_at": "2026-10-06"
+  },
+  {
+    "id": "q-20261006-001",
+    "asked": "2026-10-06",
+    "run": "2026-10-06",
+    "type": "url-verify",
+    "question": "Profile-lookup needed for two new people added this run: zack-proser (WorkOS) and mahesh-murag (Anthropic). zack-proser: confirm GitHub, X, LinkedIn handles. mahesh-murag: find GitHub/X/LinkedIn/website — all null currently. Also: resolve whether mahesh-murag is the same as the 'Mahesh' Anthropic MCP PM mentioned in various AIEWF 2026 recap posts.",
+    "context": "Both added 2026-10-06. zack-proser has a confirmed website (zackproser.com) and GitHub (https://github.com/zackproser) but X/LinkedIn/Bluesky null. mahesh-murag is confirmed Applied AI Engineer at Anthropic and MCP co-creator from talk descriptions but no social handles found in this run.",
+    "status": "open",
+    "answer": null,
+    "answered_at": null
+  },
+  {
+    "id": "q-20261006-002",
+    "asked": "2026-10-06",
+    "run": "2026-10-06",
+    "type": "person-ingest",
+    "question": "AIEWF 2026 had 300 speakers. We've ingested 3 (boris-cherny, mahesh-murag, zack-proser). Batch-ingest the remaining high-signal practitioners in the next run? Priority candidates from track listings: Swyx (Latent Space / Tiny Teams), any Anthropic SDK engineers who gave talks, any practitioners with Claude Code workflow talks in the main track.",
+    "context": "events.json ai-engineer-worlds-fair-2026 populated with 3 speakers this run. The event was Tier 1 by all metrics (300 speakers, 6000 attendees, Moscone West). The remaining speaker list should be swept against people.json to identify untracked practitioners — same pattern used for AIE Europe 2026 in the May 5 run.",
     "status": "open",
     "answer": null,
     "answered_at": null

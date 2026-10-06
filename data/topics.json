@@ -22,7 +22,8 @@
           "Intercom (Brian Scanlan): production-safe DB hooks (read-replica only, block critical tables, Okta auth, DynamoDB audit trail)",
           "Matt Pocock git-guardrails-claude-code skill: hook-style block on dangerous git commands",
           "Clinejection (March 2026, Adnan Khan): demonstrates prompt injection via malicious GitHub issue titles in claude-code-action workflow — hooks on tool/git/PR boundaries are now table-stakes for CI use",
-          "hesreallyhim/awesome-claude-code: curated hook examples registry"
+          "hesreallyhim/awesome-claude-code: curated hook examples registry",
+          "Claude Code Mods (Oct 2026, v2.1.287): TypeScript/JS functions with programmatic access to agent internals — enables custom tool wrappers, output transformers, and conditional logic that shell hooks cannot express"
         ]
       },
       "skills": {
@@ -80,6 +81,8 @@
     "status": "active-pain",
     "approaches": [
       "Token-efficiency primitives (May 2026): caveman (54k stars, terse-prompting style — ~65% output token cut), zilliztech/claude-context (10k, BM25+vector code search MCP — 40% reduction), yvgude/lean-ctx (1k, Context-OS shell hooks — 60-95% cut). Orthogonal strategies; pick at least one for any long-running session.",
+      "Background Agents (Aug 2026): context compaction is less urgent when the agent can restart fresh via a new Background Agent session rather than compacting in-session",
+      "Agent View (Aug 2026): monitor all running background agents in one pane; review each agent's context separately rather than forcing all into one shared session",
       "backup-clear-reload at ~100k tokens (Matt Pocock / Sandcastle)",
       "Intervene at ~60% context utilization; auto-compact triggers at ~80-90%",
       "/compact with specific instructions ('Focus on the API changes') for better summaries",
@@ -181,6 +184,8 @@
     "approaches": [
       "Claude Agent Teams (built-in): team lead coordinates, teammates work in own context windows and communicate directly",
       "Subagents: isolated parallel workers that report back (no direct coordination)",
+      "Background Agents (official, Aug 2026): agents continue running when session idle or terminal closed — enables true overnight drain of a task backlog",
+      "Agent View (official, Aug 2026): single-pane visibility across all running subagents",
       "Conductor (macOS app): isolated git worktree workspaces with real-time visibility and diff review",
       "Vibe Kanban: cross-agent orchestration with kanban planning and built-in browser preview",
       "Ruflo/Claude Flow: enterprise-grade swarms with federated cross-machine comms and self-learning memory",
@@ -189,5 +194,19 @@
     ],
     "related_people": ["matt-pocock", "addy-osmani", "shawn-wang"],
     "related_tools": ["sandcastle", "conductor", "vibe-kanban", "ruflo"]
+  },
+  {
+    "id": "background-agents",
+    "name": "Background Agents / Agent View",
+    "description": "Claude Code agents can now run while the session is idle or terminal is closed (August 2026). Agent View provides a single-pane view of all running agents. This shifts the default from 'agent runs while I watch' to 'agent runs overnight; I review in the morning'. How do teams structure tasks for reliable AFK execution?",
+    "status": "active-research",
+    "approaches": [
+      "Background Agents (official, Aug 2026): agents continue running when session idle or terminal closed",
+      "Agent View (official, Aug 2026): single-pane visibility across all running subagents",
+      "Sandcastle pattern: git worktrees + Docker isolation for truly AFK agent runs — now complemented by Background Agents",
+      "Conductor (macOS app): isolated git worktree workspaces with real-time visibility and diff review"
+    ],
+    "related_people": ["matt-pocock", "addy-osmani"],
+    "related_tools": ["sandcastle", "conductor"]
   }
 ]

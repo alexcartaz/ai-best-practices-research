@@ -3379,7 +3379,7 @@
       {
         "title": "Beyond Code Coverage: Functionality Testing with Playwright",
         "event": "AI Engineer Europe 2026",
-        "url": null,
+        "url": "https://www.youtube.com/watch?v=FWEInOtngmM",
         "date": "2026-04-10",
         "topics": [
           "testing-tdd",
@@ -4218,5 +4218,92 @@
     "is_new": true,
     "added": "2026-05-05",
     "last_updated": "2026-05-05"
+  },
+  {
+    "id": "zack-proser",
+    "name": "Zack Proser",
+    "category": "dev",
+    "focus": [
+      "voice-first-development",
+      "claude-code",
+      "ai-workflows",
+      "mcp",
+      "skills"
+    ],
+    "profiles": {
+      "github": "https://github.com/zackproser",
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": "https://zackproser.com"
+    },
+    "talks": [
+      {
+        "title": "Lifestyles of the AI-Native",
+        "event": "AI Engineer World's Fair 2026",
+        "url": "https://zackproser.com/speaking/lifestyles-of-the-ai-native",
+        "date": "2026-06-30",
+        "topics": [
+          "session-management",
+          "repo-template-governance",
+          "mcp-servers"
+        ]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Workshop 'Lifestyles of the AI-Native' at AIEWF 2026 — voice coding, agentic loops, verification gates, scheduled tasks. Directly applicable to Claude Code subscription workflows.",
+      "Built Handwave — watchOS app to control Claude Code from your wrist; demoed building it in ~2.5 hours using Claude Code.",
+      "Applied AI Engineer at WorkOS. Pioneered voice-first development workflow at 179 WPM using WisprFlow + Claude Code — ships production code without touching keyboard.",
+      "14 years of production systems experience; previously Staff DevRel at Pinecone, Cloudflare, Gruntwork."
+    ],
+    "is_new": true,
+    "added": "2026-10-06",
+    "last_updated": "2026-10-06",
+    "pfp_url": null
+  },
+  {
+    "id": "mahesh-murag",
+    "name": "Mahesh Murag",
+    "category": "dev",
+    "focus": [
+      "mcp",
+      "agent-frameworks",
+      "claude-code",
+      "anthropic"
+    ],
+    "profiles": {
+      "github": null,
+      "bsky": null,
+      "x": null,
+      "linkedin": null,
+      "substack": null,
+      "medium": null,
+      "website": null
+    },
+    "talks": [
+      {
+        "title": "Building AI Agents with MCP (2-hour workshop)",
+        "event": "AI Engineer World's Fair 2026",
+        "url": "https://www.beri.net/learning/ai-engineer-mcp-workshop-mahesh-murag",
+        "date": "2026-06-29",
+        "topics": [
+          "mcp-servers",
+          "multi-agent-orchestration"
+        ]
+      }
+    ],
+    "podcast_episodes": [],
+    "notable_contributions": [
+      "Applied AI Engineer at Anthropic; co-creator of MCP alongside David Soria Parra.",
+      "Delivered free 2-hour MCP workshop at AIEWF 2026 — covers MCP from foundations to hands-on agent building. Available as recorded video. The canonical free reference for 'how MCP works and how to build with it.'",
+      "Profile fields null pending lookup — flagged for next run."
+    ],
+    "is_new": true,
+    "added": "2026-10-06",
+    "last_updated": "2026-10-06",
+    "pfp_url": null
   }
 ]

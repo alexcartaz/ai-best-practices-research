@@ -527,7 +527,7 @@
     "url": "https://github.com/mattpocock/skills",
     "github_url": "https://github.com/mattpocock/skills",
     "github_stars": 61163,
-    "description": "Matt Pocock's personal Claude Code .claude/ directory, published as 17 production-ready skills: /grill-me (design stress-testing), /write-a-prd, /write-issues, git-guardrails-claude-code (blocks dangerous git commands), and more. TypeScript-flavored. The canonical reference for what an opinionated solo-practitioner skills folder looks like.",
+    "description": "Matt Pocock's personal Claude Code .claude/ directory, published as 17 production-ready skills: /grill-me (design stress-testing), /write-a-prd, /write-issues, git-guardrails-claude-code (blocks dangerous git commands), and more. TypeScript-flavored. The canonical reference for what an opinionated solo-practitioner skills folder looks like. v1.1 (July 8 2026) introduced 'alignment surfaces' — structured checkpoints within skills where the agent surfaces its interpretation of the task before starting work, reducing mid-task misalignment.",
     "topics": [
       "skills",
       "hooks",
@@ -535,9 +535,9 @@
       "repo-template-governance"
     ],
     "status": "active",
-    "is_new": true,
+    "is_new": false,
     "added": "2026-05-05",
-    "last_updated": "2026-05-06"
+    "last_updated": "2026-10-06"
   },
   {
     "id": "claude-context-zilliz",
@@ -802,5 +802,24 @@
     "is_new": true,
     "added": "2026-05-06",
     "last_updated": "2026-05-06"
+  },
+  {
+    "id": "claude-code-mods",
+    "name": "Claude Code Mods",
+    "category": "governance",
+    "author_id": null,
+    "url": "https://docs.anthropic.com/en/docs/claude-code/mods",
+    "github_url": null,
+    "github_stars": null,
+    "description": "TypeScript/JavaScript functions that hook directly into Claude Code internals via a documented mod API. Introduced in v2.1.287 (Oct 1 2026). Differ from hooks (shell commands reacting to lifecycle events) by having full programmatic access to the agent state, tool call queue, and output stream. Enable custom tool wrappers, output transformers, and conditional logic that shell hooks cannot express. Community docs and example mods shipping in awesome-claude-code.",
+    "topics": [
+      "repo-template-governance",
+      "hooks",
+      "claude-code-governance"
+    ],
+    "status": "active",
+    "is_new": true,
+    "added": "2026-10-06",
+    "last_updated": "2026-10-06"
   }
 ]

@@ -32,7 +32,7 @@
     "min_engagement_views": 5000,
     "notes": "Broad product/growth podcast. Filter tightly \u2014 only AI-dev-workflow episodes are in scope. High view count on an AI episode = strong signal the guest's ideas have mainstream traction.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "latent-space",
@@ -57,7 +57,7 @@
     "min_engagement_views": 1000,
     "notes": "Highly relevant by default \u2014 most episodes are Tier 1 or 2. Still filter: research-only episodes (no practical workflow) are Tier 3.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "how-i-ai",
@@ -79,7 +79,7 @@
     "min_engagement_views": 1000,
     "notes": "Practitioner workflow focus. Secondary signal after Lenny's main feed.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "ai-engineer-events",
@@ -111,7 +111,7 @@
     "min_engagement_views": 500,
     "notes": "Primary event source. Every event publishes all talks to YouTube. Check for new events each run and sweep full speaker list. Cross-reference speakers against people.json.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "simon-willison-blog",
@@ -134,7 +134,7 @@
     "skip_keywords": [],
     "notes": "Simon is one of the highest-signal individual bloggers on practical LLM use. Every post is worth checking \u2014 he writes about tooling, security (prompt injection), TDD with AI, and tracks the field comprehensively. Check for new posts in the research window.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "matt-pocock-youtube",
@@ -156,7 +156,7 @@
     "min_engagement_views": 500,
     "notes": "Highest-signal Claude Code subscription practitioner on YouTube. Tutorials, skill walkthroughs, Sandcastle demos. Check for new uploads each run.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "hacker-news",
@@ -176,7 +176,7 @@
     "min_engagement_points": 50,
     "notes": "Show HN posts with 50+ points are strong signal. Also check comment threads on high-point posts \u2014 practitioners often share concrete patterns in comments. Username \u2192 GitHub profile is the main discovery path.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "bluesky",
@@ -194,7 +194,7 @@
     "min_engagement_likes": 20,
     "notes": "AI Engineer community is active here. Starter packs are a useful directory \u2014 check for new ones. Accounts posting 3+ substantive Claude Code workflow posts in the window are worth tracking.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "reddit",
@@ -214,7 +214,7 @@
     "min_engagement_upvotes": 100,
     "notes": "r/ClaudeAI is the primary signal. Posts with 100+ upvotes about Claude Code workflows often surface practitioners not yet in mainstream AI content. Username \u2192 GitHub \u2192 real name is the discovery path.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "github-trending",
@@ -236,7 +236,7 @@
     "min_stars_velocity": 100,
     "notes": "Check weekly trending for both TypeScript and Python. Star velocity (stars gained this week, not total) is the signal \u2014 a repo gaining 500 stars in a week is more relevant than one with 10k total but no recent momentum.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   },
   {
     "id": "twitter-x",
@@ -254,6 +254,6 @@
     "min_engagement_likes": 50,
     "notes": "Less reliable than Bluesky for this community but still worth checking for viral workflow threads. Accounts with 50+ likes on a Claude Code workflow post and an active GitHub are worth ingesting.",
     "added": "2026-05-05",
-    "last_checked": null
+    "last_checked": "2026-10-06"
   }
 ]
